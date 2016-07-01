@@ -32,7 +32,8 @@ Footer = React.createClass({
 		    <div className="container">
 		      <div className="row">
 		        <div className="col-md-8 col-md-offset-2 col-sm-9 col-sm-offset-1 text-center">
-		          <h3 className="logo">Beyond Words</h3>
+		          <img className="logo" src="/images/logo-white.png"/>
+
 		          <div className="footer-nav">
                 <FlatButton
                   linkButton={true}
@@ -42,21 +43,35 @@ Footer = React.createClass({
                 <FlatButton
                   linkButton={true}
                   label="ABOUT"
-                  href="/about"
+                  href="#about"
                   />
                 <FlatButton
+                  style={styles.flatButton}
                   linkButton={true}
-                  label="HOUGHTON LIBRARY"
-                  href="//hcl.harvard.edu/"
+                  label="HOUGHTON"
                   target="_blank"
-
+                  href="//hcl.harvard.edu"
+                  />
+                <FlatButton
+                  style={styles.flatButton}
+                  linkButton={true}
+                  label="MCMULLEN"
+                  target="_blank"
+                  href="//www.bc.edu/sites/artmuseum/"
+                  />
+                <FlatButton
+                  style={styles.flatButton}
+                  linkButton={true}
+                  label="GARDNER"
+                  target="_blank"
+                  href="//www.gardnermuseum.org/home"
                   />
 							</div>
             </div>
           </div>
 		      <div className="row">
 		        <div className="col-sm-12 text-center">
-		          <ul className="list-inline social-list mb0">
+		          {/*<ul className="list-inline social-list mb0">
 		            <li>
 
                   <IconButton
@@ -85,8 +100,8 @@ Footer = React.createClass({
                     iconClassName="mdi mdi-google-plus"
                     />
 		            </li>
-		          </ul>
-		          <span className="copyright-information fade-1-4">Copyright the Beyond Words, {year}.  All of the media presented on this site are available through the Creative Commons Attribution 4.0 International, Free Culture License.</span>
+		          </ul>*/}
+		          <span className="copyright-information fade-1-4">Copyright of the Beyond Words Exhibition, {year}.</span>
 
 		        </div>
 					</div>

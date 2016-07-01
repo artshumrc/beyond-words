@@ -1,31 +1,61 @@
 /*
  * Available fonts
  *
-font-family:'Futura LT W01 Light';
-font-family:'Futura LT W01 Light Oblique';
-font-family:'Futura LT W01 Book';
-font-family:'Futura LT W01 Bold';
-font-family:'Futura LT W01 Book Oblique';
-font-family:'Freight Big W01 Light Regular';
-font-family:'Freight Big W01 Light Italic';
-font-family:'Freight Big W01 Book Regular';
-font-family:'Freight Big W01 Book Italic';
-font-family:'Freight Display W01 Light';
-font-family:'Freight Display W01 Light It';
-font-family:'Freight Display W01 Book';
-font-family:'Freight Display W01 Boo1197149';
-font-family:'Freight Display W01 Medium';
-font-family:'Freight Display W01 Medium It';
-font-family:'Brown Gothic W01 Cd Bold';
+ font-family:'Freight Display W01 Light';
+ font-family:'Freight Display W01 Light It';
+ font-family:'Freight Display W01 Book';
+ font-family:'Freight Display W01 Boo1197149';
+ font-family:'Freight Display W01 Medium';
+ font-family:'Freight Display W01 Medium It';
+ font-family:'Freight Display W01 SemiBold';
+ font-family:'Freight Display W01 Sem1197161';
+ font-family:'Freight Display W01 Bold';
+ font-family:'Freight Display W01 Bol1197167';
+ font-family:'Freight Display W01 Black';
+ font-family:'Freight Display W01 Black It';
+ font-family:'Brown Gothic W01 Light';
+ font-family:'Brown Gothic W01 Light Italic';
+ font-family:'Brown Gothic W01 Regular';
+ font-family:'Brown Gothic W01 Italic';
+ font-family:'Brown Gothic W01 Medium';
+ font-family:'Brown Gothic W01 Medium Italic';
+ font-family:'Brown Gothic W01 Bold';
+ font-family:'Brown Gothic W01 Bold Italic';
+ font-family:'Brown Gothic W01 Extra Bold';
+ font-family:'Brown Gothic W01 Heavy';
+ font-family:'Brown Gothic W01 Extra Bold Cd';
+ font-family:'Brown Gothic W01 Black Cd';
+ font-family:'Futura LT W01 Light';
+ font-family:'Futura LT W01 Light Oblique';
+ font-family:'Futura LT W01 Book';
+ font-family:'Futura LT W01 Book Oblique';
+ font-family:'Futura LT W01 Medium';
+ font-family:'Futura LT W01 Medium Oblique';
+ font-family:'Futura LT W01 Bold';
+ font-family:'Futura LT W01 Bold Oblique';
+ font-family:'Futura LT W01 Extra Bold';
+ font-family:'Futura LT W01 Extra Bold Obl';
+ font-family:'Futura LT W01 Heavy';
+ font-family:'Futura LT W01 Heavy Oblique';
+ font-family:'Futura LT W01 Light Condensed';
+ font-family:'Futura LT W01 Light Cond Obl';
+ font-family:'Futura LT W01 Medium Condensed';
+ font-family:'Futura LT W01 Medium Cond Obl';
+ font-family:'Futura LT W01 Bold Condensed';
+ font-family:'Futura LT W01 Bold Cond Obl';
+ font-family:'Futura LT W01 X Bold Condensed';
+ font-family:'Futura LT W01 X Bold Cond Obl';
+ font-family:'Futura W01 Display';
+ font-family:'Futura W01 Black';
  *
  */
 
 
 @font-light:'Futura LT W01 Light';
 @font-label:'Futura LT W01 Book';
-@font-title:'Brown Gothic W01 Cd Bold';
-@font-reading:'Merriweather', @font-light, Georgia, Times New Roman, serif;
-@font-logo:'Roboto Condensed', sans-serif;
+@font-title:'Futura LT W01 Medium Condensed';
+@font-reading:'Freight Display W01 Book', @font-light, Georgia, Times New Roman, serif;
+@font-logo: @font-reading;
 @font-family-default-starter: 'Lato', sans-serif;
 @font-family-default-regular:@font-light;
 @font-family-default-regular-alt:@font-label;
@@ -43,36 +73,38 @@ font-family:'Brown Gothic W01 Cd Bold';
 @divider-transparent:rgba(204, 204, 204, 0.4);
 @background-gray:#f6f6f6;
 
-@md-primary-dark:#0097A7;
-@md-primary:#00BCD4;
-@md-primary-light:#B2EBF2;
-@md-accent:#795548;
+@bw-blue: rgba(0, 32, 91, 1);
+@bw-blue-10: rgba(0, 32, 91, 0.1);
+@bw-blue-20: rgba(0, 32, 91, 0.2);
+@bw-blue-30: rgba(0, 32, 91, 0.3);
+@bw-blue-40: rgba(0, 32, 91, 0.4);
 
-@md-primary-100: rgba(178, 235, 242, 1);
-@md-primary-200: rgba(128, 222, 234, 1);
-@md-primary-300: rgba(77, 208, 225, 1);
-@md-primary-400: rgba(38, 198, 218, 1);
-@md-primary-500: rgba(0, 188, 212, 1);
-@md-primary-600: rgba(0, 172, 193, 1);
-@md-primary-700: rgba(0, 151, 167, 1);
-@md-primary-800: rgba(0, 131, 143, 1);
-@md-primary-900: rgba(0, 96, 100, 1);
+@md-primary-50: #E8EAF6;
+@md-primary-100: #C5CAE9;
+@md-primary-200: #9FA8DA;
+@md-primary-300: #7986CB;
+@md-primary-400: #5C6BC0;
+@md-primary-500: #3F51B5;
+@md-primary-600: #3949AB;
+@md-primary-700: #303F9F;
+@md-primary-800: #283593;
+@md-primary-900: #1A237E;
 
-@md-accent-100: #D7CCC8;
-@md-accent-200: #BCAAA4;
-@md-accent-300: #A1887F;
-@md-accent-400: #8D6E63;
-@md-accent-500: #795548;
-@md-accent-600: #6D4C41;
-@md-accent-700: #5D4037;
-@md-accent-800: #4E342E;
-@md-accent-900: #3E2723;
+@md-accent-50: #FFF8E1;
+@md-accent-100: #FFECB3;
+@md-accent-200: #FFE082;
+@md-accent-300: #FFD54F;
+@md-accent-400: #FFCA28;
+@md-accent-500: #FFC107;
+@md-accent-600: #FFB300;
+@md-accent-700: #FFA000;
+@md-accent-800: #FF8F00;
+@md-accent-900: #FF6F00;
 
-@md-accent-500-60: rgba(121, 85, 72, 0.6);
-@md-accent-500-40: rgba(121, 85, 72, 0.4);
-@md-accent-800-60: rgba(78, 52, 46, 0.6);
-@md-accent-800-40: rgba(78, 52, 46, 0.4);
-
+@md-primary-dark:@md-primary-800;
+@md-primary:@md-primary-500;
+@md-primary-light:@md-primary-50;
+@md-accent:@md-accent-500;
 
 
 
