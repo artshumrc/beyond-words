@@ -62,6 +62,6 @@ ObjectTeaser = React.createClass({
 
 });
 
-objectTeaser.childContextTypes = {
+ObjectTeaser.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };

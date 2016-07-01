@@ -1,7 +1,7 @@
 HomeLayout = React.createClass({
 	render(){
 		return(
-			<div className="cltk-layout home-layout">
+			<div className="archimedes-layout home-layout">
 				<Header />
 				<HomeView />
 				<Footer/>

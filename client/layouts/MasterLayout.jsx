@@ -2,7 +2,7 @@ MasterLayout = React.createClass({
 
 	render(){
 		return(
-			<div className="cltk-layout master-layout">
+			<div className="archimedes-layout master-layout">
 				<Header />
 				<main>
 					{this.props.content}

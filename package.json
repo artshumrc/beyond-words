@@ -1,10 +1,10 @@
 {
-  "name": "cltk_frontend",
+  "name": "beyond_words",
   "version": "0.1.0",
-  "description": "A frontend reading environment for the Classical Language ToolKit Archive texts",
+  "description": "Meteor app for the Beyond Words exhibition",
   "main": "bundle/main.js",
   "dependencies": {
-    "material-ui": "^0.15.0",
+    "material-ui": "^0.15.1",
     "pseries": "^2.0.0",
     "react": "^15.0.2",
     "react-addons-create-fragment": "^15.0.2",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.archimedesdigital.io:archimedes/view.git"
+    "url": "git@gitlab.archimedesdigital.io:archimedes/beyond_words.git"
   },
   "author": "",
   "license": "MIT"
