@@ -53,7 +53,6 @@ ComingSoonHeader = React.createClass({
 
     };
 
-    console.log("this.state.leftMenuOpen", this.state.leftMenuOpen);
 
     return (
     <div>
