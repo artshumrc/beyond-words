@@ -38,7 +38,7 @@ ComingSoonHomeView = React.createClass({
                           <img className="header-logo-image" src="/images/beyond-words-logo-light.png"/>
                           <hr className="section-header-line" />
 
-                          <h6 className="uppercase mb40">More information about the exhibition will be updated here soon.</h6>
+                          <h6 className="uppercase mb40">Additional information about the exhibition will be available here soon</h6>
 
                           <a
                             className="btn btn-large md-button learn-more-button md-ink-ripple paper-shadow md-primary" href="#about" aria-label="Learn More"
