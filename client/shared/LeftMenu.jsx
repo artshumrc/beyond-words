@@ -61,7 +61,7 @@ LeftMenu = React.createClass({
               />
             <Divider />*/}
             <MenuItem
-              href="//hcl.harvard.edu"
+              href="//hcl.harvard.edu/libraries/houghton/"
               primaryText="Houghton"
               target="_blank"
               onTouchTap={this.props.closeLeftMenu}

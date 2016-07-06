@@ -45,7 +45,7 @@ ComingSoonHomeView = React.createClass({
                             onClick={this.scrollToAbout}
                             onTouchTap={this.scrollToAbout}
                             >
-                            <span>Participating Institutions</span>
+                            <span>Participating Venues</span>
                             <div className="md-ripple-container"></div>
 
                           </a>
@@ -64,11 +64,11 @@ ComingSoonHomeView = React.createClass({
             <div className="container text-center">
               <div className="row">
                 <div className="participating-institution">
-                  <a href="//hcl.harvard.edu" target="_blank">
+                  <a href="//hcl.harvard.edu/libraries/houghton/" target="_blank">
                     <h3>Manuscripts from Church & Cloister</h3>
                   </a>
                   <p>
-                    <a href="//hcl.harvard.edu" target="_blank">
+                    <a href="//hcl.harvard.edu/libraries/houghton/" target="_blank">
                       Houghton Library, Harvard University
                     </a>
                   </p>
