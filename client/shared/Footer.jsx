@@ -50,7 +50,7 @@ Footer = React.createClass({
                   linkButton={true}
                   label="HOUGHTON"
                   target="_blank"
-                  href="//hcl.harvard.edu"
+                  href="//hcl.harvard.edu/libraries/houghton"
                   />
                 <FlatButton
                   style={styles.flatButton}
