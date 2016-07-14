@@ -20,7 +20,7 @@ Home_Content = React.createClass({
     render(){
         return (
             <div>
-                <Home_Intro/>
+                <Home_Intro2/>
                 <Home_Overview/>
                 <Home_Twitter/>
                 <Home_Events/>
