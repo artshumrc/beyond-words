@@ -40,14 +40,15 @@ ComingSoonHeader = React.createClass({
       flatButton : {
         width: "auto",
         minWidth: "none",
-        height: "55px",
-        padding: "10px 5px"
+        height: "80px",
+        padding: "10px 5px",
+        lineHeight: "64px"
       },
       flatIconButton : {
         padding: "10px 20px",
         width: "auto",
         minWidth: "none",
-        height: "55px",
+        height: "80px",
 
       }
 
@@ -73,11 +74,18 @@ ComingSoonHeader = React.createClass({
               />
 
               <FlatButton
-                className="logo"
+                className="logo logo-light"
                 linkButton={true}
                 style={styles.flatButton}
                 href="/"
-                icon={<img className="logo-image" src="/images/logo-gold.png" />}
+                icon={<img className="logo-image" src="/images/beyond-words-logo-light.png" />}
+                />
+                      <FlatButton
+                className="logo logo-dark"
+                linkButton={true}
+                style={styles.flatButton}
+                href="/"
+                icon={<img className="logo-image" src="/images/beyond-words-logo.png" />}
                 />
 
     				</div>

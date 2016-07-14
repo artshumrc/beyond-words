@@ -3,7 +3,7 @@ ComingSoonHomeLayout = React.createClass({
 		return(
 			<div className="archimedes-layout home-layout">
 				<ComingSoonHeader/>
-				<ComingSoonHomeView />
+				<Home_Content />
 				<Footer/>
 			</div>
 			);

@@ -1,182 +1,189 @@
 
 header {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:99;
-  background:@light;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: @light;
 
   .container.close-navbar {
-    width:100%;
+    width: 100%;
   }
 
   .left-drawer-toggle {
 
   }
-
   .logo {
     padding: 10px 5px !important;
     vertical-align: top !important;
     span {
-      font-family:@font-logo !important;
+      font-family: @font-logo !important;
       font-weight: 900 !important;
-      font-size:19px !important;
-      color:@text-dark;
-      text-transform: none  !important;
+      font-size: 19px !important;
+      color: @text-dark;
+      text-transform: none !important;
 
     }
   }
 
-  a[type="button"], button{
-    font-family:@font-label !important;
+  a[type="button"], button {
+    font-family: @font-label !important;
   }
 
   ul.menu {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     > li {
-      margin:0;
-      padding:0;
+      margin: 0;
+      padding: 0;
 
     }
   }
 
   .search-module {
-    border-right:1px solid @divider;
-    border-right:none;
+    border-right: 1px solid @divider;
+    border-right: none;
   }
 
   .toggle-left-menu {
     i {
-      margin-top:10px;
+      margin-top: 10px;
     }
   }
 
   .navbar-nav.navbar-right:last-child {
-    margin:0;
+    margin: 0;
   }
-
 
   .module, .module.widget-handle {
-    padding:0;
+    padding: 0;
   }
 
-
 }
-.dropdown-menu {
-  margin:0;
-  padding:0;
-  border:none;
-  width:100%;
 
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
 
   li {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 
     &.divider {
-      margin:0;
-      padding:0;
+      margin: 0;
+      padding: 0;
 
     }
 
   }
 
-
 }
-
-
-
 
 .headroom {
-	.transition( transform 00ms linear );
-}
-.headroom--pinned {
-	.transition( transform 200ms linear );
-	transform: translateY(0%) translateZ(0);
-}
-.headroom--unpinned {
-	transform: translateY(-100%) translateZ(0);
+  .transition(transform 00ms linear);
 }
 
+.headroom--pinned {
+  .transition(transform 200ms linear);
+  transform: translateY(0%) translateZ(0);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%) translateZ(0);
+}
+
+.headroom--not-top{
+  .logo {
+    &.logo-light {
+      display: none !important;
+    }
+    &.logo-dark {
+      display: inline-block !important;
+    }
+  }
+}
 
 .home-layout, .master-layout {
 
   header.headroom--top {
-  	background:transparent;
-  	box-shadow:none;
-    color:@light;
-    border-bottom:1px solid @divider-transparent;
+    background: transparent;
+    box-shadow: none;
+    color: @light;
+    border-bottom: 1px solid @divider-transparent;
 
     .nav-open {
-      background:#fff;
+      background: #fff;
     }
     .nav-bar {
-      border-bottom:none !important;
+      border-bottom: none !important;
     }
 
     .module.widget-handle {
-      border-left:1px solid @divider-transparent;
+      border-left: 1px solid @divider-transparent;
     }
 
     .search-module {
-      border-right:none;
+      border-right: none;
+    }
+
+    .logo{
+      &.logo-dark{
+        display: none !important;
+      }
     }
 
     .logo, .left-drawer-toggle, a[type="button"] {
-      color:@light !important;
+      color: @light !important;
       span {
-        color:@light !important;
+        color: @light !important;
 
       }
     }
 
-    .logo-image {
-      display:none;
-    }
-
     nav.bg-dark {
-    	background:transparent;
+      background: transparent;
 
     }
 
-  	.site-title {
-  		background:transparent;
-      color:@light;
-  		&:hover {
-  		}
-  	}
-    .nav li.open > a{
-  		background:@md-primary;
-  	  color:@light;
+    .site-title {
+      background: transparent;
+      color: @light;
+      &:hover {
+      }
     }
-  	a.md-button {
+    .nav li.open > a {
+      background: @md-primary;
+      color: @light;
+    }
+    a.md-button {
       //color:#272727 !important;
-      color:@light;
-  		&:hover, &:focus {
-  			background:@md-primary;
-  		  color:@light;
+      color: @light;
+      &:hover, &:focus {
+        background: @md-primary;
+        color: @light;
         span {
-          color:@light;
+          color: @light;
         }
-  		}
-  	}
+      }
+    }
     a.md-button span {
-      color:@light;
+      color: @light;
     }
 
     .dropdown-menu {
       a.md-button {
-        color:@dark;
+        color: @dark;
 
         i, span {
-          color:@dark;
+          color: @dark;
         }
         &:hover {
-          color:@light;
+          color: @light;
           i, span {
-            color:@light;
+            color: @light;
 
           }
 
@@ -188,7 +195,7 @@ header {
       a.md-button {
         &:hover {
           i {
-            color:@light;
+            color: @light;
           }
         }
       }
@@ -200,16 +207,16 @@ header {
 .leftnav-upper {
   height: 140px;
   width: 100%;
-  background:@bw-blue;
-  margin-bottom:10px;
+  background: @bw-blue;
+  margin-bottom: 10px;
 
 }
 
 .leftnav {
   a {
-    font-family:@font-label !important;
-    text-transform:uppercase;
-    padding:10px 5px !important;
+    font-family: @font-label !important;
+    text-transform: uppercase;
+    padding: 10px 5px !important;
 
   }
 
