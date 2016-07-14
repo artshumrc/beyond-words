@@ -4,7 +4,7 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
-Home_Twitter = React.createClass({
+HomeTwitter = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
     },
@@ -17,7 +17,7 @@ Home_Twitter = React.createClass({
         var handle = Meteor.subscribe('tweets');
         if (handle.ready()) {
             // console.log(tweets);
-            TweetCollection = new Mongo.Collection("tweetCollection");
+            //TweetCollection = new Mongo.Collection("tweetCollection");
             tweets = TweetCollection.find({}).fetch();
         }
         return {

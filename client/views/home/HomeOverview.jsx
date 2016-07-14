@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-Home_Overview = React.createClass({
+HomeOverview = React.createClass({
     getChildContext() {
         return {muiTheme: getMuiTheme(baseTheme)};
     },

@@ -1,4 +1,4 @@
-Home_Events = React.createClass({
+HomeEvents = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData(){
         var events = [];

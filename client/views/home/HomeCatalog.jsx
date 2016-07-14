@@ -3,7 +3,7 @@ import FontIcon from 'material-ui/FontIcon';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-Home_Catalog = React.createClass({
+HomeCatalog = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
     },

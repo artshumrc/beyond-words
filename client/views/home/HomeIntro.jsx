@@ -1,4 +1,4 @@
-Home_Intro = React.createClass({
+HomeIntro = React.createClass({
     render(){
         return (
             <div>

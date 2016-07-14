@@ -80,7 +80,7 @@ ComingSoonHeader = React.createClass({
                 href="/"
                 icon={<img className="logo-image" src="/images/beyond-words-logo-light.png" />}
                 />
-                      <FlatButton
+              <FlatButton
                 className="logo logo-dark"
                 linkButton={true}
                 style={styles.flatButton}

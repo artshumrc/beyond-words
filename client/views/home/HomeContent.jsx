@@ -1,4 +1,4 @@
-Home_Content = React.createClass({
+HomeContent = React.createClass({
 
     componentDidMount() {
 
@@ -20,11 +20,11 @@ Home_Content = React.createClass({
     render(){
         return (
             <div>
-                <Home_Intro2/>
-                <Home_Overview/>
-                <Home_Twitter/>
-                <Home_Events/>
-                <Home_Catalog/>
+                <HomeIntro2/>
+                <HomeOverview/>
+                <HomeTwitter/>
+                <HomeEvents/>
+                <HomeCatalog/>
             </div>
 
         );

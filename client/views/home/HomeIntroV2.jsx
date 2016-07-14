@@ -1,4 +1,4 @@
-Home_Intro2 = React.createClass({
+HomeIntro2 = React.createClass({
     componentDidMount(){
         // Image Sliders
 
