@@ -18,6 +18,13 @@ Home_Intro2 = React.createClass({
             $('.flexslider').flexslider('prev');
             return false;
         };
+        var openLink = function (event) {
+            console.log(event);
+            var href = event.target.getAttribute('href');
+            var target = event.target.getAttribute('target');
+            console.log(href, target);
+            window.open(href, {name: target});
+        };
         return (
             <div>
                 <section id="intro" className="image-bg bg-dark cover fullscreen">
@@ -57,7 +64,8 @@ Home_Intro2 = React.createClass({
                                     <h4 className="thin">September 12 - December 10</h4>
                                     <h5>Houghton Library, Harvard University
                                         <br/>(Cambridge, MA)</h5>
-                                    <a href="http://hcl.harvard.edu/" className="thin" target="_blank">
+                                    <a href="http://hcl.harvard.edu/" className="thin" target="_blank"
+                                       onClick={openLink}>
                                         http://hcl.harvard.edu/<i className="glyphicon glyphicon-link"></i>
                                     </a>
                                 </div>
@@ -69,7 +77,8 @@ Home_Intro2 = React.createClass({
                                     <h5>McMullen Museum of
                                         Art, Boston College
                                         <br/> (Chestnut Hill, MA)</h5>
-                                    <a href="http://www.bc.edu/sites/artmuseum/" className="thin" target="_blank">
+                                    <a href="http://www.bc.edu/sites/artmuseum/" className="thin" target="_blank"
+                                       onClick={openLink}>
                                         http://www.bc.edu/sites/artmuseum/<i className="glyphicon glyphicon-link"></i>
                                     </a>
                                 </div>
@@ -80,7 +89,8 @@ Home_Intro2 = React.createClass({
                                     <h4 className="thin">September 22 - January 16</h4>
                                     <h5>Isabella Stewart Gardner Museum
                                         <br/>(Boston, MA)</h5>
-                                    <a href="http://www.gardnermuseum.org/home" className="thin" target="_blank">
+                                    <a href="http://www.gardnermuseum.org/home" className="thin" target="_blank"
+                                       onClick={openLink}>
                                         http://www.gardnermuseum.org/home<i className="glyphicon glyphicon-link"></i>
                                     </a>
                                 </div>
