@@ -43,7 +43,7 @@ Home_Twitter = React.createClass({
                 <section id="twitter">
                     <div className="container">
                         <h1 className="text-center bw-tweet-handle"><a href="https://twitter.com/beyondwords2016">@beyondwords2016</a></h1>
-                        <h4 cla>The Latest Updates from Twitter</h4>
+                        <h4 className="text-center">The Latest Updates from Twitter</h4>
                         <div className="row">
                             {this.data.tweets.map(function (tweet, index) {
                                 return <div className="bw-tweet-wrapper col-sm-4">

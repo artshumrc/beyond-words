@@ -114,15 +114,15 @@ Footer = React.createClass({
                                         />
                                     </li>
                                 </ul>
-                                <span
-                                    className="copyright-information fade-1-4">Copyright of the Beyond Words Exhibition, {year}.</span>
-
+                                <span className="copyright-information fade-1-4">Copyright of the Beyond Words Exhibition, {year}.</span>
                             </div>
                         </div>
+                    </div>
                 </footer>
             </div>
-    )
-    }
-    Footer.childContextTypes = {
+        )
+    },
+    childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
-    };
+    }
+});
