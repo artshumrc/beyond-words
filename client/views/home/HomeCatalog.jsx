@@ -18,6 +18,7 @@ HomeCatalog = React.createClass({
                         <h2 className="text-center">Catalog</h2>
                         <div className="row flex-center">
                             <div className="col-sm-12">
+                              <img className="catalog-image" src="/images/catalog.png"/>
                                 <p>The catalogue Beyond Words features illuminated manuscripts from nineteen Boston-area
                                     institutions, this catalog provides a sweeping overview of the history of the book
                                     in the Middle Ages and Renaissance, as well as a guide to its production,
@@ -33,7 +34,7 @@ HomeCatalog = React.createClass({
                                     S. Rose with additional support from the Rose Marrow Fund.</p>
 
                                   <a className="btn btn-large md-button uchicago-press-button md-ink-ripple paper-shadow md-primary" href="//www.press.uchicago.edu/ucp/books/book/distributed/B/bo25077855.html" aria-label="Learn More" target="_blank">
-                                    <span>University of Chicago Press</span>
+                                    <span>Purchase from University of Chicago Press</span>
                                     <div className="md-ripple-container"></div>
 
                                   </a>

@@ -15,6 +15,7 @@ HomePlanYourTrip = React.createClass({
         return (
             <div>
                 <section id="plan-your-trip">
+                  <h2>Plan Your Trip</h2>
                     <p>
                       The venues are not within walking distance of one another, but all are accessible by the MBTA (the ”T”). Please check the “Directions and additional information” for each venue, as there may be changes to opening hours or parking availability on any given day:
                     </p>

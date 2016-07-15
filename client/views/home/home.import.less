@@ -278,6 +278,10 @@ section#catalog {
   background:#f6f6f6;
   text-align:center;
 
+  .catalog-image {
+    float:right;
+  }
+
   .uchicago-press-button {
     margin:30px auto;
   }
@@ -400,5 +404,34 @@ section#symposium {
     }
 
   }
+
+}
+
+section#lenders {
+  background:@md-primary-700;
+  color:@light;
+  text-align:center;
+
+  h2 {
+    padding-bottom:60px;
+  }
+
+  h2, a {
+    color:@light;
+  }
+
+  a {
+    font-size:24px;
+    font-family:@font-reading;
+    padding:12px 20px;
+    display:inline-block;
+    vertical-align: top;
+    &:hover {
+      color:#eee;
+      text-decoration:underline;
+    }
+
+  }
+
 
 }

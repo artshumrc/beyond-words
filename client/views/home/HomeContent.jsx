@@ -27,6 +27,7 @@ HomeContent = React.createClass({
                 <HomePlanYourTrip/>
                 <HomeEvents/>
                 <HomeCatalog/>
+                <HomeLenders/>
             </div>
 
         );
