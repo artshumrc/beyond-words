@@ -51,7 +51,7 @@ HomeTwitter = React.createClass({
                             {this.data.tweets.map(function (tweet, index) {
                                 return <div
                                   key={index}
-                                  className="bw-tweet-wrapper col-sm-4"
+                                  className="bw-tweet-wrapper col-sm-4 wow fadeIn"
                                   >
                                     <Card>
                                         <CardText

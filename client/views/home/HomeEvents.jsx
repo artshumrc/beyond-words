@@ -48,8 +48,11 @@ HomeEvents = React.createClass({
                           </em>
                         </h5>
                         <ul className="events-list">
-                            {this.data.events.map(function (event) {
-                                return <li className="event-item">
+                            {this.data.events.map(function (event, i) {
+                                return <li
+                                  key={i}
+                                  className="event-item wow fadeIn"
+                                  >
                                     <div className="event-calendar-date">
                                         <h6 className="event-month">{moment(event.date).format('MMMM')}</h6>
                                         <h3 className="event-day thin">{moment(event.date).format('D')}</h3>

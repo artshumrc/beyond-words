@@ -15,7 +15,7 @@ HomeOverview = React.createClass({
         return (
             <div>
                 <section id="overview">
-                  <div className="container">
+                  <div className="container wow fadeIn" >
                        <div className="row">
                            <div className="col-sm-8 col-sm-offset-2">
                              <img src="/images/DropCapB.png" alt="B" className="pull-left drop-cap"/>

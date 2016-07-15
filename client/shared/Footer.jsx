@@ -83,6 +83,14 @@ Footer = React.createClass({
                                 </div>
                             </div>
                         </div>
+                        <div className="row ">
+                            <div className="col-sm-12 text-center">
+                              <span className="neh-sponsored-by-label">Sponsored by</span>
+                              <a href="//www.neh.gov/" target="_blank">
+                                <img className="logo neh-logo" src="/images/neh_logo_horizontal_reverse.png"/>
+                              </a>
+                            </div>
+                        </div>
                         <div className="row">
                             <div className="col-sm-12 text-center">
                                 <span className="copyright-information fade-1-4">Copyright of the Beyond Words Exhibition, {year}.</span>
