@@ -10,7 +10,7 @@ Meteor.startup(function () {
     });
 });
 
-const POLL_INTERVAL = 5000;
+const POLL_INTERVAL = 1800000;
 Meteor.publish('tweets', function () {
     var pub = this;
     const published_tweets = {};
@@ -39,4 +39,3 @@ Meteor.publish('tweets', function () {
         Meteor.clearInterval(interval);
     });
 });
-
