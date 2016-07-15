@@ -64,7 +64,6 @@ useraccounts:bootstrap
 useraccounts:iron-routing
 percolate:momentum-iron-router
 percolate:momentum
-mrt:twit
 
 # Packages added for project
 http
@@ -81,3 +80,6 @@ standard-minifier-js
 simple:rest
 dburles:google-maps
 natestrauser:jquery-scrollto
+johannesma:meteor-flexslider
+autopublish
+mrt:twit

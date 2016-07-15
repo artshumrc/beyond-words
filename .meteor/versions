@@ -17,6 +17,7 @@ aldeed:tabular@1.4.2
 aldeed:template-extension@3.4.3
 allow-deny@1.0.4
 archimedigital:core@0.1.1
+autopublish@1.0.7
 autoupdate@1.2.9
 babel-compiler@6.6.4
 babel-runtime@0.1.8
@@ -86,6 +87,7 @@ iron:middleware-stack@1.1.0
 iron:router@1.0.12
 iron:url@1.0.11
 jabbslad:basic-auth@0.2.2
+johannesma:meteor-flexslider@0.0.1
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
 jparker:gravatar@0.4.1

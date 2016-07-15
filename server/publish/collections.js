@@ -8,6 +8,8 @@ if (Meteor.isServer){
     return Objects.find();
   });
 
-
+  Meteor.publish('events', function(){
+    return Events.find();
+  })
 
 }

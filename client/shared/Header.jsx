@@ -10,6 +10,40 @@ Header = React.createClass({
     return { muiTheme: getMuiTheme(baseTheme) };
   },
 
+  getInitialState(){
+    return {
+      leftMenuOpen : false
+    };
+  },
+
+  toggleLeftMenu(){
+    this.setState({
+      leftMenuOpen : !this.state.leftMenuOpen
+    });
+  },
+
+  closeLeftMenu(){
+    this.setState({
+      leftMenuOpen : false
+    });
+  },
+
+  scrollToEvents(e){
+    $("html, body").animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
+  scrollToSymposium(e){
+    $("html, body").animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
+  scrollToCatalog(e){
+    $("html, body").animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
+
   render(){
 
     let styles = {
@@ -17,7 +51,7 @@ Header = React.createClass({
         width: "auto",
         minWidth: "none",
         height: "55px",
-        padding: "10px 5px"
+        padding: "10px 5px",
       },
       flatIconButton : {
         padding: "10px 20px",
@@ -29,8 +63,13 @@ Header = React.createClass({
 
     };
 
+
     return (
     <div>
+      <LeftMenu
+        open={this.state.leftMenuOpen}
+        closeLeftMenu={this.closeLeftMenu}
+        />
       <header className="header-nav paper-shadow">
     		<div className="navigation-primary">
     			<div className="container close-navbar">
@@ -40,14 +79,22 @@ Header = React.createClass({
                 className="left-drawer-toggle"
                 style={styles.flatIconButton}
                 icon={<FontIcon className="mdi mdi-menu" />}
+                onClick={this.toggleLeftMenu}
               />
 
               <FlatButton
-                className="logo"
+                className="logo logo-light"
                 linkButton={true}
                 style={styles.flatButton}
                 href="/"
-                label="Beyond Words"
+                icon={<img className="logo-image" src="/images/logo-white.png" />}
+                />
+              <FlatButton
+                className="logo logo-dark"
+                linkButton={true}
+                style={styles.flatButton}
+                href="/"
+                icon={<img className="logo-image" src="/images/logo-gold.png" />}
                 />
 
     				</div>
@@ -61,12 +108,63 @@ Header = React.createClass({
                       <FlatButton
                         style={styles.flatButton}
                         linkButton={true}
-                        label="ABOUT"
-                        href="/about"
+                        label="EVENTS"
+                        href="#events"
+                        onClick={this.scrollToEvents}
+                        onTouchTap={this.scrollToEvents}
                         />
                     </li>
-
-
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="SYMPOSIUM"
+                        href="#symposium"
+                        onClick={this.scrollToSymposium}
+                        onTouchTap={this.scrollToSymposium}
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="CATALOG"
+                        href="#catalog"
+                        onClick={this.scrollToCatalog}
+                        onTouchTap={this.scrollToCatalog}
+                        />
+                    </li>
+                  </ul>
+                </div>
+                <div className="module widget-handle left">
+        					<ul className="nav navbar-nav navbar-right">
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="HOUGHTON"
+                        target="_blank"
+                        href="//hcl.harvard.edu/libraries/houghton/"
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="MCMULLEN"
+                        target="_blank"
+                        href="//www.bc.edu/sites/artmuseum/"
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        target="_blank"
+                        label="GARDNER"
+                        href="//www.gardnermuseum.org/collection/exhibitions"
+                        />
+                    </li>
         					</ul>
 
                 </div>
@@ -77,7 +175,7 @@ Header = React.createClass({
                       <FlatButton
                         style={styles.flatIconButton}
                         linkButton={true}
-                        href="https://twitter.com"
+                        href="https://twitter.com/@BeyondWords2016"
                         icon={<FontIcon className="mdi mdi-twitter" />}
                         target="_blank"
                       />
@@ -85,25 +183,10 @@ Header = React.createClass({
                   </ul>
                 </div>
 
-                <div className="module search-module widget-handle left">
-                  <ul className="menu icon-menu">
-                    <li>
-                      <FlatButton
-                        style={styles.flatIconButton}
-                        linkButton={true}
-                        href="/search"
-                        icon={<FontIcon className="mdi mdi-magnify" />}
-                      />
-                    </li>
-                  </ul>
-                </div>
-
-
               </div>{/*<!-- .module-group.right -->*/}
       			</div>{/*<!-- .container.close-navbar -->*/}
       		</div>{/*<!-- .navigation-primary-->*/}
       	</header>
-				<LeftMenu />
       </div>
     )
   }
