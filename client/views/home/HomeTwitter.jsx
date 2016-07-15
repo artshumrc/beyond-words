@@ -17,7 +17,7 @@ HomeTwitter = React.createClass({
         var handle = Meteor.subscribe('tweets');
         if (handle.ready()) {
             // console.log(tweets);
-            TweetCollection = new Mongo.Collection("tweetCollection");
+            //TweetCollection = new Mongo.Collection("tweetCollection");
             tweets = TweetCollection.find({}).fetch();
         }
         return {
