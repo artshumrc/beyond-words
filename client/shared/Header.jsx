@@ -28,8 +28,18 @@ Header = React.createClass({
     });
   },
 
-  scrollToAbout(e){
-    $("html, body").animate({ scrollTop: $('#about').height() - 100 }, 300);
+  scrollToEvents(e){
+    $("html, body").animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
+  scrollToSymposium(e){
+    $("html, body").animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
+  scrollToCatalog(e){
+    $("html, body").animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
 
     e.preventDefault();
   },
@@ -40,15 +50,14 @@ Header = React.createClass({
       flatButton : {
         width: "auto",
         minWidth: "none",
-        height: "80px",
+        height: "55px",
         padding: "10px 5px",
-        lineHeight: "64px"
       },
       flatIconButton : {
         padding: "10px 20px",
         width: "auto",
         minWidth: "none",
-        height: "80px",
+        height: "55px",
 
       }
 
@@ -78,14 +87,14 @@ Header = React.createClass({
                 linkButton={true}
                 style={styles.flatButton}
                 href="/"
-                icon={<img className="logo-image" src="/images/beyond-words-logo-light.png" />}
+                icon={<img className="logo-image" src="/images/logo-white.png" />}
                 />
               <FlatButton
                 className="logo logo-dark"
                 linkButton={true}
                 style={styles.flatButton}
                 href="/"
-                icon={<img className="logo-image" src="/images/beyond-words-logo.png" />}
+                icon={<img className="logo-image" src="/images/logo-gold.png" />}
                 />
 
     				</div>
@@ -99,10 +108,30 @@ Header = React.createClass({
                       <FlatButton
                         style={styles.flatButton}
                         linkButton={true}
-                        label="ABOUT"
-                        href="#about"
-                        onClick={this.scrollToAbout}
-                        onTouchTap={this.scrollToAbout}
+                        label="EVENTS"
+                        href="#events"
+                        onClick={this.scrollToEvents}
+                        onTouchTap={this.scrollToEvents}
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="SYMPOSIUM"
+                        href="#symposium"
+                        onClick={this.scrollToSymposium}
+                        onTouchTap={this.scrollToSymposium}
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="CATALOG"
+                        href="#catalog"
+                        onClick={this.scrollToCatalog}
+                        onTouchTap={this.scrollToCatalog}
                         />
                     </li>
                   </ul>
@@ -133,7 +162,7 @@ Header = React.createClass({
                         linkButton={true}
                         target="_blank"
                         label="GARDNER"
-                        href="//www.gardnermuseum.org/home"
+                        href="//www.gardnermuseum.org/collection/exhibitions"
                         />
                     </li>
         					</ul>

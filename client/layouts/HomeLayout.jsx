@@ -4,7 +4,7 @@ HomeLayout = React.createClass({
 			<div className="archimedes-layout home-layout">
 				<Header />
 				<HomeView />
-				<Footer/>
+				<Footer />
 			</div>
 			);
 		}

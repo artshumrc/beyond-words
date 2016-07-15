@@ -41,6 +41,7 @@ LeftMenu = React.createClass({
                         <div>
                             <MenuItem
                                 href="/admin"
+                                target="_blank"
                                 primaryText="Admin"
                                 onTouchTap={this.props.closeLeftMenu}
                                 onClick={this.props.closeLeftMenu}
@@ -62,8 +63,30 @@ LeftMenu = React.createClass({
                      onClick={this.props.closeLeftMenu}
                      />
                      <Divider />*/}
+
                     <MenuItem
-                        href="//hcl.harvard.edu"
+                        href="#events"
+                        primaryText="EVENTS"
+                        onTouchTap={this.props.closeLeftMenu}
+                        onClick={this.props.closeLeftMenu}
+                    />
+                    <MenuItem
+                          href="#symposium"
+                          primaryText="SYMPOSIUM"
+                          onTouchTap={this.props.closeLeftMenu}
+                          onClick={this.props.closeLeftMenu}
+                      />
+                    <MenuItem
+                          href="#catalog"
+                          primaryText="CATALOG"
+                          onTouchTap={this.props.closeLeftMenu}
+                          onClick={this.props.closeLeftMenu}
+                      />
+
+                    <Divider />
+
+                    <MenuItem
+                        href="//hcl.harvard.edu/libraries/houghton/"
                         primaryText="Houghton"
                         target="_blank"
                         onTouchTap={this.props.closeLeftMenu}
@@ -77,30 +100,12 @@ LeftMenu = React.createClass({
                         onClick={this.props.closeLeftMenu}
                     />
                     <MenuItem
-                        href="//www.gardnermuseum.org/home"
+                        href="//www.gardnermuseum.org/collection/exhibitions"
                         primaryText="Gardner"
                         target="_blank"
                         onTouchTap={this.props.closeLeftMenu}
                         onClick={this.props.closeLeftMenu}
                     />
-                    <Divider />
-                    <MenuItem
-                        href="#about"
-                        primaryText="About"
-                        onClick={this.scrollToAbout}
-                        onTouchTap={this.scrollToAbout}
-                    />
-                    {is_logged_in ?
-                        <div>
-                            <Divider />
-                            <MenuItem
-                                primaryText="Sign out"
-                                onTouchTap={this.props.closeLeftMenu}
-                                onClick={this.props.closeLeftMenu}
-                            />
-                        </div>
-                        : ""
-                    }
                 </Drawer>
             </div>
         );

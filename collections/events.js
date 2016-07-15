@@ -27,6 +27,7 @@ Schemas.Events = new SimpleSchema({
   },
   description: {
     type: String,
+    optional: true,
     autoform: {
       rows: 5
     }

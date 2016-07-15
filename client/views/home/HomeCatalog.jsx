@@ -17,15 +17,7 @@ HomeCatalog = React.createClass({
                     <div className="container">
                         <h2 className="text-center">Catalog</h2>
                         <div className="row flex-center">
-                            <div className="col-sm-3">
-                                <img src="/images/catalog.png" alt="Beyond Words Catalog"/>
-                                <p>Distributed for McMullen Museum of Art, Boston College</p>
-                                <p>650 pages | 325 color plates | 9 x 11 | © 2016</p>
-                                <p>ISBN: 9781892850263</p>
-                                {/*todo: why doesn't raised button work here?*/}
-                                <FlatButton label="Purchase from Publisher" href="http://www.press.uchicago.edu/ucp/books/book/distributed/B/bo25077855.html"/>
-                            </div>
-                            <div className="col-sm-offset-1 col-sm-8">
+                            <div className="col-sm-12">
                                 <p>The catalogue Beyond Words features illuminated manuscripts from nineteen Boston-area
                                     institutions, this catalog provides a sweeping overview of the history of the book
                                     in the Middle Ages and Renaissance, as well as a guide to its production,
@@ -39,6 +31,13 @@ HomeCatalog = React.createClass({
                                     take place in North America.</p>
                                 <p>Major support for the publication of the catalogue was provided by Daniel and Joanna
                                     S. Rose with additional support from the Rose Marrow Fund.</p>
+
+                                  <a className="btn btn-large md-button uchicago-press-button md-ink-ripple paper-shadow md-primary" href="//www.press.uchicago.edu/ucp/books/book/distributed/B/bo25077855.html" aria-label="Learn More" target="_blank">
+                                    <span>University of Chicago Press</span>
+                                    <div className="md-ripple-container"></div>
+
+                                  </a>
+
                             </div>
                         </div>
                     </div>

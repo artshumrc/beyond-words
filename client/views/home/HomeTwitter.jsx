@@ -17,7 +17,7 @@ HomeTwitter = React.createClass({
         var handle = Meteor.subscribe('tweets');
         if (handle.ready()) {
             // console.log(tweets);
-            //TweetCollection = new Mongo.Collection("tweetCollection");
+            TweetCollection = new Mongo.Collection("tweetCollection");
             tweets = TweetCollection.find({}).fetch();
         }
         return {
@@ -42,15 +42,22 @@ HomeTwitter = React.createClass({
             <div>
                 <section id="twitter">
                     <div className="container">
-                        <h1 className="text-center bw-tweet-handle"><a href="https://twitter.com/beyondwords2016">@beyondwords2016</a></h1>
-                        <h4 className="text-center">The Latest Updates from Twitter</h4>
+                        <a  className="twitter-header-link" href="https://twitter.com/beyondwords2016" target="_blank">
+                          <i className="mdi mdi-twitter"></i>
+                          <h2 className="text-center bw-tweet-handle">@BeyondWords2016</h2>
+                        </a>
+                        <h4 className="text-center">Latest Updates from Twitter</h4>
                         <div className="row">
                             {this.data.tweets.map(function (tweet, index) {
-                                return <div className="bw-tweet-wrapper col-sm-4">
+                                return <div
+                                  key={index}
+                                  className="bw-tweet-wrapper col-sm-4"
+                                  >
                                     <Card>
-                                        <CardText>
-                                            <a href="https://twitter.com/beyondwords2016"><img src={tweet.user.profile_image_url} alt="" className="avatar"/></a>
-                                            <div className="" dangerouslySetInnerHTML={{__html: linkifyTwitter(tweet.text)}}></div>
+                                        <CardText
+                                          >
+                                            <a href="https://twitter.com/beyondwords2016" target="_blank"><img src={tweet.user.profile_image_url} alt="" className="avatar"/></a>
+                                            <div className="tweet-text-html" dangerouslySetInnerHTML={{__html: linkifyTwitter(tweet.text)}}></div>
                                         </CardText>
                                     </Card>
                                 </div>

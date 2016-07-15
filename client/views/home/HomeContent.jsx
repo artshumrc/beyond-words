@@ -19,10 +19,12 @@ HomeContent = React.createClass({
 
     render(){
         return (
-            <div>
-                <HomeIntro2/>
+            <div className="tl-view home-view">
+                <HomeCover />
                 <HomeOverview/>
+                <HomeNarrative/>
                 <HomeTwitter/>
+                <HomePlanYourTrip/>
                 <HomeEvents/>
                 <HomeCatalog/>
             </div>
