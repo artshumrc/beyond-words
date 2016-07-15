@@ -1,7 +1,7 @@
-@media (max-width: 800px) {
+@media screen and (max-width: 1050px) {
 
-  .navbar-collapse {
-    display:none;
+  header .navbar-collapse.collapse.module-group.right {
+    display:none !important;
 
 
   }
@@ -10,13 +10,100 @@
 
 
 @media screen and (max-width: 768px) {
+
   .cover.fullscreen, .cover.fullscreen .slides li {
     min-height: 400px;
   }
+
+
   .bw-exhibit {
     display: none;
+
     &.flex-active {
       display: block;
     }
+
   }
+
+  .home-layout section p {
+    font-size:18px;
+    line-height:1.5em;
+    width:90%;
+  }
+
+  section#intro .bw-exhibit {
+    bottom:auto;
+    top:90px;
+    text-align:center;
+    width:80%;
+    margin:0 auto;
+
+    h3 {
+      font-size:26px;
+      text-align:center;
+
+    }
+
+    hr {
+      margin:15px auto;
+    }
+
+    h4 {
+      font-size:18px;
+      text-align:center;
+    }
+
+    h5 {
+      font-size:14px;
+      text-align:center;
+    }
+
+  }
+
+
+
+  section#overview {
+    .drop-cap {
+      margin:20px 30px 15px 10px !important;
+
+    }
+  }
+
+  .narrative-exhibit {
+    padding-top:30px;
+  }
+
+  section#catalog .catalog-image {
+    float:none;
+    display:block;
+    padding:0 0 0 20px;
+    margin:20px auto;
+    width:90%;
+    max-width:300px;
+  }
+
+  section#plan-your-trip ul {
+    width:90%;
+  }
+
+
+}
+
+@media screen and (max-width: 410px) {
+
+  section#events ul.events-list li.event-item .event-info h3.event-title {
+    font-size:18px;
+  }
+
+  .custom-navigation {
+    display:none;
+
+  }
+
+  .program-tabs {
+    > div:nth-child(3) {
+      padding:40px 10px;
+    }
+  }
+
 }

@@ -60,7 +60,7 @@ HomeNarrative = React.createClass({
                         At the McMullen Museum, the visitor’s attention shifts to lay readership and the place of books in medieval society. The High Middle Ages witnessed an affirmation of the visual and, with it, empirical experience. There was an explosion of illumination. Various types of images, whether in prayer or professional books, attest to the newfound importance of visual demonstration in matters of faith and science alike.
                       </p>
                       <p>
-                        Major support for the McMullen portion of the exhibition has been provided by the National Endowment for the Humanities, Leslie and Peter Ciampi, and the Patrons of the McMullen Museum. The accompanying catalogue has been underwritten by Daniel and Joanna S. Rose with additional support from the Rose Marrow Fund.
+                        Major support for the McMullen portion of the exhibition has been provided by the National Endowment for the Humanities, Leslie and Peter Ciampi, and the Patrons of the McMullen Museum. The accompanying catalog has been underwritten by Daniel and Joanna S. Rose with additional support from the Rose Marrow Fund.
                       </p>
                       <br></br>
                       <br></br>

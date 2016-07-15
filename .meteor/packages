@@ -22,9 +22,9 @@ cfs:graphicsmagick
 yogiben:helpers
 # manuelschoebel:ms-seo
 # spiderable
-accounts-facebook
-accounts-google
-accounts-twitter
+# accounts-facebook
+# accounts-google
+# accounts-twitter
 accounts-ui
 jparker:gravatar
 service-configuration

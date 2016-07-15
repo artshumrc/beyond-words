@@ -27,7 +27,7 @@ HomeOverview = React.createClass({
                                  multi-venue display. The exhibition presents more than 260 outstanding
                                  manuscripts and printed books from nineteen Boston-area collections, dating
                                  from the ninth to the seventeenth centuries. The exhibit is supplemented by
-                                 an extensive catalogue, a three-day symposium, and public programming.
+                                 an extensive catalog, a three-day symposium, and public programming.
                                  Explore the website for additional information on Beyond Words.
                              </p>
                            </div>

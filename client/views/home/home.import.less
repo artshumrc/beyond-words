@@ -217,6 +217,7 @@ section#overview{
 
 section#twitter {
   background: @md-primary-900;
+  text-align:center;
 
   .twitter-header-link {
     text-align:center;
@@ -256,6 +257,12 @@ section#twitter {
 
   .bw-tweet-wrapper {
     padding: 10px;
+    margin:10px 1.5%;
+    width:30%;
+    min-width:290px;
+    display:inline-block;
+    vertical-align:top;
+    text-align:left;
 
     > div {
       min-height:128px;
@@ -310,6 +317,7 @@ section#events {
         margin-right: 20px;
         display:inline-block;
         vertical-align: top;
+        width:10%;
 
         h6.event-month {
           margin-bottom: -3px;
@@ -327,12 +335,17 @@ section#events {
       .event-info {
         display:inline-block;
         vertical-align: top;
+        width:87%;
+        text-overflow:ellipsis;
+        text-align:left;
+
         h3.event-title {
           margin: 0;
           padding:15px 25px;
-          font-size:26px;
+          font-size:20px;
           color:#444;
           font-weight:300;
+          text-align:left;
         }
         div.description {
         }

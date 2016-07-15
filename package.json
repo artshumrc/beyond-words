@@ -6,6 +6,7 @@
   "dependencies": {
     "linkifyjs": "^2.0.4",
     "material-ui": "^0.15.1",
+    "moment-timezone": "^0.5.4",
     "pseries": "^2.0.0",
     "react": "^15.0.2",
     "react-addons-create-fragment": "^15.0.2",

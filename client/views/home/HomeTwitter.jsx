@@ -18,7 +18,7 @@ HomeTwitter = React.createClass({
         if (handle.ready()) {
             // console.log(tweets);
             //TweetCollection = new Mongo.Collection("tweetCollection");
-            tweets = TweetCollection.find({}).fetch();
+            tweets = TweetCollection.find({}, {limit: 6}).fetch();
         }
         return {
             tweets: tweets,
@@ -51,7 +51,7 @@ HomeTwitter = React.createClass({
                             {this.data.tweets.map(function (tweet, index) {
                                 return <div
                                   key={index}
-                                  className="bw-tweet-wrapper col-sm-4 wow fadeIn"
+                                  className="bw-tweet-wrapper wow fadeIn"
                                   >
                                     <Card>
                                         <CardText

@@ -1,6 +1,7 @@
 import {Tabs, Tab} from 'material-ui/Tabs';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import moment from 'moment-timezone';
 
 
 HomeEvents = React.createClass({
@@ -8,7 +9,7 @@ HomeEvents = React.createClass({
     mixins: [ReactMeteorData],
 
     getMeteorData(){
-        return {events: Events.find().fetch()};
+        return {events: Events.find({}, {sort:{date:1}}).fetch()};
     },
     childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
@@ -37,6 +38,7 @@ HomeEvents = React.createClass({
         }
       }
 
+
         return (
             <div>
                 <section id="events">
@@ -54,12 +56,14 @@ HomeEvents = React.createClass({
                                   className="event-item wow fadeIn"
                                   >
                                     <div className="event-calendar-date">
-                                        <h6 className="event-month">{moment(event.date).format('MMMM')}</h6>
-                                        <h3 className="event-day thin">{moment(event.date).format('D')}</h3>
-                                        <h6 className="event-weekday">{moment(event.date).format('dddd')}</h6>
+                                        <h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
+                                        <h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
+                                        <h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
                                     </div>
                                     <div className="event-info">
+                                      <a href={event.link} target="_blank">
                                         <h3 className="event-title">{event.title}</h3>
+                                      </a>
                                     </div>
                                 </li>
                             })}
@@ -70,11 +74,7 @@ HomeEvents = React.createClass({
                   <h3 className="symposium-title">Symposium: 3-5 November 2016</h3>
                   <p>
                     Major support for the Beyond Words symposium has been provided by
-                    The Medieval Studies Committee of Harvard University
-                    Boston College, Institute for Liberal Arts
-                    With additional support from:
-                    Christie’s
-                    International Center of Medieval Art
+                    The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's International Center of Medieval Art.
                   </p>
 
                   <Tabs
