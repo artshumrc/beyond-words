@@ -55,14 +55,41 @@ section.bg-blue {
 
 
 }
+
+
 section#intro {
   .background-image-holder {
     border:none;
   }
   .slides {
+
     li {
       position:relative;
+
     }
+
+    li.beyond-words-cover-slide {
+      .bw-exhibit {
+        text-align:center;
+        width:70%;
+        bottom:220px;
+
+        img {
+          max-width:520px;
+          width:90%;
+          display:block;
+          margin:15px auto;
+        }
+
+        hr {
+          margin:35px auto 20px;
+          height:3px;
+        }
+
+
+      }
+    }
+
     .image-bg-slide {
       width: 100%;
       height: 100%;
@@ -76,6 +103,7 @@ section#intro {
       filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1'); /* IE lte 9 */
 
     }
+
   }
   .custom-navigation {
     .flex-next, .flex-prev {

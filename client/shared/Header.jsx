@@ -43,6 +43,11 @@ Header = React.createClass({
 
     e.preventDefault();
   },
+  scrollToPlanYourTrip(e){
+    $("html, body").animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
 
   render(){
 
@@ -104,6 +109,16 @@ Header = React.createClass({
                 <div className="module left">
 
         					<ul className="nav navbar-nav navbar-right">
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
+                        linkButton={true}
+                        label="PLAN YOUR TRIP"
+                        href="#plan-your-trip"
+                        onClick={this.scrollToPlanYourTrip}
+                        onTouchTap={this.scrollToPlanYourTrip}
+                        />
+                    </li>
         						<li>
                       <FlatButton
                         style={styles.flatButton}
