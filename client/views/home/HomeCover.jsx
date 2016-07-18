@@ -124,6 +124,14 @@ HomeCover = React.createClass({
                       <a href="#" onClick={flexNext} className="flex-next"><i
                           className="mdi mdi-chevron-right"></i></a>
                   </div>
+
+                  <div className="scroll-down-helper">
+                    <p>
+                      <em>Scroll down for more information.</em>
+                    </p>
+                    <i className="mdi mdi-chevron-down"></i>
+                  </div>
+
                 </section>
             </div>
         )
