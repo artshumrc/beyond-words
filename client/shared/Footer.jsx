@@ -10,6 +10,27 @@ Footer = React.createClass({
         return {muiTheme: getMuiTheme(baseTheme)};
     },
 
+    scrollToEvents(e){
+      $("html, body").animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+
+      e.preventDefault();
+    },
+    scrollToSymposium(e){
+      $("html, body").animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
+
+      e.preventDefault();
+    },
+    scrollToCatalog(e){
+      $("html, body").animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
+
+      e.preventDefault();
+    },
+    scrollToPlanYourTrip(e){
+      $("html, body").animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
+
+      e.preventDefault();
+    },
+
 
     render(){
 
@@ -23,6 +44,19 @@ Footer = React.createClass({
             },
             circleButtonIcon: {
                 color: "#ffffff",
+
+            },
+            flatButton : {
+              width: "auto",
+              minWidth: "none",
+              height: "55px",
+              padding: "10px 5px",
+            },
+            flatIconButton : {
+              padding: "10px 20px",
+              width: "auto",
+              minWidth: "none",
+              height: "55px",
 
             }
         };
@@ -42,14 +76,10 @@ Footer = React.createClass({
                             <div className="col-sm-12 text-center">
                                 <div className="footer-nav">
                                     <FlatButton
+                                        style={styles.flatButton}
                                         linkButton={true}
                                         label="HOME"
                                         href="/"
-                                    />
-                                    <FlatButton
-                                        linkButton={true}
-                                        label="ABOUT"
-                                        href="#about"
                                     />
                                     <FlatButton
                                         style={styles.flatButton}
