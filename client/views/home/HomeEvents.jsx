@@ -17,7 +17,31 @@ HomeEvents = React.createClass({
     getChildContext() {
         return {muiTheme: getMuiTheme(baseTheme)};
     },
+    linkToEventOrScroll(e) {
+      var $target = $(e.target);
+
+      if(!$target.hasClass("event-link")){
+        $target = $target.parents(".event-link");
+      }
+
+      if($target.prop("href").indexOf(window.location.host) >= 0){
+
+        var scroll_elem_id = "#";
+
+        scroll_elem_id += $target.prop("href").split("#")[1]
+
+        $("html, body").animate({ scrollTop: $(scroll_elem_id).offset().top - 100 }, 300);
+
+        e.preventDefault();
+
+      }
+
+
+    },
     render(){
+
+      var that = this;
+
       var styles = {
         contentContainerStyle : {
           background: "#fafafa",
@@ -37,7 +61,6 @@ HomeEvents = React.createClass({
           fontFamily:"Hind"
         }
       }
-
 
         return (
             <div>
@@ -61,7 +84,12 @@ HomeEvents = React.createClass({
                                         <h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
                                     </div>
                                     <div className="event-info">
-                                      <a href={event.link} target="_blank">
+                                      <a
+                                        className="event-link"
+                                        href={event.link}
+                                        target="_blank"
+                                        onClick={that.linkToEventOrScroll}
+                                        >
                                         <h3 className="event-title">{event.title}</h3>
                                       </a>
                                     </div>
