@@ -102,7 +102,7 @@ HomeEvents = React.createClass({
                   <h3 className="symposium-title">Symposium: 3-5 November 2016</h3>
                   <p>
                     Major support for the Beyond Words symposium has been provided by
-                    The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's International Center of Medieval Art.
+                    The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's and the International Center of Medieval Art.
                   </p>
 
                   <Tabs

@@ -1,29 +1,68 @@
 
-.objects-wrap {
-  width:95%;
-  margin:0 auto;
+#objects {
+  background:#f6f6f6;
   text-align:center;
+	margin:0;
+	min-height:400px;
+
+}
+.objects-container {
+	margin:0 auto;
+	padding:50px 0;
+  opacity:0;
+  &.component-mounted{
+    opacity:1;
+
+  }
+}
+
+.loading-collections {
+  margin:50px auto;
+  display:none;
+  &.loading-visible {
+    display:block;
+  }
 
 }
 
 .object-teaser {
-  display:inline-block;
+  display:block;
+  width:390px;
   vertical-align: top;
-  width:30%;
-  margin:15px 1%;
+  margin:10px;
   background:#fff;
+  &:hover {
+    .card-image img.cover-image {
+      opacity:0;
+    }
+  }
 
-  md-card-content {
-    text-align:left;
-    padding:30px 30px 10px;
-    display:block;
+  .card-image {
+    width:100%;
+    position:relative;
 
+    img.cover-image {
+      width:100%;
+      height:auto;
+      z-index:2;
+      opacity:1;
+      transition: opacity 100ms ease-out;
+      position:relative;
+    }
+    img.cover-image-back{
+      z-index:1;
+      position:absolute;
+      top:0;
+      left:0;
+    }
   }
 
   h2.card-title {
     margin:0;
-    padding:5px 0;
+    padding: 0;
     font-family:@font-title;
+    font-size:28px;
+		text-transform: capitalize;
   }
 
   h3.object-author {
@@ -35,38 +74,37 @@
 
   }
 
-  .object-editor {
-    padding:10px 0;
-    margin:0 2px;
-    font-size:18px;
-    color:@text-secondary;
-
-  }
-
-  md-card-actions {
-    padding:5px 7px;
+  hr {
+    padding:0;
+    margin:15px 0;
+    width:66%;
+    height:1px;
     display:block;
-    text-align:left;
-
-    .md-button {
-      display:inline-block;
-      vertical-align: top;
-      padding:7px 10px;
-      font-size:14px;
-      float:left;
-
-      i {
-        font-size:14px;
-        padding:2px;
-      }
-
-      &.export-action {
-        float:right;
-      }
-
-    }
+    background:@divider;
+    border:none;
 
   }
+
+  label {
+    display:block;
+    width:100%;
+    clear:both;
+    font-size:12px;
+    text-transform: uppercase;
+    color:@text-secondary;
+    margin:2px;
+  }
+
+  p {
+    padding:0 0 8px;
+    margin:0 2px;
+    font-size:16px;
+    line-height:1.2em;
+    color:@text-secondary;
+		text-transform: capitalize;
+
+  }
+
 
 }
 
@@ -79,4 +117,265 @@
   .object-editor {
     margin:0;
   }
+}
+
+// single object
+
+.single-object-images {
+	background:#222;
+	min-height:500px;
+	padding-bottom:10px;
+
+	.focus-image-wrap {
+		width:100%;
+    text-align:center;
+    img {
+      display:inline-block;
+      margin:0 auto;
+      width:auto;
+      max-width:66%;
+    }
+	}
+
+	.thumbnails {
+		margin:20px auto;
+		max-width:1100px;
+		text-align: center;
+		img {
+			display:inline-block;
+			vertical-align: top;
+			width:120px;
+			margin:5px;
+			cursor:pointer;
+			&:hover {
+				-webkit-filter: brightness(120%);
+				filter: brightness(120%);
+			}
+		}
+	}
+
+}
+
+.single-object-detail {
+	max-width:1200px;
+	margin:0 auto;
+	padding:30px 0 60px;
+	width:95%;
+
+  .detail-meta-objects {
+		display:inline-block;
+		width:52%;
+		vertical-align: top;
+		margin:0 2% 0 0;
+
+    .object-detail-container {
+			padding:10px 0;
+			display:block;
+
+      .single-object-label {
+        display:inline;
+        font-size:18px;
+				font-weight:bold;
+				text-transform: uppercase;
+
+      }
+
+      .single-object-value {
+        display:inline;
+        font-size: 20px;
+        margin-left:10px;
+				vertical-align: top;
+
+      }
+
+    }
+
+  }
+
+	.detail-map {
+		display:inline-block;
+		width:43%;
+		vertical-align: top;
+		margin:20px 0;
+
+		.map-container {
+			width:100%;
+			height:400px;
+		}
+	}
+
+}
+
+// search toolbar
+
+.search-toolbar {
+  width: 100%;
+	padding:120px 0 20px;
+	margin: 0 auto;
+
+  .toolbar-tools {
+    .search-tools {
+      margin: 0px auto;
+      text-align: center;
+      vertical-align: top;
+
+      .button-holder {
+        border-right:1px solid black;
+        display:inline-block;
+        height:70px;
+        &:hover {
+          background-color:#f6f6f6;
+        }
+      }
+
+      .button-holder.first-button {
+        border-left:1px solid black;
+      }
+
+      .search-tool {
+        display: inline-block;
+        vertical-align: top;
+        height: 69px;
+        background: #fff;
+        padding: 10px 20px 5px 25px;
+        //border-right: 1px solid black !important;
+        margin-right: -5px;
+        .date-search {
+          width:40%;
+          margin-left:10px;
+        }
+      }
+
+      .text-search {
+        background: transparent;
+        max-width:330px;
+				width:30%;
+        min-width:200px;
+				input {
+	        background: transparent;
+					color:@dark;
+					font-size:20px;
+					outline:none;
+					border:none;
+					font-family:@font-reading;
+					border-bottom:2px solid #999;
+
+					&:focus {
+						border-bottom:2px solid @dark;
+
+					}
+
+					&::-webkit-input-placeholder {
+						font-size:20px;
+						font-family:@font-reading;
+						text-transform: none;
+					}
+
+					&:-moz-placeholder { /* Firefox 18- */
+						font-size:20px;
+						font-family:@font-reading;
+						text-transform: none;
+					}
+
+					&::-moz-placeholder {  /* Firefox 19+ */
+						font-size:20px;
+						font-family:@font-reading;
+						text-transform: none;
+					}
+
+					&:-ms-input-placeholder {
+						font-size:24px;
+						font-family:@font-reading;
+						text-transform: none;
+					}
+				}
+
+      }
+
+    }
+  }
+}
+
+.dropdown-toggle-button {
+  margin:0px 10px;
+
+  .mdi.mdi-chevron-down {
+    display:inline-block;
+    vertical-align: top;
+  }
+
+
+  &.selected {
+    background:@md-primary-600;
+  }
+}
+
+.search-toggle-button {
+  &.search-toggle-button-active {
+    background:@md-primary-600 !important;
+    button{
+      background:@md-primary-600 !important;
+
+    }
+
+    span {
+      color: @light !important;
+    }
+
+
+  }
+}
+
+.search-facet-dropdown {
+  .dropdown-list {
+    width:98%;
+    margin:15px auto;
+    display:none;
+  }
+  &.dropdown-visible-regions {
+    .dropdown-list-regions {
+      display:block;
+
+    }
+
+  }
+  &.dropdown-visible-photographers {
+    .dropdown-list-photographers {
+      display:block;
+
+    }
+
+  }
+  &.dropdown-visible-materiality {
+    .dropdown-list-materiality {
+      display:block;
+
+    }
+
+  }
+  &.dropdown-visible-sensations {
+    .dropdown-list-sensations {
+      display:block;
+
+    }
+
+  }
+  &.dropdown-visible-tropes {
+    .dropdown-list-tropes {
+      display:block;
+
+    }
+
+  }
+  &.dropdown-visible-frames {
+    .dropdown-list-frames {
+      display:block;
+
+    }
+
+  }
+}
+
+.load-more-wrap {
+  padding:30px 0 60px;
 }

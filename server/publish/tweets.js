@@ -24,7 +24,7 @@ Meteor.publish('tweets', function () {
             data.forEach(function (doc) {
                 if (!TweetCollection.findOne({id_str: doc.id_str})){
                     TweetCollection.insert(doc)
-                    pub.added('tweetCollection', doc.id_str, doc);
+                    //pub.added('tweetCollection', doc.id_str, doc);
                 }
             });
         }

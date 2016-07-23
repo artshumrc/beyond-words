@@ -31,6 +31,34 @@ HomeOverview = React.createClass({
                                  Explore the website for additional information on Beyond Words.
                              </p>
                            </div>
+
+                       </div>
+
+                       <div className="row curatorial-team-row">
+                           <div className="col-sm-8 col-sm-offset-2 text-center">
+
+                             <br/>
+                             <br/>
+                             <h3>Beyond Words curatorial team</h3>
+
+                            <p><em>
+                               Jeffrey Hamburger, Harvard University
+                            </em></p>
+                            <p><em>
+                              William P. Stoneman, Houghton Library, Harvard University
+                            </em></p>
+                            <p><em>
+                                Anne-Marie Eze, Isabella Stewart Gardner Museum
+                            </em></p>
+                            <p><em>
+                                Lisa Fagin Davis, Medieval Academy of America
+                            </em></p>
+                            <p><em>
+                                Nancy Netzer, McMullen Museum of Art, Boston College
+                            </em></p>
+
+                           </div>
+
                        </div>
                    </div>
                 </section>

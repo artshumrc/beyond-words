@@ -26,10 +26,10 @@ HomeNarrative = React.createClass({
 
                       </p>
                       <br></br>
+                      <hr/>
                       <br></br>
                       <br></br>
                     </div>
-
                     <div className="narrative-exhibit wow fadeIn">
                       <h4 id="mss-from-church-and-cloister">Manuscripts from Church & Cloister (Houghton Library, Harvard University)</h4>
                       <h5>
@@ -44,9 +44,9 @@ HomeNarrative = React.createClass({
                         Major support for the Houghton Library portion of the exhibition has been provided by the National Endowment for the Humanities, the Edison & Newman Exhibition & Program Fund, the John & Ann Clarkeson Library Fund and the Bayard Livingston & Kate Gray Kilgour Fund.
                       </p>
                       <br></br>
+                      <hr/>
                       <br></br>
                       <br></br>
-
                     </div>
 
                     <div className="narrative-exhibit wow fadeIn">
@@ -63,6 +63,7 @@ HomeNarrative = React.createClass({
                         Major support for the McMullen portion of the exhibition has been provided by the National Endowment for the Humanities, Leslie and Peter Ciampi, and the Patrons of the McMullen Museum. The accompanying catalog has been underwritten by Daniel and Joanna S. Rose with additional support from the Rose Marrow Fund.
                       </p>
                       <br></br>
+                      <hr/>
                       <br></br>
                       <br></br>
 
