@@ -73,7 +73,6 @@ archimedigital:core
 jabbslad:basic-auth
 deanius:promise
 kadira:flow-router
-kadira:react-layout
 user-thumbs
 standard-minifier-css
 standard-minifier-js
@@ -83,3 +82,5 @@ natestrauser:jquery-scrollto
 johannesma:meteor-flexslider
 mrt:twit
 mfactory:admin-lte
+jalik:ufs
+jalik:ufs-gridfs
