@@ -4,8 +4,8 @@
 
 if (Meteor.isServer){
 
-  Meteor.publish('objects', function() {
-    return Objects.find();
+  Meteor.publish('books', function() {
+    return Books.find();
   });
 
   Meteor.publish('events', function(){

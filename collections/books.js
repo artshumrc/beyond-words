@@ -51,6 +51,13 @@ Schemas.Books = new SimpleSchema({
         autoform: {
             rows: 5
         }
+    },
+    images: {
+        type: [String],
+        autoform: {
+            type: 'ufs',
+            collection: 'ImageStore'
+        }
     }
 });
 
