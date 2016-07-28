@@ -10,6 +10,19 @@ if (Meteor.isServer){
 
   Meteor.publish('events', function(){
     return Events.find();
-  })
+  });
+
+
+  Meteor.publish('images', function () {
+    var fields = {};
+
+    // if (!this.userId) {
+    //   fields.userId = null;
+    // }
+    return [
+      Images.find(fields),
+      Thumbnails.find(fields)
+    ];
+  });
 
 }

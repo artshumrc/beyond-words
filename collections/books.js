@@ -7,6 +7,7 @@ Schemas.Books = new SimpleSchema({
     },
     createdAt: {
         type: Date,
+        optional: true,
         autoValue: function () {
             if (this.isInsert) {
                 return new Date();
@@ -22,41 +23,50 @@ Schemas.Books = new SimpleSchema({
             }
         }
     },
-    title: {
-        type: String
-    },
     dateBegun: {
-        type: Date
+        type: Date,
+        optional: true
     },
     dateEnded: {
-        type: Date
+        type: Date,
+        optional: true
     },
     author: {
-        type: String
+        type: String,
+        optional: true
     },
     illuminator: {
-        type: String
+        type: String,
+        optional: true
     },
     place: {
-        type: String
+        type: String,
+        optional: true
     },
     externalUrl: {
-        type: String
+        type: String,
+        optional: true,
     },
     shelfmark: {
-        type: String
+        type: String,
+        optional: true
     },
     description: {
         type: String,
+        optional: true,
         autoform: {
             rows: 5
         }
     },
     images: {
         type: [String],
+        optional: true,
         autoform: {
             type: 'ufs',
-            collection: 'ImageStore'
+            collection: 'images',
+            store: 'ImageStore',
+            publication: 'images',
+            thumbnails: 'thumbnails'
         }
     }
 });
