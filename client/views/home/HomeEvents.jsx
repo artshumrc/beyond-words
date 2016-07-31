@@ -175,8 +175,8 @@ HomeEvents = React.createClass({
                         This paper focusses on Renaissance Italian illuminated manuscripts made as luxury goods to be shown, or given as gifts by authors or princes.  In the first case authors dedicated their works to powerful rulers to gain their protection; in the second case princes used illuminated manuscripts to strengthen their alliances. The choice of the texts and their illustrations was strictly related with the cultural context of the court and the tastes of the prince. This paper consider as a case study Ferrara in the XV century analyzing the manuscripts Houghton Library MSS  Typ 226 and Typ 227 in the wider context of the monumental arts.
                       </p>
                       <h5>
-                        Francesca Manzari ("Sapienza" Università di Roma), “The Patronage and Artists of the Calderini Pontifical (Houghton Library MS Typ 1): The Revival of Manuscript Illumination in Rome during the Schism and the Flowering of Illuminators in Florence during the Council”
-
+                        Francesca Manzari ("Sapienza" Università di Roma),
+												“Patronage and Artists in the Calderini Pontifical (Houghton Library, MS Typ.1): The Revival of Illumination in Rome during the Schism and its Flowering in Florence during the Council”
                       </h5>
                       <p>
                         The creation of the Calderini Pontifical's spectacular illustrative programme has only recently been connected with a long-forgotten phase of illumination produced in Rome during the Great Western Schism. This paper will examine the artists working in the manuscript's different campaigns of decoration and it will provide a context for its patronage and original destination. The Pontifical's complex provenance history will be discussed in the perspective of the practices in collecting Italian illumination documented over the centuries.

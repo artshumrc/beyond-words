@@ -77,27 +77,23 @@ Footer = React.createClass({
                                 <div className="footer-nav">
                                     <FlatButton
                                         style={styles.flatButton}
-                                        linkButton={true}
                                         label="HOME"
                                         href="/"
                                     />
                                     <FlatButton
                                         style={styles.flatButton}
-                                        linkButton={true}
                                         label="HOUGHTON"
                                         target="_blank"
                                         href="//hcl.harvard.edu/libraries/houghton"
                                     />
                                     <FlatButton
                                         style={styles.flatButton}
-                                        linkButton={true}
                                         label="MCMULLEN"
                                         target="_blank"
                                         href="//www.bc.edu/sites/artmuseum/"
                                     />
                                     <FlatButton
                                         style={styles.flatButton}
-                                        linkButton={true}
                                         label="GARDNER"
                                         target="_blank"
                                         href="//www.gardnermuseum.org/collection/exhibitions"
@@ -105,7 +101,6 @@ Footer = React.createClass({
                                   <IconButton
                                             style={styles.circleButton}
                                             iconStyle={styles.circleButtonIcon}
-                                            linkButton={true}
                                             target="_blank"
                                             href="http://twitter.com/@BeyondWords2016"
                                             iconClassName="mdi mdi-twitter"
