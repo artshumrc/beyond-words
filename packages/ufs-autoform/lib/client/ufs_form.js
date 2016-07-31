@@ -4,7 +4,7 @@ UploadFS.config.simulateWriteDelay = 0;
 window.workers = {};
 
 Template.ufs_form.onCreated(function(){
-   Session.set('UFS_images', null);
+   Session.set('UFS_images', '');
 });
 
 Template.ufs_form.onRendered(function () {
@@ -34,7 +34,6 @@ Template.ufs_form.helpers({
         var imageIds = Session.get('UFS_images');
         // console.log(imageIds);
         if (collection && imageIds) {
-            tpl.subscribe(tpl.UFS_Publication);
             return collection.find({_id: {$in: imageIds}}, {
                 sort: {createdAt: 1, name: 1}
             });
