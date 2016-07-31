@@ -43,6 +43,10 @@ Schemas.Books = new SimpleSchema({
         type: String,
         optional: true
     },
+    miradorLink: {
+        type: String,
+        optional: true
+    },
     externalUrl: {
         type: String,
         optional: true,

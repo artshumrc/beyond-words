@@ -2,7 +2,10 @@
  * Created by Julian on 7/27/16.
  */
 Meteor.methods({
-    removeImage: function(imageId){
+    uploadFiles: function (files) {
+
+    },
+    removeImage: function (imageId) {
         Images.remove(imageId);
     }
 });

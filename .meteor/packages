@@ -85,3 +85,5 @@ mfactory:admin-lte
 jalik:ufs
 jalik:ufs-gridfs
 buishi:autoform-ufs
+mpowaga:autoform-summernote
+yasaricli:slugify
