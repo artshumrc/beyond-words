@@ -25,4 +25,13 @@ if (Meteor.isServer){
     ];
   });
 
+  Meteor.publish('pages', function(slug){
+    if(slug) {
+      slug = {slug: slug};
+    }else{
+      slug = {};
+    }
+    return Pages.find(slug);
+  })
+
 }
