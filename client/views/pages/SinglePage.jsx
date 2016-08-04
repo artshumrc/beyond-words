@@ -1,24 +1,59 @@
 SinglePage = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData(){
-        var slug = FlowRouter.getParam('slug');
-        var page = [];
+        // console.log(this);
+        var slug = this.props.slug;//FlowRouter.getParam('slug');
+        var page = {};
+        var images = [];
+        var thumbnails = [];
         var handle = Meteor.subscribe('pages', slug);
         if (handle.ready()) {
             // console.log(tweets);
             //TweetCollection = new Mongo.Collection("tweetCollection");
-            page = Pages.find({slug: slug}).fetch();
+            page = Pages.find({slug: slug}).fetch()[0];
+            var imageSub = Meteor.subscribe('pageImages', slug);
+            if (imageSub.ready()) {
+                if (page.headerImage && Array.isArray(page.headerImage)) {
+                    images = Images.find({_id: {$in: page.headerImage}}).fetch();
+                    thumbnails = Thumbnails.find({originalId: {$in: page.headerImage}}).fetch();
+                }
+            }
         }
         return {
             page: page,
-            ready: handle.ready()
+            ready: handle.ready(),
+            images: images,
+            thumbnails: thumbnails
         };
     },
-    render() {
+    backgroundImages(){
+        setTimeout(function () {
+            $('.background-image-holder').each(function () {
+                var imgSrc = $(this).children('img').attr('src');
+                $(this).css('background', 'url("' + imgSrc + '")');
+                $(this).children('img').hide();
+                $(this).css('background-position', 'initial');
+                $(this).addClass('fadeIn');
+            });
+
+            // Fade in background images
+            setTimeout(function () {
+                $('.background-image-holder').each(function () {
+                    $(this).removeClass('blur');
+                });
+            }, 500);
+        }, 100);
+    },
+    render(){
         var page = this.data.page;
-        console.log(page);
-        var slug = FlowRouter.getParam('slug');
+        var slug = this.props.slug;//FlowRouter.getParam('slug');
         var pageClass = 'page page-' + slug;
+        var userCanEdit = true;
+        var headerImageSource = this.data.images[0] ? this.data.images[0].url : null;
+        if (headerImageSource) {
+            console.log(headerImageSource);
+            this.backgroundImages();
+        }
         // var page = Pages.findOne({slug: slug});
 
         return (
@@ -26,9 +61,8 @@ SinglePage = React.createClass({
             <div className={pageClass}>
 
                 <section className="page-head fullscreen image-bg bg-dark">
-
                     <div className="background-image-holder less-blur blur">
-                        <img className="background-image" alt='image' src='/images/amphorae-many.jpg'/>
+                        <img className="background-image" alt='image' src={headerImageSource}/>
                     </div>
 
                     <div className="background-screen cyan">
@@ -38,8 +72,11 @@ SinglePage = React.createClass({
                         <div className="row">
                             <div className="col-sm-10 col-sm-offset-1 text-center">
                                 <h1 className="mb40 mb-xs-16 large">
-                                    About the CLTK Archive
+                                    {page.title}
                                 </h1>
+                                <h2>
+                                    {page.subTitle}
+                                </h2>
                             </div>
                         </div>
 
@@ -47,39 +84,8 @@ SinglePage = React.createClass({
 
                 </section>
 
-                <section className="page-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id ante vel diam dignissim
-                        lobortis vitae non arcu. Nulla at dignissim mauris. Nam tempor posuere volutpat. Praesent
-                        posuere, neque quis facilisis dictum, nunc ante sodales sem, vitae tempus est odio id augue.
-                        Donec ac felis velit. Suspendisse in auctor magna. Donec finibus aliquam lacus eget faucibus.
-                        Aliquam tincidunt nibh id nibh placerat mollis. Nam vestibulum libero id eros semper, eget
-                        feugiat odio ultricies. Sed sodales maximus nisl vel placerat. Aenean vel elit elementum,
-                        eleifend turpis vitae, ornare tellus. Integer mollis ligula quam, ut consequat turpis pharetra
-                        id. Duis nisi odio, ullamcorper non nisl sit amet, pellentesque euismod risus. Aenean neque
-                        risus, faucibus nec dolor vitae, iaculis eleifend est. Nunc euismod nunc et ante iaculis
-                        tristique. Praesent iaculis augue efficitur, tempus nisi vel, varius tortor.
-
-                    </p>
-                    <p>
-                        Praesent sed orci elit. Duis imperdiet nisi odio, at tempus lorem semper id. Donec dui arcu,
-                        aliquam et dui non, feugiat mollis dui. Integer imperdiet a magna vel lacinia. Vestibulum in
-                        sollicitudin mauris. Proin auctor, magna et pretium ornare, justo turpis consectetur est, et
-                        gravida nisl nibh et nibh. Praesent tristique lorem ut tellus dapibus, in dignissim tellus
-                        consectetur. Quisque euismod ipsum a consequat pretium. Donec id malesuada nisi. Cras tristique
-                        sodales congue.
-
-                    </p>
-                    <p>
-                        Maecenas eu lacus laoreet felis tincidunt varius. Nunc a orci vel felis imperdiet tempus quis ac
-                        purus. Donec sodales quam nec tellus cursus, et condimentum enim suscipit. Mauris pharetra
-                        feugiat malesuada. Donec tempus tellus fermentum, tempor urna vel, vestibulum lorem. Phasellus a
-                        auctor libero, nec viverra velit. Ut faucibus id turpis sed accumsan. Pellentesque ante nibh,
-                        lobortis sed faucibus quis, cursus non tortor.
-
-                    </p>
-
-
+                <section className="page-content container">
+                    <div dangerouslySetInnerHTML={{__html: page.content}}/>
                 </section>
 
 
