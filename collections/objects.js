@@ -1,6 +1,6 @@
-this.Books = new Meteor.Collection('books');
+this.Objects = new Meteor.Collection('objects');
 
-Schemas.Books = new SimpleSchema({
+Schemas.Objects = new SimpleSchema({
     title: {
         type: String,
         max: 60
@@ -75,4 +75,4 @@ Schemas.Books = new SimpleSchema({
     }
 });
 
-Books.attachSchema(Schemas.Books);
+Objects.attachSchema(Schemas.Objects);
