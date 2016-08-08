@@ -24,6 +24,7 @@
     "react-slick": "^0.12.2",
     "react-tap-event-plugin": "^1.0.0",
     "slug": "^0.9.1",
+    "throttle-debounce": "^1.0.1",
     "twit": "^2.2.4"
   },
   "devDependencies": {},

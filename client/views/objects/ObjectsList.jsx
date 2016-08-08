@@ -1,7 +1,6 @@
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
-import Masonry from 'react-masonry-component/lib'
 
 
 
@@ -259,23 +258,12 @@ ObjectsList = React.createClass({
        <div className="loading-collections loading-visible">
          <div className="well-spinner"></div>
        </div>
-		    <Masonry
-          options={masonry_options}
-          className="objects-container"
+
+		    <div className="objects-container"
           >
 		      {this.renderObjects()}
-		    </Masonry>
-        <div className="load-more-wrap">
-        {(this.state.limit * this.state.paged < this.data.total_records) ?
-              <RaisedButton
-                className="load-more-button"
-                label="Load More"
-                backgroundColor={backgroundColors.dropdownToggle_active}
-                style={styles.dropdownToggle}
-                labelStyle={styles.dropdownToggle_label_active}
-                onClick={that.pageSearch}
-                /> : ""}
-        </div>
+		    </div >
+				
 			</div>
 
       );

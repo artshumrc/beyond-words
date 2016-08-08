@@ -198,9 +198,6 @@ CatalogLayout = React.createClass({
 			<div className="archimedes-layout catalog-layout">
 
 				<Header
-					toggleSearchTerm={this.toggleSearchTerm}
-					handleChangeLineN={this.handleChangeLineN}
-					handleChangeTextsearch={this.handleChangeTextsearch}
 					/>
 
 				<ObjectsList
@@ -210,10 +207,6 @@ CatalogLayout = React.createClass({
 					skip={this.state.skip}
 					/>
 
-
-				<FilterWidget filters={this.state.filters}/>
-			  {/*<ModalLogin />
-				<ModalSignup />*/}
 
 			</div>
 			);
