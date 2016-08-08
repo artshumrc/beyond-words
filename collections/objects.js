@@ -8,24 +8,15 @@ Schemas.Objects = new SimpleSchema({
         type: String,
         max: 60
     },
-    createdAt: {
-        type: Date,
-        optional: true,
-        autoValue: function () {
-            if (this.isInsert) {
-                return new Date();
-            }
-        }
-    },
-    updatedAt: {
-        type: Date,
-        optional: true,
-        autoValue: function () {
-            if (this.isUpdate) {
-                return new Date();
-            }
-        }
-    },
+		slug: {
+			type: String,
+			max: 200,
+			optional: true,
+			autoform: {
+				type: "hidden",
+				label: false
+			}
+		},
     dateBegun: {
         type: Date,
         optional: true
@@ -84,6 +75,34 @@ Schemas.Objects = new SimpleSchema({
         type: String,
         optional: true,
     },
+
+	  created: {
+	    type: Date,
+	    optional: true,
+	    autoValue: function() {
+	      if (this.isInsert) {
+	        return new Date;
+	      }
+	    },
+	    autoform: {
+	      type: "hidden",
+	      label: false
+	    }
+	  },
+	  updated: {
+	    type: Date,
+	    optional: true,
+	    autoValue: function() {
+	      if (this.isUpdate) {
+	        return new Date;
+	      }
+	    },
+	    autoform: {
+	      type: "hidden",
+	      label: false
+	    }
+	  }
 });
 
 Objects.attachSchema(Schemas.Objects);
+Objects.friendlySlugs('title');

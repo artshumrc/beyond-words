@@ -21,7 +21,7 @@ Schemas.Pages = new SimpleSchema({
     },
     slug: {
         type: String,
-        autoValue: function () {
+        /*autoValue: function () {
             console.log(this);
             var slug;
             if (this.isSet) {
@@ -42,10 +42,12 @@ Schemas.Pages = new SimpleSchema({
             } else {
                 return slug;
             }
-        },
+        },*/
         optional: true,
         autoform: {
-            placeholder: 'Calculated automatically'
+          //placeholder: 'Calculated automatically'
+		      type: "hidden",
+		      label: false
         }
     },
     createdAt: {
@@ -133,3 +135,4 @@ Schemas.Pages = new SimpleSchema({
 });
 
 Pages.attachSchema(Schemas.Pages);
+Pages.friendlySlugs('title');
