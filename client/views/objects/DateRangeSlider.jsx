@@ -8,7 +8,7 @@ import {debounce} from 'throttle-debounce';
 DateRangeSlider = React.createClass({
 
 	propTypes: {
-		handleChangeLineN: React.PropTypes.func.isRequired
+		handleChangeDate: React.PropTypes.func.isRequired
 	},
 
 	componentDidMount(){

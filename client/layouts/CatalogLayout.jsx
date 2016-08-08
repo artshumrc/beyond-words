@@ -115,7 +115,7 @@ CatalogLayout = React.createClass({
 
 	},
 
-	handleChangeLineN(e){
+	handleChangeDate(e){
 
 		var filters = this.state.filters;
 
@@ -201,7 +201,7 @@ CatalogLayout = React.createClass({
 
 				<ObjectsSearchTools
 					toggleSearchTerm={this.toggleSearchTerm}
-					handleChangeLineN={this.handleChangeLineN}
+					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
 					/>
 

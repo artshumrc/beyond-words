@@ -27,13 +27,6 @@ ObjectsSearchTools = React.createClass({
 
   getInitialState(){
     return {
-      leftMenuOpen : false,
-      searchEnabled : false,
-      searchDropdownOpen : "",
-			subworks: [],
-			lineMin: 0,
-			lineMax: 2000,
-			activeWork: ""
     };
   },
 
@@ -42,11 +35,32 @@ ObjectsSearchTools = React.createClass({
   getMeteorData(){
     var query = {};
 
+		var authors = _.uniq(Comments.find({}, {
+											    sort: {author: 1}, fields: {author: true}
+											}).fetch().map(function(x) {
+											    return x.author;
+											}), true),
+				illuminators = _.uniq(Comments.find({}, {
+											    sort: {illuminator: 1}, fields: {illuminator: true}
+											}).fetch().map(function(x) {
+											    return x.illuminator;
+											}), true),
+				institutions = _.uniq(Comments.find({}, {
+											    sort: {institution: 1}, fields: {institution: true}
+											}).fetch().map(function(x) {
+											    return x.institution;
+											}), true),
+				places = _.uniq(Comments.find({}, {
+											    sort: {place: 1}, fields: {place: true}
+											}).fetch().map(function(x) {
+											    return x.place;
+											}), true);
+
 		return {
-			keywords: Keywords.find().fetch(),
-			commenters: Commenters.find().fetch(),
-			works: Works.find({}, {sort:{order:1}}).fetch(),
-			subworks: Subworks.find({}, {sort:{n:1}}).fetch(),
+			authors: authors,
+			illuminators: illuminators,
+			institutions: institutions,
+			places: places
 		}
 	},
 
