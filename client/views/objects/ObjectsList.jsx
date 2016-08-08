@@ -84,16 +84,10 @@ ObjectsList = React.createClass({
 
 
   componentDidMount(){
-    setTimeout(function(){
-      $(".objects-container").addClass("component-mounted");
-      $(".loading-collections").removeClass("loading-visible");
-
-    }, 2000);
   },
 
 
   renderObjects() {
-    // Get tasks from this.data.tasks
     return this.data.objects.map((object) => {
       return <ObjectTeaser
         key={object._id}
