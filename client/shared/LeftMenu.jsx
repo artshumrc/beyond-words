@@ -17,13 +17,6 @@ LeftMenu = React.createClass({
         return {muiTheme: getMuiTheme(baseTheme)};
     },
 
-    scrollToAbout(e){
-        $("html, body").animate({scrollTop: $('#about').height() - 100}, 300);
-
-        this.props.closeLeftMenu();
-        e.preventDefault();
-    },
-
     render(){
         var is_logged_in = Meteor.userId() ? Meteor.userId() : false;
         return (
