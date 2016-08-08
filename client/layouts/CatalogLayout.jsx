@@ -39,11 +39,7 @@ CatalogLayout = React.createClass({
 						filterToRemove = i;
 					}
 				}else {
-					if(key === "works"){
-						filter.values = [value];
-					}else {
-						filter.values.push(value);
-					}
+					filter.values.push(value);
 				}
 
 			}
@@ -119,19 +115,19 @@ CatalogLayout = React.createClass({
 
 		var filters = this.state.filters;
 
-		if(e.from > 1){
-			var lineFromInFilters = false;
+		if(e.from > 1000){
+			var dateFromInFilters = false;
 
 			filters.forEach(function(filter, i){
-				if(filter.key === "lineFrom"){
+				if(filter.key === "dateFrom"){
 					filter.values = [e.from];
-					lineFromInFilters = true;
+					dateFromInFilters = true;
 				}
 			});
 
-			if(!lineFromInFilters){
+			if(!dateFromInFilters){
 				filters.push({
-					key:"lineFrom",
+					key:"dateFrom",
 					values:[e.from]
 				})
 			}
@@ -140,7 +136,7 @@ CatalogLayout = React.createClass({
 			var filterToRemove;
 
 			filters.forEach(function(filter, i){
-				if(filter.key === "lineFrom"){
+				if(filter.key === "dateFrom"){
 					filterToRemove = i;
 				}
 
@@ -152,19 +148,19 @@ CatalogLayout = React.createClass({
 
 		}
 
-		if(e.to < 2100){
-			var lineToInFilters = false;
+		if(e.to < 1700){
+			var dateToInFilters = false;
 
 			filters.forEach(function(filter, i){
-				if(filter.key === "lineTo"){
+				if(filter.key === "dateTo"){
 					filter.values = [e.to];
-					lineToInFilters = true;
+					dateToInFilters = true;
 				}
 			});
 
-			if(!lineToInFilters){
+			if(!dateToInFilters){
 				filters.push({
-					key:"lineTo",
+					key:"dateTo",
 					values:[e.to]
 				})
 			}
@@ -173,7 +169,7 @@ CatalogLayout = React.createClass({
 			var filterToRemove;
 
 			filters.forEach(function(filter, i){
-				if(filter.key === "lineTo"){
+				if(filter.key === "dateTo"){
 					filterToRemove = i;
 				}
 
