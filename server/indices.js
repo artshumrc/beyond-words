@@ -1,0 +1,3 @@
+Objects._ensureIndex({
+	"$**": "text"
+});

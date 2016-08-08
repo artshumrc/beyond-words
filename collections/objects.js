@@ -1,6 +1,9 @@
 this.Objects = new Meteor.Collection('objects');
 
 Schemas.Objects = new SimpleSchema({
+    catalog_n: {
+        type: Number,
+    },
     title: {
         type: String,
         max: 60

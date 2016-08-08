@@ -6,18 +6,82 @@ import FontIcon from 'material-ui/FontIcon';
 
 ObjectsList = React.createClass({
 
-  // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
 
+	propTypes: {
+		filters: React.PropTypes.array,
+		addSearchTerm: React.PropTypes.func,
+		loadMoreObjects: React.PropTypes.func,
+		skip: React.PropTypes.number
+
+	},
+
 	getInitialState: function() {
+
+		// viewMode may be list or grid
+
 		return {
-      paged : 1,
-      limit : 21,
-      active_dropdown : "",
-      textsearch: '',
-      example_facet: [],
+			viewMode: "grid"
     };
 	},
+
+	getMeteorData(){
+		var query = {},
+				objects = [];
+
+		// Parse the filters to the query
+		this.props.filters.forEach(function(filter){
+			switch(filter.key){
+				case "textsearch":
+					query.$text = { $search : filter.values[0]};
+					break;
+
+				case "authors":
+					var values = [];
+					filter.values.forEach(function(value){
+						values.push(value.wordpressId);
+					})
+					query['author._id'] = { $in: values };
+					break;
+
+				case "illuminators":
+					var values = [];
+					filter.values.forEach(function(value){
+						values.push(value.wordpressId);
+					})
+					query['author._id'] = { $in: values };
+					break;
+
+				case "institution":
+					var values = [];
+					filter.values.forEach(function(value){
+						values.push(value.wordpressId);
+					})
+					query['author._id'] = { $in: values };
+					break;
+
+				case "places":
+					var values = [];
+					filter.values.forEach(function(value){
+						values.push(value.wordpressId);
+					})
+					query['author._id'] = { $in: values };
+					break;
+
+			}
+		});
+
+		console.log("Objects query:", query);
+		var handle = Meteor.subscribe('objects', query, this.props.skip, 10);
+		if(handle.ready()) {
+			objects = Objects.find({}, {sort:{catalog_n:1}}).fetch();
+		}
+
+		return {
+			objects: objects
+		};
+	},
+
 
   componentDidMount(){
     setTimeout(function(){
@@ -27,95 +91,6 @@ ObjectsList = React.createClass({
     }, 2000);
   },
 
-  // Loads Objects from the Tasks collection and puts them on this.data.tasks
-  getMeteorData() {
-    console.log("getMeteorData() this.state:", this.state);
-    let query = {};
-
-
-    let example_facet = _.uniq(Objects.find({}, {
-        sort: {example_facet: 1}, fields: {example_facet: true}
-    }).fetch().map(function(x) {
-        return x.example_facet;
-    }), true);
-
-
-		if(
-      (this.state.textsearch && this.state.textsearch.length)
-    || (this.state.example_facet && this.state.example_facet.length)
-    ){
-
-      query = {$or: []};
-
-  		if(this.state.textsearch && this.state.textsearch.length){
-  				var re = new RegExp(".*" + this.state.textsearch + ".*", "gi");
-          query.$or.push({title: re});
-          query.$or.push({other_meta_field: re});
-  		}
-
-  		if(this.state.example_facet && this.state.example_facet.length){
-        this.state.example_facet.map(function(example_facet){
-          query.$or.push({example_facet: example_facet});
-
-        });
-
-      }
-
-
-    }
-
-    console.log("Query:", query);
-    let limit = this.state.limit * this.state.paged;
-
-    return {
-      Objects : Objects.find(query, {sort: {viav_id:1}, limit: limit}).fetch(),
-      total_records : Objects.find(query).count(),
-      example_facet : example_facet,
-    };
-  },
-
-	searchText: function(event) {
-		this.setState({
-      textsearch: event.target.value,
-      paged: 1
-    });
-	},
-
-  searchExampleFacet: function(e){
-    var example_facet = this.state.example_facet,
-        $target = $(e.target),
-        sel_example_facet,
-        sel_example_facet_i;
-
-    if(!$target.hasClass("search-toggle-button")){
-      $target = $target.parents(".search-toggle-button");
-    }
-
-    sel_example_facet = $target.text();
-    sel_example_facet_i = example_facet.indexOf(sel_example_facet);
-
-    if(sel_example_facet_i >= 0){
-      example_facet.splice(sel_example_facet_i);
-      $target.removeClass("search-toggle-button-active");
-    }else {
-      example_facet.push(sel_example_facet);
-      $target.addClass("search-toggle-button-active");
-
-    }
-		this.setState({
-      example_facet: example_facet,
-      paged: 1
-    });
-
-
-  },
-
-  pageSearch: function(){
-    this.setState({
-      paged: this.state.paged + 1
-    });
-
-  },
 
   renderObjects() {
     // Get tasks from this.data.tasks
@@ -263,7 +238,7 @@ ObjectsList = React.createClass({
           >
 		      {this.renderObjects()}
 		    </div >
-				
+
 			</div>
 
       );
