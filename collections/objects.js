@@ -39,6 +39,10 @@ Schemas.Objects = new SimpleSchema({
         type: String,
         optional: true
     },
+    institution: {
+        type: String,
+        optional: true
+    },
     place: {
         type: String,
         optional: true
@@ -72,7 +76,11 @@ Schemas.Objects = new SimpleSchema({
             publication: 'images',
             thumbnails: 'thumbnails'
         }
-    }
+    },
+    imageNotes: {
+        type: String,
+        optional: true,
+    },
 });
 
 Objects.attachSchema(Schemas.Objects);
