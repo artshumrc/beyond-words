@@ -7,6 +7,7 @@ SinglePage = React.createClass({
         var images = [];
         var thumbnails = [];
         var handle = Meteor.subscribe('pages', slug);
+        var loading = true;
         if (handle.ready()) {
             // console.log(tweets);
             //TweetCollection = new Mongo.Collection("tweetCollection");
@@ -18,12 +19,14 @@ SinglePage = React.createClass({
                     thumbnails = Thumbnails.find({originalId: {$in: page.headerImage}}).fetch();
                 }
             }
+            loading = false;
         }
         return {
             page: page,
             ready: handle.ready(),
             images: images,
-            thumbnails: thumbnails
+            thumbnails: thumbnails,
+            loading: loading
         };
     },
     backgroundImages(){
@@ -55,41 +58,51 @@ SinglePage = React.createClass({
             this.backgroundImages();
         }
         // var page = Pages.findOne({slug: slug});
+        console.log(this.data.loading);
+        if (this.data.loading) {
+            return (
+                <Loading />
+            )
+        } else if(!this.data.loading && !this.data.page){
+            return(
+                <PageNotFound />
+            )
+        } else {
+            return (
+                // todo: return 404 if !page.length
+                <div className={pageClass}>
 
-        return (
-            // todo: return 404 if !page.length
-            <div className={pageClass}>
-
-                <section className="page-head fullscreen image-bg bg-dark">
-                    <div className="background-image-holder less-blur blur">
-                        <img className="background-image" alt='image' src={headerImageSource}/>
-                    </div>
-
-                    <div className="background-screen cyan">
-                    </div>
-
-                    <div className="container v-align-transform">
-                        <div className="row">
-                            <div className="col-sm-10 col-sm-offset-1 text-center">
-                                <h1 className="mb40 mb-xs-16 large">
-                                    {page.title}
-                                </h1>
-                                <h2>
-                                    {page.subTitle}
-                                </h2>
-                            </div>
+                    <section className="page-head fullscreen image-bg bg-dark">
+                        <div className="background-image-holder less-blur blur">
+                            <img className="background-image" alt='image' src={headerImageSource}/>
                         </div>
 
-                    </div>
+                        <div className="background-screen cyan">
+                        </div>
 
-                </section>
+                        <div className="container v-align-transform">
+                            <div className="row">
+                                <div className="col-sm-10 col-sm-offset-1 text-center">
+                                    <h1 className="mb40 mb-xs-16 large">
+                                        {page.title}
+                                    </h1>
+                                    <h2>
+                                        {page.subTitle}
+                                    </h2>
+                                </div>
+                            </div>
 
-                <section className="page-content container">
-                    <div dangerouslySetInnerHTML={{__html: page.content}}/>
-                </section>
+                        </div>
+
+                    </section>
+
+                    <section className="page-content container">
+                        <div dangerouslySetInnerHTML={{__html: page.content}}/>
+                    </section>
 
 
-            </div>
-        );
+                </div>
+            );
+        }
     }
 });

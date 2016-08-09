@@ -1,4 +1,4 @@
-this.Objects = new Meteor.Collection('objects');
+Objects = new Meteor.Collection('objects');
 
 Schemas.Objects = new SimpleSchema({
     catalog_n: {
