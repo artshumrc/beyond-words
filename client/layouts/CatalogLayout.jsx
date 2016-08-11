@@ -31,7 +31,7 @@ CatalogLayout = React.createClass({
 							valueIsInFilter = true;
 							filterValueToRemove = j;
 						}
-				})
+				});
 
 				if(valueIsInFilter){
 					filter.values.splice(filterValueToRemove, 1);

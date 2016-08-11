@@ -17,6 +17,13 @@ if (Meteor.isServer) {
 
 	  });
 
+    Meteor.publish('object', function(slug){
+       if(slug){
+           return Objects.find({slug: slug});
+       }
+       return this.ready();
+    });
+
     Meteor.publish('events', function () {
         return Events.find();
     });
@@ -46,6 +53,21 @@ if (Meteor.isServer) {
             var page = Pages.findOne({slug: pageSlug});
             console.log(page);
             var imageArray = page.headerImage;
+            if (imageArray && Array.isArray(imageArray)) {
+                return [
+                    Images.find({_id: {$in: imageArray}}),
+                    Thumbnails.find({originalId: {$in: imageArray}})
+                ]
+            }
+        }
+        return this.ready();
+    });
+
+    Meteor.publish('objectImages', function(objectSlug){
+        if (objectSlug) {
+            var object = Objects.findOne({slug: objectSlug});
+            // console.log(page);
+            var imageArray = object.images;
             if (imageArray && Array.isArray(imageArray)) {
                 return [
                     Images.find({_id: {$in: imageArray}}),

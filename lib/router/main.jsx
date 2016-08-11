@@ -24,17 +24,40 @@ FlowRouter.route('/catalog', {
     }
 });
 
+FlowRouter.route('/objects', {
+    name: 'ObjectList',
+    action: function(params, queryParams){
+        // console.log(queryParams);
+        var query = queryParams.query || null;
+        mount(MasterLayout, {
+                content: <CatalogLayout />
+    });
+    }
+});
+FlowRouter.route('/objects/:slug', {
+    name: 'ObjectDetail',
+    action: function(params, queryParams){
+        mount(MasterLayout, {
+            content: <ObjectDetail slug={params.slug}/>
+        });
+    }
+});
 
 /*
  * Single page view
  * Add check w/query for 404 in the future?
+ * 404 check is in the actual template
  */
 FlowRouter.route('/:slug', {
-    action: function(param){
-        // console.log(param);
-        mount(MasterLayout,{
-            content: <SinglePage slug={param.slug}/>
-        });
+    action: function(params){
+        // console.log(params);
+        var reservedRoutes = ['admin'];
+        // console.log(reservedRoutes.indexOf(params.slug));
+        if(reservedRoutes.indexOf(params.slug) === -1){
+            mount(MasterLayout,{
+                content: <SinglePage slug={params.slug}/>
+            });
+        }
     }
 });
 

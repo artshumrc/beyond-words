@@ -34,8 +34,11 @@ Schemas.Objects = new SimpleSchema({
         optional: true
     },
     institution: {
-        type: String,
+        type: Array,
         optional: true
+    },
+    'institution.$': {
+        type: String
     },
     place: {
         type: String,
