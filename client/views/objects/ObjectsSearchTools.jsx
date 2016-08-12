@@ -12,9 +12,10 @@ import {debounce} from 'throttle-debounce';
 ObjectsSearchTools = React.createClass({
 
 	propTypes: {
+
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
-		handleChangeLineN: React.PropTypes.func
+		handleChangeDate: React.PropTypes.func
 	},
 
   getChildContext() {
@@ -27,6 +28,9 @@ ObjectsSearchTools = React.createClass({
 
   getInitialState(){
     return {
+			searchDropdownOpen : "",
+			yearMin: 1100,
+			yearMax: 1700,
     };
   },
 
@@ -40,6 +44,16 @@ ObjectsSearchTools = React.createClass({
 											}).fetch().map(function(x) {
 											    return x.author;
 											}), true),
+				/*scribes = _.uniq(Objects.find({}, {
+											    sort: {scribe : 1}, fields: {scribe: true}
+											}).fetch().map(function(x) {
+												if("scribe" in x && typeof x.scribe !== "undefined"){
+													console.log(x);
+											    return x.scribe;
+												}else {
+													return null;
+												}
+											}), true),*/
 				illuminators = _.uniq(Objects.find({}, {
 											    sort: {illuminator: 1}, fields: {illuminator: true}
 											}).fetch().map(function(x) {
@@ -56,8 +70,10 @@ ObjectsSearchTools = React.createClass({
 											    return x.place;
 											}), true);
 
+
 		return {
 			authors: authors,
+			scribes: [], // scribes,
 			illuminators: illuminators,
 			institutions: institutions,
 			places: places
@@ -111,13 +127,6 @@ ObjectsSearchTools = React.createClass({
         		<div className="md-menu-toolbar" >
         			<div className="toolbar-tools">
 
-                <FlatButton
-                  className="left-drawer-toggle"
-                  style={styles.flatIconButton}
-                  icon={<FontIcon className="mdi mdi-menu" />}
-                  onClick={this.toggleLeftMenu}
-                />
-
         				<div className="search-tools">
 
         					<div className="search-tool text-search">
@@ -128,6 +137,33 @@ ObjectsSearchTools = React.createClass({
                       />
         					</div>
 
+        					{/*<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "scribes" ? " open" : "")}>
+        						<FlatButton
+                      className="search-tool search-type-scribes dropdown-toggle"
+                      label="Scribes"
+											labelPosition="before"
+                      icon={<FontIcon className="mdi mdi-chevron-down" />}
+                      onClick={this.toggleSearchDropdown.bind(null, "scribes")}
+        						>
+        						</FlatButton>
+
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+												{self.data.scribes.map(function(scribe, i){
+	                        return <SearchTermButton
+															key={i}
+															toggleSearchTerm={self.toggleSearchTerm}
+															label={scribe}
+															searchTermKey="scribes"
+															value={scribe}
+															/>
+												})}
+        							</div>
+        						</ul>
+
+
+        					</div>*/}
+
         					<div className={"dropdown search-dropdown search-dropdown-authors" + (self.state.searchDropdownOpen === "authors" ? " open" : "")}>
         						<FlatButton
                       className="search-tool search-type-authors dropdown-toggle"
@@ -138,46 +174,19 @@ ObjectsSearchTools = React.createClass({
         						>
         						</FlatButton>
 
-	        						<ul className="dropdown-menu ">
-	        							<div className="dropdown-menu-inner">
-													{self.data.authors.map(function(authors, i){
-		                        return <SearchTermButton
-																key={i}
-																toggleSearchTerm={self.toggleSearchTerm}
-																label={author}
-																searchTermKey="authors"
-																value={author}
-																/>
-													})}
-	        							</div>
-	        						</ul>
-
-
-        					</div>
-
-        					<div className={"dropdown search-dropdown search-dropdown-authors" + (self.state.searchDropdownOpen === "authors" ? " open" : "")}>
-        						<FlatButton
-                      className="search-tool search-type-authors dropdown-toggle"
-                      label="Authors"
-											labelPosition="before"
-                      icon={<FontIcon className="mdi mdi-chevron-down" />}
-                      onClick={this.toggleSearchDropdown.bind(null, "authors")}
-        						>
-        						</FlatButton>
-
-	        						<ul className="dropdown-menu ">
-	        							<div className="dropdown-menu-inner">
-													{self.data.authors.map(function(authors, i){
-		                        return <SearchTermButton
-																key={i}
-																toggleSearchTerm={self.toggleSearchTerm}
-																label={author}
-																searchTermKey="authors"
-																value={author}
-																/>
-													})}
-	        							</div>
-	        						</ul>
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+												{self.data.authors.map(function(author, i){
+	                        return <SearchTermButton
+															key={i}
+															toggleSearchTerm={self.toggleSearchTerm}
+															label={author}
+															searchTermKey="authors"
+															value={author}
+															/>
+												})}
+        							</div>
+        						</ul>
 
 
         					</div>
@@ -192,19 +201,19 @@ ObjectsSearchTools = React.createClass({
         						>
         						</FlatButton>
 
-	        						<ul className="dropdown-menu ">
-	        							<div className="dropdown-menu-inner">
-													{self.data.illuminators.map(function(illuminator, i){
-		                        return <SearchTermButton
-																key={i}
-																toggleSearchTerm={self.toggleSearchTerm}
-																label={illuminator}
-																searchTermKey="illuminators"
-																value={illuminator}
-																/>
-													})}
-	        							</div>
-	        						</ul>
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+												{self.data.illuminators.map(function(illuminator, i){
+	                        return <SearchTermButton
+															key={i}
+															toggleSearchTerm={self.toggleSearchTerm}
+															label={illuminator}
+															searchTermKey="illuminators"
+															value={illuminator}
+															/>
+												})}
+        							</div>
+        						</ul>
 
 
         					</div>
@@ -219,19 +228,19 @@ ObjectsSearchTools = React.createClass({
         						>
         						</FlatButton>
 
-	        						<ul className="dropdown-menu ">
-	        							<div className="dropdown-menu-inner">
-													{self.data.institutions.map(function(institution, i){
-		                        return <SearchTermButton
-																key={i}
-																toggleSearchTerm={self.toggleSearchTerm}
-																label={institution}
-																searchTermKey="institutions"
-																value={institution}
-																/>
-													})}
-	        							</div>
-	        						</ul>
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+												{self.data.institutions.map(function(institution, i){
+	                        return <SearchTermButton
+															key={i}
+															toggleSearchTerm={self.toggleSearchTerm}
+															label={institution}
+															searchTermKey="institutions"
+															value={institution}
+															/>
+												})}
+        							</div>
+        						</ul>
 
 
         					</div>
@@ -246,33 +255,30 @@ ObjectsSearchTools = React.createClass({
         						>
         						</FlatButton>
 
-	        						<ul className="dropdown-menu ">
-	        							<div className="dropdown-menu-inner">
-													{self.data.places.map(function(place, i){
-		                        return <SearchTermButton
-																key={i}
-																toggleSearchTerm={self.toggleSearchTerm}
-																label={place}
-																searchTermKey="places"
-																value={place}
-																/>
-													})}
-	        							</div>
-	        						</ul>
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+												{self.data.places.map(function(place, i){
+	                        return <SearchTermButton
+															key={i}
+															toggleSearchTerm={self.toggleSearchTerm}
+															label={place}
+															searchTermKey="places"
+															value={place}
+															/>
+												})}
+        							</div>
+        						</ul>
 
         					</div>
 
+        					<div className="search-tool search-tool--date">
+										<DateRangeSlider
+											handleChangeDate={this.props.handleChangeDate}/>
+									</div>
+
+
         				</div>
 
-        				<div className="search-toggle">
-        					<IconButton
-                    className="search-button"
-                    onClick={this.toggleSearchMode}
-                    iconClassName="mdi mdi-magnify"
-                    >
-
-        					</IconButton>
-        				</div>
 
         			</div>
         		</div>

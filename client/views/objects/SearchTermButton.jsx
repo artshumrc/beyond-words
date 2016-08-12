@@ -9,7 +9,7 @@ SearchTermButton = React.createClass({
 		toggleSearchTerm: React.PropTypes.func.isRequired,
 		label: React.PropTypes.string.isRequired,
 		searchTermKey: React.PropTypes.string.isRequired,
-		value: React.PropTypes.object.isRequired,
+		value: React.PropTypes.string.isRequired,
 		activeWork: React.PropTypes.bool
   },
 

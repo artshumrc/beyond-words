@@ -45,13 +45,12 @@ FlowRouter.route('/objects/:slug', {
 
 /*
  * Single page view
- * Add check w/query for 404 in the future?
  * 404 check is in the actual template
  */
 FlowRouter.route('/:slug', {
     action: function(params){
         // console.log(params);
-        var reservedRoutes = ['admin'];
+        var reservedRoutes = ['admin', 'sign-in', 'sign-up'];
         // console.log(reservedRoutes.indexOf(params.slug));
         if(reservedRoutes.indexOf(params.slug) === -1){
             mount(MasterLayout,{

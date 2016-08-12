@@ -17,42 +17,11 @@ Schemas.Objects = new SimpleSchema({
 				label: false
 			}
 		},
-    dateBegun: {
-        type: Date,
-        optional: true
-    },
-    dateEnded: {
-        type: Date,
-        optional: true
-    },
-    author: {
-        type: String,
-        optional: true
-    },
-    illuminator: {
-        type: String,
-        optional: true
-    },
-    institution: {
-        type: Array,
-        optional: true
-    },
-    'institution.$': {
-        type: String
-    },
-    place: {
-        type: String,
-        optional: true
-    },
-    miradorLink: {
-        type: String,
-        optional: true
-    },
-    externalUrl: {
-        type: String,
-        optional: true,
-    },
     shelfmark: {
+        type: String,
+        optional: true
+    },
+    former_shelfmark: {
         type: String,
         optional: true
     },
@@ -75,6 +44,49 @@ Schemas.Objects = new SimpleSchema({
         }
     },
     imageNotes: {
+        type: String,
+        optional: true,
+    },
+    dateBegun: {
+        type: Date,
+        optional: true
+    },
+    dateEnded: {
+        type: Date,
+        optional: true
+    },
+    author: {
+        type: String,
+        optional: true
+    },
+    illuminator: {
+        type: String,
+        optional: true
+    },
+    scribe: {
+        type: String,
+        optional: true
+    },
+    printer: {
+        type: String,
+        optional: true
+    },
+    institution: {
+        type: Array,
+        optional: true
+    },
+    'institution.$': {
+        type: String
+    },
+    place: {
+        type: String,
+        optional: true
+    },
+    miradorLink: {
+        type: String,
+        optional: true
+    },
+    externalUrl: {
         type: String,
         optional: true,
     },
