@@ -1,4 +1,9 @@
 import {Tabs, Tab} from 'material-ui/Tabs';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import moment from 'moment-timezone';
@@ -8,15 +13,25 @@ HomeEvents = React.createClass({
 
     mixins: [ReactMeteorData],
 
+	  getInitialState(){
+	    return {
+				registrationModalOpen: true,
+				errorText: ""
+			};
+	  },
+
     getMeteorData(){
         return {events: Events.find({}, {sort:{date:1}}).fetch()};
     },
+
     childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
     },
+
     getChildContext() {
         return {muiTheme: getMuiTheme(baseTheme)};
     },
+
     linkToEventOrScroll(e) {
       var $target = $(e.target);
 
@@ -38,6 +53,61 @@ HomeEvents = React.createClass({
 
 
     },
+
+		openRegistrationModal(){
+			this.setState({
+				registrationModalOpen: true
+			});
+
+
+		},
+
+		closeRegistrationModal(){
+			this.setState({
+				registrationModalOpen: false
+			});
+
+
+		},
+
+		submitRegistrationModal(){
+
+			// get all the inputs into an array.
+			var $inputs = $('#registrationForm :input');
+			var values = {};
+			$inputs.each(function() {
+					values[this.name] = $(this).val();
+			});
+
+
+			if(
+					values.first_name.length > 0
+				&& values.last_name.length > 0
+				&& values.affiliation.length > 0
+				&& values.email.length >0
+			){
+
+				// on the client
+				Meteor.call("register", values, function (error) {
+				  if (error) {
+						console.log(error);
+				  }
+				});
+
+				this.setState({
+					registrationModalOpen: false
+				});
+
+			}else {
+				this.setState({
+					errorText: "This value is required"
+				});
+
+			}
+
+
+		},
+
     render(){
 
       var that = this;
@@ -59,8 +129,26 @@ HomeEvents = React.createClass({
         tab : {
           color:"#222",
           fontFamily:"Hind"
-        }
-      }
+        },
+			  checkbox: {
+			    marginBottom: 16,
+			  },
+      };
+
+			const actions = [
+												<FlatButton
+													label="Cancel"
+													primary={true}
+													onClick={this.closeRegistrationModal}
+												/>,
+												<FlatButton
+													label="Submit"
+													primary={true}
+													onClick={this.submitRegistrationModal}
+												/>,
+											];
+
+			var errorText = this.state.errorText;
 
         return (
             <div>
@@ -252,12 +340,95 @@ HomeEvents = React.createClass({
                       </p>
                     </Tab>
                   </Tabs>
-                  <a className="btn btn-large md-button registration-button md-ink-ripple paper-shadow" href="#" aria-label="Learn More">
-                    <span>Registration (Coming Soon)</span>
+                  <a
+										className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+										aria-label="Learn More"
+										onClick={this.openRegistrationModal}
+										>
+                    <span>Register Now</span>
                     <div className="md-ripple-container"></div>
 
                   </a>
                 </section>
+
+								<Dialog
+									className="dialog-modal"
+										title="Register for Beyond Words"
+										actions={actions}
+										modal={true}
+										open={this.state.registrationModalOpen}
+									>
+
+									<p>
+										While the Symposium is free of charge, pre-registration is required.
+									</p>
+									<p>
+										Please also indicate which day(s) you will be attending.
+									</p>
+									<form id="registrationForm" >
+
+									<TextField
+										name="first_name"
+										required={true}
+										className="text-field name-field"
+										floatingLabelText="First name"
+										errorText={errorText}
+									/>
+									<TextField
+										name="middle_name"
+										className="text-field name-field"
+											floatingLabelText="Middle name"
+
+										/>
+									<TextField
+										name="last_name"
+										required={true}
+										className="text-field name-field"
+											floatingLabelText="Last name"
+										errorText={errorText}
+										/><br /><br />
+									<TextField
+										name="affiliation"
+										className="text-field"
+											floatingLabelText="Affiliation"
+										errorText={errorText}
+										/>
+									<TextField
+										name="email"
+										required={true}
+										errorText={errorText}
+										className="text-field"
+											type="email"
+											floatingLabelText="Email address"
+										errorText={errorText}
+										/><br /><br />
+
+									<p>
+										Days attending:
+									</p>
+									<br/>
+
+									<Checkbox
+										name="nov_8"
+										className="checkbox-field"
+							      label="Thurs., Nov. 8 (McMullen Museum, Boston College)"
+							      style={styles.checkbox}
+							    />
+									<Checkbox
+										name="nov_9"
+											className="checkbox-field"
+								      label="Fri., Nov. 9 (Isabella Stewart Gardner Museum)"
+								      style={styles.checkbox}
+								    />
+									<Checkbox
+										name="nov_10"
+											className="checkbox-field"
+								      label="Sat., Nov. 10 (Houghton Library, Harvard University)"
+								      style={styles.checkbox}
+								    />
+
+									</form>
+								</Dialog>
             </div>
         )
     }
