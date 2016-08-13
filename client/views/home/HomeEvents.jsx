@@ -1,22 +1,167 @@
 import {Tabs, Tab} from 'material-ui/Tabs';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import moment from 'moment-timezone';
 
 
 HomeEvents = React.createClass({
 
     mixins: [ReactMeteorData],
 
+	  getInitialState(){
+	    return {
+				registrationModalOpen: false,
+				successModalOpen: false,
+				errorText: "",
+				regFormNov8: false,
+				regFormNov9: false,
+				regFormNov10: false
+			};
+	  },
+
     getMeteorData(){
-        return {events: Events.find().fetch()};
+        return {events: Events.find({}, {sort:{date:1}}).fetch()};
     },
+
     childContextTypes: {
         muiTheme: React.PropTypes.object.isRequired,
     },
+
     getChildContext() {
         return {muiTheme: getMuiTheme(baseTheme)};
     },
+
+    linkToEventOrScroll(e) {
+      var $target = $(e.target);
+
+      if(!$target.hasClass("event-link")){
+        $target = $target.parents(".event-link");
+      }
+
+      if($target.prop("href").indexOf(window.location.host) >= 0){
+
+        var scroll_elem_id = "#";
+
+        scroll_elem_id += $target.prop("href").split("#")[1]
+
+        $("html, body").animate({ scrollTop: $(scroll_elem_id).offset().top - 100 }, 300);
+
+        e.preventDefault();
+
+      }
+
+
+    },
+
+		openRegistrationModal(){
+			this.setState({
+				registrationModalOpen: true
+			});
+
+
+		},
+
+		closeRegistrationModal(){
+			this.setState({
+				registrationModalOpen: false
+			});
+
+
+		},
+
+		closeSuccessModal(){
+			this.setState({
+				successModalOpen: false
+			});
+
+
+		},
+
+		handleCheckBoxChange(checkboxDay){
+			if(checkboxDay === "nov_8"){
+					this.setState({
+						regFormNov8 : !this.state.regFormNov8
+					})
+
+			}else if(checkboxDay === "nov_9"){
+					this.setState({
+						regFormNov9 : !this.state.regFormNov9
+					})
+
+			}else if(checkboxDay === "nov_10"){
+					this.setState({
+						regFormNov10 : !this.state.regFormNov10
+					})
+
+			}else {
+				console.log("handleChange error");
+			}
+		},
+
+		submitRegistrationModal(){
+			var self = this;
+
+			// get all the inputs into an array.
+			var $inputs = $('#registrationForm :input');
+			var values = {};
+			$inputs.each(function() {
+				if(["nov_8", "nov_9", "nov_10"].indexOf(this.name) >=0){
+					if(this.name === "nov_8"){
+						values[this.name] = self.state.regFormNov8;
+
+					}else if(this.name === "nov_9"){
+						values[this.name] = self.state.regFormNov9;
+
+					}else if(this.name === "nov_10"){
+						values[this.name] = self.state.regFormNov10;
+
+					}
+
+				}else {
+					values[this.name] = $(this).val();
+
+				}
+			});
+
+
+			if(
+					values.first_name.length > 0
+				&& values.last_name.length > 0
+				&& values.affiliation.length > 0
+				&& values.email.length >0
+			){
+
+				// on the client
+				Meteor.call("register", values, function (error) {
+				  if (error) {
+						console.log(error);
+				  }
+				});
+
+				this.setState({
+					registrationModalOpen: false,
+					successModalOpen: true
+				});
+
+			}else {
+				this.setState({
+					errorText: "This value is required"
+				});
+
+			}
+
+
+		},
+
     render(){
+
+      var that = this;
+
       var styles = {
         contentContainerStyle : {
           background: "#fafafa",
@@ -34,8 +179,34 @@ HomeEvents = React.createClass({
         tab : {
           color:"#222",
           fontFamily:"Hind"
-        }
-      }
+        },
+			  checkbox: {
+			    marginBottom: 16,
+			  },
+      };
+
+			const actions = [
+												<FlatButton
+													label="Cancel"
+													primary={true}
+													onClick={this.closeRegistrationModal}
+												/>,
+												<FlatButton
+													label="Submit"
+													primary={true}
+													onClick={this.submitRegistrationModal}
+												/>,
+											];
+
+			const successActions = [
+												<FlatButton
+													label="Close"
+													primary={true}
+													onClick={this.closeSuccessModal}
+												/>,
+											];
+
+			var errorText = this.state.errorText;
 
         return (
             <div>
@@ -48,15 +219,25 @@ HomeEvents = React.createClass({
                           </em>
                         </h5>
                         <ul className="events-list">
-                            {this.data.events.map(function (event) {
-                                return <li className="event-item">
+                            {this.data.events.map(function (event, i) {
+                                return <li
+                                  key={i}
+                                  className="event-item wow fadeIn"
+                                  >
                                     <div className="event-calendar-date">
-                                        <h6 className="event-month">{moment(event.date).format('MMMM')}</h6>
-                                        <h3 className="event-day thin">{moment(event.date).format('D')}</h3>
-                                        <h6 className="event-weekday">{moment(event.date).format('dddd')}</h6>
+                                        <h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
+                                        <h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
+                                        <h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
                                     </div>
                                     <div className="event-info">
+                                      <a
+                                        className="event-link"
+                                        href={event.link}
+                                        target="_blank"
+                                        onClick={that.linkToEventOrScroll}
+                                        >
                                         <h3 className="event-title">{event.title}</h3>
+                                      </a>
                                     </div>
                                 </li>
                             })}
@@ -67,12 +248,18 @@ HomeEvents = React.createClass({
                   <h3 className="symposium-title">Symposium: 3-5 November 2016</h3>
                   <p>
                     Major support for the Beyond Words symposium has been provided by
-                    The Medieval Studies Committee of Harvard University
-                    Boston College, Institute for Liberal Arts
-                    With additional support from:
-                    Christie’s
-                    International Center of Medieval Art
+                    The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's and the International Center of Medieval Art.
                   </p>
+
+                  <a
+										className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+										aria-label="Learn More"
+										onClick={this.openRegistrationModal}
+										>
+                    <span>Register Now</span>
+                    <div className="md-ripple-container"></div>
+
+                  </a>
 
                   <Tabs
                     className="program-tabs"
@@ -144,8 +331,8 @@ HomeEvents = React.createClass({
                         This paper focusses on Renaissance Italian illuminated manuscripts made as luxury goods to be shown, or given as gifts by authors or princes.  In the first case authors dedicated their works to powerful rulers to gain their protection; in the second case princes used illuminated manuscripts to strengthen their alliances. The choice of the texts and their illustrations was strictly related with the cultural context of the court and the tastes of the prince. This paper consider as a case study Ferrara in the XV century analyzing the manuscripts Houghton Library MSS  Typ 226 and Typ 227 in the wider context of the monumental arts.
                       </p>
                       <h5>
-                        Francesca Manzari ("Sapienza" Università di Roma), “The Patronage and Artists of the Calderini Pontifical (Houghton Library MS Typ 1): The Revival of Manuscript Illumination in Rome during the Schism and the Flowering of Illuminators in Florence during the Council”
-
+                        Francesca Manzari ("Sapienza" Università di Roma),
+												“Patronage and Artists in the Calderini Pontifical (Houghton Library, MS Typ.1): The Revival of Illumination in Rome during the Schism and its Flowering in Florence during the Council”
                       </h5>
                       <p>
                         The creation of the Calderini Pontifical's spectacular illustrative programme has only recently been connected with a long-forgotten phase of illumination produced in Rome during the Great Western Schism. This paper will examine the artists working in the manuscript's different campaigns of decoration and it will provide a context for its patronage and original destination. The Pontifical's complex provenance history will be discussed in the perspective of the practices in collecting Italian illumination documented over the centuries.
@@ -221,12 +408,104 @@ HomeEvents = React.createClass({
                       </p>
                     </Tab>
                   </Tabs>
-                  <a className="btn btn-large md-button registration-button md-ink-ripple paper-shadow" href="#" aria-label="Learn More">
-                    <span>Registration (Coming Soon)</span>
-                    <div className="md-ripple-container"></div>
-
-                  </a>
                 </section>
+
+								<Dialog
+									className="dialog-modal"
+										title="Register for Beyond Words"
+										actions={actions}
+										modal={true}
+										open={this.state.registrationModalOpen}
+									>
+
+									<p>
+										While the Symposium is free of charge, pre-registration is required.
+									</p>
+									<p>
+										Please also indicate which day(s) you will be attending.
+									</p>
+									<form id="registrationForm" >
+
+									<TextField
+										name="first_name"
+										required={true}
+										className="text-field name-field"
+										floatingLabelText="First name"
+										errorText={errorText}
+									/>
+									<TextField
+										name="middle_name"
+										className="text-field name-field"
+											floatingLabelText="Middle name"
+
+										/>
+									<TextField
+										name="last_name"
+										required={true}
+										className="text-field name-field"
+											floatingLabelText="Last name"
+										errorText={errorText}
+										/><br /><br />
+									<TextField
+										name="affiliation"
+										className="text-field"
+											floatingLabelText="Affiliation"
+										errorText={errorText}
+										/>
+									<TextField
+										name="email"
+										required={true}
+										errorText={errorText}
+										className="text-field"
+											type="email"
+											floatingLabelText="Email address"
+										errorText={errorText}
+										/><br /><br />
+
+									<p>
+										Days attending:
+									</p>
+									<br/>
+
+									<Checkbox
+										name="nov_8"
+										className="checkbox-field"
+							      label="Thurs., Nov. 8 (McMullen Museum, Boston College)"
+										onCheck={this.handleCheckBoxChange.bind(null, "nov_8")}
+							      style={styles.checkbox}
+							    />
+									<Checkbox
+										name="nov_9"
+											className="checkbox-field"
+								      label="Fri., Nov. 9 (Isabella Stewart Gardner Museum)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_9")}
+								      style={styles.checkbox}
+								    />
+									<Checkbox
+										name="nov_10"
+											className="checkbox-field"
+								      label="Sat., Nov. 10 (Houghton Library, Harvard University)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_10")}
+								      style={styles.checkbox}
+								    />
+
+									</form>
+								</Dialog>
+
+								<Dialog
+									className="dialog-modal"
+										title="Registration successful"
+										actions={successActions}
+										modal={true}
+										open={this.state.successModalOpen}
+									>
+
+									<p>
+										Thank you for registering for the Beyond Words exhibition.
+									</p>
+
+								</Dialog>
+
             </div>
         )
     }

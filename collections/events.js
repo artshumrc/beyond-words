@@ -3,7 +3,10 @@ this.Events = new Meteor.Collection('events');
 Schemas.Events = new SimpleSchema({
   title: {
     type: String,
-    max: 60
+  },
+  link: {
+    type: String,
+    optional: true,
   },
   date: {
     type: Date

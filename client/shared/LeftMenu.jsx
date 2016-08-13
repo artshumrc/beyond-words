@@ -17,13 +17,6 @@ LeftMenu = React.createClass({
         return {muiTheme: getMuiTheme(baseTheme)};
     },
 
-    scrollToAbout(e){
-        $("html, body").animate({scrollTop: $('#about').height() - 100}, 300);
-
-        this.props.closeLeftMenu();
-        e.preventDefault();
-    },
-
     render(){
         var is_logged_in = Meteor.userId() ? Meteor.userId() : false;
         return (
@@ -65,6 +58,12 @@ LeftMenu = React.createClass({
                      <Divider />*/}
 
                     <MenuItem
+                        href="#plan-your-trip"
+                        primaryText="PLAN YOUR TRIP"
+                        onTouchTap={this.props.closeLeftMenu}
+                        onClick={this.props.closeLeftMenu}
+                    />
+                    <MenuItem
                         href="#events"
                         primaryText="EVENTS"
                         onTouchTap={this.props.closeLeftMenu}
@@ -79,6 +78,12 @@ LeftMenu = React.createClass({
                     <MenuItem
                           href="#catalog"
                           primaryText="CATALOG"
+                          onTouchTap={this.props.closeLeftMenu}
+                          onClick={this.props.closeLeftMenu}
+                      />
+                    <MenuItem
+                          href="#lenders"
+                          primaryText="LENDERS"
                           onTouchTap={this.props.closeLeftMenu}
                           onClick={this.props.closeLeftMenu}
                       />

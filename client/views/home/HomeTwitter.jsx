@@ -17,8 +17,8 @@ HomeTwitter = React.createClass({
         var handle = Meteor.subscribe('tweets');
         if (handle.ready()) {
             // console.log(tweets);
-            TweetCollection = new Mongo.Collection("tweetCollection");
-            tweets = TweetCollection.find({}).fetch();
+            //TweetCollection = new Mongo.Collection("tweetCollection");
+            tweets = TweetCollection.find({}, {limit: 6}).fetch();
         }
         return {
             tweets: tweets,
@@ -51,7 +51,7 @@ HomeTwitter = React.createClass({
                             {this.data.tweets.map(function (tweet, index) {
                                 return <div
                                   key={index}
-                                  className="bw-tweet-wrapper col-sm-4"
+                                  className="bw-tweet-wrapper wow fadeIn"
                                   >
                                     <Card>
                                         <CardText

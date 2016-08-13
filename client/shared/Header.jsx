@@ -43,6 +43,11 @@ Header = React.createClass({
 
     e.preventDefault();
   },
+  scrollToPlanYourTrip(e){
+    $("html, body").animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
+
+    e.preventDefault();
+  },
 
   render(){
 
@@ -84,14 +89,12 @@ Header = React.createClass({
 
               <FlatButton
                 className="logo logo-light"
-                linkButton={true}
                 style={styles.flatButton}
                 href="/"
                 icon={<img className="logo-image" src="/images/logo-white.png" />}
                 />
               <FlatButton
                 className="logo logo-dark"
-                linkButton={true}
                 style={styles.flatButton}
                 href="/"
                 icon={<img className="logo-image" src="/images/logo-gold.png" />}
@@ -107,7 +110,15 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
+                        label="PLAN YOUR TRIP"
+                        href="#plan-your-trip"
+                        onClick={this.scrollToPlanYourTrip}
+                        onTouchTap={this.scrollToPlanYourTrip}
+                        />
+                    </li>
+        						<li>
+                      <FlatButton
+                        style={styles.flatButton}
                         label="EVENTS"
                         href="#events"
                         onClick={this.scrollToEvents}
@@ -117,7 +128,6 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
                         label="SYMPOSIUM"
                         href="#symposium"
                         onClick={this.scrollToSymposium}
@@ -127,7 +137,6 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
                         label="CATALOG"
                         href="#catalog"
                         onClick={this.scrollToCatalog}
@@ -141,7 +150,6 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
                         label="HOUGHTON"
                         target="_blank"
                         href="//hcl.harvard.edu/libraries/houghton/"
@@ -150,7 +158,6 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
                         label="MCMULLEN"
                         target="_blank"
                         href="//www.bc.edu/sites/artmuseum/"
@@ -159,7 +166,6 @@ Header = React.createClass({
         						<li>
                       <FlatButton
                         style={styles.flatButton}
-                        linkButton={true}
                         target="_blank"
                         label="GARDNER"
                         href="//www.gardnermuseum.org/collection/exhibitions"
@@ -174,7 +180,6 @@ Header = React.createClass({
                     <li>
                       <FlatButton
                         style={styles.flatIconButton}
-                        linkButton={true}
                         href="https://twitter.com/@BeyondWords2016"
                         icon={<FontIcon className="mdi mdi-twitter" />}
                         target="_blank"

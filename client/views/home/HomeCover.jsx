@@ -24,9 +24,25 @@ HomeCover = React.createClass({
 
                   <div className="background-image-holder blur flexslider">
                       <ul className="slides">
-                          <li>
+                          <li
+                            className="beyond-words-cover-slide">
                               <div className="image-bg-slide"
                                    style={{backgroundImage: "url('/images/banner.jpg')"}}></div>
+                               <div className="background-screen bw"></div>
+                               <div className="bw-exhibit">
+                                 <img className="cover-logo" src="/images/beyond-words-logo-light.png" />
+                                  <hr></hr>
+                                  <a className="btn btn-large md-button learn-more-button md-ink-ripple paper-shadow md-primary" href="#overview" aria-label="Learn More">
+                                    <span>Learn More</span>
+                                    <div className="md-ripple-container"></div>
+
+                                  </a>
+
+                              </div>
+                          </li>
+                          <li>
+                              <div className="image-bg-slide"
+                                   style={{backgroundImage: "url('/images/houghton_banner.jpg')"}}></div>
                                <div className="background-screen bw"></div>
                                <div className="bw-exhibit">
                                   <h3>
@@ -108,6 +124,14 @@ HomeCover = React.createClass({
                       <a href="#" onClick={flexNext} className="flex-next"><i
                           className="mdi mdi-chevron-right"></i></a>
                   </div>
+
+                  <div className="scroll-down-helper">
+                    <p>
+                      <em>Scroll down for more information.</em>
+                    </p>
+                    <i className="mdi mdi-chevron-down"></i>
+                  </div>
+
                 </section>
             </div>
         )
