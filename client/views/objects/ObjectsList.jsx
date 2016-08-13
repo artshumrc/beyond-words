@@ -130,7 +130,11 @@ ObjectsList = React.createClass({
                 </div >
 
                 <div className="loading-collections loading-visible">
-                    <div className="well-spinner"></div>
+									<div className="dot-spinner">
+										  <div className="bounce1"></div>
+										  <div className="bounce2"></div>
+										  <div className="bounce3"></div>
+										</div>
                 </div>
             </div>
         );

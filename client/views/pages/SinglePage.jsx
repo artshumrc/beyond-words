@@ -74,10 +74,11 @@ SinglePage = React.createClass({
 
                     <section className="page-head fullscreen image-bg bg-dark">
                         <div className="background-image-holder less-blur blur">
-                            <img className="background-image" alt='image' src={headerImageSource}/>
+                            {/*<img className="background-image" alt='image' src={headerImageSource}/>*/}
+                            <img className="background-image" alt='image' src="/images/manuscript_header.jpg"/>
                         </div>
 
-                        <div className="background-screen cyan">
+                        <div className="background-screen primary">
                         </div>
 
                         <div className="container v-align-transform">

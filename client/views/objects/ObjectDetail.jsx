@@ -22,10 +22,6 @@ ObjectDetail = React.createClass({
         };
     },
 
-    // propTypes: {
-    //   object : React.PropTypes.object.isRequired
-    // },
-
     render() {
         let object = this.data.object;
         // console.log(this);
@@ -38,72 +34,109 @@ ObjectDetail = React.createClass({
 
         return (
             <div>
-                <section className="page-head image-bg bg-dark">
+								{object.miradorLink ?
+									<div className="object-detail-mirador">
+										<p className="mirador-help-text">
+											Mirador viewer has not loaded due to the iif.lib.harvard.edu server settings.
+										</p>
+										<iframe
+											className="mirdador-viewer"
+											src={object.miradorLink}
+											/>
+									</div>
+								:
+									<section className="page-head fullscreen image-bg bg-dark object-detail-page-head">
+										<div className="background-image-holder less-blur blur">
+												<img className="background-image" alt='image' src="/images/manuscript_header.jpg"/>
+										</div>
 
-                    <div className="background-image-holder less-blur blur">
-                        <img src={headerImageUrl} alt="image"/>
-                    </div>
-                    <div className="background-screen">
-                    </div>
+										<div className="background-screen primary">
+										</div>
 
-                    <div className="container v-align-transform header-container">
-                        <div className="row">
-
-                            <div className="col-sm-12 left">
-
-                                <a href="/">
-                                    <h2 className="card-title object-title">{object.title}</h2>
-                                </a>
-
-
-                            </div>
-                            <div className="col-sm-12 right text-right">
-
-                                <a href="#" className="comments-action md-button md-ink-ripple">
-                                    <i className="mdi mdi-comment-outline"></i>227
-                                    <div className="md-ripple-container"></div>
-                                </a>
-
-                                <a href="#" className="favorite-action md-button md-ink-ripple">
-                                    <i className="mdi mdi-star-outline"></i>32
-                                    <div className="md-ripple-container"></div>
-                                </a>
-
-                                <a href="#" className="export-action md-button md-ink-ripple">
-                                    Export
-                                    <i className="mdi mdi-export"></i>
-                                    <div className="md-ripple-container"></div>
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
+									</section>
+								}
 
                 <section className="object-details">
+									<div className="object-details-inner">
 
-                    <div className="container ">
-                        <div className="row">
-                            <p>object description lorem ipsum Sed ut perspiciatis unde omnis iste natus error sit
-                                voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                                magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                                dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
-                                eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-                                enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-                                nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-                                ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-                                fugiat quo voluptas nulla pariatur?
-                            </p>
+										<div className="object-detail-thumbnail-wrap">
+											<img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+
+										</div>
+
+										<div className="object-detail-text-wrap">
+
+											<div className="object-detail-header">
+			                  <h2 className="card-title object-title">{object.title}</h2>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Catalog No.</label>
+													<span>{object.catalog_n}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Author</label>
+													<span>{object.author}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Illuminator</label>
+													<span>{object.illuminator}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Institution</label>
+													<span>{object.institution}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Shelfmark</label>
+													<span>{object.shelfmark}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Former Shelfmark</label>
+													<span>{object.former_shelfmark}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Place</label>
+													<span>{object.place}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Date</label>
+													<span>{object.dateBegun} - {object.dateEnded}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>External Link</label>
+													<span>
+														<a href={object.externalUrl}>
+														{object.externalUrl}
+													</a>
+
+														</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Description</label>
+													<span>{object.description}</span>
+											</div>
+
+											<div className="object-detail-meta">
+													<label>Image Notes</label>
+													<span>{object.imageNotes}</span>
+											</div>
 
 
-                        </div>
 
-                    </div>
+										</div>
+
+
+
+                  </div>
 
                 </section>
 

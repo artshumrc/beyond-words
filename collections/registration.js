@@ -22,15 +22,15 @@ Schemas.Registration = new SimpleSchema({
     optional: true,
   },
   nov_8: {
-    type: String,
+    type: Boolean,
     optional: true,
   },
   nov_9: {
-    type: String,
+    type: Boolean,
     optional: true,
   },
   nov_10: {
-    type: String,
+    type: Boolean,
     optional: true,
   },
 

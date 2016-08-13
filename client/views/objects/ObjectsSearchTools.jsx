@@ -5,6 +5,7 @@ import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 import {debounce} from 'throttle-debounce';
 
 
@@ -38,32 +39,27 @@ ObjectsSearchTools = React.createClass({
   getMeteorData(){
     var query = {};
 
-		var authors = _.uniq(Objects.find({}, {
+		var authors = _.uniq(Objects.find({author: {$exists:true}}, {
 											    sort: {author: 1}, fields: {author: true}
 											}).fetch().map(function(x) {
 											    return x.author;
 											}), true),
-				/*scribes = _.uniq(Objects.find({}, {
+			  scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
 											    sort: {scribe : 1}, fields: {scribe: true}
 											}).fetch().map(function(x) {
-												if("scribe" in x && typeof x.scribe !== "undefined"){
-													console.log(x);
 											    return x.scribe;
-												}else {
-													return null;
-												}
-											}), true),*/
-				illuminators = _.uniq(Objects.find({}, {
+											}), true),
+				illuminators = _.uniq(Objects.find({illuminator: {$exists: true}}, {
 											    sort: {illuminator: 1}, fields: {illuminator: true}
 											}).fetch().map(function(x) {
 											    return x.illuminator;
 											}), true),
-				institutions = _.uniq(Objects.find({}, {
-											    sort: {institution: 1}, fields: {institution: true}
+				/*institutions = _.uniq(Objects.find({institutions: {exists: true}}, {
+											    sort: {institutions: 1}, fields: {institution: true}
 											}).fetch().map(function(x) {
-											    return x.institution;
-											}), true),
-				places = _.uniq(Objects.find({}, {
+											    return x.institutions;
+											}), true),*/
+				places = _.uniq(Objects.find({ place: {exists: true}}, {
 											    sort: {place: 1}, fields: {place: true}
 											}).fetch().map(function(x) {
 											    return x.place;
@@ -72,9 +68,9 @@ ObjectsSearchTools = React.createClass({
 
 		return {
 			authors: authors,
-			scribes: [], // scribes,
+			scribes: scribes,
 			illuminators: illuminators,
-			institutions: institutions,
+			institutions: [],//institutions,
 			places: places
 		}
 	},
@@ -136,7 +132,7 @@ ObjectsSearchTools = React.createClass({
                       />
         					</div>
 
-        					{/*<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "scribes" ? " open" : "")}>
+        					<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "scribes" ? " open" : "")}>
         						<FlatButton
                       className="search-tool search-type-scribes dropdown-toggle"
                       label="Scribes"
@@ -161,7 +157,7 @@ ObjectsSearchTools = React.createClass({
         						</ul>
 
 
-        					</div>*/}
+        					</div>
 
         					<div className={"dropdown search-dropdown search-dropdown-authors" + (self.state.searchDropdownOpen === "authors" ? " open" : "")}>
         						<FlatButton

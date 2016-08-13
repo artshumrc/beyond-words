@@ -15,8 +15,12 @@ HomeEvents = React.createClass({
 
 	  getInitialState(){
 	    return {
-				registrationModalOpen: true,
-				errorText: ""
+				registrationModalOpen: false,
+				successModalOpen: false,
+				errorText: "",
+				regFormNov8: false,
+				regFormNov9: false,
+				regFormNov10: false
 			};
 	  },
 
@@ -70,13 +74,58 @@ HomeEvents = React.createClass({
 
 		},
 
+		closeSuccessModal(){
+			this.setState({
+				successModalOpen: false
+			});
+
+
+		},
+
+		handleCheckBoxChange(checkboxDay){
+			if(checkboxDay === "nov_8"){
+					this.setState({
+						regFormNov8 : !this.state.regFormNov8
+					})
+
+			}else if(checkboxDay === "nov_9"){
+					this.setState({
+						regFormNov9 : !this.state.regFormNov9
+					})
+
+			}else if(checkboxDay === "nov_10"){
+					this.setState({
+						regFormNov10 : !this.state.regFormNov10
+					})
+
+			}else {
+				console.log("handleChange error");
+			}
+		},
+
 		submitRegistrationModal(){
+			var self = this;
 
 			// get all the inputs into an array.
 			var $inputs = $('#registrationForm :input');
 			var values = {};
 			$inputs.each(function() {
+				if(["nov_8", "nov_9", "nov_10"].indexOf(this.name) >=0){
+					if(this.name === "nov_8"){
+						values[this.name] = self.state.regFormNov8;
+
+					}else if(this.name === "nov_9"){
+						values[this.name] = self.state.regFormNov9;
+
+					}else if(this.name === "nov_10"){
+						values[this.name] = self.state.regFormNov10;
+
+					}
+
+				}else {
 					values[this.name] = $(this).val();
+
+				}
 			});
 
 
@@ -95,7 +144,8 @@ HomeEvents = React.createClass({
 				});
 
 				this.setState({
-					registrationModalOpen: false
+					registrationModalOpen: false,
+					successModalOpen: true
 				});
 
 			}else {
@@ -148,6 +198,14 @@ HomeEvents = React.createClass({
 												/>,
 											];
 
+			const successActions = [
+												<FlatButton
+													label="Close"
+													primary={true}
+													onClick={this.closeSuccessModal}
+												/>,
+											];
+
 			var errorText = this.state.errorText;
 
         return (
@@ -192,6 +250,16 @@ HomeEvents = React.createClass({
                     Major support for the Beyond Words symposium has been provided by
                     The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's and the International Center of Medieval Art.
                   </p>
+
+                  <a
+										className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+										aria-label="Learn More"
+										onClick={this.openRegistrationModal}
+										>
+                    <span>Register Now</span>
+                    <div className="md-ripple-container"></div>
+
+                  </a>
 
                   <Tabs
                     className="program-tabs"
@@ -340,15 +408,6 @@ HomeEvents = React.createClass({
                       </p>
                     </Tab>
                   </Tabs>
-                  <a
-										className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
-										aria-label="Learn More"
-										onClick={this.openRegistrationModal}
-										>
-                    <span>Register Now</span>
-                    <div className="md-ripple-container"></div>
-
-                  </a>
                 </section>
 
 								<Dialog
@@ -412,23 +471,41 @@ HomeEvents = React.createClass({
 										name="nov_8"
 										className="checkbox-field"
 							      label="Thurs., Nov. 8 (McMullen Museum, Boston College)"
+										onCheck={this.handleCheckBoxChange.bind(null, "nov_8")}
 							      style={styles.checkbox}
 							    />
 									<Checkbox
 										name="nov_9"
 											className="checkbox-field"
 								      label="Fri., Nov. 9 (Isabella Stewart Gardner Museum)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_9")}
 								      style={styles.checkbox}
 								    />
 									<Checkbox
 										name="nov_10"
 											className="checkbox-field"
 								      label="Sat., Nov. 10 (Houghton Library, Harvard University)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_10")}
 								      style={styles.checkbox}
 								    />
 
 									</form>
 								</Dialog>
+
+								<Dialog
+									className="dialog-modal"
+										title="Registration successful"
+										actions={successActions}
+										modal={true}
+										open={this.state.successModalOpen}
+									>
+
+									<p>
+										Thank you for registering for the Beyond Words exhibition.
+									</p>
+
+								</Dialog>
+
             </div>
         )
     }

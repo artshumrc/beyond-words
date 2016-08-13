@@ -367,6 +367,40 @@
 	width:10%;
 	max-width:300px;
 	min-width:200px;
+	border-right:none;
+
+	.irs {
+		width:100%;
+	}
+
+	label {
+		font-family:@font-label;
+		font-size:14px;
+		color:@light;
+		display:inline-block;
+		padding:14px 5px 5px 0;
+
+	}
+
+	.irs-from, .irs-to, .irs-single {
+		background:@md-primary-dark;
+		color:@light;
+	}
+
+	.irs-from:after, .irs-to:after, .irs-single:after {
+		border-top-color:@md-primary-dark;
+
+	}
+
+	input {
+		width:69px;
+		margin:3px 10px 0 0;
+		font-family:@font-light;
+		font-size:14px;
+
+	}
+
+
 
   &:hover {
     background:transparent;

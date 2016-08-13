@@ -9,9 +9,11 @@
 .objects-container {
 	margin:0 auto;
 	padding:50px 0;
-  opacity:0;
+	width:95%;
+	max-width:1400px;
+  //opacity:0;
   &.component-mounted{
-    opacity:1;
+    //opacity:1;
 
   }
 }
@@ -19,6 +21,7 @@
 .loading-collections {
   margin:50px auto;
   display:none;
+
   &.loading-visible {
     display:block;
   }
@@ -26,74 +29,54 @@
 }
 
 .object-teaser {
-  display:block;
-  width:390px;
+  display:inline-block;
+  width:30%;
+	max-width:400px;
+	min-width:200px;
   vertical-align: top;
   margin:10px;
   background:#fff;
-  &:hover {
-    .card-image img.cover-image {
-      opacity:0;
-    }
-  }
+	box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.24);
+	height:430px;
 
-  .card-image {
+	&:hover {
+		box-shadow: -2px 0 2px 0 rgba(0,0,0,0.16) , 2px 0 2px 0 rgba(0,0,0,0.16) , 0 2px 2px 0 rgba(0,0,0,0.23);
+	}
+
+  .object-thumbnail-wrap {
     width:100%;
     position:relative;
+    height:220px;
+		overflow:hidden;
 
-    img.cover-image {
+    img {
       width:100%;
-      height:auto;
       z-index:2;
       opacity:1;
       transition: opacity 100ms ease-out;
       position:relative;
     }
-    img.cover-image-back{
-      z-index:1;
-      position:absolute;
-      top:0;
-      left:0;
-    }
+
   }
 
-  h2.card-title {
+	.object-text-wrap {
+		padding:15px 30px;
+
+	}
+
+  h3 {
     margin:0;
     padding: 0;
     font-family:@font-title;
     font-size:28px;
-		text-transform: capitalize;
   }
 
-  h3.object-author {
-    margin:0;
-    padding:0;
-    text-transform:uppercase;
-    font-size:18px;
-    color:@text-secondary;
-
-  }
-
-  hr {
-    padding:0;
-    margin:15px 0;
-    width:66%;
-    height:1px;
-    display:block;
-    background:@divider;
-    border:none;
-
-  }
-
-  label {
-    display:block;
-    width:100%;
-    clear:both;
-    font-size:12px;
-    text-transform: uppercase;
-    color:@text-secondary;
-    margin:2px;
-  }
+	.object-teaser-subtitle {
+		display:block;
+		padding:5px 0;
+		font-size:14px;
+		font-family:@font-label;
+	}
 
   p {
     padding:0 0 8px;
@@ -102,6 +85,7 @@
     line-height:1.2em;
     color:@text-secondary;
 		text-transform: capitalize;
+		font-family:@font-reading;
 
   }
 
@@ -156,52 +140,79 @@
 
 }
 
-.single-object-detail {
-	max-width:1200px;
-	margin:0 auto;
-	padding:30px 0 60px;
-	width:95%;
+.object-detail-page-head {
+	height:90px;
+}
 
-  .detail-meta-objects {
+.object-details {
+	width:100%;
+	background:#f6f6f6;
+
+	.object-details-inner {
+		max-width:1200px;
+		margin:0 auto;
+		width:95%;
+
+	}
+
+	.object-detail-thumbnail-wrap, .object-detail-text-wrap {
 		display:inline-block;
-		width:52%;
 		vertical-align: top;
-		margin:0 2% 0 0;
 
-    .object-detail-container {
-			padding:10px 0;
-			display:block;
+	}
 
-      .single-object-label {
-        display:inline;
-        font-size:18px;
-				font-weight:bold;
-				text-transform: uppercase;
+	.object-detail-thumbnail-wrap {
+		width:40%;
+		padding-right:5%;
 
-      }
 
-      .single-object-value {
-        display:inline;
-        font-size: 20px;
-        margin-left:10px;
-				vertical-align: top;
+	}
 
-      }
+	.object-detail-text-wrap {
+		width:50%;
+	}
 
-    }
+	.object-detail-meta {
 
-  }
+		margin:8px 0;
 
-	.detail-map {
-		display:inline-block;
-		width:43%;
-		vertical-align: top;
-		margin:20px 0;
+		label {
+			font-family:@font-label;
+			font-size:15px;
+			padding-right:15px;
 
-		.map-container {
-			width:100%;
-			height:400px;
 		}
+		span {
+			font-family:@font-reading;
+			font-size:17px;
+
+		}
+	}
+
+
+}
+.object-detail-mirador{
+	width:100%;
+	height:500px;
+	background:#333;
+
+	.mirador-help-text {
+		width:100%;
+		font-size:22px;
+		text-align:center;
+		margin:0px auto;
+		padding:200px 0;
+		color:#eee;
+		font-style:italic;
+
+
+
+	}
+
+	.mirador-viewer {
+		width:100%;
+		height:0;
+
 	}
 
 }
