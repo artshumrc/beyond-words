@@ -31,8 +31,8 @@ ObjectTeaser = React.createClass({
 					 <div className="object-thumbnail-wrap">
 						 {object.thumbnail ?
 							 <img className="object-thumbnail" src={object.thumbnail} />
-						 : 
-							 <img className="object-thumbnail" src="/images/default_object.jpg" />
+						 :
+							 <img className="object-thumbnail" src="/images/default_image.jpg" />
 						 }
 					 </div>
 				 </a>
