@@ -34,9 +34,23 @@ ObjectDetail = React.createClass({
 
         return (
             <div>
-								{object.miradorLink ?
-									<div className="object-detail-mirador">
-										<Viewer />
+								{(object.miradorLink || object.hasImageViewer) ?
+									<div>
+										{object.miradorLink ?
+											<div className="object-detail-viewer object-detail--mirador">
+												<p className="mirador-help-text">
+													Mirador viewer has not loaded due to the iif.lib.harvard.edu server settings.
+												</p>
+												<iframe
+													className="mirdador-viewer"
+													src={object.miradorLink}
+													/>
+											</div>
+										:
+											<div className="object-detail-viewer object-detail--osd-viewer">
+												<Viewer />
+											</div>
+										}
 									</div>
 								:
 									<section className="page-head fullscreen image-bg bg-dark object-detail-page-head">

@@ -86,6 +86,10 @@ Schemas.Objects = new SimpleSchema({
         type: String,
         optional: true
     },
+    hasImageViewer: {
+        type: Boolean,
+        optional: true
+    },
     externalUrl: {
         type: String,
         optional: true,
