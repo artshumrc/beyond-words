@@ -2,9 +2,10 @@ Thumbnails = new Mongo.Collection('thumbnails');
 
 Images = new Mongo.Collection('images');
 
-ThumbnailStore = new UploadFS.store.GridFS({
+ThumbnailStore = new UploadFS.store.Local({
     collection: Thumbnails,
     name: 'thumbnails',
+    path: './public/uploads/thumbnails',
     // permissions: defaultPermissions,
     filter: new UploadFS.Filter({
         extensions: ['gif', 'jpg', 'jpeg', 'png']
@@ -22,9 +23,9 @@ ThumbnailStore = new UploadFS.store.GridFS({
             const gm = Npm.require('gm');
             if (gm) {
                 gm(from)
-                    .resize(150, 150)
+                    .resize(500, 500)
                     .gravity('Center')
-                    .extent(150, 150)
+                    .extent(500, 500)
                     .quality(75)
                     .stream().pipe(to);
             } else {
@@ -36,9 +37,9 @@ ThumbnailStore = new UploadFS.store.GridFS({
     }
 });
 
-ImageStore = new UploadFS.store.GridFS({
+ImageStore = new UploadFS.store.Local({
     collection: Images,
     name: 'images',
+    path: './public/uploads/images',
     copyTo: [ThumbnailStore],
-    chunkSize: 1024 * 255
 });

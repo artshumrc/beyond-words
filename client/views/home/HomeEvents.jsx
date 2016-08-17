@@ -20,7 +20,8 @@ HomeEvents = React.createClass({
 				errorText: "",
 				regFormNov8: false,
 				regFormNov9: false,
-				regFormNov10: false
+				regFormNov10: false,
+				hasRegistered: false,
 			};
 	  },
 
@@ -128,12 +129,47 @@ HomeEvents = React.createClass({
 				}
 			});
 
+			if(
+					values.first_name.length === 0
+				|| values.last_name.length === 0
+				|| values.email.length === 0
+			){
+				this.setState({
+					errorText: "This value is required"
+				});
+
+			}else {
+				this.setState({
+					errorText: ""
+				});
+
+			}
+
+			if(
+						values.nov_8 === false
+					&& values.nov_9 === false
+					&& values.nov_10 === false
+			){
+				this.setState({
+					checkboxErrorText: "Please select at least one day to attend"
+				});
+
+			}else {
+				this.setState({
+					checkboxErrorText: ""
+				});
+
+			}
 
 			if(
 					values.first_name.length > 0
 				&& values.last_name.length > 0
-				&& values.affiliation.length > 0
 				&& values.email.length >0
+				&& (
+						values.nov_8 === true
+					|| values.nov_9 === true
+					|| values.nov_10 === true
+				)
 			){
 
 				// on the client
@@ -145,12 +181,10 @@ HomeEvents = React.createClass({
 
 				this.setState({
 					registrationModalOpen: false,
-					successModalOpen: true
-				});
-
-			}else {
-				this.setState({
-					errorText: "This value is required"
+					successModalOpen: true,
+					errorText: "",
+					checkboxErrorText: "",
+					hasRegistered: true,
 				});
 
 			}
@@ -207,6 +241,7 @@ HomeEvents = React.createClass({
 											];
 
 			var errorText = this.state.errorText;
+			var checkboxErrorText = this.state.checkboxErrorText;
 
         return (
             <div>
@@ -251,15 +286,24 @@ HomeEvents = React.createClass({
                     The Medieval Studies Committee of Harvard University and the Boston College Institute for Liberal Arts, with additional support from Christie's and the International Center of Medieval Art.
                   </p>
 
-                  <a
-										className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
-										aria-label="Learn More"
-										onClick={this.openRegistrationModal}
-										>
-                    <span>Register Now</span>
-                    <div className="md-ripple-container"></div>
+									{!this.state.hasRegistered ?
+		                <a
+											className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+											onClick={this.openRegistrationModal}
+											>
+		                  <span>Register Now</span>
+		                  <div className="md-ripple-container"></div>
 
-                  </a>
+		                </a>
+									:
+		                <a
+											className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+											>
+		                  <span>Thank you for registering</span>
+		                  <div className="md-ripple-container"></div>
+
+		                </a>
+									}
 
                   <Tabs
                     className="program-tabs"
@@ -422,7 +466,7 @@ HomeEvents = React.createClass({
 										While the Symposium is free of charge, pre-registration is required.
 									</p>
 									<p>
-										Please also indicate which day(s) you will be attending.
+										Please also indicate which day(s) you will be attending. * denotes a required field.
 									</p>
 									<form id="registrationForm" >
 
@@ -430,7 +474,7 @@ HomeEvents = React.createClass({
 										name="first_name"
 										required={true}
 										className="text-field name-field"
-										floatingLabelText="First name"
+										floatingLabelText="First name*"
 										errorText={errorText}
 									/>
 									<TextField
@@ -443,30 +487,29 @@ HomeEvents = React.createClass({
 										name="last_name"
 										required={true}
 										className="text-field name-field"
-											floatingLabelText="Last name"
+											floatingLabelText="Last name*"
 										errorText={errorText}
 										/><br /><br />
 									<TextField
 										name="affiliation"
 										className="text-field"
 											floatingLabelText="Affiliation"
-										errorText={errorText}
 										/>
 									<TextField
 										name="email"
 										required={true}
 										errorText={errorText}
 										className="text-field"
-											type="email"
-											floatingLabelText="Email address"
+										type="email"
+										floatingLabelText="Email address*"
 										errorText={errorText}
 										/><br /><br />
 
 									<p>
-										Days attending:
+										Days attending*:
 									</p>
+									<span className="checkbox-label-error-text">{checkboxErrorText}</span>
 									<br/>
-
 									<Checkbox
 										name="nov_8"
 										className="checkbox-field"

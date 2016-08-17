@@ -31,6 +31,10 @@ ObjectDetail = React.createClass({
             imageId = object.images[Math.floor(Math.random() * object.images.length)];
         }
         var headerImageUrl = imageId? Images.findOne(imageId).url:'/images/bronze-characters.jpg';
+				var image = {};
+				if(this.data.images.length){
+					image = this.data.images[0];
+				}
 
         return (
             <div>
@@ -68,7 +72,11 @@ ObjectDetail = React.createClass({
 									<div className="object-details-inner">
 
 										<div className="object-detail-thumbnail-wrap">
-											<img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+											{("url" in image && image.url.length) ?
+												<img className="object-detail-thumbnail" src={image.url} />
+												:
+												<img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+											}
 
 										</div>
 
