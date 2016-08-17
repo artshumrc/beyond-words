@@ -24,13 +24,14 @@ ObjectTeaser = React.createClass({
   render() {
     let object = this.props.object;
     let object_url = FlowRouter.path('ObjectDetail', {slug: object.slug});
+		let thumbnail = "";
 
      return (
        <div className="object-teaser">
 				 <a href={object_url}>
 					 <div className="object-thumbnail-wrap">
-						 {object.thumbnail ?
-							 <img className="object-thumbnail" src={object.thumbnail} />
+						 {thumbnail.length ?
+							 <img className="object-thumbnail" src={thumbnail} />
 						 :
 							 <img className="object-thumbnail" src="/images/default_image.jpg" />
 						 }
@@ -40,9 +41,9 @@ ObjectTeaser = React.createClass({
 					 <a href={object_url}>
 						 <h3>{object.title}</h3>
 					 </a>
-					 <span className="object-teaser-subtitle">{object.author} Dates-Dates</span>
+					 <span className="object-teaser-subtitle">{object.date}</span>
 					 <p>
-						 Example description quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites conveniat . . .
+						 {object.description}
 					 </p>
 				 </div>
         </div>

@@ -39,12 +39,7 @@ ObjectsSearchTools = React.createClass({
   getMeteorData(){
     var query = {};
 
-		var authors = _.uniq(Objects.find({author: {$exists:true}}, {
-											    sort: {author: 1}, fields: {author: true}
-											}).fetch().map(function(x) {
-											    return x.author;
-											}), true),
-			  scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
+		var scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
 											    sort: {scribe : 1}, fields: {scribe: true}
 											}).fetch().map(function(x) {
 											    return x.scribe;
@@ -54,11 +49,11 @@ ObjectsSearchTools = React.createClass({
 											}).fetch().map(function(x) {
 											    return x.illuminator;
 											}), true),
-				/*institutions = _.uniq(Objects.find({institutions: {exists: true}}, {
-											    sort: {institutions: 1}, fields: {institution: true}
+				institutions = _.uniq(Objects.find({institution: {exists: true}}, {
+											    sort: {institution: 1}, fields: {institution: true}
 											}).fetch().map(function(x) {
-											    return x.institutions;
-											}), true),*/
+											    return x.institution;
+											}), true),
 				places = _.uniq(Objects.find({ place: {exists: true}}, {
 											    sort: {place: 1}, fields: {place: true}
 											}).fetch().map(function(x) {
@@ -67,10 +62,9 @@ ObjectsSearchTools = React.createClass({
 
 
 		return {
-			authors: authors,
 			scribes: scribes,
 			illuminators: illuminators,
-			institutions: [],//institutions,
+			institutions: institutions,
 			places: places
 		}
 	},
@@ -151,33 +145,6 @@ ObjectsSearchTools = React.createClass({
 															label={scribe}
 															searchTermKey="scribes"
 															value={scribe}
-															/>
-												})}
-        							</div>
-        						</ul>
-
-
-        					</div>
-
-        					<div className={"dropdown search-dropdown search-dropdown-authors" + (self.state.searchDropdownOpen === "authors" ? " open" : "")}>
-        						<FlatButton
-                      className="search-tool search-type-authors dropdown-toggle"
-                      label="Authors"
-											labelPosition="before"
-                      icon={<FontIcon className="mdi mdi-chevron-down" />}
-                      onClick={this.toggleSearchDropdown.bind(null, "authors")}
-        						>
-        						</FlatButton>
-
-        						<ul className="dropdown-menu ">
-        							<div className="dropdown-menu-inner">
-												{self.data.authors.map(function(author, i){
-	                        return <SearchTermButton
-															key={i}
-															toggleSearchTerm={self.toggleSearchTerm}
-															label={author}
-															searchTermKey="authors"
-															value={author}
 															/>
 												})}
         							</div>

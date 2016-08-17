@@ -75,17 +75,12 @@ ObjectDetail = React.createClass({
 										<div className="object-detail-text-wrap">
 
 											<div className="object-detail-header">
-			                  <h2 className="card-title object-title">{object.title}</h2>
+			                  <h2 className="card-title object-title">{object.author_title}</h2>
 											</div>
 
 											<div className="object-detail-meta">
 													<label>Catalog No.</label>
 													<span>{object.catalog_n}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Author</label>
-													<span>{object.author}</span>
 											</div>
 
 											<div className="object-detail-meta">
@@ -115,7 +110,7 @@ ObjectDetail = React.createClass({
 
 											<div className="object-detail-meta">
 													<label>Date</label>
-													<span>{object.dateBegun} - {object.dateEnded}</span>
+													<span>{object.date}</span>
 											</div>
 
 											<div className="object-detail-meta">

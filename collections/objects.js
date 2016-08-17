@@ -4,9 +4,17 @@ Schemas.Objects = new SimpleSchema({
     catalog_n: {
         type: Number,
     },
+    author_title: {
+        type: String,
+        optional: true
+    },
     title: {
         type: String,
-        max: 60
+        optional: true
+    },
+    author: {
+        type: String,
+        optional: true
     },
 		slug: {
 			type: String,
@@ -43,9 +51,9 @@ Schemas.Objects = new SimpleSchema({
             thumbnails: 'thumbnails'
         }
     },
-    imageNotes: {
+    date: {
         type: String,
-        optional: true,
+        optional: true
     },
     dateBegun: {
         type: Date,
@@ -53,10 +61,6 @@ Schemas.Objects = new SimpleSchema({
     },
     dateEnded: {
         type: Date,
-        optional: true
-    },
-    author: {
-        type: String,
         optional: true
     },
     illuminator: {
@@ -72,11 +76,12 @@ Schemas.Objects = new SimpleSchema({
         optional: true
     },
     institution: {
-        type: Array,
+        type: String,
         optional: true
     },
-    'institution.$': {
-        type: String
+    collection: {
+        type: String,
+        optional: true
     },
     place: {
         type: String,
