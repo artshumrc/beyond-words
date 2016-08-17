@@ -15,6 +15,7 @@ Viewer = React.createClass({
     let query = {};
 
     return {
+      // Sample images to show in viewer
       slides: [
         '/images/demo_1.jpg',
         '/images/demo_2.jpg',
@@ -79,7 +80,7 @@ Viewer = React.createClass({
       centerMode: true,
       dots: true,
       infinite: false,
-      slidesToShow: 10,
+      slidesToShow: 3,
       slidesToScroll: 2,
       speed: 50,
       afterChange: function (currentSlide) {
