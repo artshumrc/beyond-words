@@ -121,7 +121,7 @@ ObjectDetail = React.createClass({
 											<div className="object-detail-meta">
 													<label>External Link</label>
 													<span>
-														<a href={object.externalUrl}>
+														<a href={object.externalUrl} target="_blank">
 														{object.externalUrl}
 													</a>
 
@@ -131,11 +131,6 @@ ObjectDetail = React.createClass({
 											<div className="object-detail-meta">
 													<label>Description</label>
 													<span>{object.description}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Image Notes</label>
-													<span>{object.imageNotes}</span>
 											</div>
 
 
