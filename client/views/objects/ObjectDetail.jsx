@@ -36,13 +36,7 @@ ObjectDetail = React.createClass({
             <div>
 								{object.miradorLink ?
 									<div className="object-detail-mirador">
-										<p className="mirador-help-text">
-											Mirador viewer has not loaded due to the iif.lib.harvard.edu server settings.
-										</p>
-										<iframe
-											className="mirdador-viewer"
-											src={object.miradorLink}
-											/>
+										<Viewer />
 									</div>
 								:
 									<section className="page-head fullscreen image-bg bg-dark object-detail-page-head">

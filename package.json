@@ -22,7 +22,7 @@
     "react-list": "^0.7.18",
     "react-masonry-component": "^4.2.1",
     "react-mounter": "^1.2.0",
-    "react-slick": "^0.12.2",
+    "react-slick": "^0.13.0",
     "react-tap-event-plugin": "^1.0.0",
     "slug": "^0.9.1",
     "throttle-debounce": "^1.0.1",
