@@ -59,18 +59,26 @@ Viewer = React.createClass({
 
   nextSlide(currentSlide) {
     console.log('after change', currentSlide);
-    if(currentSlide == this.data.slides.length-1) {
-      this.left_viewer.open({type: 'image', url:  this.data.slides[currentSlide]});
-      this.right_viewer.open({type: 'image', url:  null});
+    // check if currentSlide is valid
+    if(currentSlide < 0 || currentSlide >= this.data.slides.length) {
+      console.log("Invalid slide");
+      return;
     }
-    else if(currentSlide >= 0) {
+    if(currentSlide % 2 == 0) {
+      // left slide selected
       this.left_viewer.open({type: 'image', url:  this.data.slides[currentSlide]});
-      this.right_viewer.open({type: 'image', url:  this.data.slides[currentSlide+1]});
+      if(currentSlide == this.data.slides.length - 1) {
+        this.right_viewer.open({type: 'image', url:  null});
+      }
+      else {
+        this.right_viewer.open({type: 'image', url:  this.data.slides[currentSlide + 1]});
+      }
     }
     else {
-      console.log("Invalid slide");
+      // right slide selected
+      this.right_viewer.open({type: 'image', url:  this.data.slides[currentSlide]});
+      this.left_viewer.open({type: 'image', url:  this.data.slides[currentSlide - 1]});
     }
-    
   },
 
   render() {
@@ -81,7 +89,7 @@ Viewer = React.createClass({
       dots: true,
       infinite: false,
       slidesToShow: 3,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
       speed: 50,
       afterChange: function (currentSlide) {
         self.nextSlide(currentSlide);
@@ -104,7 +112,7 @@ Viewer = React.createClass({
       thumbnail: {
         border: "1px solid #333",
         padding: "0 5px",
-        margin: "0 5px",
+        margin: "10px",
       },
     };
     return (
@@ -124,7 +132,7 @@ Viewer = React.createClass({
           <div id="slider"className="col-xs-12 center-block" style={styles.slider}>
             <Slider {...settings}>
               {this.data.slides.map( (silde, i) => {
-                return  <div key={i} style={styles.thumbnail}><img className="center-block" height="100" src={silde} /></div>
+                return  <div key={i} style={styles.thumbnail}><img className="center-block" height="80" src={silde} /></div>
               })}
             </Slider>
           </div>
