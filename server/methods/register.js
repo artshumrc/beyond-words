@@ -4,7 +4,7 @@ Meteor.method("register", function (content) {
 		var validCandidate = {};
 
 		for( var key in content ){
-			if(["nov_8", "nov_9", "nov_10"].indexOf(key) >=0 ){
+			if(["nov_3", "nov_4", "nov_5"].indexOf(key) >=0 ){
 				if(typeof content[key] !== "boolean"){
 					content[key] = false;
 				}

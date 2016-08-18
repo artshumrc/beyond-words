@@ -375,23 +375,10 @@ HomeEvents = React.createClass({
                         This paper focusses on Renaissance Italian illuminated manuscripts made as luxury goods to be shown, or given as gifts by authors or princes.  In the first case authors dedicated their works to powerful rulers to gain their protection; in the second case princes used illuminated manuscripts to strengthen their alliances. The choice of the texts and their illustrations was strictly related with the cultural context of the court and the tastes of the prince. This paper consider as a case study Ferrara in the XV century analyzing the manuscripts Houghton Library MSS  Typ 226 and Typ 227 in the wider context of the monumental arts.
                       </p>
                       <h5>
-                        Francesca Manzari ("Sapienza" Università di Roma),
-												“Patronage and Artists in the Calderini Pontifical (Houghton Library, MS Typ.1): The Revival of Illumination in Rome during the Schism and its Flowering in Florence during the Council”
+                        Ada Labriola (Independent Scholar, Florence), "The Florentine Presence at the Gonzaga Court in Mantua on the Eve of the Renaissance: Houghton Library MS Typ 329"
                       </h5>
                       <p>
-                        The creation of the Calderini Pontifical's spectacular illustrative programme has only recently been connected with a long-forgotten phase of illumination produced in Rome during the Great Western Schism. This paper will examine the artists working in the manuscript's different campaigns of decoration and it will provide a context for its patronage and original destination. The Pontifical's complex provenance history will be discussed in the perspective of the practices in collecting Italian illumination documented over the centuries.
-                      </p>
-                      <h5>
-                        Christine Sciacca (J. Paul Getty Museum, Los Angeles), “A Visionary Artist and a Benedictine Worldview: The San Sisto Choir Books”
-                      </h5>
-                      <p>
-                        In the late fifteenth century, the Benedictine abbey of San Sisto in Piacenza commissioned an elaborate new set of fourteen illuminated choir books, now dispersed among public and private collections in the United States and Europe (including Boston Public Library, MSS pf Med 97 and 120). The Benedictine patrons of the manuscripts are depicted numerous times throughout the volumes; this discussion explores how and where they appear and their significance for the books’ use. In addition, a special focus of this paper will be the striking illustrations by one of the artists responsible for the books’ illuminations, Francesco da Castello, and his treatment of the iconography that held particular meaning for the San Sisto monks.
-                      </p>
-                      <h5>
-                        Lilian Armstrong (Wellesley College, Wellesley), “Venetian Choirbooks in the Early Quattrocento: Two Graduals for a Benedictine Convent”
-                      </h5>
-                      <p>
-                        The Durant Gradual at Wellesley College contains heretofore unpublished historiated initials for the Temporale chants; dated around 1430, they can be attributed to a miniaturist known as the Donato Master. Another gradual in the British Library has recently been identified as its counterpart, a Sanctorale illuminated by the same miniaturist, and sharing its provenance.  The two graduals and related liturgical manuscripts enable further evaluation of choirbooks produced in Venice in the early Quattrocento.
+                        Niccolò da Ferrara's Polistorio was made for Francesco Gonzaga, signore of Mantua, at the end of the 14th Century. In this paper Polistorio's illuminations, traditionally referred to a North-Italian artist, will be recognized as the product of a Florentine workshop active in Mantua. They will be attributed to Don Simone Camaldolese, one of the most important illuminators in 14th Century Tuscany. The manuscript will be discussed in the context of the cultural relations between Florence and Mantua on the Eve of the Renaissance.
                       </p>
                       <h5>
                         Helena Szépe (University of South Florida, Tampa),  “The Purposes of Illumination in Venetian Legal Statutes and Documents”
@@ -400,10 +387,23 @@ HomeEvents = React.createClass({
                         The privilege of being a patrician in the Venetian Republic required the duty of participation in government, and service to the state when elected as an official. Prominent patrician families, therefore, built up substantial reference collections of relevant legal statutes and records of commissions of office. This paper examines the roles of painting in such documents to frame reception of the texts, and to memorialize the recipients, drawing from manuscripts in Boston-area collections, including the following in the exhibition: Commission to Vincenzo Gritti as lieutenant of Udine, 1546 (Gardner 2.a.2.1); Commission to Girolamo Morosini as Captain of Brescia, 1547 (Gardner, 2.c.2.2); Statuta veneta, c. 1346 (Houghton Library MS Typ.140); Commission to Gasparo Molin as procurator de citra, 1526, (Houghton Library MS Typ 543); Commission to Lorenzo Bembo as captain of Paphos, 1558 (Houghton Library MS Typ 330); and Commission leaf to Daniele Dolfin as Podesta and captain of Treviso, 1596, (Wellesley College Davis Museum).
                       </p>
                       <h5>
-                        Ada Labriola (Independent Scholar, Florence), "The Florentine Presence at the Gonzaga Court in Mantua on the Eve of the Renaissance: Houghton Library MS Typ 329"
+                        Francesca Manzari ("Sapienza" Università di Roma),
+												“Patronage and Artists in the Calderini Pontifical (Houghton Library, MS Typ.1): The Revival of Illumination in Rome during the Schism and its Flowering in Florence during the Council”
                       </h5>
                       <p>
-                        Niccolò da Ferrara's Polistorio was made for Francesco Gonzaga, signore of Mantua, at the end of the 14th Century. In this paper Polistorio's illuminations, traditionally referred to a North-Italian artist, will be recognized as the product of a Florentine workshop active in Mantua. They will be attributed to Don Simone Camaldolese, one of the most important illuminators in 14th Century Tuscany. The manuscript will be discussed in the context of the cultural relations between Florence and Mantua on the Eve of the Renaissance.
+                        The creation of the Calderini Pontifical's spectacular illustrative programme has only recently been connected with a long-forgotten phase of illumination produced in Rome during the Great Western Schism. This paper will examine the artists working in the manuscript's different campaigns of decoration and it will provide a context for its patronage and original destination. The Pontifical's complex provenance history will be discussed in the perspective of the practices in collecting Italian illumination documented over the centuries.
+                      </p>
+                      <h5>
+                        Lilian Armstrong (Wellesley College, Wellesley), “Venetian Choirbooks in the Early Quattrocento: Two Graduals for a Benedictine Convent”
+                      </h5>
+                      <p>
+                        The Durant Gradual at Wellesley College contains heretofore unpublished historiated initials for the Temporale chants; dated around 1430, they can be attributed to a miniaturist known as the Donato Master. Another gradual in the British Library has recently been identified as its counterpart, a Sanctorale illuminated by the same miniaturist, and sharing its provenance.  The two graduals and related liturgical manuscripts enable further evaluation of choirbooks produced in Venice in the early Quattrocento.
+                      </p>
+                      <h5>
+                        Christine Sciacca (J. Paul Getty Museum, Los Angeles), “A Visionary Artist and a Benedictine Worldview: The San Sisto Choir Books”
+                      </h5>
+                      <p>
+                        In the late fifteenth century, the Benedictine abbey of San Sisto in Piacenza commissioned an elaborate new set of fourteen illuminated choir books, now dispersed among public and private collections in the United States and Europe (including Boston Public Library, MSS pf Med 97 and 120). The Benedictine patrons of the manuscripts are depicted numerous times throughout the volumes; this discussion explores how and where they appear and their significance for the books’ use. In addition, a special focus of this paper will be the striking illustrations by one of the artists responsible for the books’ illuminations, Francesco da Castello, and his treatment of the iconography that held particular meaning for the San Sisto monks.
                       </p>
                     </Tab>
 
@@ -544,7 +544,7 @@ HomeEvents = React.createClass({
 									>
 
 									<p>
-										Thank you for registering for the Beyond Words exhibition.
+										Thank you for registering for the Beyond Words Symposium.
 									</p>
 
 								</Dialog>
