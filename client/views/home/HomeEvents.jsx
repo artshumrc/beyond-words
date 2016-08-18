@@ -18,9 +18,9 @@ HomeEvents = React.createClass({
 				registrationModalOpen: false,
 				successModalOpen: false,
 				errorText: "",
-				regFormNov8: false,
-				regFormNov9: false,
-				regFormNov10: false,
+				regFormNov3: false,
+				regFormNov4: false,
+				regFormNov5: false,
 				hasRegistered: false,
 			};
 	  },
@@ -84,19 +84,19 @@ HomeEvents = React.createClass({
 		},
 
 		handleCheckBoxChange(checkboxDay){
-			if(checkboxDay === "nov_8"){
+			if(checkboxDay === "nov_3"){
 					this.setState({
-						regFormNov8 : !this.state.regFormNov8
+						regFormNov3 : !this.state.regFormNov3
 					})
 
-			}else if(checkboxDay === "nov_9"){
+			}else if(checkboxDay === "nov_4"){
 					this.setState({
-						regFormNov9 : !this.state.regFormNov9
+						regFormNov4 : !this.state.regFormNov4
 					})
 
-			}else if(checkboxDay === "nov_10"){
+			}else if(checkboxDay === "nov_5"){
 					this.setState({
-						regFormNov10 : !this.state.regFormNov10
+						regFormNov5 : !this.state.regFormNov5
 					})
 
 			}else {
@@ -111,15 +111,15 @@ HomeEvents = React.createClass({
 			var $inputs = $('#registrationForm :input');
 			var values = {};
 			$inputs.each(function() {
-				if(["nov_8", "nov_9", "nov_10"].indexOf(this.name) >=0){
-					if(this.name === "nov_8"){
-						values[this.name] = self.state.regFormNov8;
+				if(["nov_3", "nov_4", "nov_5"].indexOf(this.name) >=0){
+					if(this.name === "nov_3"){
+						values[this.name] = self.state.regFormNov3;
 
-					}else if(this.name === "nov_9"){
-						values[this.name] = self.state.regFormNov9;
+					}else if(this.name === "nov_4"){
+						values[this.name] = self.state.regFormNov4;
 
-					}else if(this.name === "nov_10"){
-						values[this.name] = self.state.regFormNov10;
+					}else if(this.name === "nov_5"){
+						values[this.name] = self.state.regFormNov5;
 
 					}
 
@@ -146,9 +146,9 @@ HomeEvents = React.createClass({
 			}
 
 			if(
-						values.nov_8 === false
-					&& values.nov_9 === false
-					&& values.nov_10 === false
+						values.nov_3 === false
+					&& values.nov_4 === false
+					&& values.nov_5 === false
 			){
 				this.setState({
 					checkboxErrorText: "Please select at least one day to attend"
@@ -166,9 +166,9 @@ HomeEvents = React.createClass({
 				&& values.last_name.length > 0
 				&& values.email.length >0
 				&& (
-						values.nov_8 === true
-					|| values.nov_9 === true
-					|| values.nov_10 === true
+						values.nov_3 === true
+					|| values.nov_4 === true
+					|| values.nov_5 === true
 				)
 			){
 
@@ -511,24 +511,24 @@ HomeEvents = React.createClass({
 									<span className="checkbox-label-error-text">{checkboxErrorText}</span>
 									<br/>
 									<Checkbox
-										name="nov_8"
+										name="nov_3"
 										className="checkbox-field"
-							      label="Thurs., Nov. 8 (McMullen Museum, Boston College)"
-										onCheck={this.handleCheckBoxChange.bind(null, "nov_8")}
+							      label="Thurs., Nov. 3 (McMullen Museum, Boston College)"
+										onCheck={this.handleCheckBoxChange.bind(null, "nov_3")}
 							      style={styles.checkbox}
 							    />
 									<Checkbox
-										name="nov_9"
+										name="nov_4"
 											className="checkbox-field"
-								      label="Fri., Nov. 9 (Isabella Stewart Gardner Museum)"
-											onCheck={this.handleCheckBoxChange.bind(null, "nov_9")}
+								      label="Fri., Nov. 4 (Isabella Stewart Gardner Museum)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_4")}
 								      style={styles.checkbox}
 								    />
 									<Checkbox
-										name="nov_10"
+										name="nov_5"
 											className="checkbox-field"
-								      label="Sat., Nov. 10 (Houghton Library, Harvard University)"
-											onCheck={this.handleCheckBoxChange.bind(null, "nov_10")}
+								      label="Sat., Nov. 5 (Houghton Library, Harvard University)"
+											onCheck={this.handleCheckBoxChange.bind(null, "nov_5")}
 								      style={styles.checkbox}
 								    />
 
