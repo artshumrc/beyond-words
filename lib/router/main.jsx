@@ -43,6 +43,14 @@ FlowRouter.route('/objects/:slug', {
     }
 });
 
+FlowRouter.route('/ipad', {
+    action: function(params, queryParams){
+        mount(MasterLayout, {
+            content: <IPadView />
+        });
+    }
+});
+
 /*
  * Single page view
  * 404 check is in the actual template
