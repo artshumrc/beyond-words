@@ -59,22 +59,30 @@ IPadSpreadView = React.createClass({
 	    };
 		return (
 			<div className="container">
-				<Slider {...settings}>
-				{this.props.slides.map((slide, i) => {
-					return (
-						<div key={i}>
-							<div className="image">
-								<h5>{i}</h5>
-								<Paper zDepth={3}><img className="center-block" src={slide} /></Paper>
-							</div>
-						</div>
-					);
-				})}
-				</Slider>
-				<ThumbnailSlider
-					thumbnailList={this.props.slides}
-					handleSlideChange={this.handleSlideChange}
-				/>
+				<div className="row">
+					<div className="col-xs-11 center-block clear">
+						<Slider {...settings}>
+						{this.props.slides.map((slide, i) => {
+							return (
+								<div key={i}>
+									<div className="image">
+										<h5>{i}</h5>
+										<Paper zDepth={2}><img className="center-block" src={slide} /></Paper>
+									</div>
+								</div>
+							);
+						})}
+						</Slider>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-11 center-block clear">
+						<ThumbnailSlider
+							thumbnailList={this.props.slides}
+							handleSlideChange={this.handleSlideChange}
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	}
