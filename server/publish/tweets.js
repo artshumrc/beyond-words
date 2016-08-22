@@ -18,8 +18,13 @@ Meteor.publish('tweets', function () {
     var pub = this;
     const poll = function () {
         var wrapGet = Meteor.wrapAsync(T.get, T);
-        const data = wrapGet('statuses/user_timeline', {screen_name: 'beyondwords2016', count: '6', exclude_replies: true, include_rts: false});
-        //console.log("twitter response: length", data.length)
+        const data = wrapGet('statuses/user_timeline', {
+					screen_name: 'beyondwords2016',
+					count: '6',
+					exclude_replies: true,
+					include_rts: false
+				});
+        console.log("Tweets from Twitter repsonse:", data.length)
         if (data) {
             data.forEach(function (doc) {
                 if (!TweetCollection.findOne({id_str: doc.id_str})){

@@ -18,7 +18,7 @@ HomeTwitter = React.createClass({
         if (handle.ready()) {
             // console.log(tweets);
             //TweetCollection = new Mongo.Collection("tweetCollection");
-            tweets = TweetCollection.find({}, {limit: 6}).fetch();
+            tweets = TweetCollection.find({}, {limit: 6, sort: {id: -1}}).fetch();
         }
         return {
             tweets: tweets,

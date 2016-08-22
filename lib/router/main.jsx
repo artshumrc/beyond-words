@@ -8,7 +8,6 @@ import {mount} from 'react-mounter';
 
  FlowRouter.subscriptions = function(){
    this.register('objects', Meteor.subscribe('objects'));
-   this.register('tweetCollection', Meteor.subscribe('tweetCollection'));
    this.register('events', Meteor.subscribe('events'));
    this.register('users', Meteor.subscribe('users'));
  };
@@ -62,19 +61,7 @@ FlowRouter.route('/:slug', {
 
 FlowRouter.route('/', {
     action: function(params) {
-        // ReactLayout.render(ComingSoonHomeLayout);
         mount(ComingSoonHomeLayout);
     }
 
 });
-
-
-/*
-FlowRouter.route('/objects/:slug', {
-    action: function(params, queryParams) {
-        ReactLayout.render(MainLayout, {params: params, queryParams: queryParams});
-    }
-});
-
-
-*/
