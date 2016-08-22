@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
 
-IPadSpreadView = React.createClass({
+IPadSingleView = React.createClass({
 
 	propTypes: {
 		slides: React.PropTypes.array,
@@ -36,29 +36,22 @@ IPadSpreadView = React.createClass({
 	      console.log("Invalid slide");
 	      return;
 	    }
-	    if(currentSlide % 2 == 0) {
-	      // left slide selected
-	      this.setState({
-	      	slickGoTo: currentSlide,
-	      });
-	    }
-	    else {
-	      // right slide selected
-	      this.setState({
-	      	slickGoTo: currentSlide - 1,
-	      });
-	    }
+	    this.setState({
+	    	slickGoTo: currentSlide,
+	    });
 	},
 	render() {
 		const settings = {
 	      focusOnSelect: true,
 	      infinite: true,
-	      slidesToShow: 2,
-	      slidesToScroll: 2,
+	      slidesToShow: 1,
+	      slidesToScroll: 1,
 	      slickGoTo: this.state.slickGoTo || 0,
 	    };
 		return (
 			<div className="container">
+				<div className="row">
+				<div className="col-sm-8 col-sm-offset-2">
 				<Slider {...settings}>
 				{this.props.slides.map((slide, i) => {
 					return (
@@ -71,6 +64,8 @@ IPadSpreadView = React.createClass({
 					);
 				})}
 				</Slider>
+				</div>
+				</div>
 				<ThumbnailSlider
 					thumbnailList={this.props.slides}
 					handleSlideChange={this.handleSlideChange}
@@ -80,7 +75,7 @@ IPadSpreadView = React.createClass({
 	}
 });
 
-IPadSpreadView.childContextTypes = {
+IPadSingleView.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
 

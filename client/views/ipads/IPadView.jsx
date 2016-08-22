@@ -3,9 +3,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import ActionViewModule from 'material-ui/svg-icons/action/view-module';
-import ActionViewCarousel from 'material-ui/svg-icons/action/view-carousel';
-import ActionInfo from 'material-ui/svg-icons/action/info';
+import FontIcon from 'material-ui/FontIcon';
 
 import {grey500, white, black, red500, yellow500, blue500} from 'material-ui/styles/colors';
 IPadView = React.createClass({
@@ -51,6 +49,7 @@ IPadView = React.createClass({
     const styles = {
       toolBar: {
         height: "auto",
+        background: "#232F3C",
       },
       radioButton: {
         float: "left",
@@ -67,26 +66,26 @@ IPadView = React.createClass({
     		<section className="page-content ipad-content">
           <Toolbar style={styles.toolBar}>
             <ToolbarGroup >
-              <ActionInfo style={styles.icon} hoverColor={blue500} />
+              <FontIcon className="mdi mdi-information" color={grey500} />
             </ToolbarGroup>
             <ToolbarGroup >
               <RadioButtonGroup name="view" defaultSelected="grid" onChange={this.handleViewChange}>
                 <RadioButton
                   value="grid"
-                  checkedIcon={<ActionViewModule color={white} />}
-                  uncheckedIcon={<ActionViewModule color={white} />}
+                  checkedIcon={<FontIcon className="mdi mdi-view-grid" color={white} />}
+                  uncheckedIcon={<FontIcon className="mdi mdi-view-grid" color={grey500} />}
                   style={styles.radioButton}
                 />
                 <RadioButton
                   value="single"
-                  checkedIcon={<ActionViewCarousel />}
-                  uncheckedIcon={<ActionViewCarousel color={white} />}
+                  checkedIcon={<FontIcon className="mdi mdi-image" color={white} />}
+                  uncheckedIcon={<FontIcon className="mdi mdi-image" color={grey500} />}
                   style={styles.radioButton}
                 />
                 <RadioButton
                   value="spread"
-                  checkedIcon={<ActionViewCarousel color={white} />}
-                  uncheckedIcon={<ActionViewCarousel color={white} />}
+                  checkedIcon={<FontIcon className="mdi mdi-book-open-variant" color={white} />}
+                  uncheckedIcon={<FontIcon className="mdi mdi-book-open-variant" color={grey500} />}
                   style={styles.radioButton}
                   iconStyle={styles.radioButtonIcon}
                 />
@@ -99,7 +98,7 @@ IPadView = React.createClass({
                 return <IPadGridView />;
                 break;
               case "single":
-                return <IPadSpreadView />;
+                return <IPadSingleView />;
                 break;
               case "spread":
                 return <IPadSpreadView />;
