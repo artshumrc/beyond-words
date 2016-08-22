@@ -131,8 +131,8 @@ Viewer = React.createClass({
         <div className="row">
           <div id="slider"className="col-xs-12 center-block" style={styles.slider}>
             <Slider {...settings}>
-              {this.data.slides.map( (silde, i) => {
-                return  <div key={i} style={styles.thumbnail}><img className="center-block" height="80" src={silde} /></div>
+              {this.data.slides.map( (slide, i) => {
+                return  <div key={i} style={styles.thumbnail}><img className="center-block" height="80" src={slide} /></div>
               })}
             </Slider>
           </div>
