@@ -44,7 +44,7 @@ FlowRouter.route('/objects/:slug', {
 
 FlowRouter.route('/ipad', {
     action: function(params, queryParams){
-        mount(MasterLayout, {
+        mount(IPadLayout, {
             content: <IPadView />
         });
     }
