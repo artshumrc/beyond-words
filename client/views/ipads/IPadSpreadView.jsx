@@ -15,6 +15,13 @@ IPadSpreadView = React.createClass({
 	getInitialState() {
 		return {
 			slickGoTo: 0,
+			slide: "",
+			open: false,
+		}
+	},
+	getInitialState() {
+		return {
+			slickGoTo: 0,
 		}
 	},
 	getDefaultProps() {
@@ -29,6 +36,18 @@ IPadSpreadView = React.createClass({
 		        '/images/BannerSQ.jpg',
 		    ],
 		}
+	},
+	handleSlideOpen(slide) {
+		this.setState({
+			open: true,
+			slide: slide,
+		});
+
+	},
+	handleSlideClose() {
+		this.setState({
+			open: false,
+		});
 	},
 	handleSlideChange(currentSlide) {
 		// check if currentSlide is valid
@@ -59,6 +78,10 @@ IPadSpreadView = React.createClass({
 	    };
 		return (
 			<div className="container">
+				{this.state.open?
+					<FullscreenViewer imageUrl={this.state.slide} open={this.state.open} handleClose={this.handleSlideClose}/>
+					: null
+				}
 				<div className="row">
 					<div className="col-xs-11 center-block clear">
 						<Slider {...settings}>
@@ -66,8 +89,9 @@ IPadSpreadView = React.createClass({
 							return (
 								<div key={i}>
 									<div className="image">
-										<h5>{i}</h5>
-										<Paper zDepth={2}><img className="center-block" src={slide} /></Paper>
+										<Paper zDepth={2}>
+											<img onClick={this.handleSlideOpen.bind(this,slide)} className="center-block" src={slide} />
+										</Paper>
 									</div>
 								</div>
 							);

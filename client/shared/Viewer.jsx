@@ -31,6 +31,7 @@ Viewer = React.createClass({
     this.left_viewer = OpenSeadragon({
       id: "image-panel-left",
       prefixUrl: "/openseadragon/images/",
+      //TODO: Change this once dzi files are available
       tileSources:  {
         type: 'image',
         url:  this.data.slides[0],
@@ -39,6 +40,7 @@ Viewer = React.createClass({
     this.right_viewer = OpenSeadragon({
       id: "image-panel-right",
       prefixUrl: "/openseadragon/images/",
+      //TODO: Change this once dzi files are available
       tileSources:  {
         type: 'image',
         url:  this.data.slides[1],

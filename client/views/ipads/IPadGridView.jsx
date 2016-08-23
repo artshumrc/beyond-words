@@ -5,14 +5,20 @@ import Paper from 'material-ui/Paper';
 IPadGridView = React.createClass({
 
 	propTypes: {
-		thumbnailList: React.PropTypes.array,
+		slides: React.PropTypes.array,
 	},
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
+	getInitialState() {
+		return {
+			slide: "",
+			open: false,
+		}
+	},
 	getDefaultProps() {
 		return {
-			thumbnailList: [
+			slides: [
 		        '/images/BannerSQ.jpg',
 		        '/images/BannerSQ.jpg',
 		        '/images/BannerSQ.jpg',
@@ -23,15 +29,33 @@ IPadGridView = React.createClass({
 		    ],
 		}
 	},
+	handleSlideOpen(slide) {
+		this.setState({
+			open: true,
+			slide: slide,
+		});
+
+	},
+	handleSlideClose() {
+		this.setState({
+			open: false,
+		});
+	},
 	render() {
 		return (
 			<div className="container">
+				{this.state.open?
+					<FullscreenViewer imageUrl={this.state.slide} open={this.state.open} handleClose={this.handleSlideClose}/>
+					: null
+				}
 				<div className="row">
-					{this.props.thumbnailList.map((thumbnail, i) => {
+					{this.props.slides.map((slide, i) => {
 						return (
 							<div key={i} className="grid-thumbnail col-xs-6 col-sm-4">
 								<div className="image">
-									<Paper zDepth={3}><img className="center-block" src={thumbnail} /></Paper>
+									<Paper zDepth={2}>
+										<img onClick={this.handleSlideOpen.bind(this,slide)} className="center-block" src={slide} />
+									</Paper>
 								</div>
 							</div>
 						);

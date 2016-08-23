@@ -4,8 +4,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
+import {grey500, white, black} from 'material-ui/styles/colors';
 
-import {grey500, white, black, red500, yellow500, blue500} from 'material-ui/styles/colors';
 IPadView = React.createClass({
 
   mixins: [ReactMeteorData],
@@ -68,7 +68,7 @@ IPadView = React.createClass({
     		<section className="page-content ipad-content">
           <Toolbar style={styles.toolBar}>
             <ToolbarGroup >
-              <FontIcon style={styles.icon} className="mdi mdi-information" color={grey500} />
+              <FontIcon style={styles.icon} className="mdi mdi-information" color={grey500} hoverColor={white} />
             </ToolbarGroup>
             <ToolbarGroup >
               <RadioButtonGroup style={styles.radioButtonGroup} name="view" defaultSelected="grid" onChange={this.handleViewChange}>
