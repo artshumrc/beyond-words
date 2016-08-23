@@ -5,7 +5,7 @@ Images = new Mongo.Collection('images');
 ThumbnailStore = new UploadFS.store.Local({
     collection: Thumbnails,
     name: 'thumbnails',
-    // path: './public/uploads/thumbnails',
+    path: 'ufs/uploads/thumbnails',
     // permissions: defaultPermissions,
     filter: new UploadFS.Filter({
         extensions: ['gif', 'jpg', 'jpeg', 'png']
@@ -40,6 +40,6 @@ ThumbnailStore = new UploadFS.store.Local({
 ImageStore = new UploadFS.store.Local({
     collection: Images,
     name: 'images',
-    // path: './public/uploads/images',
+    path: 'ufs/uploads/images',
     copyTo: [ThumbnailStore],
 });
