@@ -25,8 +25,6 @@ CatalogLayout = React.createClass({
 				filterValueToRemove,
 				filterToRemove;
 
-		debugger;
-
 		filters.forEach(function(filter, i){
 			if(filter.key === key){
 				keyIsInFilter = true;

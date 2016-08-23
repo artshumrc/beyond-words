@@ -41,36 +41,36 @@ ObjectsList = React.createClass({
                     query.$text = {$search: filter.values[0]};
                     break;
 
-                case "authors":
+                case "scribes":
                     var values = [];
                     filter.values.forEach(function (value) {
-                        values.push(value.wordpressId);
+                        values.push(value);
                     })
-                    query['author._id'] = {$in: values};
+                    query['scribe'] = {$in: values};
                     break;
 
                 case "illuminators":
                     var values = [];
                     filter.values.forEach(function (value) {
-                        values.push(value.wordpressId);
+                        values.push(value);
                     })
-                    query['author._id'] = {$in: values};
+                    query['illuminator'] = {$in: values};
                     break;
 
                 case "institution":
                     var values = [];
                     filter.values.forEach(function (value) {
-                        values.push(value.wordpressId);
+                        values.push(value);
                     })
-                    query['author._id'] = {$in: values};
+                    query['institution'] = {$in: values};
                     break;
 
                 case "places":
                     var values = [];
                     filter.values.forEach(function (value) {
-                        values.push(value.wordpressId);
+                        values.push(value);
                     })
-                    query['author._id'] = {$in: values};
+                    query['place'] = {$in: values};
                     break;
 
             }
@@ -79,7 +79,7 @@ ObjectsList = React.createClass({
         console.log("Objects query:", query);
         var handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
         if (handle.ready()) {
-            objects = Objects.find({}, {sort: {catalog_n: 1}}).fetch();
+            objects = Objects.find({}, {}).fetch();
         }
 				if(objects.length < this.props.limit){
 					stillMoreObjects = false;
@@ -98,8 +98,14 @@ ObjectsList = React.createClass({
 
     renderObjects() {
 			var self = this;
+			if(
+					this.objects.length === 0
+				|| this.props.skip === 0
+			){
+				this.objects = this.data.objects;
 
-			if(this.data.objects.length){
+			}else {
+				$("html, body").animate({ scrollTop: 0 }, "fast");
 				this.data.objects.forEach(function(object){
 					if(!self.objects.some(function(existingObject){
 						return existingObject._id === object._id
