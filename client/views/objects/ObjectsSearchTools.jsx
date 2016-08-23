@@ -127,7 +127,8 @@ ObjectsSearchTools = React.createClass({
         					<div className={"dropdown search-dropdown search-dropdown-date" + (self.state.searchDropdownOpen === "date" ? " open" : "")}>
         						<FlatButton
                       className="search-tool search-type-date dropdown-toggle"
-                      label="Date"
+                      //label={<span><i className='mdi mdi-calendar button-prefix-icon'></i>Date</span>}
+											label="Date"
 											labelPosition="before"
                       icon={<FontIcon className="mdi mdi-chevron-down" />}
                       onClick={this.toggleSearchDropdown.bind(null, "date")}
