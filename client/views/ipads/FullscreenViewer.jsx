@@ -29,16 +29,20 @@ FullscreenViewer = React.createClass({
 		}
 	},
 	componentDidMount() {
-		console.log("FullscreenViewer mounted");
 		let self = this;
 	    this.viewer = OpenSeadragon({
-	      id: "fullscreen-image",
-	      prefixUrl: "/openseadragon/images/",
-	       tileSources:  {
-	        type: 'image',
-	        url:  self.props.imageUrl,
-	      },
+			id: "fullscreen-image",
+			prefixUrl: "/openseadragon/images/",
+			//TODO: Change this once dzi files are available
+			tileSources:  {
+				type: 'image',
+				url:  self.props.imageUrl,
+			},
 	    });
+		this.viewer.addHandler("canvas-double-click", function (data) {
+			let ifFullScreen = self.viewer.isFullPage();
+			self.viewer.setFullScreen(!ifFullScreen);
+		});
 	},
 	render() {
 		let self = this;
