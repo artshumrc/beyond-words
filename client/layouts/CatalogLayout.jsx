@@ -4,13 +4,14 @@ CatalogLayout = React.createClass({
   getInitialState(){
     return {
       filters: [],
-			skip: 0
+			skip: 0,
+			limit: 100
     };
   },
 
 	loadMoreObjects(){
 	    this.setState({
-	      skip : this.state.skip + 10
+	      skip : this.state.skip + this.state.limit 
 	    });
 
 	},
@@ -200,14 +201,18 @@ CatalogLayout = React.createClass({
 					handleChangeTextsearch={this.handleChangeTextsearch}
 					/>
 
+				<FiltersWidget
+					filters={this.state.filters}
+					toggleSearchTerm={this.toggleSearchTerm}
+					/>
+
 				<ObjectsList
 					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					loadMoreObjects={this.loadMoreObjects}
 					skip={this.state.skip}
+					limit={this.state.limit}
 					/>
-
-				<Footer/>
 
 			</div>
 			);

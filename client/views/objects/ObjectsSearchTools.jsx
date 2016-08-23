@@ -37,9 +37,15 @@ ObjectsSearchTools = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData(){
-    var query = {};
 
-		var scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
+    var handle = Meteor.subscribe('objects', {}, 0, 500);
+		var scribes = [],
+				illuminators = [],
+				institutions = [],
+				places = [];
+
+    if (handle.ready()) {
+				scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
 											    sort: {scribe : 1}, fields: {scribe: true}
 											}).fetch().map(function(x) {
 											    return x.scribe;
@@ -59,6 +65,8 @@ ObjectsSearchTools = React.createClass({
 											}).fetch().map(function(x) {
 											    return x.place;
 											}), true);
+    }
+
 
 
 		return {
@@ -118,14 +126,26 @@ ObjectsSearchTools = React.createClass({
 
         				<div className="search-tools">
 
-        					<div className="search-tool text-search">
-                    <TextField
-                        hintText=""
-                        floatingLabelText="Search"
-												onChange={debounce(500, this.props.handleChangeTextsearch)}
-                      />
-        					</div>
+        					<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "date" ? " open" : "")}>
+        						<FlatButton
+                      className="search-tool search-type-date dropdown-toggle"
+                      label="Date"
+											labelPosition="before"
+                      icon={<FontIcon className="mdi mdi-chevron-down" />}
+                      onClick={this.toggleSearchDropdown.bind(null, "date")}
+        						>
+        						</FlatButton>
 
+        						<ul className="dropdown-menu ">
+        							<div className="dropdown-menu-inner">
+			        					<div className="search-tool search-tool--date">
+													<DateRangeSlider
+														handleChangeDate={this.props.handleChangeDate}/>
+												</div>
+        							</div>
+        						</ul>
+
+									</div>
         					<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "scribes" ? " open" : "")}>
         						<FlatButton
                       className="search-tool search-type-scribes dropdown-toggle"
@@ -233,10 +253,13 @@ ObjectsSearchTools = React.createClass({
 
         					</div>
 
-        					<div className="search-tool search-tool--date">
-										<DateRangeSlider
-											handleChangeDate={this.props.handleChangeDate}/>
-									</div>
+        					<div className="search-tool text-search">
+                    <TextField
+                        hintText=""
+                        floatingLabelText="Search"
+												onChange={debounce(500, this.props.handleChangeTextsearch)}
+                      />
+        					</div>
 
 
         				</div>

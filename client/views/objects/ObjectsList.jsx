@@ -1,5 +1,6 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
+import InfiniteScroll from '../../../imports/InfiniteScroll';
 
 
 ObjectsList = React.createClass({
@@ -10,7 +11,8 @@ ObjectsList = React.createClass({
         filters: React.PropTypes.array,
         addSearchTerm: React.PropTypes.func,
         loadMoreObjects: React.PropTypes.func,
-        skip: React.PropTypes.number
+        skip: React.PropTypes.number,
+        limit: React.PropTypes.number
 
     },
 
@@ -23,9 +25,13 @@ ObjectsList = React.createClass({
         };
     },
 
+		objects: [],
+
     getMeteorData(){
         var query = {},
-            objects = [];
+            objects = [],
+						stillMoreObjects = true;
+
 
         // Parse the filters to the query
         this.props.filters.forEach(function (filter) {
@@ -70,13 +76,17 @@ ObjectsList = React.createClass({
         });
 
         console.log("Objects query:", query);
-        var handle = Meteor.subscribe('objects', query, this.props.skip, 10);
+        var handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
         if (handle.ready()) {
             objects = Objects.find({}, {sort: {catalog_n: 1}}).fetch();
         }
+				if(objects.length < this.props.limit){
+					stillMoreObjects = false;
+				}
 
         return {
-            objects: objects
+            objects: objects,
+						stillMoreObjects: stillMoreObjects
         };
     },
 
@@ -86,11 +96,24 @@ ObjectsList = React.createClass({
 
 
     renderObjects() {
-        return this.data.objects.map((object) => {
-            return <ObjectTeaser
-                key={object._id}
-                object={object}/>;
-        });
+			var self = this;
+
+			if(this.data.objects.length){
+				this.data.objects.forEach(function(object){
+					if(!self.objects.some(function(existingObject){
+						return existingObject._id === object._id
+					})){
+						self.objects.push(object);
+					}
+
+				});
+			}
+
+      return this.objects.map((object) => {
+          return <ObjectTeaser
+              key={object._id}
+              object={object}/>;
+      });
     },
 
     toggleDropdown(e) {
@@ -125,17 +148,26 @@ ObjectsList = React.createClass({
 
         return (
             <div className="objects-list">
+							<InfiniteScroll
+								endPadding={120}
+								loadMore={this.props.loadMoreObjects}
+								>
+
                 <div className="objects-container">
                     {this.renderObjects()}
                 </div >
 
-                <div className="loading-collections loading-visible">
-									<div className="dot-spinner">
-										  <div className="bounce1"></div>
-										  <div className="bounce2"></div>
-										  <div className="bounce3"></div>
-										</div>
-                </div>
+								{this.data.stillMoreObjects ?
+	                <div className="loading-collections loading-visible">
+										<div className="dot-spinner">
+											  <div className="bounce1"></div>
+											  <div className="bounce2"></div>
+											  <div className="bounce3"></div>
+											</div>
+	                </div>
+
+								: ""}
+							</InfiniteScroll>
             </div>
         );
     }

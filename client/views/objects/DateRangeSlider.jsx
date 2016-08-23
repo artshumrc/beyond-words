@@ -17,9 +17,7 @@ DateRangeSlider = React.createClass({
 			min: 1100,
 			max: 1700,
 			grid: true,
-			prettify_enabled: true,
-			prettify_separator: ",",
-			prefix: "Date: ",
+			postfix: " AD",
 			values_separator: " to ",
 			onChange:debounce(500, this.props.handleChangeDate)
 

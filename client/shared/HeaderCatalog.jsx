@@ -78,7 +78,7 @@ HeaderCatalog = React.createClass({
         open={this.state.leftMenuOpen}
         closeLeftMenu={this.closeLeftMenu}
         />
-      <header className="header-nav paper-shadow">
+			<header className="header-nav header-catalog paper-shadow">
     		<div className="navigation-primary">
     			<div className="container close-navbar">
 
@@ -95,12 +95,6 @@ HeaderCatalog = React.createClass({
                 style={styles.flatButton}
                 href="/"
                 icon={<img className="logo-image" src="/images/logo-white.png" />}
-                />
-              <FlatButton
-                className="logo logo-dark"
-                style={styles.flatButton}
-                href="/"
-                icon={<img className="logo-image" src="/images/logo-gold.png" />}
                 />
 
     				</div>
