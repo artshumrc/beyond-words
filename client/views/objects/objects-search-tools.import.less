@@ -84,45 +84,70 @@
         margin:0 auto;
         max-width:1200px;
         text-align:left;
+				padding:20px 0 10px;
 
       }
 
       li {
         display:inline-block;
         vertical-align: top;
-        width:23%;
-        margin:5px 1%;
+        margin:5px 10px;
         text-align:left;
 				overflow:hidden;
 
       }
 
-      button.search-term-button {
-        background:#f6f6f6;
-        padding:10px 15px;
+      .search-term-button {
         text-align:left !important;
         width:100%;
         text-overflow:ellipsis;
 			  font-family: @font-label ;
 
+
 				&:hover {
-				  background:#f0f0f0;
+				  background:#f0f0f0 !important;
 				  .mdi {
-					color:@dark;
+						color:@dark;
 
 				  }
 				}
 
+
+
 	      &.search-term-button--active {
-	        background-color:@light !important;
+					button > div {
+		        background-color:@md-primary !important;
+
+					}
 
 
 	        .mdi, span {
-	          color:@dark !important;
+	          color:@light !important;
 
 	        }
 
 	      }
+
+				button {
+						height:41px !important;
+
+				}
+
+				button > div {
+	        background:@light !important;
+
+					> div {
+						height:41px !important;
+
+						span {
+							padding-top:5px;
+							display:block;
+						}
+
+					}
+
+				}
+
 
         span {
 					color:@dark-theme-dropdown-text !important;
@@ -150,6 +175,17 @@
 
 
       }
+
+			.no-results {
+				color:@dark;
+				text-align:left;
+				width:100%;
+				font-size:20px;
+				padding:10px 0;
+				max-width:1100px;
+				margin:0 auto;
+				font-family:@font-reading;
+			}
 
     }
 
@@ -308,52 +344,57 @@
 
 
 .filters {
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  overflow:visible;
-  max-width:400px;
-  width:90%;
+	width:95%;
+	margin:0 auto;
+	padding:15px 0;
+	overflow:auto;
+	display:block;
 
 }
 
 .filter {
-  display:block;
-  margin:4px 0;
+  display:inline-block;
+	vertical-align: top;
+  margin:5px;
   //.transition( all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) );
-
+  border:1px solid @light;
+	border-radius:2px;
 
   .filter-key, .filter-vals, .filter-val {
     display:inline-block;
     vertical-align: top;
     //.transition( all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) );
     margin-right:-5px;
+		background:transparent !important;
+		box-shadow:none !important;
 
 
   }
 
   .filter-key {
-    background:@md-primary;
     color:@light;
-    padding:10px 20px;
-    border:1px solid @md-primary;
+    padding:7px 5px 7px 20px;
     font-family:@font-label(14px);
     text-transform:uppercase;
 
   }
 
   .filter-val {
-    padding:2px 15px;
-    border:1px solid #eee;
+    padding:0 10px 0 0;
     margin:0 0 0 -1px;
-    color:@md-primary-dark;
-    background:rgba(255,255,255,0.95);
+		color:@light;
+		button,div,span,i {
+			color:@light !important;
+			background:transparent !important;
+			box-shadow:none !important;
 
+		}
 
-    &:hover {
-      background:#fff;
-
-    }
+		button div span {
+			padding-right:5px !important;
+			text-transform: none !important;
+			padding-top:1px;
+		}
 
     &:first-child {
       border-left:none;
@@ -365,15 +406,19 @@
 			font-size:13px;
       display:inline-block;
       vertical-align: top;
+			text-transform: none;
 
     }
 
     i {
-      color:#666;
       display:inline-block;
       vertical-align: top;
-      margin:12px 0 0 15px;
+      margin:0px;
       font-size:13px;
+			&:before {
+	      font-size:13px;
+
+			}
 
     }
 
@@ -391,9 +436,13 @@
 	display:none;
 }
 
-.search-tool.search-type-date {
+.search-dropdown.search-dropdown-date {
 	.dropdown-menu {
-		padding:50px 15px;
+		padding:30px 0px 60px;
+
+		.dropdown-menu-inner {
+			max-width:700px;
+		}
 
 	}
 }
@@ -404,6 +453,7 @@
 	width:10%;
 	max-width:600px;
 	min-width:400px;
+	display:inline;
 	border-right:none;
 	background:transparent;
 	text-align:center;
@@ -430,6 +480,7 @@
 	.irs-from, .irs-to, .irs-single, .irs-min, .irs-max {
 		font-size:14px;
 		padding:6px 10px 3px;
+		top:-20px;
 	}
 
 	.irs-from, .irs-to, .irs-single {
@@ -453,6 +504,22 @@
 		font-weight:bold;
 		font-size:12px;
 		bottom:-7px;
+	}
+
+	.irs-line-mid, .irs-line-left, .irs-line-right, .irs-bar, .irs-bar-edge, .irs-slider {
+		background:url(/images/sprite-skin-nice.png) repeat-x;
+	}
+
+	.irs-slider {
+		height:22px;
+		width:22px;
+		background-position:0 -120px;
+		top:18px;
+	}
+
+	.irs-bar {
+		bottom:-10px;
+
 	}
 
 	input {

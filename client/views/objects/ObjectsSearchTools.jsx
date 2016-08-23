@@ -31,6 +31,10 @@ ObjectsSearchTools = React.createClass({
 			searchDropdownOpen : "",
 			yearMin: 1100,
 			yearMax: 1700,
+			scribes: [],
+			illuminators: [],
+			institutions: [],
+			places: [],
     };
   },
 
@@ -38,36 +42,10 @@ ObjectsSearchTools = React.createClass({
 
   getMeteorData(){
 
-    var handle = Meteor.subscribe('objects', {}, 0, 500);
 		var scribes = [],
 				illuminators = [],
 				institutions = [],
 				places = [];
-
-    if (handle.ready()) {
-				scribes = _.uniq(Objects.find({scribe: {$exists: true}}, {
-											    sort: {scribe : 1}, fields: {scribe: true}
-											}).fetch().map(function(x) {
-											    return x.scribe;
-											}), true),
-				illuminators = _.uniq(Objects.find({illuminator: {$exists: true}}, {
-											    sort: {illuminator: 1}, fields: {illuminator: true}
-											}).fetch().map(function(x) {
-											    return x.illuminator;
-											}), true),
-				institutions = _.uniq(Objects.find({institution: {exists: true}}, {
-											    sort: {institution: 1}, fields: {institution: true}
-											}).fetch().map(function(x) {
-											    return x.institution;
-											}), true),
-				places = _.uniq(Objects.find({ place: {exists: true}}, {
-											    sort: {place: 1}, fields: {place: true}
-											}).fetch().map(function(x) {
-											    return x.place;
-											}), true);
-    }
-
-
 
 		return {
 			scribes: scribes,
@@ -78,6 +56,26 @@ ObjectsSearchTools = React.createClass({
 	},
 
 	componentDidMount(){
+
+		var scribes = [],
+				illuminators = [],
+				institutions = [],
+				places = [];
+
+		Meteor.call('searchTools', (err, res) => {
+		  if (err) {
+		    alert(err);
+		  } else {
+				console.log("searchTools response", res);
+				this.setState({
+					scribes: res.scribes,
+					illuminators: res.illuminators,
+					institutions: res.institutions,
+					places: res.places
+
+				});
+		  }
+		});
 
 	},
 
@@ -126,7 +124,7 @@ ObjectsSearchTools = React.createClass({
 
         				<div className="search-tools">
 
-        					<div className={"dropdown search-dropdown search-dropdown-scribes" + (self.state.searchDropdownOpen === "date" ? " open" : "")}>
+        					<div className={"dropdown search-dropdown search-dropdown-date" + (self.state.searchDropdownOpen === "date" ? " open" : "")}>
         						<FlatButton
                       className="search-tool search-type-date dropdown-toggle"
                       label="Date"
@@ -158,7 +156,7 @@ ObjectsSearchTools = React.createClass({
 
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
-												{self.data.scribes.map(function(scribe, i){
+												{self.state.scribes.map(function(scribe, i){
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
@@ -167,6 +165,9 @@ ObjectsSearchTools = React.createClass({
 															value={scribe}
 															/>
 												})}
+												{self.state.scribes.length === 0 ?
+														<div className="no-results">No scribes found in objects.</div>
+												: "" }
         							</div>
         						</ul>
 
@@ -185,7 +186,7 @@ ObjectsSearchTools = React.createClass({
 
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
-												{self.data.illuminators.map(function(illuminator, i){
+												{self.state.illuminators.map(function(illuminator, i){
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
@@ -194,6 +195,9 @@ ObjectsSearchTools = React.createClass({
 															value={illuminator}
 															/>
 												})}
+												{self.state.illuminators.length === 0 ?
+														<div className="no-results">No illuminators found in objects.</div>
+												: "" }
         							</div>
         						</ul>
 
@@ -212,7 +216,7 @@ ObjectsSearchTools = React.createClass({
 
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
-												{self.data.institutions.map(function(institution, i){
+												{self.state.institutions.map(function(institution, i){
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
@@ -221,6 +225,9 @@ ObjectsSearchTools = React.createClass({
 															value={institution}
 															/>
 												})}
+												{self.state.institutions.length === 0 ?
+														<div className="no-results">No institutions found in objects.</div>
+												: "" }
         							</div>
         						</ul>
 
@@ -239,7 +246,7 @@ ObjectsSearchTools = React.createClass({
 
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
-												{self.data.places.map(function(place, i){
+												{self.state.places.map(function(place, i){
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
@@ -248,6 +255,9 @@ ObjectsSearchTools = React.createClass({
 															value={place}
 															/>
 												})}
+												{self.state.places.length === 0 ?
+														<div className="no-results">No places found in objects.</div>
+												: "" }
         							</div>
         						</ul>
 

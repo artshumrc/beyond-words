@@ -7,7 +7,7 @@ import {mount} from 'react-mounter';
  */
 
  FlowRouter.subscriptions = function(){
-   this.register('objects', Meteor.subscribe('objects'));
+   this.register('searchTools', Meteor.subscribe('searchTools'));
    this.register('events', Meteor.subscribe('events'));
    this.register('users', Meteor.subscribe('users'));
  };

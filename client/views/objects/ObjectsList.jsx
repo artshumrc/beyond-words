@@ -1,6 +1,7 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import InfiniteScroll from '../../../imports/InfiniteScroll';
+import {debounce} from 'throttle-debounce';
 
 
 ObjectsList = React.createClass({
@@ -148,9 +149,15 @@ ObjectsList = React.createClass({
 
         return (
             <div className="objects-list">
+
+							<FiltersWidget
+								filters={this.props.filters}
+								toggleSearchTerm={this.toggleSearchTerm}
+								/>
+
 							<InfiniteScroll
 								endPadding={120}
-								loadMore={this.props.loadMoreObjects}
+								loadMore={debounce(1000, this.props.loadMoreObjects)}
 								>
 
                 <div className="objects-container">

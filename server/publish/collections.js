@@ -3,14 +3,13 @@
  */
 
 if (Meteor.isServer) {
-
 	  Meteor.publish('objects', function(query, skip, limit) {
 			if(!skip){
 				skip = 0;
 			}
 
 			if(!limit){
-				limit = 10;
+				limit = 12;
 			}
 
 	    return Objects.find(query, {skip: skip, limit: limit, sort: {catalog_n:1}});

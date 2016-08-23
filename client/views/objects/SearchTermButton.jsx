@@ -1,4 +1,4 @@
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -57,13 +57,12 @@ SearchTermButton = React.createClass({
 		}
 
 		return <li>
-              <FlatButton
+              <RaisedButton
 								className={className}
                 onClick={this.toggleSearchTerm}
 								label={this.props.label}
-                icon={<FontIcon className="mdi mdi-plus-circle-outline" />}
                 >
-              </FlatButton>
+              </RaisedButton>
 
             </li>
 

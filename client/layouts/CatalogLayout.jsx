@@ -5,13 +5,14 @@ CatalogLayout = React.createClass({
     return {
       filters: [],
 			skip: 0,
-			limit: 100
+			limit: 12
     };
   },
 
 	loadMoreObjects(){
+		console.log("CatalogLayout.loadMoreObjects", this.state.skip + this.state.limit);
 	    this.setState({
-	      skip : this.state.skip + this.state.limit 
+	      skip : this.state.skip + this.state.limit
 	    });
 
 	},
@@ -24,16 +25,16 @@ CatalogLayout = React.createClass({
 				filterValueToRemove,
 				filterToRemove;
 
+		debugger;
+
 		filters.forEach(function(filter, i){
 			if(filter.key === key){
 				keyIsInFilter = true;
 
-				filter.values.forEach(function(filterValue, j){
-						if(filterValue._id === value._id){
-							valueIsInFilter = true;
-							filterValueToRemove = j;
-						}
-				});
+				if(filter.values.indexOf(value) >= 0){
+					valueIsInFilter = true;
+					filterValueToRemove = filter.values.indexOf(value);
+				}
 
 				if(valueIsInFilter){
 					filter.values.splice(filterValueToRemove, 1);
@@ -199,11 +200,6 @@ CatalogLayout = React.createClass({
 					toggleSearchTerm={this.toggleSearchTerm}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
-					/>
-
-				<FiltersWidget
-					filters={this.state.filters}
-					toggleSearchTerm={this.toggleSearchTerm}
 					/>
 
 				<ObjectsList
