@@ -29,9 +29,9 @@ IPadGridView = React.createClass({
 				<div className="row">
 					{this.props.thumbnailList.map((thumbnail, i) => {
 						return (
-							<div key={i} className="grid-thumbnail col-sm-4">
+							<div key={i} className="grid-thumbnail col-xs-6 col-sm-4">
 								<div className="image">
-									<img className="center-block" src={thumbnail} />
+									<Paper zDepth={3}><img className="center-block" src={thumbnail} /></Paper>
 								</div>
 							</div>
 						);
