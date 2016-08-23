@@ -1,5 +1,6 @@
 CatalogLayout = React.createClass({
 
+
   getInitialState(){
     return {
       filters: [],
@@ -193,9 +194,7 @@ CatalogLayout = React.createClass({
 		return(
 			<div className="archimedes-layout catalog-layout">
 
-				<Header/>
-
-				<ObjectsSearchTools
+				<HeaderCatalog
 					toggleSearchTerm={this.toggleSearchTerm}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
