@@ -116,7 +116,7 @@ CatalogLayout = React.createClass({
 
 		var filters = this.state.filters;
 
-		if(e.from > 1000){
+		if(e.from > 600){
 			var dateFromInFilters = false;
 
 			filters.forEach(function(filter, i){

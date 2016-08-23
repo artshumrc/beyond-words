@@ -14,7 +14,7 @@ DateRangeSlider = React.createClass({
 	componentDidMount(){
 		$("#date-range").ionRangeSlider({
 			type: "double",
-			min: 1100,
+			min: 600,
 			max: 1700,
 			grid: true,
 			postfix: " AD",

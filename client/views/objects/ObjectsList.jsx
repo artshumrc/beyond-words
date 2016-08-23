@@ -42,35 +42,29 @@ ObjectsList = React.createClass({
                     break;
 
                 case "scribes":
-                    var values = [];
-                    filter.values.forEach(function (value) {
-                        values.push(value);
-                    })
-                    query['scribe'] = {$in: values};
+                    query['scribe'] = {$in: filter.values};
                     break;
 
                 case "illuminators":
-                    var values = [];
-                    filter.values.forEach(function (value) {
-                        values.push(value);
-                    })
-                    query['illuminator'] = {$in: values};
+                    query['illuminator'] = {$in: filter.values};
                     break;
 
                 case "institution":
-                    var values = [];
-                    filter.values.forEach(function (value) {
-                        values.push(value);
-                    })
-                    query['institution'] = {$in: values};
+                    query['institution'] = {$in: filter.values};
                     break;
 
                 case "places":
-                    var values = [];
-                    filter.values.forEach(function (value) {
-                        values.push(value);
-                    })
-                    query['place'] = {$in: values};
+                    query['place'] = {$in: filter.values};
+                    break;
+
+                case "dateFrom":
+                    var date = moment("01/01/" + filter.values[0]);
+                    query['dateBegun'] = {$gte: new Date(date.toISOString())};
+                    break;
+
+                case "dateTo":
+                    var date = moment("01/01/" + filter.values[0]);
+                    query['dateEnded'] = {$lte: new Date(date.toISOString())};
                     break;
 
             }
