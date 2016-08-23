@@ -45,7 +45,7 @@ ObjectTeaser = React.createClass({
 
   render() {
     let object = this.props.object;
-    let object_url = FlowRouter.path('ObjectDetail', {slug: object.slug});
+    let object_url = "/objects/" + object.slug; 
 		let author_title = "";
 		let description = "";
 

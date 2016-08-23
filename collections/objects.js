@@ -20,7 +20,7 @@ Schemas.Objects = new SimpleSchema({
 				label: "Author (deprecated) - left only as reference; do not fill out",
         optional: true
     },
-		slug: {
+		/*slug: {
 			type: String,
 			max: 200,
 			optional: true,
@@ -28,7 +28,7 @@ Schemas.Objects = new SimpleSchema({
 				type: "hidden",
 				label: false
 			}
-		},
+		},*/
     shelfmark: {
         type: String,
 				label: "Shelfmark",
@@ -149,4 +149,4 @@ Schemas.Objects = new SimpleSchema({
 });
 
 Objects.attachSchema(Schemas.Objects);
-Objects.friendlySlugs('title');
+Objects.friendlySlugs('author_title');
