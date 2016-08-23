@@ -50,14 +50,16 @@ IPadView = React.createClass({
       toolBar: {
         height: "auto",
         background: "#232F3C",
+        padding: "1%",
+      },
+      radioButtonGroup: {
+        display:"flex",
       },
       radioButton: {
-        float: "left",
-        margin: 10,
-        width: "auto"
+        width: "auto",
       },
       icon: {
-        margin: 10,
+        lineHeight: 0,
       }
     };
 
@@ -66,10 +68,10 @@ IPadView = React.createClass({
     		<section className="page-content ipad-content">
           <Toolbar style={styles.toolBar}>
             <ToolbarGroup >
-              <FontIcon className="mdi mdi-information" color={grey500} />
+              <FontIcon style={styles.icon} className="mdi mdi-information" color={grey500} />
             </ToolbarGroup>
             <ToolbarGroup >
-              <RadioButtonGroup name="view" defaultSelected="grid" onChange={this.handleViewChange}>
+              <RadioButtonGroup style={styles.radioButtonGroup} name="view" defaultSelected="grid" onChange={this.handleViewChange}>
                 <RadioButton
                   value="grid"
                   checkedIcon={<FontIcon className="mdi mdi-view-grid" color={white} />}
@@ -87,7 +89,6 @@ IPadView = React.createClass({
                   checkedIcon={<FontIcon className="mdi mdi-book-open-variant" color={white} />}
                   uncheckedIcon={<FontIcon className="mdi mdi-book-open-variant" color={grey500} />}
                   style={styles.radioButton}
-                  iconStyle={styles.radioButtonIcon}
                 />
               </RadioButtonGroup>
             </ToolbarGroup>
