@@ -69,7 +69,8 @@ ObjectTeaser = React.createClass({
 		}
 
      return (
-       <div className={isInSlider ? "object-teaser slick-slide" : "object-teaser"}>
+       <div className={isInSlider ? "object-teaser slick-slide" : "object-teaser col-md-4 col-sm-6"}>
+			<div className="object-teaser-wrap">
 				 {this.props.selectObject ?
 				 <a
 					 href="#"
@@ -176,6 +177,7 @@ ObjectTeaser = React.createClass({
 					 </div>
 
 				 </div>
+			</div>
         </div>
       );
     }

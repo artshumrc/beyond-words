@@ -188,17 +188,16 @@ ObjectsList = React.createClass({
             //infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
-            adaptiveHeight: true,
             responsive: [
                 {
-                  breakpoint: 768,
+                  breakpoint: 992,
                   settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1
                   }
                 },
                 {
-                  breakpoint: 480,
+                  breakpoint: 768,
                   settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
@@ -253,14 +252,14 @@ ObjectsList = React.createClass({
 							{this.props.catalogLayout === "grid" ?
                                 <Masonry
                                     options={masonryOptions}
-                                    className="objects-container objects-container--grid"
+                                    className="objects-container objects-container--grid row"
                                     onImagesLoaded={this.handleImagesLoaded} >
 
                                     {this.renderObjects()}
 
                                 </Masonry>
                                 :
-                                <div className="objects-container objects-container--list">
+                                <div className="objects-container objects-container--list row">
                                     {this.renderObjects()}
                                 </div>
 							}
