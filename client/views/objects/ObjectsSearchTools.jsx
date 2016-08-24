@@ -218,6 +218,7 @@ ObjectsSearchTools = React.createClass({
 															label={illuminator}
 															searchTermKey="illuminators"
 															value={illuminator}
+															active={active}
 															/>
 												})}
 												{self.state.illuminators.length === 0 ?

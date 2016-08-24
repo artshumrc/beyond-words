@@ -67,6 +67,11 @@ ObjectTeaser = React.createClass({
        <div className="object-teaser">
 				 <a href={object_url}>
 					 <div className="object-thumbnail-wrap">
+						 <div className="object-catalog-n">
+							 <span>
+								 {object.catalog_n}.
+							 </span>
+						 </div>
 						 {("url" in image && image.url.length) ?
 							 <img className="object-detail-thumbnail" src={image.url} />
 							 :

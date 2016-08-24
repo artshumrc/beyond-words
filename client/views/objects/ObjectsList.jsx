@@ -51,7 +51,7 @@ ObjectsList = React.createClass({
                     query['illuminator'] = {$in: filter.values};
                     break;
 
-                case "institution":
+                case "institutions":
                     query['institution'] = {$in: filter.values};
                     break;
 
@@ -181,13 +181,18 @@ ObjectsList = React.createClass({
 								loadMore={debounce(1000, this.props.loadMoreObjects)}
 								>
 
-						    <Masonry
-				          options={masonryOptions}
-				          className="objects-container"
-	                onImagesLoaded={this.handleImagesLoaded}
-				          >
-                    {this.renderObjects()}
-						    </Masonry>
+								{this.props.catalogLayout === "grid" ?
+							    <Masonry
+					          options={masonryOptions}
+					          className="objects-container objects-container--grid"
+		                onImagesLoaded={this.handleImagesLoaded}
+					          >
+	                    {this.renderObjects()}
+							    </Masonry>
+								: <div className="objects-container objects-container--list">
+	                    {this.renderObjects()}
+									</div>
+								}
 							</InfiniteScroll>
 
 							{this.data.stillMoreObjects ?
@@ -200,6 +205,13 @@ ObjectsList = React.createClass({
                 </div>
 
 							: ""}
+							{this.data.objects.length === 0 ?
+								<div className="no-results no-results--objects">
+									<p>No manuscripts were found for your query.</p>
+								</div>
+							: "" }
+
+
             </div>
         );
     }
