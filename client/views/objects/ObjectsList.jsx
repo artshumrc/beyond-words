@@ -75,11 +75,11 @@ ObjectsList = React.createClass({
         console.log("Objects query:", query);
         var handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
         if (handle.ready()) {
-            objects = Objects.find({}, {}).fetch();
+          objects = Objects.find({}, {}).fetch();
+					if(objects.length < this.props.limit){
+						stillMoreObjects = false;
+					}
         }
-				if(objects.length < this.props.limit){
-					stillMoreObjects = false;
-				}
 
         return {
             objects: objects,
@@ -164,12 +164,12 @@ ObjectsList = React.createClass({
 		    let masonryOptions = {
 		      //columnWidth : "400px",
 		      //isFitWidth : true,
-		      transitionDuration : 0
+		      transitionDuration : 300
 		    };
 
 
         return (
-            <div className="objects-list">
+            <div className="objects-list wow fadeIn">
 
 							<FiltersWidget
 								filters={this.props.filters}
@@ -205,7 +205,7 @@ ObjectsList = React.createClass({
                 </div>
 
 							: ""}
-							{this.data.objects.length === 0 ?
+							{this.objects.length === 0 && !this.data.stillMoreObjects ?
 								<div className="no-results no-results--objects">
 									<p>No manuscripts were found for your query.</p>
 								</div>

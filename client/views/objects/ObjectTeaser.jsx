@@ -64,7 +64,7 @@ ObjectTeaser = React.createClass({
 
 
      return (
-       <div className="object-teaser">
+       <div className="object-teaser wow fadeIn">
 				 <a href={object_url}>
 					 <div className="object-thumbnail-wrap">
 						 <div className="object-catalog-n">
