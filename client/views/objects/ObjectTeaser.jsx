@@ -19,7 +19,6 @@ ObjectTeaser = React.createClass({
   propTypes: {
     object: React.PropTypes.object.isRequired,
 		selectObject: React.PropTypes.func,
-		isInSlider: React.PropTypes.bool
 	},
 
   mixins: [ReactMeteorData],
@@ -63,13 +62,9 @@ ObjectTeaser = React.createClass({
 		if(this.data.images.length){
 			image = this.data.images[0];
 		}
-		let isInSlider = false;
-		if(this.props.isInSlider){
-			isInSlider = this.props.isInSlider;
-		}
 
      return (
-       <div className={isInSlider ? "object-teaser slick-slide" : "object-teaser col-md-4 col-sm-6"}>
+       <div className="object-teaser col-md-4 col-sm-6">
 			<div className="object-teaser-wrap">
 				 {this.props.selectObject ?
 				 <a

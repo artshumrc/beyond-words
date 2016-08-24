@@ -112,12 +112,8 @@ ObjectsList = React.createClass({
         //this.show();
     },
 
-    renderObjects(isInSlider) {
+    renderObjects() {
 		var self = this;
-
-		if(!isInSlider){
-			isInSlider = false;
-		}
 
 		if(this.objects.length === 0 || this.props.skip === 0) {
 			this.objects = this.data.objects;
@@ -232,7 +228,6 @@ ObjectsList = React.createClass({
                                                     key={object._id}
                                                     object={object}
                                                     selectObject={self.props.selectObject}
-                                                    isInSlider={true}
                                                 />;
                                                 </div>
                                             </div>
