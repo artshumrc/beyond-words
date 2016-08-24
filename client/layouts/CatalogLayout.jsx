@@ -199,9 +199,13 @@ CatalogLayout = React.createClass({
 	},
 
 	selectObject(selectedObject){
+		let catalogTitleText =  selectedObject.catalog_n.toString();
+		if(selectedObject.author_title != undefined) {
+			catalogTitleText += ". " + Utils.trunc(selectedObject.author_title, 90);
+		}
 		this.setState({
 			selectedObject: selectedObject,
-			catalogTitleText: selectedObject.catalog_n + ". " + Utils.trunc(selectedObject.author_title, 90)
+			catalogTitleText: catalogTitleText
 		});
 
 	},
