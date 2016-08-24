@@ -66,7 +66,7 @@ IPadView = React.createClass({
     return (
       <div className="page page-ipad">
     		<section className="page-content ipad-content">
-          <Toolbar style={styles.toolBar}>
+          <Toolbar style={styles.toolBar} className="ipad-toolbar">
             <ToolbarGroup >
               <FontIcon style={styles.icon} className="mdi mdi-information" color={grey500} hoverColor={white} />
             </ToolbarGroup>
