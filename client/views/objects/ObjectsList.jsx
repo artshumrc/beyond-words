@@ -1,5 +1,6 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
+import Masonry from 'react-masonry-component/lib'
 import InfiniteScroll from '../../../imports/InfiniteScroll';
 import {debounce} from 'throttle-debounce';
 
@@ -86,8 +87,13 @@ ObjectsList = React.createClass({
     },
 
 
-    // componentDidMount(){
-    // },
+    componentDidMount(){
+	    setTimeout(function(){
+	      $(".items-container").addClass("component-mounted");
+	      $(".loading-collections").removeClass("loading-visible");
+
+	    }, 2000);
+    },
 
 
     renderObjects() {
@@ -99,7 +105,7 @@ ObjectsList = React.createClass({
 				this.objects = this.data.objects;
 
 			}else {
-				$("html, body").animate({ scrollTop: 0 }, "fast");
+				//$("html, body").animate({ scrollTop: 0 }, "fast");
 				this.data.objects.forEach(function(object){
 					if(!self.objects.some(function(existingObject){
 						return existingObject._id === object._id
@@ -143,9 +149,23 @@ ObjectsList = React.createClass({
         }
     },
 
+		componentDidMount: function() {
+        //this.hide();
+    },
+    handleImagesLoaded: function(imagesLoadedInstance) {
+        //this.show();
+    },
+
     render() {
 
         let self = this;
+
+		    let masonryOptions = {
+		      //columnWidth : "400px",
+		      //isFitWidth : true,
+		      transitionDuration : 0
+		    };
+
 
         return (
             <div className="objects-list">
@@ -160,21 +180,25 @@ ObjectsList = React.createClass({
 								loadMore={debounce(1000, this.props.loadMoreObjects)}
 								>
 
-                <div className="objects-container">
+						    <Masonry
+				          options={masonryOptions}
+				          className="objects-container"
+	                onImagesLoaded={this.handleImagesLoaded}
+				          >
                     {this.renderObjects()}
-                </div >
-
-								{this.data.stillMoreObjects ?
-	                <div className="loading-collections loading-visible">
-										<div className="dot-spinner">
-											  <div className="bounce1"></div>
-											  <div className="bounce2"></div>
-											  <div className="bounce3"></div>
-											</div>
-	                </div>
-
-								: ""}
+						    </Masonry>
 							</InfiniteScroll>
+
+							{this.data.stillMoreObjects ?
+                <div className="loading-collections loading-visible">
+									<div className="dot-spinner">
+										  <div className="bounce1"></div>
+										  <div className="bounce2"></div>
+										  <div className="bounce3"></div>
+										</div>
+                </div>
+
+							: ""}
             </div>
         );
     }

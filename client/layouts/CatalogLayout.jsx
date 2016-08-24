@@ -3,6 +3,8 @@ CatalogLayout = React.createClass({
 
   getInitialState(){
     return {
+			catalogTitleText: "Illuminated Manuscripts in Boston Collections, Catalog, 2016.",
+			catalogLayout: "grid",
       filters: [],
 			skip: 0,
 			limit: 12
@@ -185,8 +187,14 @@ CatalogLayout = React.createClass({
 
 		this.setState({
 			filters: filters
-		})
+		});
 
+	},
+
+	toggleCatalogLayout(layout){
+		this.setState({
+			catalogLayout: layout
+		});
 	},
 
 	render(){
@@ -198,6 +206,9 @@ CatalogLayout = React.createClass({
 					toggleSearchTerm={this.toggleSearchTerm}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
+					catalogTitleText={this.state.catalogTitleText}
+					toggleCatalogLayout={this.toggleCatalogLayout}
+					catalogLayout={this.state.catalogLayout}
 					/>
 
 				<ObjectsList
@@ -206,6 +217,7 @@ CatalogLayout = React.createClass({
 					loadMoreObjects={this.loadMoreObjects}
 					skip={this.state.skip}
 					limit={this.state.limit}
+					catalogLayout={this.state.catalogLayout}
 					/>
 
 			</div>

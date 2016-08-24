@@ -3,8 +3,17 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import IconButton from 'material-ui/IconButton';
 
 HeaderCatalog = React.createClass({
+
+	propTypes: {
+		toggleSearchTerm: React.PropTypes.func,
+		handleChangeTextsearch: React.PropTypes.func,
+		handleChangeDate: React.PropTypes.func,
+		catalogTitleText: React.PropTypes.string,
+		toggleCatalogLayout: React.PropTypes.func
+	},
 
   getChildContext() {
     return { muiTheme: getMuiTheme(baseTheme) };
@@ -31,26 +40,10 @@ HeaderCatalog = React.createClass({
     });
   },
 
-  scrollToEvents(e){
-    $("html, body").animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+	goBack(){
+    window.history.back();
 
-    e.preventDefault();
-  },
-  scrollToSymposium(e){
-    $("html, body").animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
-
-    e.preventDefault();
-  },
-  scrollToCatalog(e){
-    $("html, body").animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
-
-    e.preventDefault();
-  },
-  scrollToPlanYourTrip(e){
-    $("html, body").animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
-
-    e.preventDefault();
-  },
+	},
 
   render(){
 
@@ -114,6 +107,30 @@ HeaderCatalog = React.createClass({
       			</div>{/*<!-- .container.close-navbar -->*/}
       		</div>{/*<!-- .navigation-primary-->*/}
       	</header>
+				<div className="header-lower header-lower-catalog-info clearfix">
+			    <IconButton
+						className="go-back-button"
+						onClick={this.goBack}
+						iconClassName="mdi mdi-chevron-left"
+						/>
+					<div className="catalog-header-inner">
+							<h4 className="catalog-header-title">{this.props.catalogTitleText}</h4>
+					</div>
+					<div className="toggle-view-mode-buttons">
+				    <IconButton
+							onClick={this.props.toggleCatalogLayout.bind(null, "list")}
+							className={this.props.catalogLayout === "list" ?
+								"toggle-view-mode-button view-mode--active"
+								: "toggle-view-mode-button view-mode--inactive"}
+							iconClassName="mdi mdi-view-list" />
+				    <IconButton
+							onClick={this.props.toggleCatalogLayout.bind(null, "grid")}
+							className={this.props.catalogLayout === "grid" ?
+								"toggle-view-mode-button view-mode--active"
+								: "toggle-view-mode-button view-mode--inactive"}
+							iconClassName="mdi mdi-view-grid" />
+					</div>
+				</div>
       </div>
     )
   }

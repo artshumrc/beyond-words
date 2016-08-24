@@ -45,7 +45,7 @@ ObjectTeaser = React.createClass({
 
   render() {
     let object = this.props.object;
-    let object_url = "/objects/" + object.slug; 
+    let object_url = "/objects/" + object.slug;
 		let author_title = "";
 		let description = "";
 
@@ -82,6 +82,58 @@ ObjectTeaser = React.createClass({
 					 <p>
 						 {Utils.trunc(description, 120)}
 					 </p>
+
+					 <div className="meta-items">
+						 {object.illuminator ?
+						 <div className="object-teaser-meta">
+							 <label>Illuminator</label>
+							 <p>
+								 {object.illuminator}
+							 </p>
+						 </div>
+						 : "" }
+						 {object.scribe ?
+						 <div className="object-teaser-meta">
+							 <label>Scribe</label>
+							 <p>
+								 {object.scribe}
+							 </p>
+						 </div>
+						 : "" }
+						 {object.printer ?
+						 <div className="object-teaser-meta">
+							 <label>Printer</label>
+							 <p>
+								 {object.printer}
+							 </p>
+						 </div>
+						 : "" }
+						 {object.institution ?
+						 <div className="object-teaser-meta">
+							 <label>Institution</label>
+							 <p>
+								 {object.institution}
+							 </p>
+						 </div>
+						 : "" }
+						 {object.collection ?
+						 <div className="object-teaser-meta">
+							 <label>Collection</label>
+							 <p>
+								 {object.collection}
+							 </p>
+						 </div>
+						 : "" }
+						 {object.place ?
+						 <div className="object-teaser-meta">
+							 <label>Place</label>
+							 <p>
+								 {object.place}
+							 </p>
+						 </div>
+						 : "" }
+					 </div>
+
 				 </div>
         </div>
       );
