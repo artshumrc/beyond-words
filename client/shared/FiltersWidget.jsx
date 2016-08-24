@@ -21,6 +21,7 @@ FiltersWidget = React.createClass({
 	},
 
   render(){
+		var self = this;
 
 		return(
 
@@ -31,9 +32,6 @@ FiltersWidget = React.createClass({
 								key={i}
 								className="filter "
 								 >
-								 {/*
-		      				  onClick={this.props.toggleSearchTerm.bind(null, filter.key, val)}
-									*/}
 		      			<span className="filter-key paper-shadow">{filter.key}</span>
 									{filter.values.map((val, j) => {
 					      			return <RaisedButton
@@ -41,6 +39,7 @@ FiltersWidget = React.createClass({
 												labelPosition="before"
 												className="filter-val "
 												label={val.title || val.name || val}
+				      				  onClick={self.props.toggleSearchTerm.bind(null, filter.key, val)}
 												>
 
 					      				<i className="mdi mdi-close"></i>

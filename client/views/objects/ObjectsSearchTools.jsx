@@ -12,10 +12,11 @@ import {debounce} from 'throttle-debounce';
 ObjectsSearchTools = React.createClass({
 
 	propTypes: {
-
+		filters: React.PropTypes.array,
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func
+
 	},
 
   getChildContext() {
@@ -29,7 +30,7 @@ ObjectsSearchTools = React.createClass({
   getInitialState(){
     return {
 			searchDropdownOpen : "",
-			yearMin: 1100,
+			yearMin: 600,
 			yearMax: 1700,
 			scribes: [],
 			illuminators: [],
@@ -100,6 +101,7 @@ ObjectsSearchTools = React.createClass({
 
   render(){
 		var self = this;
+		var filters = this.props.filters;
 
     let styles = {
       flatButton : {
@@ -158,12 +160,24 @@ ObjectsSearchTools = React.createClass({
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
 												{self.state.scribes.map(function(scribe, i){
+
+													var active = false;
+													filters.forEach(function(filter){
+														if(filter.key === "scribes"){
+															filter.values.forEach(function(value){
+																if(scribe === value){
+																	active = true;
+																}
+															});
+														}
+													});
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
 															label={scribe}
 															searchTermKey="scribes"
 															value={scribe}
+															active={active}
 															/>
 												})}
 												{self.state.scribes.length === 0 ?
@@ -188,6 +202,16 @@ ObjectsSearchTools = React.createClass({
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
 												{self.state.illuminators.map(function(illuminator, i){
+													var active = false;
+													filters.forEach(function(filter){
+														if(filter.key === "illuminators"){
+															filter.values.forEach(function(value){
+																if(illuminator === value){
+																	active = true;
+																}
+															});
+														}
+													});
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
@@ -218,12 +242,23 @@ ObjectsSearchTools = React.createClass({
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
 												{self.state.institutions.map(function(institution, i){
+													var active = false;
+													filters.forEach(function(filter){
+														if(filter.key === "institutions"){
+															filter.values.forEach(function(value){
+																if(institution === value){
+																	active = true;
+																}
+															});
+														}
+													});
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
 															label={institution}
 															searchTermKey="institutions"
 															value={institution}
+															active={active}
 															/>
 												})}
 												{self.state.institutions.length === 0 ?
@@ -248,12 +283,23 @@ ObjectsSearchTools = React.createClass({
         						<ul className="dropdown-menu ">
         							<div className="dropdown-menu-inner">
 												{self.state.places.map(function(place, i){
+													var active = false;
+													filters.forEach(function(filter){
+														if(filter.key === "places"){
+															filter.values.forEach(function(value){
+																if(place === value){
+																	active = true;
+																}
+															});
+														}
+													});
 	                        return <SearchTermButton
 															key={i}
 															toggleSearchTerm={self.toggleSearchTerm}
 															label={place}
 															searchTermKey="places"
 															value={place}
+															active={active}
 															/>
 												})}
 												{self.state.places.length === 0 ?

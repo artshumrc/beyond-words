@@ -12,6 +12,7 @@ ObjectsList = React.createClass({
     propTypes: {
         filters: React.PropTypes.array,
         addSearchTerm: React.PropTypes.func,
+        toggleSearchTerm: React.PropTypes.func,
         loadMoreObjects: React.PropTypes.func,
         skip: React.PropTypes.number,
         limit: React.PropTypes.number
@@ -172,7 +173,7 @@ ObjectsList = React.createClass({
 
 							<FiltersWidget
 								filters={this.props.filters}
-								toggleSearchTerm={this.toggleSearchTerm}
+								toggleSearchTerm={this.props.toggleSearchTerm}
 								/>
 
 							<InfiniteScroll

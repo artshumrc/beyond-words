@@ -203,6 +203,7 @@ CatalogLayout = React.createClass({
 			<div className="archimedes-layout catalog-layout">
 
 				<HeaderCatalog
+					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}

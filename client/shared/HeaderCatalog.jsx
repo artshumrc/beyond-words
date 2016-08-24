@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton';
 HeaderCatalog = React.createClass({
 
 	propTypes: {
+		filters: React.PropTypes.array,
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
@@ -96,6 +97,7 @@ HeaderCatalog = React.createClass({
 
                 <div className="module left">
 									<ObjectsSearchTools
+											filters={this.props.filters}
 											toggleSearchTerm={this.props.toggleSearchTerm}
 											handleChangeDate={this.props.handleChangeDate}
 											handleChangeTextsearch={this.props.handleChangeTextsearch}
