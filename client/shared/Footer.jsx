@@ -98,6 +98,11 @@ Footer = React.createClass({
                                         target="_blank"
                                         href="//www.gardnermuseum.org/collection/exhibitions"
                                     />
+																	<FlatButton
+                                        style={styles.flatButton}
+                                        label="CATALOG"
+                                        href="/catalog"
+                                    />
                                   <IconButton
                                             style={styles.circleButton}
                                             iconStyle={styles.circleButtonIcon}

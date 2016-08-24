@@ -89,12 +89,12 @@ section.parallax > .background-image-holder.blur {
   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4'); /* IE lte 9 */
 }
 .less-blur{
-	filter: blur(1px) sepia(5%) brightness(0.9); /* Someday, sigh ... */
-	-webkit-filter: blur(1px) sepia(5%) brightness(0.9); /* Prefixed CSS3 blur filters */
-	-moz-filter: blur(1px);
-	-o-filter: blur(1px);
-	-ms-filter: blur(1px);
-  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1'); /* IE lte 9 */
+	filter: blur(2px) sepia(20%) brightness(0.9) grayscale(10%);
+	-webkit-filter: blur(2px) sepia(20%) brightness(0.9) grayscale(10%);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
 }
 
 .paper-card {
@@ -149,6 +149,11 @@ section.parallax > .background-image-holder.blur {
   background: -webkit-linear-gradient(top,  rgba(20,20,20,0.4) 0%,rgba(20,20,20,0.2) 20%,rgba(20,20,20,0.2) 80%,rgba(20,20,20,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  rgba(20,20,20,0.6) 0%,rgba(20,20,20,0.4) 20%,rgba(20,20,20,0.4) 80%,rgba(20,20,20,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3141414', endColorstr='#141414',GradientType=0 ); /* IE6-9 */
+
+}
+
+.background-screen.primary {
+	background:rgba(53,58,96,0.3);
 
 }
 

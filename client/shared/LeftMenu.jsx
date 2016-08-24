@@ -58,31 +58,31 @@ LeftMenu = React.createClass({
                      <Divider />*/}
 
                     <MenuItem
-                        href="#plan-your-trip"
+                        href="/#plan-your-trip"
                         primaryText="PLAN YOUR TRIP"
                         onTouchTap={this.props.closeLeftMenu}
                         onClick={this.props.closeLeftMenu}
                     />
                     <MenuItem
-                        href="#events"
+                        href="/#events"
                         primaryText="EVENTS"
                         onTouchTap={this.props.closeLeftMenu}
                         onClick={this.props.closeLeftMenu}
                     />
                     <MenuItem
-                          href="#symposium"
+                          href="/#symposium"
                           primaryText="SYMPOSIUM"
                           onTouchTap={this.props.closeLeftMenu}
                           onClick={this.props.closeLeftMenu}
                       />
                     <MenuItem
-                          href="#catalog"
+                          href="/catalog"
                           primaryText="CATALOG"
                           onTouchTap={this.props.closeLeftMenu}
                           onClick={this.props.closeLeftMenu}
                       />
                     <MenuItem
-                          href="#lenders"
+                          href="/#lenders"
                           primaryText="LENDERS"
                           onTouchTap={this.props.closeLeftMenu}
                           onClick={this.props.closeLeftMenu}

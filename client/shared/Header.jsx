@@ -138,9 +138,7 @@ Header = React.createClass({
                       <FlatButton
                         style={styles.flatButton}
                         label="CATALOG"
-                        href="#catalog"
-                        onClick={this.scrollToCatalog}
-                        onTouchTap={this.scrollToCatalog}
+                        href="/catalog"
                         />
                     </li>
                   </ul>

@@ -68,14 +68,14 @@ ObjectDetail = React.createClass({
 									</section>
 								}
 
-                <section className="object-details">
+                <section className="object-details paper-shadow">
 									<div className="object-details-inner">
 
 										<div className="object-detail-thumbnail-wrap">
 											{("url" in image && image.url.length) ?
-												<img className="object-detail-thumbnail" src={image.url} />
+												<img className="object-detail-thumbnail paper-shadow" src={image.url} />
 												:
-												<img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+												<img className="object-detail-thumbnail paper-shadow" src="/images/default_image.jpg" />
 											}
 
 										</div>
@@ -90,37 +90,61 @@ ObjectDetail = React.createClass({
 													<label>Catalog No.</label>
 													<span>{object.catalog_n}</span>
 											</div>
-
-											<div className="object-detail-meta">
-													<label>Illuminator</label>
-													<span>{object.illuminator}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Institution</label>
-													<span>{object.institution}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Shelfmark</label>
-													<span>{object.shelfmark}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Former Shelfmark</label>
-													<span>{object.former_shelfmark}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Place</label>
-													<span>{object.place}</span>
-											</div>
-
+											{object.date ?
 											<div className="object-detail-meta">
 													<label>Date</label>
 													<span>{object.date}</span>
 											</div>
-
+											:""}
+											{object.shelfmark ?
+											<div className="object-detail-meta">
+													<label>Shelfmark</label>
+													<span>{object.shelfmark}</span>
+											</div>
+											:""}
+											{object.former_shelfmark ?
+											<div className="object-detail-meta">
+													<label>Former Shelfmark</label>
+													<span>{object.former_shelfmark}</span>
+											</div>
+											:""}
+											{object.scribe ?
+											<div className="object-detail-meta">
+													<label>Scribe</label>
+													<span>{object.scribe}</span>
+											</div>
+											:""}
+											{object.printer ?
+											<div className="object-detail-meta">
+													<label>Printer</label>
+													<span>{object.printer}</span>
+											</div>
+											:""}
+											{object.institution ?
+											<div className="object-detail-meta">
+													<label>Institution</label>
+													<span>{object.institution}</span>
+											</div>
+											:""}
+											{object.illumintator ?
+											<div className="object-detail-meta">
+													<label>Illuminator</label>
+													<span>{object.illuminator}</span>
+											</div>
+											:""}
+											{object.collection ?
+											<div className="object-detail-meta">
+													<label>Collection</label>
+													<span>{object.collection}</span>
+											</div>
+											:""}
+											{object.place ?
+											<div className="object-detail-meta">
+													<label>Place</label>
+													<span>{object.place}</span>
+											</div>
+											:""}
+											{object.externalLink ?
 											<div className="object-detail-meta">
 													<label>External Link</label>
 													<span>
@@ -131,12 +155,14 @@ ObjectDetail = React.createClass({
 														</span>
 											</div>
 
+											:""}
+											{object.illumintator ?
 											<div className="object-detail-meta">
 													<label>Description</label>
 													<span>{object.description}</span>
 											</div>
 
-
+											:""}
 
 										</div>
 
