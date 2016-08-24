@@ -3,6 +3,7 @@ CatalogLayout = React.createClass({
 
   getInitialState(){
     return {
+			selectedObject: {},
 			catalogTitleText: "Illuminated Manuscripts in Boston Collections, Catalog, 2016.",
 			catalogLayout: "grid",
       filters: [],
@@ -197,6 +198,22 @@ CatalogLayout = React.createClass({
 		});
 	},
 
+	selectObject(selectedObject){
+		this.setState({
+			selectedObject: selectedObject,
+			catalogTitleText: selectedObject.catalog_n + ". " + Utils.trunc(selectedObject.author_title, 90)
+		});
+
+	},
+
+	closeSelectedObject(){
+		this.setState({
+			selectedObject: {},
+			catalogTitleText: "Illuminated Manuscripts in Boston Collections, Catalog, 2016.",
+		});
+
+	},
+
 	render(){
 		console.log("CatalogLayout.filters", this.state.filters);
 		return(
@@ -210,6 +227,8 @@ CatalogLayout = React.createClass({
 					catalogTitleText={this.state.catalogTitleText}
 					toggleCatalogLayout={this.toggleCatalogLayout}
 					catalogLayout={this.state.catalogLayout}
+					selectedObject={this.state.selectedObject}
+					closeSelectedObject={this.closeSelectedObject}
 					/>
 
 				<ObjectsList
@@ -219,6 +238,9 @@ CatalogLayout = React.createClass({
 					skip={this.state.skip}
 					limit={this.state.limit}
 					catalogLayout={this.state.catalogLayout}
+					selectedObject={this.state.selectedObject}
+					selectObject={this.selectObject}
+					closeSelectedObject={this.closeSelectedObject}
 					/>
 
 			</div>

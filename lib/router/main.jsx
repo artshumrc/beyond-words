@@ -37,7 +37,7 @@ FlowRouter.route('/objects/:slug', {
     name: 'ObjectDetail',
     action: function(params, queryParams){
         mount(MasterLayout, {
-            content: <ObjectDetail slug={params.slug}/>
+            content: <ObjectDetailPage slug={params.slug}/>
         });
     }
 });

@@ -17,8 +17,10 @@ ObjectTeaser = React.createClass({
   },
 
   propTypes: {
-    object: React.PropTypes.object.isRequired
-  },
+    object: React.PropTypes.object.isRequired,
+		selectObject: React.PropTypes.func,
+		isInSlider: React.PropTypes.bool
+	},
 
   mixins: [ReactMeteorData],
   getMeteorData(){
@@ -61,11 +63,18 @@ ObjectTeaser = React.createClass({
 		if(this.data.images.length){
 			image = this.data.images[0];
 		}
-
+		let isInSlider = false;
+		if(this.props.isInSlider){
+			isInSlider = this.props.isInSlider;
+		}
 
      return (
-       <div className="object-teaser wow fadeIn">
-				 <a href={object_url}>
+       <div className={isInSlider ? "object-teaser slick-slide" : "object-teaser"}>
+				 {this.props.selectObject ?
+				 <a
+					 href="#"
+					 onClick={this.props.selectObject.bind(null, object)}
+					 >
 					 <div className="object-thumbnail-wrap">
 						 <div className="object-catalog-n">
 							 <span>
@@ -79,10 +88,37 @@ ObjectTeaser = React.createClass({
 						 }
 					 </div>
 				 </a>
+				 :
+				 <a
+					 href={object_url}
+					 >
+					 <div className="object-thumbnail-wrap">
+						 <div className="object-catalog-n">
+							 <span>
+								 {object.catalog_n}.
+							 </span>
+						 </div>
+						 {("url" in image && image.url.length) ?
+							 <img className="object-detail-thumbnail" src={image.url} />
+							 :
+							 <img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+						 }
+					 </div>
+				 </a>
+				 }
 				 <div className="object-text-wrap">
+					 {this.props.selectObject ?
+					 <a
+						 href="#"
+						 onClick={this.props.selectObject.bind(null, object)}
+						 >
+						 <h3>{Utils.trunc(author_title, 60)}</h3>
+					 </a>
+					 :
 					 <a href={object_url}>
 						 <h3>{Utils.trunc(author_title, 60)}</h3>
 					 </a>
+					 }
 					 <span className="object-teaser-subtitle">{object.date}</span>
 					 <p>
 						 {Utils.trunc(description, 120)}

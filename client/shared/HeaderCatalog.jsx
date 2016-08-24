@@ -13,7 +13,10 @@ HeaderCatalog = React.createClass({
 		handleChangeTextsearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
 		catalogTitleText: React.PropTypes.string,
-		toggleCatalogLayout: React.PropTypes.func
+		selectedObject: React.PropTypes.object,
+		toggleCatalogLayout: React.PropTypes.func,
+		closeSelectedObject: React.PropTypes.func
+
 	},
 
   getChildContext() {
@@ -110,11 +113,18 @@ HeaderCatalog = React.createClass({
       		</div>{/*<!-- .navigation-primary-->*/}
       	</header>
 				<div className="header-lower header-lower-catalog-info clearfix">
-			    <IconButton
-						className="go-back-button"
-						onClick={this.goBack}
-						iconClassName="mdi mdi-chevron-left"
-						/>
+					{"author_title" in this.props.selectedObject ?
+				   <IconButton
+							className="go-back-button"
+							onClick={this.props.closeSelectedObject}
+							iconClassName="mdi mdi-chevron-left"
+							/>
+				  : <IconButton
+							className="go-back-button"
+							onClick={this.goBack}
+							iconClassName="mdi mdi-chevron-left"
+							/>
+					}
 					<div className="catalog-header-inner">
 							<h4 className="catalog-header-title">{this.props.catalogTitleText}</h4>
 					</div>
