@@ -29,7 +29,7 @@ ThumbnailSlider = React.createClass({
 	    };
 	    const styles = {
 	    	thumbnailSlider: {
-	    		background: "#232F3C",
+	    		background: "rgb(9, 22, 36)",
 	    	},
 	    };
 		return (
@@ -53,4 +53,3 @@ ThumbnailSlider = React.createClass({
 ThumbnailSlider.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
-

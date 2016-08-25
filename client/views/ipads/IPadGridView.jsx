@@ -69,4 +69,3 @@ IPadGridView = React.createClass({
 IPadGridView.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
-
