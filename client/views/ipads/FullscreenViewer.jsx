@@ -15,15 +15,7 @@ FullscreenViewer = React.createClass({
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
-	getInitialState() {
-		return {
-			open: this.props.open,
-		}
-	},
 	handleClose() {
-		this.setState({
-			open: false,
-		});
 		if(typeof this.props.handleClose === "function") {
 			this.props.handleClose();
 		}
@@ -63,7 +55,7 @@ FullscreenViewer = React.createClass({
 	    };
 		return (
 			<Dialog
-	          open={this.state.open}
+	          open={this.props.open}
 	          onRequestClose={this.handleClose}
 	          bodyStyle={styles.noPadding}
 	        >
