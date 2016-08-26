@@ -19,29 +19,29 @@ ObjectsSearchToolsPanel = React.createClass({
 		open: React.PropTypes.bool,
 	},
 
-  getChildContext() {
-	return { muiTheme: getMuiTheme(baseTheme) };
-  },
+	getChildContext() {
+		return { muiTheme: getMuiTheme(baseTheme) };
+	},
 
-  childContextTypes: {
-	muiTheme: React.PropTypes.object.isRequired,
-  },
+	childContextTypes: {
+		muiTheme: React.PropTypes.object.isRequired,
+	},
 
-  getInitialState(){
-    return {
-		searchDropdownOpen : "",
-		yearMin: 600,
-		yearMax: 1700,
-		scribes: [],
-		illuminators: [],
-		institutions: [],
-		places: [],
-    };
-  },
+	getInitialState(){
+		return {
+			searchDropdownOpen : "",
+			yearMin: 600,
+			yearMax: 1700,
+			scribes: [],
+			illuminators: [],
+			institutions: [],
+			places: [],
+		};
+	},
 
-  mixins: [ReactMeteorData],
+	mixins: [ReactMeteorData],
 
-  getMeteorData(){
+	getMeteorData(){
 
 		let scribes = [], illuminators = [], institutions = [], places = [];
 
@@ -83,26 +83,27 @@ ObjectsSearchToolsPanel = React.createClass({
 		var filters = this.props.filters;
 
 	    let styles = {
-	      flatButton : {
-	        width: "auto",
-	        minWidth: "none",
-	        height: "80px",
-	        padding: "21px 5px"
-	      },
-	      flatIconButton : {
-	        padding: "10px 20px",
-	        width: "auto",
-	        minWidth: "none",
-	        height: "55px",
-	      },
-		  wrapper: {
-		    display: 'flex',
-		    flexWrap: 'wrap',
-		  },
-		  textSearch: {
-			padding: "0px 10px",
-			background: "#001439",
-		  }
+			flatButton : {
+				width: "auto",
+				minWidth: "none",
+				height: "80px",
+				padding: "21px 5px"
+			},
+			flatIconButton : {
+				padding: "10px 20px",
+				width: "auto",
+				minWidth: "none",
+				height: "55px",
+			},
+			wrapper: {
+				display: 'flex',
+				flexWrap: 'wrap',
+			},
+			textSearch: {
+				width: "100%",
+				padding: "0px 10px",
+				background: "#001439",
+			}
 	    };
 
     return (
@@ -115,12 +116,26 @@ ObjectsSearchToolsPanel = React.createClass({
 				<TextField
 					hintText=""
 					floatingLabelText="Search"
+					fullWidth={true}
 					onChange={debounce(500, this.props.handleChangeTextsearch)}
 				/>
 			</div>
-            <Card>
+			<Card>
 			    <CardHeader
 			      title="Date"
+			      actAsExpander={true}
+			      showExpandableButton={true}
+			    />
+			    <CardText expandable={true} style={styles.wrapper}>
+				    <div className="search-tool search-tool--date">
+						<DateRangeSlider
+							handleChangeDate={this.props.handleChangeDate}/>
+					</div>
+			    </CardText>
+			</Card>
+            <Card>
+			    <CardHeader
+			      title="Scribes"
 			      actAsExpander={true}
 			      showExpandableButton={true}
 			    />
