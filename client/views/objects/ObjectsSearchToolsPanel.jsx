@@ -99,6 +99,10 @@ ObjectsSearchToolsPanel = React.createClass({
 		    display: 'flex',
 		    flexWrap: 'wrap',
 		  },
+		  textSearch: {
+			padding: "0px 10px",
+			background: "#001439",
+		  }
 	    };
 
     return (
@@ -106,8 +110,14 @@ ObjectsSearchToolsPanel = React.createClass({
 			openSecondary={true}
 			open={this.props.open}
 			docked={false}
-			width={400}
 			onRequestChange={this.props.closeLeftMenu}>
+			<div style={styles.textSearch} className="search-tool text-search">
+				<TextField
+					hintText=""
+					floatingLabelText="Search"
+					onChange={debounce(500, this.props.handleChangeTextsearch)}
+				/>
+			</div>
             <Card>
 			    <CardHeader
 			      title="Date"
