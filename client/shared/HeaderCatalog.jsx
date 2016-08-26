@@ -28,7 +28,8 @@ HeaderCatalog = React.createClass({
 
   getInitialState(){
     return {
-      leftMenuOpen : false
+      leftMenuOpen : false,
+      rightMenuOpen: false,
     };
   },
 
@@ -41,6 +42,17 @@ HeaderCatalog = React.createClass({
   closeLeftMenu(){
     this.setState({
       leftMenuOpen : false
+    });
+  },
+  toggleRightMenu(){
+    this.setState({
+      rightMenuOpen : !this.state.rightMenuOpen
+    });
+  },
+
+  closeRightMenu(){
+    this.setState({
+      rightMenuOpen : false
     });
   },
 
@@ -75,6 +87,14 @@ HeaderCatalog = React.createClass({
         open={this.state.leftMenuOpen}
         closeLeftMenu={this.closeLeftMenu}
         />
+      <ObjectsSearchToolsPanel
+        filters={this.props.filters}
+        toggleSearchTerm={this.props.toggleSearchTerm}
+        handleChangeDate={this.props.handleChangeDate}
+        handleChangeTextsearch={this.props.handleChangeTextsearch}
+        open={this.state.rightMenuOpen}
+        closeLeftMenu={this.closeRightMenu}
+      />
 			<header className="header-nav header-catalog paper-shadow">
     		<div className="navigation-primary">
     			<div className="container close-navbar">
@@ -93,7 +113,12 @@ HeaderCatalog = React.createClass({
                 href="/"
                 icon={<img className="logo-image" src="/images/logo-white.png" />}
                 />
-
+                <FlatButton
+                  className="right-drawer-toggle"
+                  style={styles.flatIconButton}
+                  icon={<FontIcon className="mdi mdi-magnify" />}
+                  onClick={this.toggleRightMenu}
+                />
     				</div>
 
     				<div className="navbar-collapse collapse module-group right">
@@ -105,9 +130,7 @@ HeaderCatalog = React.createClass({
 											handleChangeDate={this.props.handleChangeDate}
 											handleChangeTextsearch={this.props.handleChangeTextsearch}
 										/>
-
 								</div>
-
               </div>{/*<!-- .module-group.right -->*/}
       			</div>{/*<!-- .container.close-navbar -->*/}
       		</div>{/*<!-- .navigation-primary-->*/}
