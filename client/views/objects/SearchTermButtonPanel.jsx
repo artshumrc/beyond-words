@@ -2,6 +2,7 @@ import Chip from 'material-ui/Chip';
 import FontIcon from 'material-ui/FontIcon';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {indigo500, grey300, white, black} from 'material-ui/styles/colors';
 
 SearchTermButtonPanel = React.createClass({
 
@@ -35,15 +36,18 @@ SearchTermButtonPanel = React.createClass({
 	},
 
 	render(){
-		var className = "search-term-button";
-		var active = this.props.active;
+		let backgroundColor = grey300;
+		let color = black;
+		let className = "search-term-button";
+		let active = this.props.active;
 
 		if("activeWork" in this.props){
 			if(this.props.activeWork === true){
 				active = true
 			}
 
-		}else{
+		}
+		else{
 			if(this.state.active){
 				active = true;
 			}
@@ -52,18 +56,28 @@ SearchTermButtonPanel = React.createClass({
 
 		if(active){
 			className += " search-term-button--active";
+			backgroundColor = indigo500;
+			color = white;
 		}
 		const styles = {
-		  chip: {
-		    margin: 4,
-		  }
+			chip: {
+				margin: 5,
+				maxWidth: "100%",
+			},
+			chipLabel: {
+				textOverflow: "ellipsis",
+				overflow: "hidden",
+				color: color,
+			},
 		};
 
 		return (
 			<Chip
 				className={className}
+				backgroundColor={backgroundColor}
 				onTouchTap={this.toggleSearchTerm}
-				style={styles.chip}>
+				style={styles.chip}
+				labelStyle={styles.chipLabel}>
 				{this.props.label}
 			</Chip>
 		)
