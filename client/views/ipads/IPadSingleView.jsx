@@ -56,11 +56,11 @@ IPadSingleView = React.createClass({
 	},
 	render() {
 		const settings = {
-	      focusOnSelect: true,
-	      infinite: true,
-	      slidesToShow: 1,
-	      slidesToScroll: 1,
-	      slickGoTo: this.state.slickGoTo || 0,
+			focusOnSelect: true,
+			infinite: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			slickGoTo: this.state.slickGoTo || 0,
 	    };
 		return (
 			<div className="container">

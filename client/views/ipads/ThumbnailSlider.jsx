@@ -16,16 +16,24 @@ ThumbnailSlider = React.createClass({
 	render() {
 		let self = this;
 	    const settings = {
-	      focusOnSelect: true,
-	      dots: true,
-	      infinite: true,
-	      slidesToShow: 6,
-	      slidesToScroll: 1,
-	      afterChange: function (currentSlide) {
-	      	if (typeof self.props.handleSlideChange === 'function') {
-	        	self.props.handleSlideChange(currentSlide);
-	    	}
-	      },
+			focusOnSelect: true,
+			dots: true,
+			infinite: false,
+			slidesToShow: 6,
+			responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1
+                    }
+                }
+            ],
+			afterChange: function (currentSlide) {
+				if (typeof self.props.handleSlideChange === 'function') {
+					self.props.handleSlideChange(currentSlide);
+				}
+			},
 	    };
 	    const styles = {
 	    	thumbnailSlider: {
