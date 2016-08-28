@@ -6,8 +6,19 @@
 	background: @dark-theme-background;
 	padding-top: 0px;
 }
-.slick-slide .image {
-    padding: 5%;
+.slick-slide {
+	.image {
+		padding: 5%;
+		transition: all 200ms ease;
+	}
+}
+.slick-center {
+	.image {
+		transform: scale(1.05);
+		div {
+			border: 2px solid @md-accent-500;
+		}
+	}
 }
 .slick-slide img {
     display: block;

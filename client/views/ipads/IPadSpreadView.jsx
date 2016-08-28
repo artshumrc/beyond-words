@@ -19,11 +19,6 @@ IPadSpreadView = React.createClass({
 			open: false,
 		}
 	},
-	getInitialState() {
-		return {
-			slickGoTo: 0,
-		}
-	},
 	getDefaultProps() {
 		return {
 			slides: [

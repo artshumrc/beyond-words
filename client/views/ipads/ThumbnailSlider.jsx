@@ -16,15 +16,18 @@ ThumbnailSlider = React.createClass({
 	render() {
 		let self = this;
 	    const settings = {
+			centerMode: true,
+			centerPadding: '0px',
 			focusOnSelect: true,
 			dots: true,
 			infinite: false,
-			slidesToShow: 6,
+			slidesToShow: 5,
+			slidesToScroll: 1,
 			responsive: [
                 {
                     breakpoint: 768,
                     settings: {
-                        slidesToShow: 4,
+                        slidesToShow: 3,
                         slidesToScroll: 1
                     }
                 }
