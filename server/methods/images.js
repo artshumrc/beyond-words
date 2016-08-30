@@ -1,13 +1,12 @@
 /**
- * Created by Julian on 7/27/16.
- */
+* Created by Julian on 7/27/16.
+*/
 Meteor.methods({
-    uploadFiles: function (files) {
+	uploadFiles(files) {
 		check(files, [String]);
-
-    },
-    removeImage: function (imageId) {
+	},
+	removeImage(imageId) {
 		check(imageId, String);
-        Images.remove(imageId);
-    }
+		Images.remove(imageId);
+	},
 });

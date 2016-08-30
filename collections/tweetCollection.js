@@ -1,2 +1,2 @@
 
-TweetCollection = new Mongo.Collection("tweetCollection");
+TweetCollection = new Mongo.Collection('tweetCollection');

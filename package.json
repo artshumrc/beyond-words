@@ -43,6 +43,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "pretest": "npm run lint --silent"
   },
   "eslintConfig": {
@@ -58,19 +59,27 @@
       "ecmaVersion": 6,
       "sourceType": "module",
       "ecmaFeatures": {
-            "jsx": true
-        }
+        "jsx": true
+      }
     },
     "plugins": [
       "meteor"
     ],
     "extends": [
+      "airbnb",
       "plugin:meteor/recommended"
     ],
     "settings": {
       "import/resolver": "meteor"
     },
     "rules": {
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "no-underscore-dangle": "off",
+      "no-undef": "off",
+      "no-console": "off"
     }
   },
   "repository": {
