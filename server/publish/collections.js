@@ -4,6 +4,9 @@
 
 if (Meteor.isServer) {
 	  Meteor.publish('objects', function(query, skip, limit) {
+		check(query, Object);
+		check(skip, Number);
+		check(limit, Number);
 			if(!skip){
 				skip = 0;
 			}
@@ -17,6 +20,7 @@ if (Meteor.isServer) {
 	  });
 
     Meteor.publish('object', function(slug){
+		check(slug, String);
        if(slug){
            return Objects.find({slug: slug});
        }
@@ -38,6 +42,7 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('selectImages', function (imageArray) {
+		check(imageArray, [String]);
         if (imageArray && Array.isArray(imageArray)) {
             return [
                 Images.find({_id: {$in: imageArray}}),
@@ -48,6 +53,7 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('pageImages', function(pageSlug){
+		check(pageSlug, String);
         if (pageSlug) {
             var page = Pages.findOne({slug: pageSlug});
             console.log(page);
@@ -63,6 +69,7 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('objectImages', function(objectSlug){
+		check(objectSlug, String);
         if (objectSlug) {
             var object = Objects.findOne({slug: objectSlug});
             // console.log(page);
@@ -78,6 +85,7 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('pages', function (slug) {
+		check(slug, String);
         if (slug) {
             slug = {slug: slug};
         } else {

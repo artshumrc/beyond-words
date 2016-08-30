@@ -18,7 +18,7 @@ AutoForm.hooks({
 });
 
 Template.profile.events({
-  'change form#updatePicture input': function(e, t) {
+  'change form#updatePicture input': function(event, templateInstance) {
     return Meteor.setTimeout(function() {
       return $('form#updatePicture').submit();
     }, 10);
