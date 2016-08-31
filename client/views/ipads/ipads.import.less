@@ -1,10 +1,37 @@
 .grid-thumbnail {
 	margin-top: 15px;
 	margin-bottom: 15px;
+	height:300px;
+	overflow:hidden;
+	//background:@dark-theme-toolbar;
+
+	.image {
+		width:100%;
+		img {
+			width:100%;
+		}
+	}
+}
+body, .page-ipad {
+	background:@dark-theme-toolbar;
+
 }
 .ipad-content {
-	background: @dark-theme-background;
+	background:@dark-theme-toolbar;
 	padding-top: 0px;
+
+	.slick-prev {
+		left:-57px;
+	}
+
+	.slick-prev, .slick-next{
+		&:before {
+			font-size:42px;
+
+		}
+
+	}
+
 }
 .slick-slide {
 	.image {
@@ -26,4 +53,123 @@
 }
 .clear {
 	float: none;
+}
+.fullscreen-viewer {
+
+}
+
+.ipad-toolbar {
+	padding:50px 0 10px !important;
+
+	h3 {
+		font-size:28px;
+		color:@light;
+		margin:0;
+		padding:0;
+	}
+	.mdi{
+		&:before {
+			font-size:42px;
+		}
+	}
+}
+
+.toolbar-group {
+
+
+}
+
+.toolbar-group-view-mode {
+	>div >div {
+		display:block;
+		padding:0 12px;
+	}
+
+}
+
+
+.fullscreen-video {
+	>div >div>div>div {
+		background:@dark-theme-toolbar;
+
+	}
+	.close-fullscreen {
+		position:absolute !important;
+		top:0;
+		right:-48px;
+		background:rgba(0,0,0,0.5) !important;
+		color:@light !important;
+		span, i, div, svg {
+			color:@light !important;
+			fill:@light !important;
+
+		}
+	}
+
+	video {
+		width:100%;
+		height:100%;
+	}
+
+
+}
+
+.info-modal {
+	background:rgba(35, 47, 60, 0.9);
+	position:fixed;
+	width:100%;
+	height:100%;
+	overflow-y:scroll;
+	overflow:hidden;
+	z-index:1000;
+	top:0;
+	left:0;
+
+  transition: transform 300ms ease-out;
+  transform: translateY(-100%) translateZ(0);
+
+  &.lowered {
+    transform: translateY(0%) translateZ(0);
+
+  }
+
+
+	.close-fullscreen {
+		position:absolute !important;
+		top:60px;
+		right:60px;
+		height:58px !important;
+		width:58px !important;
+		background:rgba(0,0,0,0.0) !important;
+		color:@light !important;
+		border-radius:100% !important;
+		border:2px solid @light !important;
+		padding:15px !important;
+		span, i, div, svg {
+			color:@light !important;
+			fill:@light !important;
+
+		}
+		svg {
+			height:42px;
+			width:42px;
+		}
+	}
+
+	.object-details {
+		background:transparent;
+		padding-top:160px;
+		text-align: center;
+
+		.object-detail-text-wrap {
+			width:80%;
+			max-width:900px;
+			margin:0 auto;
+			display:block;
+			text-align:left;
+
+		}
+
+	}
+
 }

@@ -67,9 +67,19 @@ FlowRouter.route('/:slug', {
     }
 });
 
+/*
 FlowRouter.route('/', {
     action: function(params) {
         mount(ComingSoonHomeLayout);
     }
 
+});
+*/
+
+FlowRouter.route('/', {
+    action: function(params, queryParams){
+        mount(IPadLayout, {
+            content: <IPadView />
+        });
+    }
 });

@@ -110,4 +110,3 @@ IPadSpreadView = React.createClass({
 IPadSpreadView.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
-

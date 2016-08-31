@@ -22,13 +22,22 @@ IPadSingleView = React.createClass({
 	getDefaultProps() {
 		return {
 			slides: [
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
-		        '/images/BannerSQ.jpg',
+        '/images/Januarius_0001.tif',
+        '/images/Januarius_0002.tif',
+        '/images/Januarius_0003.tif',
+        '/images/Januarius_0004.tif',
+        '/images/Januarius_0005.tif',
+        '/images/Januarius_0006.tif',
+        '/images/Januarius_0007.tif',
+        '/images/Januarius_0008.tif',
+        '/images/Januarius_0009.tif',
+        '/images/Januarius_0010.tif',
+        '/images/Januarius_0011.tif',
+        '/images/Januarius_0012.tif',
+        '/images/Januarius_0013.tif',
+        '/images/Januarius_0014.tif',
+        '/images/Januarius_0015.tif',
+        '/images/Januarius_0016.tif',
 		    ],
 		}
 	},
@@ -101,4 +110,3 @@ IPadSingleView = React.createClass({
 IPadSingleView.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
-

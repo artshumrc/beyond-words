@@ -55,16 +55,17 @@ FullscreenViewer = React.createClass({
 	    };
 		return (
 			<Dialog
-	          open={this.props.open}
-	          onRequestClose={this.handleClose}
-	          bodyStyle={styles.noPadding}
-	        >
+				open={this.props.open}
+				className="fullscreen-viewer"
+				onRequestClose={this.handleClose}
+				bodyStyle={styles.noPadding}
+				>
 	        	<IconButton
 	        		tooltip="Close" style={styles.closeButton}
 	        		onClick={this.handleClose}>
 			    	<ContentClear />
 			    </IconButton>
-	        	<div id="fullscreen-image" style={styles.fullscreenImage}></div>
+        	<div id="fullscreen-image" style={styles.fullscreenImage}></div>
 	        </Dialog>
 		);
 	}
@@ -73,4 +74,3 @@ FullscreenViewer = React.createClass({
 FullscreenViewer.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
-
