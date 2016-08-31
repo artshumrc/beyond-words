@@ -1,4 +1,5 @@
-/*App.icons({
+/*
+App.icons({
   // iOS
   'iphone': 'resources/icons/icon.png',
   'iphone_2x': 'resources/icons/icon.png',

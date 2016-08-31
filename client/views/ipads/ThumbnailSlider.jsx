@@ -37,12 +37,13 @@ ThumbnailSlider = React.createClass({
 					self.props.handleSlideChange(currentSlide);
 				}
 			},
-	    };
-	    const styles = {
-	    	thumbnailSlider: {
-	    		background: "rgb(9, 22, 36)",
-	    	},
-	    };
+		};
+		const styles = {
+			thumbnailSlider: {
+				background: 'rgb(9, 22, 36)',
+			},
+		};
+
 		return (
 			<Paper zDepth={4} style={styles.thumbnailSlider}>
 				<Slider {...settings}>

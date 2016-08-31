@@ -73,12 +73,21 @@
       "import/resolver": "meteor"
     },
     "rules": {
-      "indent": ["error","tab"],
+      "indent": [
+        "error",
+        "tab"
+      ],
       "no-underscore-dangle": "off",
       "no-undef": "off",
       "no-console": "off",
-      "react/jsx-indent": ["error", "tab"],
-      "react/jsx-indent-props": ["error", "tab"],
+      "react/jsx-indent": [
+        "error",
+        "tab"
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        "tab"
+      ],
       "react/react-in-jsx-scope": "off",
       "react/prefer-es6-class": "off",
       "react/prefer-stateless-function": "off",

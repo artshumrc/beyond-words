@@ -63,13 +63,14 @@ FullscreenViewer = React.createClass({
 				className="fullscreen-viewer"
 				onRequestClose={this.handleClose}
 				bodyStyle={styles.noPadding}
+			>
+				<IconButton
+					tooltip="Close" style={styles.closeButton}
+					onClick={this.handleClose}
 				>
-	        	<IconButton
-	        		tooltip="Close" style={styles.closeButton}
-	        		onClick={this.handleClose}>
-			    	<ContentClear />
-			    </IconButton>
-        	<div id="fullscreen-image" style={styles.fullscreenImage}></div>
+					<ContentClear />
+				</IconButton>
+				<div id="fullscreen-image" style={styles.fullscreenImage} />
 			</Dialog>
 		);
 	},
