@@ -1,7 +1,6 @@
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
-import { debounce } from 'throttle-debounce';
 import Drawer from 'material-ui/Drawer';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 
@@ -72,6 +71,10 @@ ObjectsSearchToolsPanel = React.createClass({
 		this.props.toggleSearchTerm(key, value);
 	},
 
+	handleChangeTextsearch(event) {
+		this.props.handleChangeTextsearch(event.target.value);
+	},
+
 	render() {
 		const self = this;
 		const filters = this.props.filters;
@@ -112,7 +115,7 @@ ObjectsSearchToolsPanel = React.createClass({
 						hintText=""
 						floatingLabelText="Search"
 						fullWidth
-						onChange={debounce(500, this.props.handleChangeTextsearch)}
+						onChange={this.handleChangeTextsearch}
 					/>
 				</div>
 				<Card>
