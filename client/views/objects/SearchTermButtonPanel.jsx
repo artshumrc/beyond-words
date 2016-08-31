@@ -1,8 +1,7 @@
 import Chip from 'material-ui/Chip';
-import FontIcon from 'material-ui/FontIcon';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {indigo500, grey300, white, black} from 'material-ui/styles/colors';
+import { indigo500, grey300, white, black } from 'material-ui/styles/colors';
 
 SearchTermButtonPanel = React.createClass({
 
@@ -15,59 +14,52 @@ SearchTermButtonPanel = React.createClass({
 		active: React.PropTypes.bool,
 	},
 
-	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
-	},
-
 	childContextTypes: {
 		muiTheme: React.PropTypes.object.isRequired,
 	},
 
-	getInitialState(){
+	getInitialState() {
 		return {
-			active : false,
+			active: false,
 		};
-
 	},
 
-	toggleSearchTerm(){
+	getChildContext() {
+		return { muiTheme: getMuiTheme(baseTheme) };
+	},
+
+	toggleSearchTerm() {
 		this.props.toggleSearchTerm(this.props.searchTermKey, this.props.value);
-
 	},
 
-	render(){
+	render() {
 		let backgroundColor = grey300;
 		let color = black;
-		let className = "search-term-button";
+		let className = 'search-term-button';
 		let active = this.props.active;
 
-		if("activeWork" in this.props){
-			if(this.props.activeWork === true){
-				active = true
-			}
-
-		}
-		else{
-			if(this.state.active){
+		if ('activeWork' in this.props) {
+			if (this.props.activeWork === true) {
 				active = true;
 			}
-
+		} else if (this.state.active) {
+			active = true;
 		}
 
-		if(active){
-			className += " search-term-button--active";
+		if (active) {
+			className += ' search-term-button--active';
 			backgroundColor = indigo500;
 			color = white;
 		}
 		const styles = {
 			chip: {
 				margin: 5,
-				maxWidth: "100%",
+				maxWidth: '100%',
 			},
 			chipLabel: {
-				textOverflow: "ellipsis",
-				overflow: "hidden",
-				color: color,
+				textOverflow: 'ellipsis',
+				overflow: 'hidden',
+				color,
 			},
 		};
 
@@ -77,11 +69,11 @@ SearchTermButtonPanel = React.createClass({
 				backgroundColor={backgroundColor}
 				onTouchTap={this.toggleSearchTerm}
 				style={styles.chip}
-				labelStyle={styles.chipLabel}>
+				labelStyle={styles.chipLabel}
+			>
 				{this.props.label}
 			</Chip>
-		)
-
-	}
+		);
+	},
 
 });

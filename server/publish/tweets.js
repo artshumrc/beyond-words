@@ -16,7 +16,7 @@ const POLL_INTERVAL = 600000;
 // const POLL_INTERVAL = 1800000;
 Meteor.publish('tweets', function tweets() {
 	const pub = this;
-	function poll() {
+	const poll = () => {
 		const wrapGet = Meteor.wrapAsync(T.get, T);
 		const data = wrapGet('statuses/user_timeline', {
 			screen_name: 'beyondwords2016',

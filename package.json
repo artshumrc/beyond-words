@@ -42,8 +42,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint-fix": "eslint . --ext .js.jsx --fix",
     "pretest": "npm run lint --silent"
   },
   "eslintConfig": {
@@ -73,13 +73,18 @@
       "import/resolver": "meteor"
     },
     "rules": {
-      "indent": [
-        "error",
-        "tab"
-      ],
+      "indent": ["error","tab"],
       "no-underscore-dangle": "off",
       "no-undef": "off",
-      "no-console": "off"
+      "no-console": "off",
+      "react/jsx-indent": ["error", "tab"],
+      "react/jsx-indent-props": ["error", "tab"],
+      "react/react-in-jsx-scope": "off",
+      "react/prefer-es6-class": "off",
+      "react/prefer-stateless-function": "off",
+      "react/jsx-no-undef": "off",
+      "react/jsx-no-bind": "off",
+      "jsx-a11y/label-has-for": "off"
     }
   },
   "repository": {

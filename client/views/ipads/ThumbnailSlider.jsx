@@ -1,5 +1,5 @@
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
@@ -14,8 +14,8 @@ ThumbnailSlider = React.createClass({
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
 	render() {
-		let self = this;
-	    const settings = {
+		const self = this;
+		const settings = {
 			centerMode: true,
 			centerPadding: '0px',
 			focusOnSelect: true,
@@ -24,44 +24,44 @@ ThumbnailSlider = React.createClass({
 			slidesToShow: 5,
 			slidesToScroll: 1,
 			responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1
-                    }
-                }
-            ],
-			afterChange: function (currentSlide) {
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+					},
+				},
+			],
+			afterChange(currentSlide) {
 				if (typeof self.props.handleSlideChange === 'function') {
 					self.props.handleSlideChange(currentSlide);
 				}
 			},
-	    };
-	    const styles = {
-	    	thumbnailSlider: {
-	    		background: "#232F3C",
-	    	},
-	    };
+		};
+		const styles = {
+			thumbnailSlider: {
+				background: '#232F3C',
+			},
+		};
 		return (
 			<Paper zDepth={4} style={styles.thumbnailSlider}>
 				<Slider {...settings}>
-				{this.props.thumbnailList.map((thumbnail, i) => {
-					return (
-						<div key={i}>
-							<div className="image">
-								<Paper zDepth={2}><img className="center-block" src={thumbnail} /></Paper>
-							</div>
+				{this.props.thumbnailList.map((thumbnail, i) => (
+					<div key={i}>
+						<div className="image">
+							<Paper zDepth={2}>
+								<img alt="thumbnail" className="center-block" src={thumbnail} />
+							</Paper>
 						</div>
-					);
-				})}
+					</div>
+				))}
 				</Slider>
 			</Paper>
 		);
-	}
+	},
 });
 
 ThumbnailSlider.childContextTypes = {
-    muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: React.PropTypes.object.isRequired,
 };
 
