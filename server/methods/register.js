@@ -1,36 +1,31 @@
-Meteor.method("register", function (content) {
-		console.log("method", content);
+Meteor.method('register', (content) => {
+	const validCandidate = {};
 
-		var validCandidate = {};
-
-		for( var key in content ){
-			if(["nov_3", "nov_4", "nov_5"].indexOf(key) >=0 ){
-				if(typeof content[key] !== "boolean"){
-					content[key] = false;
-				}
-
-			}else {
-				content[key] = content[key].replace(/(<([^>]+)>)/ig,"");
-				if(content[key].length > 1000){
-					content[key] = content[key].slice(0,999);
-				}
+	Object.keys(content).forEach(key => {
+		let value = content[key];
+		if (['nov_3', 'nov_4', 'nov_5'].indexOf(key) >= 0) {
+			if (typeof value !== 'boolean') {
+				value = false;
 			}
-
-			validCandidate[key] = content[key];
-
+		} else {
+			value = value.replace(/(<([^>]+)>)/ig, '');
+			if (value.length > 1000) {
+				value = value.slice(0, 999);
+			}
 		}
 
+		validCandidate[key] = value;
+	});
 
-		Registration.insert(validCandidate)
 
-		return 1;
+	Registration.insert(validCandidate);
 
-	}, {
-	  url: "events/register",
-	  getArgsFromRequest: function (request) {
-	    var content = request.body;
-			console.log("argsFromRequest", content);
+	return 1;
+}, {
+	url: 'events/register',
+	getArgsFromRequest(request) {
+		const content = request.body;
 
-	    return [content];
-	  }
+		return [content];
+	},
 });

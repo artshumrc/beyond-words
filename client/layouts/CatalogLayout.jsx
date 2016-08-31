@@ -1,226 +1,206 @@
 CatalogLayout = React.createClass({
 
 
-  getInitialState(){
-    return {
+	getInitialState() {
+		return {
 			selectedObject: {},
-			catalogTitleText: "Illuminated Manuscripts in Boston Collections, Catalog, 2016.",
-			catalogLayout: "grid",
-      filters: [],
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogLayout: 'grid',
+			filters: [],
 			skip: 0,
-			limit: 12
-    };
-  },
-
-	loadMoreObjects(){
-		console.log("CatalogLayout.loadMoreObjects", this.state.skip + this.state.limit);
-	    this.setState({
-	      skip : this.state.skip + this.state.limit
-	    });
-
+			limit: 12,
+		};
 	},
 
-	toggleSearchTerm(key, value){
-		var self = this,
-				filters = this.state.filters;
-		var keyIsInFilter = false,
-				valueIsInFilter = false,
-				filterValueToRemove,
-				filterToRemove;
+	loadMoreObjects() {
+		console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
+		this.setState({
+			skip: this.state.skip + this.state.limit,
+		});
+	},
 
-		filters.forEach(function(filter, i){
-			if(filter.key === key){
+	toggleSearchTerm(key, value) {
+		const filters = this.state.filters;
+		let keyIsInFilter = false;
+		let valueIsInFilter = false;
+		let filterValueToRemove;
+		let filterToRemove;
+
+		filters.forEach((filter, i) => {
+			if (filter.key === key) {
 				keyIsInFilter = true;
 
-				if(filter.values.indexOf(value) >= 0){
+				if (filter.values.indexOf(value) >= 0) {
 					valueIsInFilter = true;
 					filterValueToRemove = filter.values.indexOf(value);
 				}
 
-				if(valueIsInFilter){
+				if (valueIsInFilter) {
 					filter.values.splice(filterValueToRemove, 1);
-					if(filter.values.length === 0){
+					if (filter.values.length === 0) {
 						filterToRemove = i;
 					}
-				}else {
+				} else {
 					filter.values.push(value);
 				}
-
 			}
-
 		});
 
 
-		if(typeof filterToRemove !== "undefined"){
+		if (typeof filterToRemove !== 'undefined') {
 			filters.splice(filterToRemove, 1);
 		}
 
-		if(!keyIsInFilter){
+		if (!keyIsInFilter) {
 			filters.push({
-									key: key,
-									values: [value]
-								});
-
+				key,
+				values: [value],
+			});
 		}
 
 		this.setState({
-			filters: filters,
-			skip: 0
+			filters,
+			skip: 0,
 		});
-
 	},
 
-	handleChangeTextsearch(e){
+	handleChangeTextsearch() {
+		const filters = this.state.filters;
+		const textsearch = $('.text-search input').val();
 
-		var filters = this.state.filters;
-		var textsearch = $(".text-search input").val();
+		if (textsearch && textsearch.length) {
+			let textsearchInFilters = false;
+			console.log(filters);
 
-		if(textsearch && textsearch.length){
-			var textsearchInFilters = false;
-
-			filters.forEach(function(filter, i){
-				if(filter.key === "textsearch"){
-					filter.values = [textsearch];
+			filters.forEach((filter, i) => {
+				if (filter.key === 'textsearch') {
+					filters[i].values = [textsearch];
 					textsearchInFilters = true;
 				}
 			});
+			console.log(filters);
 
-			if(!textsearchInFilters){
+			if (!textsearchInFilters) {
 				filters.push({
-					key:"textsearch",
-					values:[textsearch]
-				})
+					key: 'textsearch',
+					values: [textsearch],
+				});
 			}
+		} else {
+			let filterToRemove;
 
-		}else {
-			var filterToRemove;
-
-			filters.forEach(function(filter, i){
-				if(filter.key === "textsearch"){
+			filters.forEach((filter, i) => {
+				if (filter.key === 'textsearch') {
 					filterToRemove = i;
 				}
-
 			});
 
-			if(typeof filterToRemove !== "undefined"){
+			if (typeof filterToRemove !== 'undefined') {
 				filters.splice(filterToRemove, 1);
 			}
-
-
 		}
 
 		this.setState({
-			filters: filters
-		})
-
+			filters,
+		});
 	},
 
-	handleChangeDate(e){
+	handleChangeDate(e) {
+		const filters = this.state.filters;
 
-		var filters = this.state.filters;
+		if (e.from > 600) {
+			let dateFromInFilters = false;
 
-		if(e.from > 600){
-			var dateFromInFilters = false;
-
-			filters.forEach(function(filter, i){
-				if(filter.key === "dateFrom"){
-					filter.values = [e.from];
+			filters.forEach((filter) => {
+				if (filter.key === 'dateFrom') {
+					filters[i].values = [e.from];
 					dateFromInFilters = true;
 				}
 			});
 
-			if(!dateFromInFilters){
+			if (!dateFromInFilters) {
 				filters.push({
-					key:"dateFrom",
-					values:[e.from]
-				})
+					key: 'dateFrom',
+					values: [e.from],
+				});
 			}
+		} else {
+			let filterToRemove;
 
-		}else {
-			var filterToRemove;
-
-			filters.forEach(function(filter, i){
-				if(filter.key === "dateFrom"){
+			filters.forEach((filter, i) => {
+				if (filter.key === 'dateFrom') {
 					filterToRemove = i;
 				}
-
 			});
 
-			if(typeof filterToRemove !== "undefined"){
+			if (typeof filterToRemove !== 'undefined') {
 				filters.splice(filterToRemove, 1);
 			}
-
 		}
 
-		if(e.to < 1700){
-			var dateToInFilters = false;
+		if (e.to < 1700) {
+			let dateToInFilters = false;
 
-			filters.forEach(function(filter, i){
-				if(filter.key === "dateTo"){
-					filter.values = [e.to];
+			filters.forEach((filter) => {
+				if (filter.key === 'dateTo') {
+					filters[i].values = [e.to];
 					dateToInFilters = true;
 				}
 			});
 
-			if(!dateToInFilters){
+			if (!dateToInFilters) {
 				filters.push({
-					key:"dateTo",
-					values:[e.to]
-				})
+					key: 'dateTo',
+					values: [e.to],
+				});
 			}
+		} else {
+			let filterToRemove;
 
-		}else {
-			var filterToRemove;
-
-			filters.forEach(function(filter, i){
-				if(filter.key === "dateTo"){
+			filters.forEach((filter, i) => {
+				if (filter.key === 'dateTo') {
 					filterToRemove = i;
 				}
-
 			});
 
-			if(typeof filterToRemove !== "undefined"){
+			if (typeof filterToRemove !== 'undefined') {
 				filters.splice(filterToRemove, 1);
 			}
-
 		}
 
 
 		this.setState({
-			filters: filters
+			filters,
 		});
-
 	},
 
-	toggleCatalogLayout(layout){
+	toggleCatalogLayout(layout) {
 		this.setState({
-			catalogLayout: layout
+			catalogLayout: layout,
 		});
 	},
 
-	selectObject(selectedObject){
-		let catalogTitleText =  selectedObject.catalog_n.toString();
-		if(selectedObject.author_title != undefined) {
-			catalogTitleText += ". " + Utils.trunc(selectedObject.author_title, 90);
+	selectObject(selectedObject) {
+		let catalogTitleText = selectedObject.catalog_n.toString();
+		if (selectedObject.author_title !== undefined) {
+			catalogTitleText = `${catalogTitleText}. ${Utils.trunc(selectedObject.author_title, 90)}`;
 		}
 		this.setState({
-			selectedObject: selectedObject,
-			catalogTitleText: catalogTitleText
+			selectedObject,
+			catalogTitleText,
 		});
-
 	},
 
-	closeSelectedObject(){
+	closeSelectedObject() {
 		this.setState({
 			selectedObject: {},
-			catalogTitleText: "Illuminated Manuscripts in Boston Collections, Catalog, 2016.",
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-
 	},
 
-	render(){
-		console.log("CatalogLayout.filters", this.state.filters);
-		return(
+	render() {
+		console.log('CatalogLayout.filters', this.state.filters);
+		return (
 			<div className="archimedes-layout catalog-layout">
 
 				<HeaderCatalog
@@ -233,7 +213,7 @@ CatalogLayout = React.createClass({
 					catalogLayout={this.state.catalogLayout}
 					selectedObject={this.state.selectedObject}
 					closeSelectedObject={this.closeSelectedObject}
-					/>
+				/>
 
 				<ObjectsList
 					filters={this.state.filters}
@@ -245,10 +225,10 @@ CatalogLayout = React.createClass({
 					selectedObject={this.state.selectedObject}
 					selectObject={this.selectObject}
 					closeSelectedObject={this.closeSelectedObject}
-					/>
+				/>
 
 			</div>
-			);
-		}
+		);
+	},
 
 });
