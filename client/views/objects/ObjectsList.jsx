@@ -47,7 +47,7 @@ ObjectsList = React.createClass({
 
 		// Parse the filters to the query
 		this.props.filters.forEach((filter) => {
-			const date = moment(`01/01/${filter.values[0]}`);
+			const date = moment(`${filter.values[0]}-01-01`, 'YYYY MM DD');
 			switch (filter.key) {
 			case 'textsearch':
 				query.$text = { $search: filter.values[0] };

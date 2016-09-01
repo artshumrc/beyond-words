@@ -64,9 +64,8 @@ CatalogLayout = React.createClass({
 		});
 	},
 
-	handleChangeTextsearch() {
+	handleChangeTextsearch(textsearch) {
 		const filters = this.state.filters;
-		const textsearch = $('.text-search input').val();
 
 		if (textsearch && textsearch.length) {
 			let textsearchInFilters = false;
@@ -111,7 +110,7 @@ CatalogLayout = React.createClass({
 		if (e.from > 600) {
 			let dateFromInFilters = false;
 
-			filters.forEach((filter) => {
+			filters.forEach((filter, i) => {
 				if (filter.key === 'dateFrom') {
 					filters[i].values = [e.from];
 					dateFromInFilters = true;
@@ -141,7 +140,7 @@ CatalogLayout = React.createClass({
 		if (e.to < 1700) {
 			let dateToInFilters = false;
 
-			filters.forEach((filter) => {
+			filters.forEach((filter, i) => {
 				if (filter.key === 'dateTo') {
 					filters[i].values = [e.to];
 					dateToInFilters = true;

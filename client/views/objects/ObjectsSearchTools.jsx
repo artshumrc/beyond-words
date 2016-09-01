@@ -1,11 +1,8 @@
-
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
-import { debounce } from 'throttle-debounce';
-
 
 ObjectsSearchTools = React.createClass({
 
@@ -88,6 +85,11 @@ ObjectsSearchTools = React.createClass({
 			searchDropdownOpen: '',
 		});
 	},
+
+	handleChangeTextsearch(event) {
+		this.props.handleChangeTextsearch(event.target.value);
+	},
+
 
 	render() {
 		const self = this;
@@ -304,7 +306,7 @@ ObjectsSearchTools = React.createClass({
 							<TextField
 								hintText=""
 								floatingLabelText="Search"
-								onChange={debounce(500, this.props.handleChangeTextsearch)}
+								onChange={this.handleChangeTextsearch}
 							/>
 						</div>
 					</div>
