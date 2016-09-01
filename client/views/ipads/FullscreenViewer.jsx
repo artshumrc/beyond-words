@@ -23,6 +23,10 @@ FullscreenViewer = React.createClass({
 		this.viewer = OpenSeadragon({
 			id: 'fullscreen-image',
 			prefixUrl: '/openseadragon/images/',
+			autoHideControls: true,
+			iOSDevice: true,
+			showHomeControl: false,
+			showFullPageControl: false,
 			// TODO: Change this once dzi files are available
 			tileSources: {
 				type: 'image',
@@ -31,18 +35,21 @@ FullscreenViewer = React.createClass({
 		});
 		this.viewer.setFullScreen(true);
 		this.viewer.addHandler('canvas-double-click', () => {
-			const ifFullScreen = self.viewer.isFullPage();
-			self.viewer.setFullScreen(!ifFullScreen);
+			//const ifFullScreen = self.viewer.isFullPage();
+			//self.viewer.setFullScreen(!ifFullScreen);
+			//self.props.handleClose();
 		});
 	},
 
 	handleClose() {
 		if (typeof this.props.handleClose === 'function') {
 			this.props.handleClose();
+			this.viewer.setFullScreen(false);
 		}
 	},
 
 	render() {
+		const self = this;
 		const styles = {
 			fullscreenImage: {
 				height: 500,
@@ -66,12 +73,21 @@ FullscreenViewer = React.createClass({
 				bodyStyle={styles.noPadding}
 			>
 				<IconButton
+					className="fullscreen-viewer-close"
 					tooltip="Close" style={styles.closeButton}
 					onClick={this.handleClose}
 				>
 					<ContentClear />
 				</IconButton>
-				<div id="fullscreen-image" style={styles.fullscreenImage} />
+				<div id="fullscreen-image" style={styles.fullscreenImage} >
+					<IconButton
+						className="fullscreen-viewer-close"
+						tooltip="Close" style={styles.closeButton}
+						onClick={self.handleClose}
+					>
+						<ContentClear />
+					</IconButton>
+				</div>
 			</Dialog>
 		);
 	},

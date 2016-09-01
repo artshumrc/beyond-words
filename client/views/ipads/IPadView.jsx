@@ -138,7 +138,7 @@ IPadView = React.createClass({
 					:
 					<section className="page-content ipad-content">
 						<Toolbar
-							className="ipad-toolbar"
+							className="ipad-toolbar paper-shadow"
 							style={styles.toolBar}
 						>
 							<ToolbarGroup

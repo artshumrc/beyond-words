@@ -65,16 +65,19 @@ FlowRouter.route('/:slug', {
 	},
 });
 
+/*
 FlowRouter.route('/', {
 	action() {
 		mount(ComingSoonHomeLayout);
 	},
 
 });
+*/
 
 /*
  *  Route for iPad build
  *
+ */
 
 FlowRouter.route('/', {
 	action: function(params, queryParams){
@@ -84,4 +87,4 @@ FlowRouter.route('/', {
 	}
 });
 
-*/
+//*/

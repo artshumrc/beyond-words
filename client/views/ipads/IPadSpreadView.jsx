@@ -74,6 +74,7 @@ IPadSpreadView = React.createClass({
 			slidesToShow: 2,
 			slidesToScroll: 2,
 			slickGoTo: this.state.slickGoTo || 0,
+			arrows: false,
 		};
 		return (
 			<div className="container ipad-container ipad-container--spread-view">
@@ -104,6 +105,9 @@ IPadSpreadView = React.createClass({
 							</div>
 						))}
 						</Slider>
+						<p className="teaching-text">
+							Swipe to turn the page. Tap twice to zoom in.
+						</p>
 					</div>
 				</div>
 				<div className="row">
