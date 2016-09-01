@@ -1,3 +1,17 @@
+#react-root, main, .ipad-layout, .page-ipad {
+	width:100%;
+	height:100%;
+
+	.ipad-layout {
+		iframe {
+			width:100%;
+			height:100%;
+
+		}
+
+	}
+}
+
 .grid-thumbnail {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -35,21 +49,22 @@ body, .page-ipad {
 }
 .slick-slide {
 	.image {
-		padding: 5%;
+		padding: 2%;
 		transition: all 200ms ease;
 	}
 }
 .slick-center {
 	.image {
-		transform: scale(1.05);
+		transform: scale(1.2);
+		margin: 10px !important;
 		div {
-			border: 2px solid @md-accent-500;
+			border: 2px solid @md-primary-100;
+			padding:2px;
 		}
 	}
 }
 .slick-slide img {
-    display: block;
-    width: 100%;
+  display: block;
 }
 .clear {
 	float: none;
@@ -69,7 +84,7 @@ body, .page-ipad {
 	}
 	.mdi{
 		&:before {
-			font-size:42px;
+			font-size:38px;
 		}
 	}
 }
@@ -172,4 +187,67 @@ body, .page-ipad {
 
 	}
 
+}
+#fullscreen-image {
+	background:#000;
+}
+.page-ipad {
+
+	.ipad-content {
+		padding:0;
+	}
+
+	.ipad-container--spread-view {
+		padding:120px 30px;
+
+		.spread-view-slider {
+			.slick-slide {
+				height:100%;
+				.image {
+					overflow:hidden;
+					height:425px;
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+	.thumbnail-slider {
+		position:fixed;
+		left:0;
+		bottom:0;
+		width:100%;
+		height:210px;
+
+		.slick-slider {
+			margin:0;
+			padding:20px;
+		}
+
+		.image {
+			margin:10px;
+			background:#222;
+
+			>div {
+				background:#222 !important;
+			}
+
+			img {
+				height:135px;
+
+			}
+
+		}
+
+		.slick-track {
+			height:170px;
+
+
+		}
+
+	}
 }

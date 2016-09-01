@@ -125,31 +125,11 @@ ObjectTeaser = React.createClass({
 						</p>
 
 						<div className="meta-items">
-							{object.illuminator ?
+							{object.place ?
 								<div className="object-teaser-meta">
-									<label>Illuminator</label>
+									<label>Place</label>
 									<p>
-										{object.illuminator}
-									</p>
-								</div>
-								:
-								''
-							}
-							{object.scribe ?
-								<div className="object-teaser-meta">
-									<label>Scribe</label>
-									<p>
-										{object.scribe}
-									</p>
-								</div>
-								:
-								''
-							}
-							{object.printer ?
-								<div className="object-teaser-meta">
-									<label>Printer</label>
-									<p>
-										{object.printer}
+										{object.place}
 									</p>
 								</div>
 								:
@@ -175,11 +155,41 @@ ObjectTeaser = React.createClass({
 								:
 								''
 							}
-							{object.place ?
+							{object.shelfmark ?
 								<div className="object-teaser-meta">
-									<label>Place</label>
+									<label>Shelfmark</label>
 									<p>
-										{object.place}
+										{object.shelfmark}
+									</p>
+								</div>
+								:
+								''
+							}
+							{object.illuminator ?
+								<div className="object-teaser-meta">
+									<label>Illuminator</label>
+									<p>
+										{object.illuminator}
+									</p>
+								</div>
+								:
+								''
+							}
+							{object.scribe ?
+								<div className="object-teaser-meta">
+									<label>Scribe</label>
+									<p>
+										{object.scribe}
+									</p>
+								</div>
+								:
+								''
+							}
+							{object.printer ?
+								<div className="object-teaser-meta">
+									<label>Printer</label>
+									<p>
+										{object.printer}
 									</p>
 								</div>
 								:

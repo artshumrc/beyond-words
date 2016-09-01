@@ -84,6 +84,9 @@ ObjectsSearchTools = React.createClass({
 
 	toggleSearchTerm(key, value) {
 		this.props.toggleSearchTerm(key, value);
+		this.setState({
+			searchDropdownOpen: '',
+		});
 	},
 
 	render() {

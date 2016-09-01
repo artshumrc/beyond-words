@@ -19,7 +19,8 @@ ThumbnailSlider = React.createClass({
 			centerMode: true,
 			centerPadding: '0px',
 			focusOnSelect: true,
-			dots: true,
+			dots: false,
+			arrows: false,
 			infinite: false,
 			slidesToShow: 5,
 			slidesToScroll: 1,
@@ -42,10 +43,14 @@ ThumbnailSlider = React.createClass({
 			thumbnailSlider: {
 				background: 'rgb(9, 22, 36)',
 			},
-		};
+			};
 
 		return (
-			<Paper zDepth={4} style={styles.thumbnailSlider}>
+			<Paper
+				zDepth={4}
+				style={styles.thumbnailSlider}
+				className="thumbnail-slider"
+			>
 				<Slider {...settings}>
 				{this.props.thumbnailList.map((thumbnail, i) => (
 					<div key={i}>

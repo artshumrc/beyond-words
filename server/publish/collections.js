@@ -4,8 +4,12 @@
 if (Meteor.isServer) {
 	Meteor.publish('objects', (query, skip, limit) => {
 		check(query, Object);
-		check(skip, Number);
-		check(limit, Number);
+		if(skip){
+			check(skip, Number);
+		}
+		if(limit){
+			check(limit, Number);
+		}
 
 		return Objects.find(query, {
 			skip,

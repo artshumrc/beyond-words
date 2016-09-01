@@ -29,6 +29,7 @@ FullscreenViewer = React.createClass({
 				url: self.props.imageUrl,
 			},
 		});
+		this.viewer.setFullScreen(true);
 		this.viewer.addHandler('canvas-double-click', () => {
 			const ifFullScreen = self.viewer.isFullPage();
 			self.viewer.setFullScreen(!ifFullScreen);

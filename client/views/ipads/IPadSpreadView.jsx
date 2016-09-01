@@ -76,7 +76,7 @@ IPadSpreadView = React.createClass({
 			slickGoTo: this.state.slickGoTo || 0,
 		};
 		return (
-			<div className="container">
+			<div className="container ipad-container ipad-container--spread-view">
 				{this.state.open ?
 					<FullscreenViewer
 						imageUrl={this.state.slide}
@@ -88,7 +88,7 @@ IPadSpreadView = React.createClass({
 				}
 				<div className="row">
 					<div className="col-xs-11 center-block clear">
-						<Slider {...settings}>
+						<Slider className="spread-view-slider"{...settings}>
 						{this.props.slides.map((slide, i) => (
 							<div key={i}>
 								<div className="image">

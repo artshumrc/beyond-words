@@ -38,7 +38,7 @@ IPadView = React.createClass({
 
 		const objectSubscription = Meteor.subscribe('objects', {});
 		if (objectSubscription.ready()) {
-			object = Objects.findOne({});
+			object = Objects.find().fetch()[0];//.findOne({});
 		}
 
 		return {
@@ -103,6 +103,7 @@ IPadView = React.createClass({
 			},
 		};
 
+		//const iframe = 'http://medievalscrolls.com/manifests/hls_ms_180.html';
 		const iframe = '';
 
 		const slides = [
@@ -128,6 +129,7 @@ IPadView = React.createClass({
 		 * for the iPads
 		 */
 		const object = this.data.object;
+
 
 		return (
 			<div className="page page-ipad">
@@ -187,12 +189,12 @@ IPadView = React.createClass({
 										value="single"
 										checkedIcon={<FontIcon
 											style={styles.icon}
-											className="mdi mdi-image"
+											className="mdi mdi-file-document-box"
 											color={white}
 										/>}
 										uncheckedIcon={<FontIcon
 											style={styles.icon}
-											className="mdi mdi-image"
+											className="mdi mdi-file-document-box"
 											color={grey500}
 										/>}
 										style={styles.radioButton}
@@ -236,7 +238,7 @@ IPadView = React.createClass({
 						>
 							<IconButton
 								className="close-fullscreen"
-								tooltip="Close" style={styles.closeButton}
+								style={styles.closeButton}
 								onClick={this.handleClose}
 							>
 								<ContentClear />
@@ -256,7 +258,7 @@ IPadView = React.createClass({
 						>
 							<IconButton
 								className="close-fullscreen"
-								tooltip="Close" style={styles.closeButton}
+								style={styles.closeButton}
 								onClick={this.handleCloseInfoModal}
 							>
 								<ContentClear />
@@ -278,6 +280,24 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Date</label>
 												<span>{object.date}</span>
+											</div>
+										: ''}
+										{object.place ?
+											<div className="object-detail-meta">
+												<label>Place</label>
+												<span>{object.place}</span>
+											</div>
+										: ''}
+										{object.institution ?
+											<div className="object-detail-meta">
+												<label>Institution</label>
+												<span>{object.institution}</span>
+											</div>
+										: ''}
+										{object.collection ?
+											<div className="object-detail-meta">
+												<label>Collection</label>
+												<span>{object.collection}</span>
 											</div>
 										: ''}
 										{object.shelfmark ?
@@ -304,28 +324,10 @@ IPadView = React.createClass({
 												<span>{object.printer}</span>
 											</div>
 										: ''}
-										{object.institution ?
-											<div className="object-detail-meta">
-												<label>Institution</label>
-												<span>{object.institution}</span>
-											</div>
-										: ''}
 										{object.illumintator ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
 												<span>{object.illuminator}</span>
-											</div>
-										: ''}
-										{object.collection ?
-											<div className="object-detail-meta">
-												<label>Collection</label>
-												<span>{object.collection}</span>
-											</div>
-										: ''}
-										{object.place ?
-											<div className="object-detail-meta">
-												<label>Place</label>
-												<span>{object.place}</span>
 											</div>
 										: ''}
 										{object.externalLink ?

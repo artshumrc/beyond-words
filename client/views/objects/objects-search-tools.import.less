@@ -29,10 +29,13 @@
 			button.search-tool {
 	      background:@dark-theme-dropdown !important;
 				border-radius:0 !important;
+
+				/*
 				span,i {
 					color:@dark-theme-dropdown-text !important;
 
 				}
+				*/
 
 			}
 
@@ -91,9 +94,10 @@
       li {
         display:inline-block;
         vertical-align: top;
-        margin:5px 10px;
+        margin:5px 1%;
         text-align:left;
 				overflow:hidden;
+				width:22%;
 
       }
 
@@ -102,6 +106,16 @@
         width:100%;
         text-overflow:ellipsis;
 			  font-family: @font-label ;
+
+				> button > div {
+					border-radius:2px ;
+
+				}
+
+				span, div, button, a {
+	        text-align:left !important;
+
+				}
 
 
 				&:hover {
@@ -134,7 +148,7 @@
 				}
 
 				button > div {
-	        background:@light !important;
+	        background:#eee !important;
 
 					> div {
 						height:41px !important;

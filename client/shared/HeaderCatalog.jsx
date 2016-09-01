@@ -142,11 +142,7 @@ HeaderCatalog = React.createClass({
 							iconClassName="mdi mdi-chevron-left"
 						/>
 						:
-						<IconButton
-							className="go-back-button"
-							onClick={this.goBack}
-							iconClassName="mdi mdi-chevron-left"
-						/>
+						""
 					}
 					<div className="catalog-header-inner">
 						<h4 className="catalog-header-title">{this.props.catalogTitleText}</h4>

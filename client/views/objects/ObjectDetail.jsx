@@ -48,94 +48,75 @@ ObjectDetail = React.createClass({
 								<label>Date</label>
 								<span>{object.date}</span>
 							</div>
-							:
-							''
-						}
-						{object.shelfmark ?
-							<div className="object-detail-meta">
-								<label>Shelfmark</label>
-								<span>{object.shelfmark}</span>
-							</div>
-							:
-							''
-						}
-						{object.former_shelfmark ?
-							<div className="object-detail-meta">
-								<label>Former Shelfmark</label>
-								<span>{object.former_shelfmark}</span>
-							</div>
-							:
-							''
-						}
-						{object.scribe ?
-							<div className="object-detail-meta">
-								<label>Scribe</label>
-								<span>{object.scribe}</span>
-							</div>
-							:
-							''
-						}
-						{object.printer ?
-							<div className="object-detail-meta">
-								<label>Printer</label>
-								<span>{object.printer}</span>
-							</div>
-							:
-							''
-						}
-						{object.institution ?
-							<div className="object-detail-meta">
-								<label>Institution</label>
-								<span>{object.institution}</span>
-							</div>
-							:
-							''
-						}
-						{object.illumintator ?
-							<div className="object-detail-meta">
-								<label>Illuminator</label>
-								<span>{object.illuminator}</span>
-							</div>
-							:
-							''
-						}
-						{object.collection ?
-							<div className="object-detail-meta">
-								<label>Collection</label>
-								<span>{object.collection}</span>
-							</div>
-							:
-							''
-						}
+						: ''}
 						{object.place ?
 							<div className="object-detail-meta">
 								<label>Place</label>
 								<span>{object.place}</span>
 							</div>
-							:
-							''
-						}
+						: ''}
+						{object.institution ?
+							<div className="object-detail-meta">
+								<label>Institution</label>
+								<span>{object.institution}</span>
+							</div>
+						: ''}
+						{object.collection ?
+							<div className="object-detail-meta">
+								<label>Collection</label>
+								<span>{object.collection}</span>
+							</div>
+						: ''}
+						{object.shelfmark ?
+							<div className="object-detail-meta">
+								<label>Shelfmark</label>
+								<span>{object.shelfmark}</span>
+							</div>
+						: ''}
+						{object.former_shelfmark ?
+							<div className="object-detail-meta">
+								<label>Former Shelfmark</label>
+								<span>{object.former_shelfmark}</span>
+							</div>
+						: ''}
+						{object.scribe ?
+							<div className="object-detail-meta">
+								<label>Scribe</label>
+								<span>{object.scribe}</span>
+							</div>
+						: ''}
+						{object.printer ?
+							<div className="object-detail-meta">
+								<label>Printer</label>
+								<span>{object.printer}</span>
+							</div>
+						: ''}
+						{object.illumintator ?
+							<div className="object-detail-meta">
+								<label>Illuminator</label>
+								<span>{object.illuminator}</span>
+							</div>
+						: ''}
 						{object.externalLink ?
 							<div className="object-detail-meta">
 								<label>External Link</label>
 								<span>
-									<a href={object.externalUrl} target="_blank" rel="noopener noreferrer">
+									<a
+										href={object.externalUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										{object.externalUrl}
 									</a>
 								</span>
 							</div>
-							:
-							''
-						}
+						: ''}
 						{object.illumintator ?
 							<div className="object-detail-meta">
 								<label>Description</label>
 								<span>{object.description}</span>
 							</div>
-
-							:
-							''
-						}
+						: ''}
 					</div>
 
 				</div>
