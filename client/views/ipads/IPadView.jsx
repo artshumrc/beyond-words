@@ -38,7 +38,7 @@ IPadView = React.createClass({
 
 		const objectSubscription = Meteor.subscribe('objects', {});
 		if (objectSubscription.ready()) {
-			object = Objects.find().fetch()[0];//.findOne({});
+			object = Objects.find().fetch()[0];// .findOne({});
 		}
 
 		return {
@@ -103,7 +103,7 @@ IPadView = React.createClass({
 			},
 		};
 
-		//const iframe = 'http://medievalscrolls.com/manifests/hls_ms_180.html';
+		// const iframe = 'http://medievalscrolls.com/manifests/hls_ms_180.html';
 		const iframe = '';
 
 		const slides = [
