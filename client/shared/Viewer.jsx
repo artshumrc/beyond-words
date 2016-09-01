@@ -9,7 +9,6 @@ Viewer = React.createClass({
 	mixins: [ReactMeteorData],
 
 	componentDidMount() {
-		/* eslint new-cap: "off" */
 		this.left_viewer = OpenSeadragon({
 			id: 'image-panel-left',
 			prefixUrl: '/openseadragon/images/',

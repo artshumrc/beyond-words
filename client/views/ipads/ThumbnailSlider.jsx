@@ -43,7 +43,7 @@ ThumbnailSlider = React.createClass({
 			thumbnailSlider: {
 				background: 'rgb(9, 22, 36)',
 			},
-			};
+		};
 
 		return (
 			<Paper
