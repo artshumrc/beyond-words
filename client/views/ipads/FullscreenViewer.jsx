@@ -59,9 +59,12 @@ FullscreenViewer = React.createClass({
 			},
 			closeButton: {
 				position: 'absolute',
-				right: 0,
+				right: '10px',
+				top: '10px',
 				zIndex: 1000,
-				background: 'rgba(0, 0, 0, 0.5)',
+				background: 'rgba(0, 0, 0, 0.9)',
+				border: '1px solid #fff',
+				borderRadius: '50%',
 
 			},
 		};
@@ -74,7 +77,7 @@ FullscreenViewer = React.createClass({
 			>
 				<IconButton
 					className="fullscreen-viewer-close"
-					tooltip="Close" style={styles.closeButton}
+					style={styles.closeButton}
 					onClick={this.handleClose}
 				>
 					<ContentClear />

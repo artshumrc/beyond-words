@@ -29,6 +29,7 @@
 body, .page-ipad {
 	background:@dark-theme-toolbar;
 	background:#08111b;
+	background:#0e141b;
 
 }
 .ipad-content {
@@ -73,6 +74,9 @@ body, .page-ipad {
 	float: none;
 }
 .fullscreen-viewer {
+	.fullscreen-viewer-close {
+
+	}
 
 }
 
@@ -201,19 +205,21 @@ body, .page-ipad {
 		padding:0;
 	}
 
-	.teaching-text {
-		color:rgba(255,255,255,0.3);
+	.coaching-text {
+		color:rgba(255,255,255,0.2);
 		text-align:center;
 		width:100%;
-		margin:30px auto;
+		margin:0px auto;
 		font-size:18px;
 		line-height:1.5em;
 		font-style:italic;
-		padding-top:60px;
+		padding-top:0px;
 	}
 
 	.ipad-container--spread-view {
-		padding:120px 30px;
+		padding:120px 0px;
+
+
 
 		.spread-view-slider {
 			.slick-slide {
@@ -230,6 +236,12 @@ body, .page-ipad {
 
 	}
 
+	.ipad-container--single-view {
+		.single-view-slider {
+
+		}
+	}
+
 
 	.thumbnail-slider {
 		position:fixed;
@@ -242,14 +254,15 @@ body, .page-ipad {
 		.slick-slider {
 			margin:0;
 			padding:20px;
+			height:210px;
 		}
 
 		.image {
 			margin:10px;
-			background:#222;
+			background:#000;
 
 			>div {
-				background:#222 !important;
+				background:#000 !important;
 			}
 
 			img {

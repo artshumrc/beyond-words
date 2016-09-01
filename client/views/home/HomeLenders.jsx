@@ -25,6 +25,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Armenian Museum and Library of America
+								<hr />
 							</a>
 							<a
 								href="//www.bostonathenaeum.org"
@@ -32,6 +33,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Boston Athenaeum
+								<hr />
 							</a>
 							<a
 								href="//libguides.bc.edu/Burns"
@@ -39,6 +41,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								John J. Burns Library, Boston College
+								<hr />
 							</a>
 							<a
 								href="//www.bc.edu/sites/artmuseum/"
@@ -46,6 +49,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								McMullen Museum of Art, Boston College
+								<hr />
 							</a>
 							<a
 								href="//www.bu.edu/sthlibrary/"
@@ -53,6 +57,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								School of Theology Library, Boston University
+								<hr />
 							</a>
 							<a
 								href="//www.mfa.org"
@@ -60,6 +65,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Museum of Fine Arts, Boston
+								<hr />
 							</a>
 							<a
 								href="//www.bpl.org/research/rb/index.htm"
@@ -67,6 +73,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Rare Books and Manuscripts Department, Boston Public Library
+								<hr />
 							</a>
 							<a
 								href="//lts.brandeis.edu/research/archives-speccoll/"
@@ -74,6 +81,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								University Archives & Special Collections, Brandeis University
+								<hr />
 							</a>
 							<a
 								href="//hls.harvard.edu/library/historical-special-collections/"
@@ -81,6 +89,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Historical & Special Collections, Harvard University Law School
+								<hr />
 							</a>
 							<a
 								href="//www.countway.harvard.edu"
@@ -88,6 +97,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Countway Library, Harvard University Medical School
+								<hr />
 							</a>
 							<a
 								href="//www.harvardartmuseums.org"
@@ -95,6 +105,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Harvard University/Fogg Art Museum
+								<hr />
 							</a>
 							<a
 								href="//hcl.harvard.edu/libraries/houghton/"
@@ -102,6 +113,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Houghton Library, Harvard University
+								<hr />
 							</a>
 							<a
 								href="//library.hds.harvard.edu"
@@ -109,6 +121,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Andover-Harvard Theological Library, Harvard Univ. Divinity School
+								<hr />
 							</a>
 							<a
 								href="//www.library.hbs.edu"
@@ -116,6 +129,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Baker Library, Harvard University Business School
+								<hr />
 							</a>
 							<a
 								href="//www.gardnermuseum.org/home"
@@ -123,6 +137,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Isabella Stewart Gardner Museum
+								<hr />
 							</a>
 							<a
 								href="//libraries.mit.edu/archives/"
@@ -130,6 +145,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Archives & Special Collections, Massachusetts Institute of Technology
+								<hr />
 							</a>
 							<a
 								href="//library.northeastern.edu/archives-special-collections"
@@ -137,6 +153,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Snell Library, Northeastern University
+								<hr />
 							</a>
 							<a
 								href="//researchguides.library.tufts.edu/specialcollections"
@@ -144,6 +161,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Tisch Library Special Collections, Tufts University
+								<hr />
 							</a>
 							<a
 								href="//www.wellesley.edu/lts/collections/speccoll"
@@ -151,6 +169,7 @@ HomeLenders = React.createClass({
 								rel="noopener noreferrer"
 							>
 								Archives & Special Collections, Wellesley College
+								<hr />
 							</a>
 						</div>
 					</div>

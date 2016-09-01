@@ -105,13 +105,13 @@ IPadSpreadView = React.createClass({
 							</div>
 						))}
 						</Slider>
-						<p className="teaching-text">
-							Swipe to turn the page. Tap twice to zoom in.
+						<p className="coaching-text">
+							Swipe to turn the page. Tap to zoom in.
 						</p>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-xs-11 center-block clear">
+					<div className="col-xs-12 center-block clear">
 						<ThumbnailSlider
 							thumbnailList={this.props.slides}
 							handleSlideChange={this.handleSlideChange}

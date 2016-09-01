@@ -37,14 +37,19 @@ HomeCatalog = React.createClass({
 									Major support for the publication of the catalog was provided by Daniel and Joanna
 									S. Rose with additional support from the Rose Marrow Fund.
 								</p>
+								<p>
+									Beyond Words: Illuminated Manuscripts in Boston Collections, published by the McMullen Museum of Art at Boston College, will be available for purchase in hardcover and paperback at the McMullen Museum and at the Isabella Stewart Gardner Museum as well as online.
+								</p>
 
 								<a
 									className="btn btn-large md-button uchicago-press-button
 									md-ink-ripple paper-shadow md-primary"
-									href="//www.press.uchicago.edu/ucp/books/book/distributed/B/bo25077855.html"
-									aria-label="Learn More" target="_blank" rel="noopener noreferrer"
+									href="https://www.amazon.com/Beyond-Words-Illuminated-Manuscripts-Collections/dp/1892850265/"
+									aria-label="Learn More"
+									target="_blank"
+									rel="noopener noreferrer"
 								>
-									<span>Purchase from University of Chicago Press</span>
+									<span>Purchase from Amazon.com</span>
 									<div className="md-ripple-container" />
 
 								</a>

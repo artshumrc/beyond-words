@@ -91,7 +91,10 @@ IPadSingleView = React.createClass({
 				}
 				<div className="row">
 					<div className="col-xs-8 center-block clear">
-						<Slider {...settings}>
+						<Slider
+							className="single-view-slider"
+							{...settings}
+						>
 						{this.props.slides.map((slide, i) => (
 							<div key={i}>
 								<div className="image">
@@ -107,13 +110,13 @@ IPadSingleView = React.createClass({
 							</div>
 						))}
 						</Slider>
-						<p className="teaching-text">
-							Swipe to turn the page. Tap twice to zoom in.
+						<p className="coaching-text">
+							Swipe to turn the page. Tap to zoom in.
 						</p>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-xs-11 center-block clear">
+					<div className="col-xs-12 center-block clear">
 						<ThumbnailSlider
 							thumbnailList={this.props.slides}
 							handleSlideChange={this.handleSlideChange}

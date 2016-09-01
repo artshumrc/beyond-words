@@ -1,6 +1,7 @@
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
+import isDblTouchTap from "/imports/isDblTouchTap"
 
 IPadGridView = React.createClass({
 
@@ -45,6 +46,7 @@ IPadGridView = React.createClass({
 		});
 	},
 	render() {
+		const self = this;
 		return (
 			<div className="container ipad-container ipad-container--grid-view">
 				{this.state.open ?
