@@ -22,6 +22,7 @@ Attachments.allow({
 	},
 });
 
+
 Meteor.users.allow({
 	update() {
 		if (userId === doc._id && !doc.username && fieldNames.length === 1 &&

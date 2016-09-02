@@ -24,6 +24,7 @@ if (Meteor.isServer) {
 	});
 
 	Meteor.publish('events', () => Events.find());
+	Meteor.publish('attachments', () => Attachments.find());
 
 
 	Meteor.publish('images', () => {
@@ -31,7 +32,7 @@ if (Meteor.isServer) {
 
 		return [
 			Images.find(fields),
-			Thumbnails.find(fields),
+			//Thumbnails.find(fields),
 		];
 	});
 
@@ -41,9 +42,9 @@ if (Meteor.isServer) {
 			Images.find({
 				_id: { $in: imageArray },
 			}),
-			Thumbnails.find({
+			/*Thumbnails.find({
 				originalId: { $in: imageArray },
-			}),
+			}),*/
 		];
 	});
 
@@ -59,9 +60,9 @@ if (Meteor.isServer) {
 					Images.find({
 						_id: { $in: imageArray },
 					}),
-					Thumbnails.find({
+					/*Thumbnails.find({
 						originalId: { $in: imageArray },
-					}),
+					}),*/
 				];
 			}
 		}
@@ -80,9 +81,9 @@ if (Meteor.isServer) {
 					Images.find({
 						_id: { $in: imageArray },
 					}),
-					Thumbnails.find({
+					/*Thumbnails.find({
 						originalId: { $in: imageArray },
-					}),
+					}),*/
 				];
 			}
 		}

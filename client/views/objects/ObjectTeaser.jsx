@@ -22,20 +22,16 @@ ObjectTeaser = React.createClass({
 	},
 
 	getMeteorData() {
-		let images = [];
-		let thumbnails = [];
+		let attachment = null;
 
-		const imageSubscription = Meteor.subscribe('objectImages', this.props.object.slug);
-		if (imageSubscription.ready()) {
-			if (typeof this.props.object.images !== 'undefined') {
-				images = Images.find({ _id: { $in: this.props.object.images } }).fetch();
-			}
-			thumbnails = Thumbnails.find({}).fetch();
+		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
+		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
+			attachment = Attachments.findOne({ _id: this.props.object.image });
+			//thumbnails = Thumbnails.find({}).fetch();
 		}
 
 		return {
-			images,
-			thumbnails,
+			attachment,
 		};
 	},
 
@@ -55,9 +51,12 @@ ObjectTeaser = React.createClass({
 		}
 
 		let image = {};
-		if (this.data.images.length) {
-			image = this.data.images[0];
+		let imageUrl = "";
+		if (this.data.attachment) {
+			image = this.data.attachment;
+			imageUrl = image.url();
 		}
+
 
 		return (
 			<div className="object-teaser col-md-4 col-sm-6">
@@ -73,8 +72,8 @@ ObjectTeaser = React.createClass({
 										{object.catalog_n}.
 									</span>
 								</div>
-								{('url' in image && image.url.length) ?
-									<img alt="object thumbnail" className="object-detail-thumbnail" src={image.url} />
+								{(imageUrl.length) ?
+									<img alt="object thumbnail" className="object-detail-thumbnail" src={imageUrl} />
 									:
 									<img
 										alt="default thumbnail"

@@ -47,16 +47,15 @@ Schemas.Objects = new SimpleSchema({
 			rows: 5,
 		},
 	},
-	images: {
-		type: [String],
+	image: {
+		type: String,
 		optional: true,
 		label: 'Image thumbnail (not for viewer)',
 		autoform: {
-			type: 'ufs',
-			collection: 'images',
-			store: 'ImageStore',
-			publication: 'images',
-			thumbnails: 'thumbnails',
+			afFieldInput : {
+				type: 'fileUpload',
+				collection: 'Attachments',
+			}
 		},
 	},
 	date: {

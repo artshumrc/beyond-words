@@ -85,6 +85,7 @@ ObjectsList = React.createClass({
 		const handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
 		if (handle.ready()) {
 			objects = Objects.find({}, {}).fetch();
+			/*
 			objects.forEach((object, i) => {
 				const imageSubscription = Meteor.subscribe('objectImages', object.slug);
 				if (imageSubscription.ready()) {
@@ -92,6 +93,7 @@ ObjectsList = React.createClass({
 					objects[i].thumbnails = Thumbnails.find({}).fetch();
 				}
 			});
+			*/
 
 			if (objects.length < this.props.limit) {
 				stillMoreObjects = false;
@@ -168,7 +170,7 @@ ObjectsList = React.createClass({
 
 		const settings = {
 			focusOnSelect: true,
-			dots: true,
+			//dots: true,
 			infinite: false,
 			slidesToShow: 4,
 			slidesToScroll: 1,
