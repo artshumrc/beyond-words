@@ -46,8 +46,8 @@ ObjectTeaser = React.createClass({
 		let authorTitle = '';
 		let description = '';
 
-		if ('authorTitle' in object && typeof object.authorTitle !== 'undefined') {
-			authorTitle = object.authorTitle;
+		if ('author_title' in object && typeof object.author_title !== 'undefined') {
+			authorTitle = object.author_title;
 		}
 
 		if ('description' in object && typeof object.description !== 'undefined') {
