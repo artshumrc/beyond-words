@@ -6,11 +6,31 @@ ObjectDetail = React.createClass({
 		closeSelectedObject: React.PropTypes.func,
 	},
 
+	mixins: [ReactMeteorData],
+
+	getMeteorData() {
+		let images = [];
+		let thumbnails = [];
+
+		const imageSubscription = Meteor.subscribe('objectImages', this.props.object.slug);
+		if (imageSubscription.ready()) {
+			if (typeof this.props.object.images !== 'undefined') {
+				images = Images.find({ _id: { $in: this.props.object.images } }).fetch();
+			}
+			thumbnails = Thumbnails.find({}).fetch();
+		}
+
+		return {
+			images,
+			thumbnails,
+		};
+	},
+
 	render() {
 		const object = this.props.object;
 		let image = {};
-		if ('images' in object && object.images && object.images.length) {
-			image = object.images[0];
+		if (this.data.images.length) {
+			image = this.data.images[0];
 		}
 
 		return (
@@ -37,6 +57,7 @@ ObjectDetail = React.createClass({
 
 						<div className="object-detail-header">
 							<h2 className="card-title object-title">{object.author_title}</h2>
+							<hr />
 						</div>
 
 						<div className="object-detail-meta">
