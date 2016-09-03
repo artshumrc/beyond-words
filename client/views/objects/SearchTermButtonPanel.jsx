@@ -57,9 +57,9 @@ SearchTermButtonPanel = React.createClass({
 				maxWidth: '100%',
 			},
 			chipLabel: {
+				color,
 				textOverflow: 'ellipsis',
 				overflow: 'hidden',
-				color,
 			},
 		};
 

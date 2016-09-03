@@ -92,7 +92,7 @@ HeaderCatalog = React.createClass({
 					handleChangeDate={this.props.handleChangeDate}
 					handleChangeTextsearch={this.props.handleChangeTextsearch}
 					open={this.state.rightMenuOpen}
-					closeLeftMenu={this.closeRightMenu}
+					closeRightMenu={this.closeRightMenu}
 				/>
 				<header className="header-nav header-catalog paper-shadow">
 					<div className="navigation-primary">

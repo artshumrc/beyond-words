@@ -101,8 +101,8 @@ ObjectsSearchTools = React.createClass({
 					<div className="search-tools">
 
 						<div
-							className={`dropdown search-dropdown search-dropdown-date\
-							${self.state.searchDropdownOpen === 'date' ? ' open' : ''}`}
+							className={`dropdown search-dropdown search-dropdown-date${
+								self.state.searchDropdownOpen === 'date' ? ' open' : ''}`}
 						>
 							<FlatButton
 								className="search-tool search-type-date dropdown-toggle"
@@ -125,8 +125,8 @@ ObjectsSearchTools = React.createClass({
 
 						</div>
 						<div
-							className={`dropdown search-dropdown search-dropdown-scribes\
-							${self.state.searchDropdownOpen === 'scribes' ? ' open' : ''}`}
+							className={`dropdown search-dropdown search-dropdown-scribes${
+								self.state.searchDropdownOpen === 'scribes' ? ' open' : ''}`}
 						>
 							<FlatButton
 								className="search-tool search-type-scribes dropdown-toggle"
@@ -168,8 +168,8 @@ ObjectsSearchTools = React.createClass({
 							</ul>
 						</div>
 						<div
-							className={`dropdown search-dropdown search-dropdown-illuminators\
-							${self.state.searchDropdownOpen === 'illuminators' ? ' open' : ''}`}
+							className={`dropdown search-dropdown search-dropdown-illuminators${
+								self.state.searchDropdownOpen === 'illuminators' ? ' open' : ''}`}
 						>
 							<FlatButton
 								className="search-tool search-type-illuminators dropdown-toggle"
@@ -213,8 +213,8 @@ ObjectsSearchTools = React.createClass({
 
 						</div>
 						<div
-							className={`dropdown search-dropdown search-dropdown-institutions\
-							${self.state.searchDropdownOpen === 'institutions' ? ' open' : ''}`}
+							className={`dropdown search-dropdown search-dropdown-institutions${
+								self.state.searchDropdownOpen === 'institutions' ? ' open' : ''}`}
 						>
 							<FlatButton
 								className="search-tool search-type-institutions dropdown-toggle"
@@ -258,8 +258,8 @@ ObjectsSearchTools = React.createClass({
 
 						</div>
 						<div
-							className={`dropdown search-dropdown search-dropdown-places\
-							${self.state.searchDropdownOpen === 'places' ? ' open' : ''}`}
+							className={`dropdown search-dropdown search-dropdown-places${
+								self.state.searchDropdownOpen === 'places' ? ' open' : ''}`}
 						>
 							<FlatButton
 								className="search-tool search-type-places dropdown-toggle"

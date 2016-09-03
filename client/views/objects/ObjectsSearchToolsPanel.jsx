@@ -12,7 +12,7 @@ ObjectsSearchToolsPanel = React.createClass({
 		handleChangeTextsearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
 		open: React.PropTypes.bool,
-		closeLeftMenu: React.PropTypes.func,
+		closeRightMenu: React.PropTypes.func,
 	},
 
 	childContextTypes: {
@@ -108,7 +108,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				openSecondary
 				open={this.props.open}
 				docked={false}
-				onRequestChange={this.props.closeLeftMenu}
+				onRequestChange={this.props.closeRightMenu}
 			>
 				<div style={styles.textSearch} className="search-tool text-search">
 					<TextField
@@ -231,10 +231,10 @@ ObjectsSearchToolsPanel = React.createClass({
 								/>
 							);
 						})}
-					{self.state.institutions.length === 0 ?
-						<div className="no-results">No institutions found in objects.</div>
-						: ''
-					}
+						{self.state.institutions.length === 0 ?
+							<div className="no-results">No institutions found in objects.</div>
+							: ''
+						}
 					</CardText>
 				</Card>
 				<Card>
@@ -266,10 +266,10 @@ ObjectsSearchToolsPanel = React.createClass({
 								/>
 							);
 						})}
-					{self.state.places.length === 0 ?
-						<div className="no-results">No places found in objects.</div>
-						: ''
-					}
+						{self.state.places.length === 0 ?
+							<div className="no-results">No places found in objects.</div>
+							: ''
+						}
 					</CardText>
 				</Card>
 			</Drawer>
