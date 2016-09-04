@@ -79,7 +79,6 @@ HeaderCatalog = React.createClass({
 
 		};
 
-
 		return (
 			<div>
 				<LeftMenu

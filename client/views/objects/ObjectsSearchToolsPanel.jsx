@@ -125,7 +125,7 @@ ObjectsSearchToolsPanel = React.createClass({
 						showExpandableButton
 					/>
 					<CardText expandable style={styles.wrapper}>
-						<div className="search-tool search-tool--date">
+						<div className="search-tool--date">
 							<DateRangeSlider
 								handleChangeDate={this.props.handleChangeDate}
 							/>

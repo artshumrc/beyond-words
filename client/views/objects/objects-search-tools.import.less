@@ -471,55 +471,14 @@
 }
 
 
-
 .search-tool--date {
-	width:10%;
-	max-width:600px;
-	min-width:400px;
-	display:inline;
-	border-right:none;
-	background:transparent;
-	text-align:center;
-	padding:15px 0;
+	width:100%;
+	margin:0px auto;
+}
 
-	.irs {
-		width:100%;
-		margin:0px auto;
-	}
-
+.search-tool--date.toolbar {
 	.irs-grid-pol {
 		background:@light;
-	}
-
-	label {
-		font-family:@font-label !important;
-		font-size:14px;
-		color:@light;
-		display:inline-block;
-		padding:14px 5px 5px 0;
-
-	}
-
-	.irs-from, .irs-to, .irs-single, .irs-min, .irs-max {
-		font-size:14px;
-		padding:6px 10px 3px;
-		top:-20px;
-	}
-
-	.irs-from, .irs-to, .irs-single {
-		background:@light;
-		color:@dark;
-	}
-
-	.irs-min, .irs-max {
-		background:@dark-theme-background;
-		color:@light;
-
-	}
-
-	.irs-from:after, .irs-to:after, .irs-single:after {
-		border-top-color:@light;
-
 	}
 
 	.irs-grid-text {
@@ -527,38 +486,11 @@
 		font-weight:bold;
 		font-size:12px;
 		bottom:-7px;
+		color:@light;
 	}
-
-	.irs-line-mid, .irs-line-left, .irs-line-right, .irs-bar, .irs-bar-edge, .irs-slider {
-		background:url(/images/sprite-skin-nice.png) repeat-x;
+	.irs-min, .irs-max {
+		color:@light;
 	}
-
-	.irs-slider {
-		height:22px;
-		width:22px;
-		background-position:0 -120px;
-		top:18px;
-	}
-
-	.irs-bar {
-		bottom:-10px;
-
-	}
-
-	input {
-		width:69px;
-		margin:3px 10px 0 0;
-		font-family:@font-light;
-		font-size:14px;
-
-	}
-
-
-
-  &:hover {
-    background:transparent;
-  }
-
 }
 
 

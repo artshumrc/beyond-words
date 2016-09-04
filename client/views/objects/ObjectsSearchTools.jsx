@@ -115,7 +115,7 @@ ObjectsSearchTools = React.createClass({
 
 							<ul className="dropdown-menu ">
 								<div className="dropdown-menu-inner">
-									<div className="search-tool search-tool--date">
+									<div className="search-tool--date toolbar">
 										<DateRangeSlider
 											handleChangeDate={this.props.handleChangeDate}
 										/>
