@@ -67,6 +67,27 @@ IPadSpreadView = React.createClass({
 			});
 		}
 	},
+
+	scrollToSlide(currentSlide) {
+		// check if currentSlide is valid
+		if (currentSlide < 0 || currentSlide >= this.props.slides.length) {
+			console.log('Invalid slide');
+			return;
+		}
+		if (currentSlide % 2 === 0) {
+			// left slide selected
+			this.setState({
+				slickGoTo: currentSlide,
+			});
+		} else {
+			// right slide selected
+			this.setState({
+				slickGoTo: currentSlide - 1,
+			});
+		}
+	},
+
+
 	render() {
 		const settings = {
 			focusOnSelect: true,
@@ -85,7 +106,7 @@ IPadSpreadView = React.createClass({
 						handleClose={this.handleSlideClose}
 					/>
 					:
-					null
+					''
 				}
 				<div className="row">
 					<div className="col-xs-11 center-block clear">
@@ -93,7 +114,7 @@ IPadSpreadView = React.createClass({
 						{this.props.slides.map((slide, i) => (
 							<div key={i}>
 								<div className="image">
-									<Paper zDepth={2}>
+									<Paper zDepth={0}>
 										<img
 											alt="slide"
 											onClick={this.handleSlideOpen.bind(this, slide)}
@@ -112,9 +133,10 @@ IPadSpreadView = React.createClass({
 				</div>
 				<div className="row">
 					<div className="col-xs-12 center-block clear">
-						<ThumbnailSlider
+						<ThumbnailScrollSpread
+							activeSlide={this.state.slickGoTo}
 							thumbnailList={this.props.slides}
-							handleSlideChange={this.handleSlideChange}
+							scrollToSlide={this.scrollToSlide}
 						/>
 					</div>
 				</div>

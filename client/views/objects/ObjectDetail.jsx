@@ -14,7 +14,7 @@ ObjectDetail = React.createClass({
 		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
 		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
 			attachment = Attachments.findOne({ _id: this.props.object.image });
-			//thumbnails = Thumbnails.find({}).fetch();
+			// thumbnails = Thumbnails.find({}).fetch();
 		}
 
 		return {
@@ -26,7 +26,7 @@ ObjectDetail = React.createClass({
 		const object = this.props.object;
 
 		let image = {};
-		let imageUrl = "";
+		let imageUrl = '';
 		if (this.data.attachment) {
 			image = this.data.attachment;
 			imageUrl = image.url();

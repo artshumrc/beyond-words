@@ -36,10 +36,12 @@ IPadView = React.createClass({
 		const query = {};
 		let object = {};
 
+		/*
 		const objectSubscription = Meteor.subscribe('objects', {});
 		if (objectSubscription.ready()) {
 			object = Objects.find().fetch()[0];// .findOne({});
 		}
+		*/
 
 		return {
 			object,
@@ -107,22 +109,31 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/openseadragon/images/Januarius_0002_small.jpg',
-			'/openseadragon/images/Januarius_0003_small.jpg',
-			'/openseadragon/images/Januarius_0004_small.jpg',
-			'/openseadragon/images/Januarius_0005_small.jpg',
-			'/openseadragon/images/Januarius_0006_small.jpg',
-			'/openseadragon/images/Januarius_0007_small.jpg',
-			'/openseadragon/images/Januarius_0008_small.jpg',
-			'/openseadragon/images/Januarius_0009_small.jpg',
-			'/openseadragon/images/Januarius_0010_small.jpg',
-			'/openseadragon/images/Januarius_0011_small.jpg',
-			'/openseadragon/images/Januarius_0012_small.jpg',
-			'/openseadragon/images/Januarius_0013_small.jpg',
-			'/openseadragon/images/Januarius_0014_small.jpg',
+			'/viewer/medms_ms_typ_45_0037.jpg',
+			'/viewer/medms_ms_typ_45_0038.jpg',
+			'/viewer/medms_ms_typ_45_0047.jpg',
+			'/viewer/medms_ms_typ_45_0048.jpg',
+			'/viewer/medms_ms_typ_45_0063.jpg',
+			'/viewer/medms_ms_typ_45_0064.jpg',
+			'/viewer/medms_ms_typ_45_0083.jpg',
+			'/viewer/medms_ms_typ_45_0084.jpg',
+			'/viewer/medms_ms_typ_45_0089.jpg',
+			'/viewer/medms_ms_typ_45_0090.jpg',
+			'/viewer/medms_ms_typ_45_0095.jpg',
+			'/viewer/medms_ms_typ_45_0096.jpg',
+			'/viewer/medms_ms_typ_45_0109.jpg',
+			'/viewer/medms_ms_typ_45_0110.jpg',
+			'/viewer/medms_ms_typ_45_0129.jpg',
+			'/viewer/medms_ms_typ_45_0130.jpg',
+			'/viewer/medms_ms_typ_45_0137.jpg',
+			'/viewer/medms_ms_typ_45_0138.jpg',
+			'/viewer/medms_ms_typ_45_0145.jpg',
+			'/viewer/medms_ms_typ_45_0146.jpg',
+			'/viewer/medms_ms_typ_45_0153.jpg',
+			'/viewer/medms_ms_typ_45_0154.jpg',
 		];
 
-		const title = 'BPL Med. 84 Psalter';
+		const title = 'Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -151,13 +162,13 @@ IPadView = React.createClass({
 									color={grey500}
 									hoverColor={white}
 								/>
-								<FontIcon
+								{/* <FontIcon
 									onClick={this.showVideo}
 									style={styles.icon}
 									className="mdi mdi-video"
 									color={grey500}
 									hoverColor={white}
-								/>
+								/>*/}
 							</ToolbarGroup>
 
 							<h3>{title}</h3>
@@ -265,8 +276,96 @@ IPadView = React.createClass({
 							</IconButton>
 							<section className="object-details">
 								<div className="object-details-inner">
-
 									<div className="object-detail-text-wrap">
+
+										<div className="object-detail-header">
+											<h2 className="card-title object-title">Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes</h2>
+										</div>
+
+										<div className="object-detail-meta">
+											<label>Catalog No.</label>
+											<span>109</span>
+										</div>
+										{true ?
+											<div className="object-detail-meta">
+												<label>Date</label>
+												<span>c. 1470</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Place</label>
+												<span>Troyes, France</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Institution</label>
+												<span>Harvard University</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Collection</label>
+												<span>Houghton Library</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Shelfmark</label>
+												<span>MS Richardson 7</span>
+											</div>
+										: ''}
+										{object.former_shelfmark ?
+											<div className="object-detail-meta">
+												<label>Former Shelfmark</label>
+												<span>Ms. 1510</span>
+											</div>
+										: ''}
+										{object.scribe ?
+											<div className="object-detail-meta">
+												<label>Scribe</label>
+												<span>{object.scribe}</span>
+											</div>
+										: ''}
+										{object.printer ?
+											<div className="object-detail-meta">
+												<label>Printer</label>
+												<span>{object.printer}</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Illuminator</label>
+												<span>Master of the Troyes Missal</span>
+											</div>
+										: ''}
+										{object.externalUrl ?
+											<div className="object-detail-meta">
+												<label>External Link</label>
+												<span>
+													<a
+														href={object.externalUrl}
+														target="_blank"
+														rel="noopener noreferrer"
+													>
+														{object.externalUrl}
+													</a>
+												</span>
+											</div>
+										: ''}
+										{true ?
+											<div className="object-detail-meta">
+												<label>Description</label>
+												<span>
+													Parchment, ff. i + 237, 266 x 184 (120 x 83) mm
+												</span>
+											</div>
+										: ''}
+
+									</div>
+
+									{/* <div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
 											<h2 className="card-title object-title">{object.author_title}</h2>
@@ -330,7 +429,7 @@ IPadView = React.createClass({
 												<span>{object.illuminator}</span>
 											</div>
 										: ''}
-										{object.externalLink ?
+										{object.externalUrl ?
 											<div className="object-detail-meta">
 												<label>External Link</label>
 												<span>
@@ -351,7 +450,7 @@ IPadView = React.createClass({
 											</div>
 										: ''}
 
-									</div>
+									</div> */}
 
 								</div>
 
