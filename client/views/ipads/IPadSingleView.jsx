@@ -55,10 +55,22 @@ IPadSingleView = React.createClass({
 	handleSlideClose() {
 		this.setState({
 			open: false,
+			slickGoTo: this.state.slickGoTo,
 		});
 	},
 
 	handleSlideChange(currentSlide) {
+		// check if currentSlide is valid
+		if (currentSlide < 0 || currentSlide >= this.props.slides.length) {
+			console.log('Invalid slide');
+			return;
+		}
+		this.setState({
+			slickGoTo: currentSlide,
+		});
+	},
+
+	scrollToSlide(currentSlide) {
 		// check if currentSlide is valid
 		if (currentSlide < 0 || currentSlide >= this.props.slides.length) {
 			console.log('Invalid slide');
@@ -87,7 +99,7 @@ IPadSingleView = React.createClass({
 						handleClose={this.handleSlideClose}
 					/>
 					:
-					null
+					''
 				}
 				<div className="row">
 					<div className="col-xs-8 center-block clear">
@@ -98,7 +110,7 @@ IPadSingleView = React.createClass({
 						{this.props.slides.map((slide, i) => (
 							<div key={i}>
 								<div className="image">
-									<Paper zDepth={2}>
+									<Paper zDepth={0}>
 										<img
 											alt="slide"
 											onClick={this.handleSlideOpen.bind(this, slide)}
@@ -117,9 +129,10 @@ IPadSingleView = React.createClass({
 				</div>
 				<div className="row">
 					<div className="col-xs-12 center-block clear">
-						<ThumbnailSlider
+						<ThumbnailScroll
+							activeSlide={this.state.slickGoTo}
 							thumbnailList={this.props.slides}
-							handleSlideChange={this.handleSlideChange}
+							scrollToSlide={this.scrollToSlide}
 						/>
 					</div>
 				</div>

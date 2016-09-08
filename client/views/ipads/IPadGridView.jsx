@@ -56,7 +56,7 @@ IPadGridView = React.createClass({
 						handleClose={this.handleSlideClose}
 					/>
 					:
-					null
+					''
 				}
 				<div className="row">
 					{this.props.slides.map((slide, i) => (
