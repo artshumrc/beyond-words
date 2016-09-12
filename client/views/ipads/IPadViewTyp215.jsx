@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewTyp215 = React.createClass({
 
 	propTypes: {
 	},
@@ -109,27 +109,25 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/hew_ms_widener_2_0020.jpg',
-			'/viewer/hew_ms_widener_2_0021.jpg',
-			'/viewer/hew_ms_widener_2_0068.jpg',
-			'/viewer/hew_ms_widener_2_0069.jpg',
-			'/viewer/hew_ms_widener_2_0080.jpg',
-			'/viewer/hew_ms_widener_2_0081.jpg',
-			'/viewer/hew_ms_widener_2_0098.jpg',
-			'/viewer/hew_ms_widener_2_0099.jpg',
-			'/viewer/hew_ms_widener_2_0102.jpg',
-			'/viewer/hew_ms_widener_2_0103.jpg',
-			'/viewer/hew_ms_widener_2_0106.jpg',
-			'/viewer/hew_ms_widener_2_0107.jpg',
-			'/viewer/hew_ms_widener_2_0110.jpg',
-			'/viewer/hew_ms_widener_2_0111.jpg',
-			'/viewer/hew_ms_widener_2_0112.jpg',
-			'/viewer/hew_ms_widener_2_0113.jpg',
-			'/viewer/hew_ms_widener_2_0118.jpg',
-			'/viewer/hew_ms_widener_2_0119.jpg',
+			'/viewer/1Typ215-1r.jpg',
+			'/viewer/2Typ215-1v.jpg',
+			'/viewer/3Typ215-2r.jpg',
+			'/viewer/4Typ215-2v.jpg',
+			'/viewer/5Typ215-3r.jpg',
+			'/viewer/6Typ215-5v.jpg',
+			'/viewer/7Typ215-6.jpg',
+			'/viewer/8Typ215-6r.jpg',
+			'/viewer/9Typ215-75v.jpg',
+			'/viewer/10Typ215-76.jpg',
+			'/viewer/11Typ215-76r.jpg',
+			'/viewer/12Typ215-121v.jpg',
+			'/viewer/13Typ215-122.jpg',
+			'/viewer/14Typ215-122r.jpg',
+			'/viewer/15Typ215-195v.jpg',
+			'/viewer/16Typ215-196r.jpg',
 		];
 
-		const title = 'Book of hours';
+		const title = 'Byzantine Gospels (“Harvard Gospels”)';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -275,23 +273,23 @@ IPadView = React.createClass({
 									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours</h2>
+											<h2 className="card-title object-title">Byzantine Gospels (“Harvard Gospels”)</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>45</span>
+											<span>23</span>
 										</div>
 										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>1470–80</span>
+												<span>c. 1000</span>
 											</div>
 										: ''}
 										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>London (?), England</span>
+												<span>Constantinople (?), Turkey</span>
 											</div>
 										: ''}
 										{true ?
@@ -309,7 +307,7 @@ IPadView = React.createClass({
 										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>MS Widener 2</span>
+												<span>MS Typ 215</span>
 											</div>
 										: ''}
 										{object.former_shelfmark ?
@@ -330,7 +328,7 @@ IPadView = React.createClass({
 												<span>{object.printer}</span>
 											</div>
 										: ''}
-										{false ?
+										{true ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
 												<span>Master of the Troyes Missal</span>
@@ -354,7 +352,7 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Description</label>
 												<span>
-													Parchment, ff. 111, 332 x 235 mm
+													Parchment, ff. 250 + ii, 280 x 220 mm
 												</span>
 											</div>
 										: ''}

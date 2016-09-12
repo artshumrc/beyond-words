@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewTyp139 = React.createClass({
 
 	propTypes: {
 	},
@@ -109,27 +109,63 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/hew_ms_widener_2_0020.jpg',
-			'/viewer/hew_ms_widener_2_0021.jpg',
-			'/viewer/hew_ms_widener_2_0068.jpg',
-			'/viewer/hew_ms_widener_2_0069.jpg',
-			'/viewer/hew_ms_widener_2_0080.jpg',
-			'/viewer/hew_ms_widener_2_0081.jpg',
-			'/viewer/hew_ms_widener_2_0098.jpg',
-			'/viewer/hew_ms_widener_2_0099.jpg',
-			'/viewer/hew_ms_widener_2_0102.jpg',
-			'/viewer/hew_ms_widener_2_0103.jpg',
-			'/viewer/hew_ms_widener_2_0106.jpg',
-			'/viewer/hew_ms_widener_2_0107.jpg',
-			'/viewer/hew_ms_widener_2_0110.jpg',
-			'/viewer/hew_ms_widener_2_0111.jpg',
-			'/viewer/hew_ms_widener_2_0112.jpg',
-			'/viewer/hew_ms_widener_2_0113.jpg',
-			'/viewer/hew_ms_widener_2_0118.jpg',
-			'/viewer/hew_ms_widener_2_0119.jpg',
+			'/viewer/pga_ms_typ_139_0008.jpg',
+			'/viewer/pga_ms_typ_139_0009.jpg',
+			'/viewer/pga_ms_typ_139_0012.jpg',
+			'/viewer/pga_ms_typ_139_0013.jpg',
+			'/viewer/pga_ms_typ_139_0016.jpg',
+			'/viewer/pga_ms_typ_139_0017.jpg',
+			'/viewer/pga_ms_typ_139_0018.jpg',
+			'/viewer/pga_ms_typ_139_0019.jpg',
+			'/viewer/pga_ms_typ_139_0020.jpg',
+			'/viewer/pga_ms_typ_139_0021.jpg',
+			'/viewer/pga_ms_typ_139_0022.jpg',
+			'/viewer/pga_ms_typ_139_0023.jpg',
+			'/viewer/pga_ms_typ_139_0024.jpg',
+			'/viewer/pga_ms_typ_139_0025.jpg',
+			'/viewer/pga_ms_typ_139_0026.jpg',
+			'/viewer/pga_ms_typ_139_0027.jpg',
+			'/viewer/pga_ms_typ_139_0030.jpg',
+			'/viewer/pga_ms_typ_139_0031.jpg',
+			'/viewer/pga_ms_typ_139_0032.jpg',
+			'/viewer/pga_ms_typ_139_0033.jpg',
+			'/viewer/pga_ms_typ_139_0034.jpg',
+			'/viewer/pga_ms_typ_139_0035.jpg',
+			'/viewer/pga_ms_typ_139_0040.jpg',
+			'/viewer/pga_ms_typ_139_0041.jpg',
+			'/viewer/pga_ms_typ_139_0042.jpg',
+			'/viewer/pga_ms_typ_139_0043.jpg',
+			'/viewer/pga_ms_typ_139_0044.jpg',
+			'/viewer/pga_ms_typ_139_0045.jpg',
+			'/viewer/pga_ms_typ_139_0048.jpg',
+			'/viewer/pga_ms_typ_139_0049.jpg',
+			'/viewer/pga_ms_typ_139_0054.jpg',
+			'/viewer/pga_ms_typ_139_0055.jpg',
+			'/viewer/pga_ms_typ_139_0056.jpg',
+			'/viewer/pga_ms_typ_139_0057.jpg',
+			'/viewer/pga_ms_typ_139_0060.jpg',
+			'/viewer/pga_ms_typ_139_0061.jpg',
+			'/viewer/pga_ms_typ_139_0062.jpg',
+			'/viewer/pga_ms_typ_139_0063.jpg',
+			'/viewer/pga_ms_typ_139_0064.jpg',
+			'/viewer/pga_ms_typ_139_0065.jpg',
+			'/viewer/pga_ms_typ_139_0066.jpg',
+			'/viewer/pga_ms_typ_139_0067.jpg',
+			'/viewer/pga_ms_typ_139_0068.jpg',
+			'/viewer/pga_ms_typ_139_0069.jpg',
+			'/viewer/pga_ms_typ_139_0070.jpg',
+			'/viewer/pga_ms_typ_139_0071.jpg',
+			'/viewer/pga_ms_typ_139_0072.jpg',
+			'/viewer/pga_ms_typ_139_0073.jpg',
+			'/viewer/pga_ms_typ_139_0074.jpg',
+			'/viewer/pga_ms_typ_139_0075.jpg',
+			'/viewer/pga_ms_typ_139_0078.jpg',
+			'/viewer/pga_ms_typ_139_0079.jpg',
+			'/viewer/pga_ms_typ_139_0081.jpg',
+			'/viewer/pga_ms_typ_139_0082.jpg',
 		];
 
-		const title = 'Book of hours';
+		const title = 'Hugh of Saint-Cher, Postilla super Canticum Canticorum';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -275,23 +311,23 @@ IPadView = React.createClass({
 									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours</h2>
+											<h2 className="card-title object-title">Hugh of Saint-Cher, Postilla super Canticum Canticorum</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>45</span>
+											<span>89</span>
 										</div>
 										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>1470–80</span>
+												<span>c. 1440</span>
 											</div>
 										: ''}
 										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>London (?), England</span>
+												<span>Lombardy (?), northern Italy</span>
 											</div>
 										: ''}
 										{true ?
@@ -309,7 +345,7 @@ IPadView = React.createClass({
 										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>MS Widener 2</span>
+												<span>MS Typ 139</span>
 											</div>
 										: ''}
 										{object.former_shelfmark ?
@@ -330,10 +366,10 @@ IPadView = React.createClass({
 												<span>{object.printer}</span>
 											</div>
 										: ''}
-										{false ?
+										{object.illumintator ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
-												<span>Master of the Troyes Missal</span>
+												<span>{object.illuminator}</span>
 											</div>
 										: ''}
 										{object.externalUrl ?
@@ -354,7 +390,8 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Description</label>
 												<span>
-													Parchment, ff. 111, 332 x 235 mm
+													Parchment and paper, ff. iii + 71 + iii; ff. 1r–20v, 50r–71v (parchment), 282 x 200
+(181 x 148) mm; ff. 21r–49v (paper), 282 x 200 (195 x 125) mm
 												</span>
 											</div>
 										: ''}

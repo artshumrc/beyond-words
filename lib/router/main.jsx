@@ -81,7 +81,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/', {
 	action: function(params, queryParams){
 		mount(IPadLayout, {
-			content: <IPadView />
+			content: <IPadSingleVideoView />
 		});
 	}
 });

@@ -240,3 +240,30 @@ header {
   }
 
 }
+
+
+
+.catalog-item {
+
+	&:hover {
+		.dropdown-panel {
+			display:block;
+		}
+	}
+
+
+	.dropdown-panel {
+		position:absolute;
+		top:56px;
+		background:@dark-theme-dropdown;
+		display:none;
+		box-shadow:0px 3px 3px @dark-theme-toolbar;
+
+		a {
+			border-bottom:@dark-theme-card;
+		}
+
+
+	}
+
+}

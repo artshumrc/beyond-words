@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewRich7 = React.createClass({
 
 	propTypes: {
 	},
@@ -109,27 +109,62 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/hew_ms_widener_2_0020.jpg',
-			'/viewer/hew_ms_widener_2_0021.jpg',
-			'/viewer/hew_ms_widener_2_0068.jpg',
-			'/viewer/hew_ms_widener_2_0069.jpg',
-			'/viewer/hew_ms_widener_2_0080.jpg',
-			'/viewer/hew_ms_widener_2_0081.jpg',
-			'/viewer/hew_ms_widener_2_0098.jpg',
-			'/viewer/hew_ms_widener_2_0099.jpg',
-			'/viewer/hew_ms_widener_2_0102.jpg',
-			'/viewer/hew_ms_widener_2_0103.jpg',
-			'/viewer/hew_ms_widener_2_0106.jpg',
-			'/viewer/hew_ms_widener_2_0107.jpg',
-			'/viewer/hew_ms_widener_2_0110.jpg',
-			'/viewer/hew_ms_widener_2_0111.jpg',
-			'/viewer/hew_ms_widener_2_0112.jpg',
-			'/viewer/hew_ms_widener_2_0113.jpg',
-			'/viewer/hew_ms_widener_2_0118.jpg',
-			'/viewer/hew_ms_widener_2_0119.jpg',
+			'/viewer/5981100.jpg',
+			'/viewer/5981102.jpg',
+			'/viewer/5981104.jpg',
+			'/viewer/5981106.jpg',
+			'/viewer/5981108.jpg',
+			'/viewer/5981110.jpg',
+			'/viewer/5981112.jpg',
+			'/viewer/5981114.jpg',
+			'/viewer/5981116.jpg',
+			'/viewer/5981118.jpg',
+			'/viewer/5981120.jpg',
+			'/viewer/5981122.jpg',
+			'/viewer/5981124.jpg',
+			'/viewer/5981126.jpg',
+			'/viewer/5981128.jpg',
+			'/viewer/5981130.jpg',
+			'/viewer/5981132.jpg',
+			'/viewer/5981134.jpg',
+			'/viewer/5981136.jpg',
+			'/viewer/5981138.jpg',
+			'/viewer/5981140.jpg',
+			'/viewer/5981142.jpg',
+			'/viewer/5981144.jpg',
+			'/viewer/5981146.jpg',
+			'/viewer/5981148.jpg',
+			'/viewer/5981150.jpg',
+			'/viewer/5981156.jpg',
+			'/viewer/5981158.jpg',
+			'/viewer/5981164.jpg',
+			'/viewer/5981166.jpg',
+			'/viewer/5981172.jpg',
+			'/viewer/5981174.jpg',
+			'/viewer/5981180.jpg',
+			'/viewer/5981182.jpg',
+			'/viewer/5981188.jpg',
+			'/viewer/5981190.jpg',
+			'/viewer/5981204.jpg',
+			'/viewer/5981206.jpg',
+			'/viewer/5981212.jpg',
+			'/viewer/5981214.jpg',
+			'/viewer/5981220.jpg',
+			'/viewer/5981222.jpg',
+			'/viewer/5981228.jpg',
+			'/viewer/5981230.jpg',
+			'/viewer/5981244.jpg',
+			'/viewer/5981246.jpg',
+			'/viewer/5981284.jpg',
+			'/viewer/5981286.jpg',
+			'/viewer/5981350.jpg',
+			'/viewer/5981408.jpg',
+			'/viewer/5981410.jpg',
+			'/viewer/5981444.jpg',
+			'/viewer/5981446.jpg',
 		];
 
-		const title = 'Book of hours';
+		const title = 'Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -275,23 +310,23 @@ IPadView = React.createClass({
 									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours</h2>
+											<h2 className="card-title object-title">Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>45</span>
+											<span>109</span>
 										</div>
 										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>1470–80</span>
+												<span>c. 1470</span>
 											</div>
 										: ''}
 										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>London (?), England</span>
+												<span>Troyes, France</span>
 											</div>
 										: ''}
 										{true ?
@@ -309,7 +344,7 @@ IPadView = React.createClass({
 										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>MS Widener 2</span>
+												<span>MS Richardson 7</span>
 											</div>
 										: ''}
 										{object.former_shelfmark ?
@@ -330,7 +365,7 @@ IPadView = React.createClass({
 												<span>{object.printer}</span>
 											</div>
 										: ''}
-										{false ?
+										{true ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
 												<span>Master of the Troyes Missal</span>
@@ -354,7 +389,7 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Description</label>
 												<span>
-													Parchment, ff. 111, 332 x 235 mm
+													Parchment, ff. i + 237, 266 x 184 (120 x 83) mm
 												</span>
 											</div>
 										: ''}
