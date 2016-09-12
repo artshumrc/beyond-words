@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewWid2 = React.createClass({
 
 	propTypes: {
 	},
@@ -106,9 +106,23 @@ IPadView = React.createClass({
 		};
 
 		// const iframe = 'http://medievalscrolls.com/manifests/hls_ms_180.html';
+		//const iframe = 'http://darthcrimson.org/beyond_words/typ_varied.html';
+		//const iframe = 'http://darthcrimson.org/beyond_words/typ_584.html';
 		const iframe = '';
 
 		const slides = [
+			'/viewer/hew_ms_widener_2_0008.jpg',
+			'/viewer/hew_ms_widener_2_0009.jpg',
+			'/viewer/hew_ms_widener_2_0010.jpg',
+			'/viewer/hew_ms_widener_2_0011.jpg',
+			'/viewer/hew_ms_widener_2_0012.jpg',
+			'/viewer/hew_ms_widener_2_0013.jpg',
+			'/viewer/hew_ms_widener_2_0014.jpg',
+			'/viewer/hew_ms_widener_2_0015.jpg',
+			'/viewer/hew_ms_widener_2_0016.jpg',
+			'/viewer/hew_ms_widener_2_0017.jpg',
+			'/viewer/hew_ms_widener_2_0018.jpg',
+			'/viewer/hew_ms_widener_2_0019.jpg',
 			'/viewer/hew_ms_widener_2_0020.jpg',
 			'/viewer/hew_ms_widener_2_0021.jpg',
 			'/viewer/hew_ms_widener_2_0068.jpg',

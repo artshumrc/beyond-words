@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewTyp45 = React.createClass({
 
 	propTypes: {
 	},
@@ -109,27 +109,31 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/hew_ms_widener_2_0020.jpg',
-			'/viewer/hew_ms_widener_2_0021.jpg',
-			'/viewer/hew_ms_widener_2_0068.jpg',
-			'/viewer/hew_ms_widener_2_0069.jpg',
-			'/viewer/hew_ms_widener_2_0080.jpg',
-			'/viewer/hew_ms_widener_2_0081.jpg',
-			'/viewer/hew_ms_widener_2_0098.jpg',
-			'/viewer/hew_ms_widener_2_0099.jpg',
-			'/viewer/hew_ms_widener_2_0102.jpg',
-			'/viewer/hew_ms_widener_2_0103.jpg',
-			'/viewer/hew_ms_widener_2_0106.jpg',
-			'/viewer/hew_ms_widener_2_0107.jpg',
-			'/viewer/hew_ms_widener_2_0110.jpg',
-			'/viewer/hew_ms_widener_2_0111.jpg',
-			'/viewer/hew_ms_widener_2_0112.jpg',
-			'/viewer/hew_ms_widener_2_0113.jpg',
-			'/viewer/hew_ms_widener_2_0118.jpg',
-			'/viewer/hew_ms_widener_2_0119.jpg',
+			'/viewer/medms_ms_typ_45_0037.jpg',
+			'/viewer/medms_ms_typ_45_0038.jpg',
+			'/viewer/medms_ms_typ_45_0047.jpg',
+			'/viewer/medms_ms_typ_45_0048.jpg',
+			'/viewer/medms_ms_typ_45_0063.jpg',
+			'/viewer/medms_ms_typ_45_0064.jpg',
+			'/viewer/medms_ms_typ_45_0083.jpg',
+			'/viewer/medms_ms_typ_45_0084.jpg',
+			'/viewer/medms_ms_typ_45_0089.jpg',
+			'/viewer/medms_ms_typ_45_0090.jpg',
+			'/viewer/medms_ms_typ_45_0095.jpg',
+			'/viewer/medms_ms_typ_45_0096.jpg',
+			'/viewer/medms_ms_typ_45_0109.jpg',
+			'/viewer/medms_ms_typ_45_0110.jpg',
+			'/viewer/medms_ms_typ_45_0129.jpg',
+			'/viewer/medms_ms_typ_45_0130.jpg',
+			'/viewer/medms_ms_typ_45_0137.jpg',
+			'/viewer/medms_ms_typ_45_0138.jpg',
+			'/viewer/medms_ms_typ_45_0145.jpg',
+			'/viewer/medms_ms_typ_45_0146.jpg',
+			'/viewer/medms_ms_typ_45_0153.jpg',
+			'/viewer/medms_ms_typ_45_0154.jpg',
 		];
 
-		const title = 'Book of hours';
+		const title = 'Jacobus de Cessolis, Schachzabelbuch';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -275,23 +279,23 @@ IPadView = React.createClass({
 									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours</h2>
+											<h2 className="card-title object-title">Jacobus de Cessolis, Schachzabelbuch</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>45</span>
+											<span>179</span>
 										</div>
 										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>1470–80</span>
+												<span>c. 1390 (not after 1408)</span>
 											</div>
 										: ''}
 										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>London (?), England</span>
+												<span>Vienna, Austria</span>
 											</div>
 										: ''}
 										{true ?
@@ -309,7 +313,7 @@ IPadView = React.createClass({
 										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>MS Widener 2</span>
+												<span>MS Typ 45</span>
 											</div>
 										: ''}
 										{object.former_shelfmark ?
@@ -330,10 +334,10 @@ IPadView = React.createClass({
 												<span>{object.printer}</span>
 											</div>
 										: ''}
-										{false ?
+										{object.illumintator ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
-												<span>Master of the Troyes Missal</span>
+												<span>{object.illuminator}</span>
 											</div>
 										: ''}
 										{object.externalUrl ?
@@ -354,7 +358,7 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Description</label>
 												<span>
-													Parchment, ff. 111, 332 x 235 mm
+													Parchment, ff. i + 159 + ii, 215 x 145 (part 1: 149 x 88–89; part 2: 149–51 x 82) mm
 												</span>
 											</div>
 										: ''}

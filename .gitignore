@@ -8,6 +8,7 @@ private/settings/production.json
 node_modules
 public/openseadragon/Januarius*
 public/viewer
+public/videos
 
 
 # Editors

@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
+IPadViewTyp131 = React.createClass({
 
 	propTypes: {
 	},
@@ -109,27 +109,49 @@ IPadView = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/hew_ms_widener_2_0020.jpg',
-			'/viewer/hew_ms_widener_2_0021.jpg',
-			'/viewer/hew_ms_widener_2_0068.jpg',
-			'/viewer/hew_ms_widener_2_0069.jpg',
-			'/viewer/hew_ms_widener_2_0080.jpg',
-			'/viewer/hew_ms_widener_2_0081.jpg',
-			'/viewer/hew_ms_widener_2_0098.jpg',
-			'/viewer/hew_ms_widener_2_0099.jpg',
-			'/viewer/hew_ms_widener_2_0102.jpg',
-			'/viewer/hew_ms_widener_2_0103.jpg',
-			'/viewer/hew_ms_widener_2_0106.jpg',
-			'/viewer/hew_ms_widener_2_0107.jpg',
-			'/viewer/hew_ms_widener_2_0110.jpg',
-			'/viewer/hew_ms_widener_2_0111.jpg',
-			'/viewer/hew_ms_widener_2_0112.jpg',
-			'/viewer/hew_ms_widener_2_0113.jpg',
-			'/viewer/hew_ms_widener_2_0118.jpg',
-			'/viewer/hew_ms_widener_2_0119.jpg',
+			'/viewer/earbm_ms_typ_131_0007.jpg',
+			'/viewer/earbm_ms_typ_131_0008.jpg',
+			'/viewer/earbm_ms_typ_131_0033.jpg',
+			'/viewer/earbm_ms_typ_131_0034.jpg',
+			'/viewer/earbm_ms_typ_131_0035.jpg',
+			'/viewer/earbm_ms_typ_131_0036.jpg',
+			'/viewer/earbm_ms_typ_131_0037.jpg',
+			'/viewer/earbm_ms_typ_131_0038.jpg',
+			'/viewer/earbm_ms_typ_131_0039.jpg',
+			'/viewer/earbm_ms_typ_131_0040.jpg',
+			'/viewer/earbm_ms_typ_131_0041.jpg',
+			'/viewer/earbm_ms_typ_131_0042.jpg',
+			'/viewer/earbm_ms_typ_131_0043.jpg',
+			'/viewer/earbm_ms_typ_131_0044.jpg',
+			'/viewer/earbm_ms_typ_131_0047.jpg',
+			'/viewer/earbm_ms_typ_131_0048.jpg',
+			'/viewer/earbm_ms_typ_131_0063.jpg',
+			'/viewer/earbm_ms_typ_131_0064.jpg',
+			'/viewer/earbm_ms_typ_131_0065.jpg',
+			'/viewer/earbm_ms_typ_131_0066.jpg',
+			'/viewer/earbm_ms_typ_131_0067.jpg',
+			'/viewer/earbm_ms_typ_131_0068.jpg',
+			'/viewer/earbm_ms_typ_131_0069.jpg',
+			'/viewer/earbm_ms_typ_131_0070.jpg',
+			'/viewer/earbm_ms_typ_131_0071.jpg',
+			'/viewer/earbm_ms_typ_131_0072.jpg',
+			'/viewer/earbm_ms_typ_131_0077.jpg',
+			'/viewer/earbm_ms_typ_131_0078.jpg',
+			'/viewer/earbm_ms_typ_131_0079.jpg',
+			'/viewer/earbm_ms_typ_131_0080.jpg',
+			'/viewer/earbm_ms_typ_131_0081.jpg',
+			'/viewer/earbm_ms_typ_131_0082.jpg',
+			'/viewer/earbm_ms_typ_131_0083.jpg',
+			'/viewer/earbm_ms_typ_131_0084.jpg',
+			'/viewer/earbm_ms_typ_131_0085.jpg',
+			'/viewer/earbm_ms_typ_131_0086.jpg',
+			'/viewer/earbm_ms_typ_131_0087.jpg',
+			'/viewer/earbm_ms_typ_131_0088.jpg',
+			'/viewer/earbm_ms_typ_131_0125.jpg',
+			'/viewer/earbm_ms_typ_131_0126.jpg',
 		];
 
-		const title = 'Book of hours';
+		const title = 'La forme qu’on tenoit aux Tournois et Assemblées au temps du Roy Uterpendragon ...';
 
 		/*
 		 * Some demo data for the info panel dropdown--to be replaced for each build
@@ -275,23 +297,23 @@ IPadView = React.createClass({
 									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours</h2>
+											<h2 className="card-title object-title">La forme qu’on tenoit aux Tournois et Assemblées au temps du Roy Uterpendragon et du Roy Artus and René d’Anjou, Le livre des tournois</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>45</span>
+											<span>185</span>
 										</div>
 										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>1470–80</span>
+												<span>c. 1460–70</span>
 											</div>
 										: ''}
 										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>London (?), England</span>
+												<span>France</span>
 											</div>
 										: ''}
 										{true ?
@@ -309,7 +331,7 @@ IPadView = React.createClass({
 										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>MS Widener 2</span>
+												<span>MS Typ 131</span>
 											</div>
 										: ''}
 										{object.former_shelfmark ?
@@ -333,7 +355,7 @@ IPadView = React.createClass({
 										{false ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
-												<span>Master of the Troyes Missal</span>
+												<span>Méliacin Master</span>
 											</div>
 										: ''}
 										{object.externalUrl ?
@@ -354,7 +376,7 @@ IPadView = React.createClass({
 											<div className="object-detail-meta">
 												<label>Description</label>
 												<span>
-													Parchment, ff. 111, 332 x 235 mm
+													Parchment, ff. 61, 213 x 164 (138–39 x 97–99) mm
 												</span>
 											</div>
 										: ''}
