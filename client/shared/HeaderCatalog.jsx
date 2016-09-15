@@ -88,6 +88,7 @@ HeaderCatalog = React.createClass({
 				<ObjectsSearchToolsPanel
 					filters={this.props.filters}
 					toggleSearchTerm={this.props.toggleSearchTerm}
+					toggleMiradorSearch={this.props.toggleMiradorSearch}
 					handleChangeDate={this.props.handleChangeDate}
 					handleChangeTextsearch={this.props.handleChangeTextsearch}
 					open={this.state.rightMenuOpen}
@@ -125,6 +126,7 @@ HeaderCatalog = React.createClass({
 									<ObjectsSearchTools
 										filters={this.props.filters}
 										toggleSearchTerm={this.props.toggleSearchTerm}
+										toggleMiradorSearch={this.props.toggleMiradorSearch}
 										handleChangeDate={this.props.handleChangeDate}
 										handleChangeTextsearch={this.props.handleChangeTextsearch}
 									/>

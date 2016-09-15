@@ -20,6 +20,11 @@
   display:inline-block;
   vertical-align: top;
 
+	.search-tool {
+    display:inline-block;
+    vertical-align: top;
+	}
+
   .dropdown {
     display:inline-block;
     vertical-align: top;
@@ -51,8 +56,7 @@
 
 
 			.dropdown-menu {
-			  -webkit-transform: scale(1, 1);
-			  transform: scale(1, 1);
+			  .transform(scale(1, 1));
 			  opacity:1;
 
 			}
@@ -73,14 +77,12 @@
 			left:0;
 			padding:10px 0 30px;
 		  opacity:.3;
-		  -webkit-transform-origin: top;
-		  transform-origin: top;
+		  display: block;
+		  .transform-origin(top);
+		  .transform(scale(1, 0));
+		  .transition(all 0.2s linear);
 		  -webkit-animation-fill-mode: forwards;
 		  animation-fill-mode: forwards;
-		  -webkit-transform: scale(1, 0);
-		  display: block;
-		  transition: all 0.2s linear;
-		  -webkit-transition: all 0.2s linear;
 
       .dropdown-menu-inner {
         width:95%;
@@ -106,6 +108,8 @@
         width:100%;
         text-overflow:ellipsis;
 			  font-family: @font-label ;
+        background:rgba(255,255,255,0.1) !important;
+        border:2px solid rgba(255,255,255,0.1) !important;
 
 				> button > div {
 					border-radius:2px ;
@@ -120,8 +124,9 @@
 
 				&:hover {
 				  background:#f0f0f0 !important;
-				  .mdi {
-						color:@dark;
+
+				  span, .mdi {
+						color:@dark !important;
 
 				  }
 				}
@@ -143,12 +148,13 @@
 	      }
 
 				button {
-						height:41px !important;
+					height:41px !important;
+	        background:transparent !important;
 
 				}
 
 				button > div {
-	        background:#eee !important;
+	        background:transparent !important;
 
 					> div {
 						height:41px !important;
@@ -164,7 +170,7 @@
 
 
         span {
-					color:@dark-theme-dropdown-text !important;
+					color:@light !important;
 				  font-family: @font-label !important;
 
         }
@@ -172,7 +178,7 @@
 				.mdi {
 				  display: inline-block !important;
 				  vertical-align: top;
-				  color:@dark-theme-dropdown-text !important;
+				  color:@light !important;
 					line-height:0;
 					margin:0;
 					padding:10px;
@@ -302,6 +308,7 @@
   color:@light;
   background:transparent;
   border:0;
+  width: 160px;
 
   &:hover {
     background:transparent;
@@ -309,7 +316,6 @@
 
   input {
     background:transparent;
-    width: 260px;
     border-bottom:2px solid @light;
     height:auto;
     padding:10px;
@@ -317,6 +323,25 @@
     &:focus {
       outline:none;
     }
+
+  }
+}
+
+.search-tool.search-type-mirador {
+	display:inline-block !important;
+	width:155px !important;
+	height:73px !important;
+	padding:25px 10px;
+
+	&:hover {
+		background:transparent !important;
+	}
+  label {
+    font-family:@font-label !important;
+		font-size:14px !important;
+		font-weight:lighter ;
+    color:@light !important;
+		text-transform: uppercase;
 
   }
 }

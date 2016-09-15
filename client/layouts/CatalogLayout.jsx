@@ -6,6 +6,7 @@ CatalogLayout = React.createClass({
 
 	getInitialState() {
 		return {
+			objectToSelectSlug: this.props.selectedObjectSlug,
 			selectedObject: {},
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 			catalogLayout: 'grid',
@@ -16,7 +17,7 @@ CatalogLayout = React.createClass({
 	},
 
 	loadMoreObjects() {
-		console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
+		//console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
 		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
 			this.setState({
 				skip: this.state.skip + this.state.limit,
@@ -68,9 +69,49 @@ CatalogLayout = React.createClass({
 
 		this.setState({
 			filters,
+			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+
+		if(location.pathname !== "/catalog" || location.pathname !== "/catalog/") {
+			FlowRouter.go("/catalog");
+
+		}
+
+	},
+
+	toggleMiradorSearch(key, value) {
+		const filters = this.state.filters;
+		let isInFilters = false;
+
+		filters.forEach(function(filter){
+			if(filter.key === 'hasViewer'){
+				filter.values[0] = !filter.values[0];
+				isInFilters = true;
+			}
+		})
+
+		if(!isInFilters){
+			filters.push({
+				key: 'hasViewer',
+				values: [true],
+			})
+		}
+
+		this.setState({
+			filters,
+			objectToSelectSlug: null,
+			selectedObject: {},
+			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+		});
+
+		if(location.pathname !== "/catalog" || location.pathname !== "/catalog/") {
+			FlowRouter.go("/catalog");
+
+		}
 	},
 
 	handleChangeTextsearch(textsearch) {
@@ -78,7 +119,6 @@ CatalogLayout = React.createClass({
 
 		if (textsearch && textsearch.length) {
 			let textsearchInFilters = false;
-			console.log(filters);
 
 			filters.forEach((filter, i) => {
 				if (filter.key === 'textsearch') {
@@ -86,7 +126,6 @@ CatalogLayout = React.createClass({
 					textsearchInFilters = true;
 				}
 			});
-			console.log(filters);
 
 			if (!textsearchInFilters) {
 				filters.push({
@@ -199,7 +238,6 @@ CatalogLayout = React.createClass({
 		});
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		if(location.pathname.indexOf(selectedObject.slug) < 0){
-			console.log("go to route", selectedObject.slug);
 			FlowRouter.go("/catalog/" + selectedObject.slug);
 
 		}
@@ -208,6 +246,7 @@ CatalogLayout = React.createClass({
 	closeSelectedObject() {
 		this.setState({
 			selectedObject: {},
+			objectToSelectSlug: "",
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		FlowRouter.go("/catalog");
@@ -215,13 +254,13 @@ CatalogLayout = React.createClass({
 
 	render() {
 		console.log('CatalogLayout.filters', this.state.filters);
-		console.log('CatalogLayout.props', this.props);
 		return (
 			<div className="archimedes-layout catalog-layout">
 
 				<HeaderCatalog
 					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
+					toggleMiradorSearch={this.toggleMiradorSearch}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
 					catalogTitleText={this.state.catalogTitleText}
@@ -234,12 +273,13 @@ CatalogLayout = React.createClass({
 				<ObjectsList
 					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
+					toggleMiradorSearch={this.toggleMiradorSearch}
 					loadMoreObjects={this.loadMoreObjects}
 					skip={this.state.skip}
 					limit={this.state.limit}
 					catalogLayout={this.state.catalogLayout}
 					selectedObject={this.state.selectedObject}
-					objectToSelectSlug={this.props.selectedObjectSlug}
+					objectToSelectSlug={this.state.objectToSelectSlug}
 					selectObject={this.selectObject}
 					closeSelectedObject={this.closeSelectedObject}
 				/>

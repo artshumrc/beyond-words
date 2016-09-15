@@ -3,6 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
+import Toggle from 'material-ui/Toggle';
 
 ObjectsSearchTools = React.createClass({
 
@@ -11,6 +12,7 @@ ObjectsSearchTools = React.createClass({
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
+		toggleMiradorSearch: React.PropTypes.func,
 
 	},
 
@@ -99,6 +101,11 @@ ObjectsSearchTools = React.createClass({
 				<div className="toolbar-tools">
 
 					<div className="search-tools">
+						<Toggle
+							className='search-tool search-type-mirador'
+							label='Has Viewer?'
+							onToggle={this.props.toggleMiradorSearch}
+						/>
 
 						<div
 							className={`dropdown search-dropdown search-dropdown-date${

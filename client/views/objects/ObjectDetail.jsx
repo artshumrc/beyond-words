@@ -8,6 +8,12 @@ ObjectDetail = React.createClass({
 		selectObject: React.PropTypes.func,
 	},
 
+	getInitialState() {
+		return {
+			miradorOpen: false,
+		};
+	},
+
 	mixins: [ReactMeteorData],
 
 	objectSelected: false,
@@ -42,6 +48,22 @@ ObjectDetail = React.createClass({
 		};
 	},
 
+	openMiradorViewer(){
+
+		this.setState({
+			miradorOpen: true,
+		});
+
+	},
+
+	closeMiradorViewer(){
+
+		this.setState({
+			miradorOpen: false,
+		});
+
+	},
+
 	render() {
 		const selectedObject = this.props.selectedObject;
 
@@ -72,6 +94,18 @@ ObjectDetail = React.createClass({
 								className="object-detail-thumbnail paper-shadow"
 								src="/images/default_image.jpg"
 							/>
+						}
+						{selectedObject.miradorLink ?
+							<div
+								className="thumbnail-mirador-overlay"
+								onClick={this.openMiradorViewer}
+							>
+								<i className="mdi mdi-image-filter" />
+								<span>View in Mirador</span>
+
+							</div>
+
+							: ""
 						}
 					</div>
 
@@ -134,7 +168,7 @@ ObjectDetail = React.createClass({
 								<span>{selectedObject.printer}</span>
 							</div>
 						: ''}
-						{selectedObject.illumintator ?
+						{selectedObject.illuminator ?
 							<div className="object-detail-meta">
 								<label>Illuminator</label>
 								<span>{selectedObject.illuminator}</span>
@@ -154,7 +188,7 @@ ObjectDetail = React.createClass({
 								</span>
 							</div>
 						: ''}
-						{selectedObject.illumintator ?
+						{selectedObject.description ?
 							<div className="object-detail-meta">
 								<label>Description</label>
 								<span>{selectedObject.description}</span>
@@ -163,6 +197,18 @@ ObjectDetail = React.createClass({
 					</div>
 
 				</div>
+
+				{selectedObject.miradorLink ?
+					<div className={this.state.miradorOpen ? 'object-mirador-viewer object-mirador-viewer--open' : 'object-mirador-viewer' }>
+						<i
+							className="mdi mdi-close"
+							onClick={this.closeMiradorViewer}
+						/>
+						<iframe src={selectedObject.miradorLink} />
+					</div>
+
+					: ""
+				}
 
 			</div>
 			:

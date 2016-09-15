@@ -34,6 +34,7 @@ SearchTermButton = React.createClass({
 	render() {
 		let className = 'search-term-button';
 		let active = this.props.active;
+		const value = Utils.trunc(this.props.value, 28);
 
 		if ('activeWork' in this.props) {
 			if (this.props.activeWork === true) {
@@ -52,7 +53,7 @@ SearchTermButton = React.createClass({
 				<RaisedButton
 					className={className}
 					onClick={this.toggleSearchTerm}
-					label={this.props.label}
+					label={value}
 				/>
 			</li>
 		);
