@@ -22,12 +22,12 @@ ObjectDetail = React.createClass({
 			// thumbnails = Thumbnails.find({}).fetch();
 		}
 
-		console.log("ObjectDetail.props", this.props);
+		//console.log("ObjectDetail.props", this.props);
 		if(this.props.objectToSelectSlug && !("catalog_n" in this.props.selectedObject) && !this.objectSelected){
 			const objectSubscription = Meteor.subscribe('objects', {slug: this.props.objectToSelectSlug});
 			if (objectSubscription.ready()) {
 				object = Objects.findOne({slug: this.props.objectToSelectSlug});
-				console.log("ObjectDetail.object", object);
+				//console.log("ObjectDetail.object", object);
 				this.props.selectObject(object);
 				this.objectSelected = true;
 			}

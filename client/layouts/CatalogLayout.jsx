@@ -23,7 +23,7 @@ CatalogLayout = React.createClass({
 			});
 
 		}else {
-			console.log("did not load more objects");
+			//console.log("did not load more objects");
 		}
 	},
 

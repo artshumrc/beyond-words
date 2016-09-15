@@ -148,7 +148,7 @@ ObjectsList = React.createClass({
 				}
 			});
 		}
-		console.log('render object', this.objects.length);
+		//console.log('render object', this.objects.length);
 		return this.objects.map((object) => (
 			<ObjectTeaser
 				key={object._id}
@@ -160,7 +160,7 @@ ObjectsList = React.createClass({
 
 	render() {
 		const self = this;
-		console.log("ObjectsList.props", this.props);
+		//console.log("ObjectsList.props", this.props);
 
 		const masonryOptions = {
 			// columnWidth : "400px",
@@ -169,8 +169,19 @@ ObjectsList = React.createClass({
 		};
 
 		const selectedObject = this.props.selectedObject;
+		if(selectedObject && "objectDetailSlider" in self.refs){
+			this.objects.forEach(function(object, i){
+				if(object.catalog_n === selectedObject.catalog_n){
+					self.refs.objectDetailSlider.slickGoTo(i);
+
+				}
+			});
+
+		}
 
 		const settings = {
+			centerMode: true,
+			centerPadding: '0px',
 			focusOnSelect: true,
 			//dots: true,
 			infinite: false,
@@ -214,7 +225,7 @@ ObjectsList = React.createClass({
 						{this.objects.length ?
 							<div className="row">
 								<div className="col-xs-11 center-block clear">
-									<Slider id="object-detail--slider" {...settings}>
+									<Slider ref='slider' {...settings}>
 										{this.objects.map((object, i) => (
 											<div key={i}>
 												<div className="object-slider-teaser">
