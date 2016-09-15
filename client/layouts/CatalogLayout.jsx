@@ -83,21 +83,27 @@ CatalogLayout = React.createClass({
 	},
 
 	toggleMiradorSearch(key, value) {
-		const filters = this.state.filters;
+		let filters = this.state.filters;
 		let isInFilters = false;
 
 		filters.forEach(function(filter){
 			if(filter.key === 'hasViewer'){
-				filter.values[0] = !filter.values[0];
+				filter.values[0] = value;
 				isInFilters = true;
 			}
-		})
+		});
 
 		if(!isInFilters){
 			filters.push({
 				key: 'hasViewer',
 				values: [true],
 			})
+		}
+
+		if(isInFilters && value === false){
+			filters = filters.filter(function( obj ) {
+				return obj.key !== 'hasViewer';
+			});
 		}
 
 		this.setState({

@@ -152,6 +152,11 @@ ObjectsList = React.createClass({
 				}
 			});
 		}
+
+		this.objects.sort(function(a, b) {
+			return a.catalog_n - b.catalog_n;
+		});
+
 		//console.log('render object', this.objects.length);
 		return this.objects.map((object) => (
 			<ObjectTeaser

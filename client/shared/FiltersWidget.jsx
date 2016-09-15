@@ -28,7 +28,7 @@ FiltersWidget = React.createClass({
 					>
 						<span className="filter-key paper-shadow">{filter.key}</span>
 						{filter.values.map((val, j) => {
-							if (['dateFrom', 'dateTo'].indexOf(filter.key) >= 0) {
+							if (['dateFrom', 'dateTo', 'hasViewer'].indexOf(filter.key) >= 0) {
 								return (
 									<RaisedButton
 										key={j}
