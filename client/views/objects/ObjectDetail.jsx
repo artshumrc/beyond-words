@@ -2,20 +2,40 @@
 ObjectDetail = React.createClass({
 
 	propTypes: {
-		object: React.PropTypes.object.isRequired,
+		selectedObject: React.PropTypes.object,
+		objectToSelectSlug: React.PropTypes.string,
 		closeSelectedObject: React.PropTypes.func,
+		selectObject: React.PropTypes.func,
 	},
 
 	mixins: [ReactMeteorData],
 
+	objectSelected: false,
+
 	getMeteorData() {
 		let attachment = null;
+		let selectedObject = null;
 
-		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
-		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
-			attachment = Attachments.findOne({ _id: this.props.object.image });
+		const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
+		if (imageSubscription.ready() && typeof this.props.selectedObject.image !== 'undefined') {
+			attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
 			// thumbnails = Thumbnails.find({}).fetch();
 		}
+
+		console.log("ObjectDetail.props", this.props);
+		if(this.props.objectToSelectSlug && !("catalog_n" in this.props.selectedObject) && !this.objectSelected){
+			const objectSubscription = Meteor.subscribe('objects', {slug: this.props.objectToSelectSlug});
+			if (objectSubscription.ready()) {
+				object = Objects.findOne({slug: this.props.objectToSelectSlug});
+				console.log("ObjectDetail.object", object);
+				this.props.selectObject(object);
+				this.objectSelected = true;
+			}
+
+
+		}
+
+
 
 		return {
 			attachment,
@@ -23,7 +43,7 @@ ObjectDetail = React.createClass({
 	},
 
 	render() {
-		const object = this.props.object;
+		const selectedObject = this.props.selectedObject;
 
 		let image = {};
 		let imageUrl = '';
@@ -33,6 +53,9 @@ ObjectDetail = React.createClass({
 		}
 
 		return (
+			<div>
+			{('catalog_n' in selectedObject) ?
+
 			<div className="object-details ">
 				<div className="object-details-inner paper-shadow">
 
@@ -55,86 +78,86 @@ ObjectDetail = React.createClass({
 					<div className="object-detail-text-wrap">
 
 						<div className="object-detail-header">
-							<h2 className="card-title object-title">{object.author_title}</h2>
+							<h2 className="card-title object-title">{selectedObject.author_title}</h2>
 							<hr />
 						</div>
 
 						<div className="object-detail-meta">
 							<label>Catalog No.</label>
-							<span>{object.catalog_n}</span>
+							<span>{selectedObject.catalog_n}</span>
 						</div>
-						{object.date ?
+						{selectedObject.date ?
 							<div className="object-detail-meta">
 								<label>Date</label>
-								<span>{object.date}</span>
+								<span>{selectedObject.date}</span>
 							</div>
 						: ''}
-						{object.place ?
+						{selectedObject.place ?
 							<div className="object-detail-meta">
 								<label>Place</label>
-								<span>{object.place}</span>
+								<span>{selectedObject.place}</span>
 							</div>
 						: ''}
-						{object.institution ?
+						{selectedObject.institution ?
 							<div className="object-detail-meta">
 								<label>Institution</label>
-								<span>{object.institution}</span>
+								<span>{selectedObject.institution}</span>
 							</div>
 						: ''}
-						{object.collection ?
+						{selectedObject.collection ?
 							<div className="object-detail-meta">
 								<label>Collection</label>
-								<span>{object.collection}</span>
+								<span>{selectedObject.collection}</span>
 							</div>
 						: ''}
-						{object.shelfmark ?
+						{selectedObject.shelfmark ?
 							<div className="object-detail-meta">
 								<label>Shelfmark</label>
-								<span>{object.shelfmark}</span>
+								<span>{selectedObject.shelfmark}</span>
 							</div>
 						: ''}
-						{object.former_shelfmark ?
+						{selectedObject.former_shelfmark ?
 							<div className="object-detail-meta">
 								<label>Former Shelfmark</label>
-								<span>{object.former_shelfmark}</span>
+								<span>{selectedObject.former_shelfmark}</span>
 							</div>
 						: ''}
-						{object.scribe ?
+						{selectedObject.scribe ?
 							<div className="object-detail-meta">
 								<label>Scribe</label>
-								<span>{object.scribe}</span>
+								<span>{selectedObject.scribe}</span>
 							</div>
 						: ''}
-						{object.printer ?
+						{selectedObject.printer ?
 							<div className="object-detail-meta">
 								<label>Printer</label>
-								<span>{object.printer}</span>
+								<span>{selectedObject.printer}</span>
 							</div>
 						: ''}
-						{object.illumintator ?
+						{selectedObject.illumintator ?
 							<div className="object-detail-meta">
 								<label>Illuminator</label>
-								<span>{object.illuminator}</span>
+								<span>{selectedObject.illuminator}</span>
 							</div>
 						: ''}
-						{object.externalLink ?
+						{selectedObject.externalLink ?
 							<div className="object-detail-meta">
 								<label>External Link</label>
 								<span>
 									<a
-										href={object.externalUrl}
+										href={selectedObject.externalUrl}
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										{object.externalUrl}
+										{selectedObject.externalUrl}
 									</a>
 								</span>
 							</div>
 						: ''}
-						{object.illumintator ?
+						{selectedObject.illumintator ?
 							<div className="object-detail-meta">
 								<label>Description</label>
-								<span>{object.description}</span>
+								<span>{selectedObject.description}</span>
 							</div>
 						: ''}
 					</div>
@@ -142,6 +165,16 @@ ObjectDetail = React.createClass({
 				</div>
 
 			</div>
+			:
+				<div className="loading-collections loading-visible">
+					<div className="dot-spinner">
+						<div className="bounce1" />
+						<div className="bounce2" />
+						<div className="bounce3" />
+					</div>
+				</div>
+			}
+		</div>
 		);
 	},
 });

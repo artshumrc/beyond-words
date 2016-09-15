@@ -154,6 +154,14 @@ Header = React.createClass({
 												/>
 										</div>
 										</li>
+										<li>
+											<FlatButton
+												style={styles.flatButton}
+												label="AUDIOGUIDE"
+												href="//beyondwords.oncell.com/"
+												target="_blank"
+											/>
+										</li>
 									</ul>
 								</div>
 								<div className="module widget-handle left">
@@ -169,7 +177,7 @@ Header = React.createClass({
 											<FlatButton
 												style={styles.flatButton}
 												label="MCMULLEN" target="_blank" rel="noopener noreferrer"
-												href="//www.bc.edu/sites/artmuseum/"
+												href="//www.bc.edu/sites/artmuseum/exhibitions/beyond-words/"
 											/>
 										</li>
 										<li>

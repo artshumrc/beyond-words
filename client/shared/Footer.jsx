@@ -95,7 +95,7 @@ Footer = React.createClass({
 										style={styles.flatButton}
 										label="MCMULLEN"
 										target="_blank" rel="noopener noreferrer"
-										href="//www.bc.edu/sites/artmuseum/"
+										href="//www.bc.edu/sites/artmuseum/exhibitions/beyond-words/"
 									/>
 									<FlatButton
 										style={styles.flatButton}

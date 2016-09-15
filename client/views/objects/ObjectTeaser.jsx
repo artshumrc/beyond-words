@@ -63,7 +63,7 @@ ObjectTeaser = React.createClass({
 				<div className="object-teaser-wrap">
 					{this.props.selectObject ?
 						<a
-							href="#select"
+							href="#"
 							onClick={this.props.selectObject.bind(null, object)}
 						>
 							<div className="object-thumbnail-wrap">
@@ -108,7 +108,7 @@ ObjectTeaser = React.createClass({
 					<div className="object-text-wrap">
 						{this.props.selectObject ?
 							<a
-								href="#select"
+								href="#"
 								onClick={this.props.selectObject.bind(null, object)}
 							>
 								<h3>{Utils.trunc(authorTitle, 60)}</h3>

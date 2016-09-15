@@ -93,6 +93,16 @@ Schemas.Objects = new SimpleSchema({
 		label: 'Institution (unique values will be used for dropdown search tools)',
 		optional: true,
 	},
+	institution_2: {
+		type: String,
+		label: 'Institution #2 (unique values will be used for dropdown search tools)',
+		optional: true,
+	},
+	institution_3: {
+		type: String,
+		label: 'Institution #3 (unique values will be used for dropdown search tools)',
+		optional: true,
+	},
 	collection: {
 		type: String,
 		label: 'Collection',

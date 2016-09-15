@@ -10,6 +10,7 @@ ObjectsList = React.createClass({
 
 	propTypes: {
 		selectedObject: React.PropTypes.object,
+		objectToSelectSlug: React.PropTypes.string,
 		selectObject: React.PropTypes.func,
 		filters: React.PropTypes.array,
 		addSearchTerm: React.PropTypes.func,
@@ -159,6 +160,7 @@ ObjectsList = React.createClass({
 
 	render() {
 		const self = this;
+		console.log("ObjectsList.props", this.props);
 
 		const masonryOptions = {
 			// columnWidth : "400px",
@@ -200,36 +202,40 @@ ObjectsList = React.createClass({
 					toggleSearchTerm={this.props.toggleSearchTerm}
 				/>
 
-				{('author_title' in selectedObject && selectedObject.author_title.length) ?
+				{('catalog_n' in selectedObject || this.props.objectToSelectSlug) ?
 					<div>
 						<ObjectDetail
-							object={this.props.selectedObject}
+							selectedObject={this.props.selectedObject}
+							objectToSelectSlug={this.props.objectToSelectSlug}
 							closeSelectedObject={this.props.closeSelectedObject}
+							selectObject={self.props.selectObject}
 						/>
 
-						<div className="row">
-							<div className="col-xs-11 center-block clear">
-								<Slider {...settings}>
-									{this.objects.map((object, i) => (
-										<div key={i}>
-											<div className="object-slider-teaser">
-												<ObjectTeaser
-													key={object._id}
-													object={object}
-													selectObject={self.props.selectObject}
-												/>;
+						{this.objects.length ?
+							<div className="row">
+								<div className="col-xs-11 center-block clear">
+									<Slider id="object-detail--slider" {...settings}>
+										{this.objects.map((object, i) => (
+											<div key={i}>
+												<div className="object-slider-teaser">
+													<ObjectTeaser
+														key={object._id}
+														object={object}
+														selectObject={self.props.selectObject}
+													/>;
+												</div>
 											</div>
-										</div>
-									))}
-								</Slider>
+										))}
+									</Slider>
+								</div>
 							</div>
-						</div>
+						: ""}
 
 					</div>
-					:
+				:
 					<div>
 						<InfiniteScroll
-							endPadding={120}
+							endPadding={200}
 							loadMore={debounce(1000, this.props.loadMoreObjects)}
 						>
 

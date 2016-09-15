@@ -75,13 +75,27 @@ LeftMenu = React.createClass({
 					/>
 					<MenuItem
 						href="/catalog"
-						primaryText="CATALOG"
+						primaryText="ONLINE CATALOG"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+				<MenuItem
+						href="/#catalog"
+						primaryText="PRINT CATALOG"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>
 					<MenuItem
 						href="/#lenders"
 						primaryText="LENDERS"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<MenuItem
+						href="//beyondwords.oncell.com/"
+						primaryText="AUDIOGUIDE"
+						target="_blank"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>
@@ -96,7 +110,7 @@ LeftMenu = React.createClass({
 						onClick={this.props.closeLeftMenu}
 					/>
 					<MenuItem
-						href="//www.bc.edu/sites/artmuseum/"
+						href="//www.bc.edu/sites/artmuseum/exhibitions/beyond-words/"
 						primaryText="McMullen"
 						target="_blank" rel="noopener noreferrer"
 						onTouchTap={this.props.closeLeftMenu}

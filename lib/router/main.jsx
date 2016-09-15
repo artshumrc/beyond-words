@@ -18,8 +18,14 @@ FlowRouter.subscriptions = function subscriptions() {
 */
 
 FlowRouter.route('/catalog', {
-	action(params, queryParams) {
-		mount(CatalogLayout, { params, queryParams });
+	action() {
+		mount(CatalogLayout, {});
+	},
+});
+
+FlowRouter.route('/catalog/:slug', {
+	action(params) {
+		mount(CatalogLayout, {selectedObjectSlug: params.slug});
 	},
 });
 

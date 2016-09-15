@@ -508,26 +508,14 @@ HomeEvents = React.createClass({
 								Collection of Jack Ball, Arms Dealer and Fraudster"
 							</h5>
 							<p>
-								Five illuminated leaves, now at Houghton Library and the Boston Public Library
-								(MSS Typ 704.1(12-13) and bp 205-207, respectively), have recently been
-								recognized as coming from an early 20th-century English collection, formed
-								by a shady character who was successively a chauffeur, Captain in the
-								Royal Air Force, bankrupt, forger of Irish antiquities, international arms dealer,
-								and adulterer. This paper will consider his now-dispersed collection of leaves and
-								cuttings, and begin the process of tracing their present whereabouts.
+								Five illuminated leaves, now at Houghton Library and the Boston Public Library (MSS Typ 704.1(12-13) and BPL pb Med. 205-207, respectively), have recently been recognized as coming from an early 20th-century English collection, formed by a shady character who was successively a chauffeur, Captain in the Royal Air Force, bankrupt, forger of Irish antiquities, international arms dealer, and adulterer. This paper will consider his now-dispersed collection of leaves and cuttings, and begin the process of tracing their present whereabouts.
 							</p>
 							<h5>
 								Erik Kwakkel (Centre for the Arts in Society, Leiden University), "Variations
 								on a Theme: Paleographical Diversity in the Twelfth Century"
 							</h5>
 							<p>
-								Focusing on twelfth-century book script this paper examines to what extent
-								scribes varied the execution of letterforms, and why they did. Explored will
-								be the influence of time and geographical space, the scriptorium in which an
-								individual was trained, and the monastic order the scribe was part of.
-								The discussion will include Houghton Library MSS Typ 204 and 703 to show
-								regional variety, and Boston Public Library f.Med.75 and f.Med.15 to show
-								the transition from Late Caroline to Early Gothic.
+								Focusing on twelfth-century book script this paper examines to what extent scribes varied the execution of letterforms, and why they did. Explored will be the influence of time and geographical space, the scriptorium in which an individual was trained, and the monastic order the scribe was part of. The discussion will include Houghton Library MSS Typ 204 and 703 to show regional variety, and Boston Public Library f Med. 75 and f Med. 15 to show the transition from Late Caroline to Early Gothic.
 							</p>
 							<h5>
 								Kate Rudy (University of St. Andrews, Fife), "Convents in Competition:

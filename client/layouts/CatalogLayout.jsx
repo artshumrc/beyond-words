@@ -1,5 +1,8 @@
 CatalogLayout = React.createClass({
 
+	propTypes: {
+		selectedObjectSlug: React.PropTypes.string,
+	},
 
 	getInitialState() {
 		return {
@@ -14,9 +17,14 @@ CatalogLayout = React.createClass({
 
 	loadMoreObjects() {
 		console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
-		this.setState({
-			skip: this.state.skip + this.state.limit,
-		});
+		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
+			this.setState({
+				skip: this.state.skip + this.state.limit,
+			});
+
+		}else {
+			console.log("did not load more objects");
+		}
 	},
 
 	toggleSearchTerm(key, value) {
@@ -60,6 +68,7 @@ CatalogLayout = React.createClass({
 
 		this.setState({
 			filters,
+			selectedObject: {},
 			skip: 0,
 		});
 	},
@@ -188,6 +197,12 @@ CatalogLayout = React.createClass({
 			selectedObject,
 			catalogTitleText,
 		});
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		if(location.pathname.indexOf(selectedObject.slug) < 0){
+			console.log("go to route", selectedObject.slug);
+			FlowRouter.go("/catalog/" + selectedObject.slug);
+
+		}
 	},
 
 	closeSelectedObject() {
@@ -195,10 +210,12 @@ CatalogLayout = React.createClass({
 			selectedObject: {},
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+		FlowRouter.go("/catalog");
 	},
 
 	render() {
 		console.log('CatalogLayout.filters', this.state.filters);
+		console.log('CatalogLayout.props', this.props);
 		return (
 			<div className="archimedes-layout catalog-layout">
 
@@ -222,6 +239,7 @@ CatalogLayout = React.createClass({
 					limit={this.state.limit}
 					catalogLayout={this.state.catalogLayout}
 					selectedObject={this.state.selectedObject}
+					objectToSelectSlug={this.props.selectedObjectSlug}
 					selectObject={this.selectObject}
 					closeSelectedObject={this.closeSelectedObject}
 				/>
