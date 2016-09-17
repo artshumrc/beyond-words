@@ -63,7 +63,7 @@ ObjectTeaser = React.createClass({
 				<div className="object-teaser-wrap">
 					{this.props.selectObject ?
 						<a
-							href="#"
+							href={`#${object.slug}`}
 							onClick={this.props.selectObject.bind(null, object)}
 						>
 							<div className="object-thumbnail-wrap">

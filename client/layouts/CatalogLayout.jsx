@@ -244,8 +244,7 @@ CatalogLayout = React.createClass({
 		});
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		if(location.pathname.indexOf(selectedObject.slug) < 0){
-			FlowRouter.go("/catalog/" + selectedObject.slug);
-
+			// FlowRouter.go("/catalog/" + selectedObject.slug);
 		}
 	},
 

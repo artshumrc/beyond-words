@@ -140,6 +140,16 @@ ObjectsList = React.createClass({
 		}
 	},
 	renderObjects() {
+		return this.objects.map((object) => (
+			<ObjectTeaser
+				key={object._id}
+				object={object}
+				selectObject={this.props.selectObject}
+			/>
+		));
+	},
+
+	render() {
 		const self = this;
 
 		if (this.objects.length === 0 || this.props.skip === 0) {
@@ -156,20 +166,6 @@ ObjectsList = React.createClass({
 		this.objects.sort(function(a, b) {
 			return a.catalog_n - b.catalog_n;
 		});
-
-		//console.log('render object', this.objects.length);
-		return this.objects.map((object) => (
-			<ObjectTeaser
-				key={object._id}
-				object={object}
-				selectObject={self.props.selectObject}
-			/>
-		));
-	},
-
-	render() {
-		const self = this;
-		//console.log("ObjectsList.props", this.props);
 
 		const masonryOptions = {
 			// columnWidth : "400px",
