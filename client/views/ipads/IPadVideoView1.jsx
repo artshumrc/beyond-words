@@ -155,7 +155,7 @@ IPadVideoView1 = React.createClass({
 		*/
 
 		return (
-			<div className="page page-ipad page-ipad-videos page-ipad-videos-single">
+			<div className="page page-ipad page-ipad-videos">
 				<div className="ipad-video video-1">
 					<span className="video-title">Illuminating Manuscripts</span>
 					<video id="video1" controls>

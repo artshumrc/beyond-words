@@ -10,16 +10,6 @@ Schemas.Objects = new SimpleSchema({
 		label: "Author and Title combined as 'Author, Title; Author, Title; etc.'",
 		optional: true,
 	},
-	title: {
-		type: String,
-		label: 'Title (deprecated) - left only as reference; do not fill out',
-		optional: true,
-	},
-	author: {
-		type: String,
-		label: 'Author (deprecated) - left only as reference; do not fill out',
-		optional: true,
-	},
     /* slug: {
     type: String,
     max: 200,

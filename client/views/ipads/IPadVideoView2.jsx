@@ -9,8 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadVideoView2
- = React.createClass({
+IPadVideoView2 = React.createClass({
 
 	propTypes: {
 	},
@@ -156,12 +155,12 @@ IPadVideoView2
 		*/
 
 		return (
-			<div className="page page-ipad page-ipad-videos page-ipad-videos-single">
+			<div className="page page-ipad page-ipad-videos">
 				<div className="ipad-video video-1">
 					<span className="video-title">Making Parchment</span>
 					<video id="video1" controls>
 						<source
-							src="/videos/making_manuscripts_illumination.mp4"
+							src="/videos/Parchment_1080.mp4"
 						></source>
 					</video>
 				</div>
@@ -169,7 +168,7 @@ IPadVideoView2
 					<span className="video-title">The Work of a Scribe</span>
 					<video id="video2" controls>
 						<source
-							src="/videos/making_manuscripts_binding.mp4"
+							src="/videos/Script_1080.mp4"
 						/>
 					</video>
 				</div>

@@ -16,6 +16,11 @@ CatalogLayout = React.createClass({
 		};
 	},
 
+	componentDidMount(){
+		debugger;
+
+	},
+
 	loadMoreObjects() {
 		//console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
 		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
@@ -79,6 +84,7 @@ CatalogLayout = React.createClass({
 			FlowRouter.go("/catalog");
 
 		}
+		location.hash = "";
 
 	},
 
@@ -118,6 +124,7 @@ CatalogLayout = React.createClass({
 			FlowRouter.go("/catalog");
 
 		}
+		location.hash = "";
 	},
 
 	handleChangeTextsearch(textsearch) {
@@ -160,6 +167,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+		location.hash = "";
 	},
 
 	handleChangeCatalogNSearch(catalogN) {
@@ -202,6 +210,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+		location.hash = "";
 	},
 
 	handleChangeDate(e) {
@@ -275,7 +284,9 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+		location.hash = "";
 	},
+
 
 	toggleCatalogLayout(layout) {
 		this.setState({
@@ -305,6 +316,7 @@ CatalogLayout = React.createClass({
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		FlowRouter.go("/catalog");
+		location.hash = "";
 	},
 
 	render() {

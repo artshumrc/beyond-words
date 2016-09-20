@@ -19,7 +19,7 @@ FlowRouter.subscriptions = function subscriptions() {
 
 FlowRouter.route('/catalog', {
 	action() {
-		mount(CatalogLayout, {});
+		mount(CatalogLayout, {selectedObjectSlug: location.hash.replace("#", "")});
 	},
 });
 
