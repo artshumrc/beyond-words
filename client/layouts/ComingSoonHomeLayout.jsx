@@ -1,12 +1,19 @@
 ComingSoonHomeLayout = React.createClass({
-	render(){
-		return(
-			<div className="archimedes-layout home-layout">
-				<Header/>
-				<HomeContent />
-				<Footer/>
-			</div>
-			);
+	componentDidMount() {
+		if (typeof location.hash !== 'undefined' && location.hash.length > 0) {
+			setTimeout(() => {
+				$('html, body').animate({ scrollTop: $(location.hash).offset().top - 100 }, 300);
+			}, 1000);
 		}
+	},
+	render() {
+		return (
+			<div className="archimedes-layout home-layout">
+				<Header />
+				<HomeContent />
+				<Footer />
+			</div>
+		);
+	},
 
 });

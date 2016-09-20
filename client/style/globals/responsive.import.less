@@ -1,13 +1,67 @@
-@media screen and (max-width: 1170px) {
+header .navbar-header .right-drawer-toggle{
+    display: none !important;
+}
+@media screen and (max-width: 1215px) {
 
   header .navbar-collapse.collapse.module-group.right {
     display:none !important;
+  }
 
+  header .navbar-header .right-drawer-toggle{
+    display: inline-block !important;
+    float: right;
+  }
 
+  .navbar-header {
+    float: none;
   }
 
 }
 
+@media screen and (max-width: 1000px) {
+	.page-ipad .ipad-container--spread-view {
+		padding:130px 0px;
+
+	}
+
+	.page-ipad .ipad-container--single-view {
+		.single-view-slider {
+			height:720px;
+			.slick-slide {
+				.image {
+					overflow:hidden;
+					height:900px;
+					margin-top:60px;
+					background:transparent;
+
+					> div {
+						background-color:transparent !important;
+					}
+
+					img {
+						height:720px;
+						width:auto !important;
+						background:transparent;
+					}
+
+				}
+
+			}
+
+		}
+
+		.coaching-text {
+			padding-top:0px;
+		}
+
+
+	}
+
+	.ipad-toolbar {
+		//padding:50px 0 10px !important;
+	}
+
+}
 
 @media screen and (max-width: 768px) {
 

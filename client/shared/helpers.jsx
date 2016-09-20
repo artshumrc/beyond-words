@@ -1,31 +1,19 @@
-Template.registerHelper('Config', function() {
-  return Config;
+Template.registerHelper('Config', () => Config);
+
+Template.registerHelper('NCSchemas', () => NCSchemas);
+
+Template.registerHelper('socialMedia', () => _.map(Config.socialMedia, (obj) => obj));
+
+Template.registerHelper('Utils', () => Utils);
+
+Template.registerHelper('currentRoute', () => {
+	if (Router && Router.current && Router.current()) {
+		return Router.current();
+	}
+	return null;
 });
 
-Template.registerHelper('NCSchemas', function() {
-  return NCSchemas;
-});
+Template.registerHelper('isRouteReady', () =>
+	Router && Router.current && Router.current() && Router.current()._waitlist._notReadyCount === 0);
 
-Template.registerHelper('socialMedia', function() {
-  return _.map(Config.socialMedia, function(obj) {
-    return obj;
-  });
-});
-
-Template.registerHelper('Utils', function() {
-  return Utils;
-});
-
-Template.registerHelper('currentRoute', function() {
-  if (Router && Router.current && Router.current()) {
-    return Router.current();
-  }
-});
-
-Template.registerHelper('isRouteReady', function() {
-  return Router && Router.current && Router.current() && Router.current()._waitlist._notReadyCount === 0;
-});
-
-Template.registerHelper('joinArray', function(array) {
-  return array.join(', ');
-});
+Template.registerHelper('joinArray', (array) => array.join(', '));

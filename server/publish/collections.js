@@ -1,90 +1,105 @@
 /*
  * Replace these in the future as they will publish our entire collections.
  */
-
 if (Meteor.isServer) {
+	Meteor.publish('objects', (query, skip, limit) => {
+		check(query, Object);
+		check(skip, Match.Maybe(Number));
+		check(limit, Match.Maybe(Number));
 
-	  Meteor.publish('objects', function(query, skip, limit) {
-			if(!skip){
-				skip = 0;
+		return Objects.find(query, {
+			skip,
+			limit,
+			sort: {
+				catalog_n: 1,
+			},
+		});
+	});
+
+	Meteor.publish('object', (slug) => {
+		check(slug, String);
+		return Objects.find({
+			slug,
+		});
+	});
+
+	Meteor.publish('events', () => Events.find());
+	Meteor.publish('attachments', () => Attachments.find());
+
+
+	Meteor.publish('images', () => {
+		const fields = {};
+
+		return [
+			Images.find(fields),
+			//Thumbnails.find(fields),
+		];
+	});
+
+	Meteor.publish('selectImages', (imageArray) => {
+		check(imageArray, [String]);
+		return [
+			Images.find({
+				_id: { $in: imageArray },
+			}),
+			/*Thumbnails.find({
+				originalId: { $in: imageArray },
+			}),*/
+		];
+	});
+
+	Meteor.publish('pageImages', function pageImages(pageSlug) {
+		check(pageSlug, String);
+		const page = Pages.findOne({
+			slug: pageSlug,
+		});
+		if (page) {
+			const imageArray = page.headerImage;
+			if (imageArray && Array.isArray(imageArray)) {
+				return [
+					Images.find({
+						_id: { $in: imageArray },
+					}),
+					/*Thumbnails.find({
+						originalId: { $in: imageArray },
+					}),*/
+				];
 			}
+		}
+		return this.ready();
+	});
 
-			if(!limit){
-				limit = 10;
+	Meteor.publish('objectImages', function objectImages(objectSlug) {
+		check(objectSlug, String);
+		const object = Objects.findOne({
+			slug: objectSlug,
+		});
+		if (object) {
+			const imageArray = object.images;
+			if (imageArray && Array.isArray(imageArray)) {
+				return [
+					Images.find({
+						_id: { $in: imageArray },
+					}),
+					/*Thumbnails.find({
+						originalId: { $in: imageArray },
+					}),*/
+				];
 			}
+		}
+		return this.ready();
+	});
 
-	    return Objects.find(query, {skip: skip, limit: limit, sort: {catalog_n:1}});
-
-	  });
-
-    Meteor.publish('object', function(slug){
-       if(slug){
-           return Objects.find({slug: slug});
-       }
-       return this.ready();
-    });
-
-    Meteor.publish('events', function () {
-        return Events.find();
-    });
-
-
-    Meteor.publish('images', function () {
-        var fields = {};
-
-        return [
-            Images.find(fields),
-            Thumbnails.find(fields)
-        ];
-    });
-
-    Meteor.publish('selectImages', function (imageArray) {
-        if (imageArray && Array.isArray(imageArray)) {
-            return [
-                Images.find({_id: {$in: imageArray}}),
-                Thumbnails.find({originalId: {$in: imageArray}})
-            ]
-        }
-        return this.ready();
-    });
-
-    Meteor.publish('pageImages', function(pageSlug){
-        if (pageSlug) {
-            var page = Pages.findOne({slug: pageSlug});
-            console.log(page);
-            var imageArray = page.headerImage;
-            if (imageArray && Array.isArray(imageArray)) {
-                return [
-                    Images.find({_id: {$in: imageArray}}),
-                    Thumbnails.find({originalId: {$in: imageArray}})
-                ]
-            }
-        }
-        return this.ready();
-    });
-
-    Meteor.publish('objectImages', function(objectSlug){
-        if (objectSlug) {
-            var object = Objects.findOne({slug: objectSlug});
-            // console.log(page);
-            var imageArray = object.images;
-            if (imageArray && Array.isArray(imageArray)) {
-                return [
-                    Images.find({_id: {$in: imageArray}}),
-                    Thumbnails.find({originalId: {$in: imageArray}})
-                ]
-            }
-        }
-        return this.ready();
-    });
-
-    Meteor.publish('pages', function (slug) {
-        if (slug) {
-            slug = {slug: slug};
-        } else {
-            slug = {};
-        }
-        return Pages.find(slug);
-    })
-
+	Meteor.publish('pages', (slug) => {
+		check(slug, String);
+		let query;
+		if (slug) {
+			query = {
+				slug,
+			};
+		} else {
+			query = {};
+		}
+		return Pages.find(query);
+	});
 }

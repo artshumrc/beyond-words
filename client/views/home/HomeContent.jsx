@@ -1,35 +1,31 @@
 HomeContent = React.createClass({
 
-    componentDidMount() {
+	componentDidMount() {
+		/*
+		* Init wow animations on homepage
+		*/
+		// let wow = new WOW().init();
+	},
 
-        /*
-         * Init wow animations on homepage
-         */
-        var w;
-        w = new WOW().init();
+	scrollToAbout(e) {
+		$('html, body').animate({ scrollTop: $('#about').height() - 100 }, 300);
 
-    },
-
-    scrollToAbout(e){
-        $("html, body").animate({scrollTop: $('#about').height() - 100}, 300);
-
-        e.preventDefault();
-    },
+		e.preventDefault();
+	},
 
 
-    render(){
-        return (
-            <div className="tl-view home-view">
-                <HomeCover />
-                <HomeOverview/>
-                <HomeNarrative/>
-                <HomeTwitter/>
-                <HomePlanYourTrip/>
-                <HomeEvents/>
-                <HomeCatalog/>
-                <HomeLenders/>
-            </div>
-
-        );
-    }
+	render() {
+		return (
+			<div className="tl-view home-view">
+				<HomeCover />
+				<HomeOverview />
+				<HomeNarrative />
+				<HomeTwitter />
+				<HomePlanYourTrip />
+				<HomeEvents />
+				<HomeCatalog />
+				<HomeLenders />
+			</div>
+		);
+	},
 });

@@ -6,6 +6,9 @@ private/settings/production.json
 *.log
 .uploads
 node_modules
+public/openseadragon/Januarius*
+public/viewer
+public/videos
 
 
 # Editors

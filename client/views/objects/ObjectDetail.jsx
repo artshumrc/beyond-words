@@ -1,147 +1,228 @@
 // Single object detail view
 ObjectDetail = React.createClass({
 
-    mixins: [ReactMeteorData],
-    getMeteorData(){
-        var object = {},
-            images = [],
-            thumbnails = [];
-        var objectSubscription = Meteor.subscribe('object', this.props.slug);
-        if (objectSubscription.ready()) {
-            object = Objects.find({slug: this.props.slug}).fetch()[0];
-        }
-        var imageSubscription = Meteor.subscribe('objectImages', this.props.slug);
-        if (imageSubscription.ready()) {
-            images = Images.find({}).fetch();
-            thumbnails = Thumbnails.find({}).fetch();
-        }
-        return {
-            object: object,
-            images: images,
-            thumbnails: thumbnails
-        };
-    },
+	propTypes: {
+		selectedObject: React.PropTypes.object,
+		objectToSelectSlug: React.PropTypes.string,
+		closeSelectedObject: React.PropTypes.func,
+		selectObject: React.PropTypes.func,
+	},
 
-    render() {
-        let object = this.data.object;
-        // console.log(this);
-        var imageId = false;
-        if (object.images && object.images.length) {
-            //get a random image
-            imageId = object.images[Math.floor(Math.random() * object.images.length)];
-        }
-        var headerImageUrl = imageId? Images.findOne(imageId).url:'/images/bronze-characters.jpg';
+	getInitialState() {
+		return {
+			miradorOpen: false,
+		};
+	},
 
-        return (
-            <div>
-								{object.miradorLink ?
-									<div className="object-detail-mirador">
-										<p className="mirador-help-text">
-											Mirador viewer has not loaded due to the iif.lib.harvard.edu server settings.
-										</p>
-										<iframe
-											className="mirdador-viewer"
-											src={object.miradorLink}
-											/>
-									</div>
-								:
-									<section className="page-head fullscreen image-bg bg-dark object-detail-page-head">
-										<div className="background-image-holder less-blur blur">
-												<img className="background-image" alt='image' src="/images/manuscript_header.jpg"/>
-										</div>
+	mixins: [ReactMeteorData],
 
-										<div className="background-screen primary">
-										</div>
+	objectSelected: false,
 
-									</section>
-								}
+	getMeteorData() {
+		let attachment = null;
+		let selectedObject = null;
 
-                <section className="object-details">
-									<div className="object-details-inner">
+		const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
+		if (imageSubscription.ready() && typeof this.props.selectedObject.image !== 'undefined') {
+			attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
+			// thumbnails = Thumbnails.find({}).fetch();
+		}
 
-										<div className="object-detail-thumbnail-wrap">
-											<img className="object-detail-thumbnail" src="/images/default_image.jpg" />
+		//console.log("ObjectDetail.props", this.props);
+		if(this.props.objectToSelectSlug && !("catalog_n" in this.props.selectedObject) && !this.objectSelected){
+			const objectSubscription = Meteor.subscribe('objects', {slug: this.props.objectToSelectSlug});
+			if (objectSubscription.ready()) {
+				object = Objects.findOne({slug: this.props.objectToSelectSlug});
+				//console.log("ObjectDetail.object", object);
+				this.props.selectObject(object);
+				this.objectSelected = true;
+			}
 
-										</div>
 
-										<div className="object-detail-text-wrap">
-
-											<div className="object-detail-header">
-			                  <h2 className="card-title object-title">{object.title}</h2>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Catalog No.</label>
-													<span>{object.catalog_n}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Author</label>
-													<span>{object.author}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Illuminator</label>
-													<span>{object.illuminator}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Institution</label>
-													<span>{object.institution}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Shelfmark</label>
-													<span>{object.shelfmark}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Former Shelfmark</label>
-													<span>{object.former_shelfmark}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Place</label>
-													<span>{object.place}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Date</label>
-													<span>{object.dateBegun} - {object.dateEnded}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>External Link</label>
-													<span>
-														<a href={object.externalUrl}>
-														{object.externalUrl}
-													</a>
-
-														</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Description</label>
-													<span>{object.description}</span>
-											</div>
-
-											<div className="object-detail-meta">
-													<label>Image Notes</label>
-													<span>{object.imageNotes}</span>
-											</div>
+		}
 
 
 
-										</div>
+		return {
+			attachment,
+		};
+	},
 
+	openMiradorViewer(){
 
+		this.setState({
+			miradorOpen: true,
+		});
 
-                  </div>
+	},
 
-                </section>
+	closeMiradorViewer(){
 
+		this.setState({
+			miradorOpen: false,
+		});
 
-            </div>
-        );
-    }
+	},
+
+	render() {
+		const selectedObject = this.props.selectedObject;
+
+		let image = {};
+		let imageUrl = '';
+		if (this.data.attachment) {
+			image = this.data.attachment;
+			imageUrl = image.url();
+		}
+
+		return (
+			<div>
+			{('catalog_n' in selectedObject) ?
+
+			<div className="object-details ">
+				<div className="object-details-inner paper-shadow">
+
+					<div className="object-detail-thumbnail-wrap">
+						{(imageUrl.length) ?
+							<img
+								alt="object thumbnail"
+								className="object-detail-thumbnail paper-shadow"
+								src={imageUrl}
+							/>
+							:
+							<img
+								alt="object thumbnail"
+								className="object-detail-thumbnail paper-shadow"
+								src="/images/default_image.jpg"
+							/>
+						}
+						{selectedObject.miradorLink ?
+							<div
+								className="thumbnail-mirador-overlay"
+								onClick={this.openMiradorViewer}
+							>
+								<i className="mdi mdi-image-filter" />
+								<span>View in Mirador</span>
+
+							</div>
+
+							: ""
+						}
+					</div>
+
+					<div className="object-detail-text-wrap">
+
+						<div className="object-detail-header">
+							<h2 className="card-title object-title">{selectedObject.author_title}</h2>
+							<hr />
+						</div>
+
+						<div className="object-detail-meta">
+							<label>Catalog No.</label>
+							<span>{selectedObject.catalog_n}</span>
+						</div>
+						{selectedObject.date ?
+							<div className="object-detail-meta">
+								<label>Date</label>
+								<span>{selectedObject.date}</span>
+							</div>
+						: ''}
+						{selectedObject.place ?
+							<div className="object-detail-meta">
+								<label>Place</label>
+								<span>{selectedObject.place}</span>
+							</div>
+						: ''}
+						{selectedObject.institution ?
+							<div className="object-detail-meta">
+								<label>Institution{(selectedObject.institution_2 || selectedObject.institution_3) ? 's' : ''}</label>
+								<span>
+									{selectedObject.institution}{selectedObject.institution_2 ? (', ' + selectedObject.institution_2) : ''}{selectedObject.institution_3 ? (', ' + selectedObject.institution_3) : ''}
+								</span>
+							</div>
+						: ''}
+						{selectedObject.collection ?
+							<div className="object-detail-meta">
+								<label>Collection</label>
+								<span>{selectedObject.collection}</span>
+							</div>
+						: ''}
+						{selectedObject.shelfmark ?
+							<div className="object-detail-meta">
+								<label>Shelfmark</label>
+								<span>{selectedObject.shelfmark}</span>
+							</div>
+						: ''}
+						{selectedObject.former_shelfmark ?
+							<div className="object-detail-meta">
+								<label>Former Shelfmark</label>
+								<span>{selectedObject.former_shelfmark}</span>
+							</div>
+						: ''}
+						{selectedObject.scribe ?
+							<div className="object-detail-meta">
+								<label>Scribe</label>
+								<span>{selectedObject.scribe}</span>
+							</div>
+						: ''}
+						{selectedObject.printer ?
+							<div className="object-detail-meta">
+								<label>Printer</label>
+								<span>{selectedObject.printer}</span>
+							</div>
+						: ''}
+						{selectedObject.illuminator ?
+							<div className="object-detail-meta">
+								<label>Illuminator</label>
+								<span>{selectedObject.illuminator}</span>
+							</div>
+						: ''}
+						{selectedObject.externalUrl ?
+							<div className="object-detail-meta">
+								<label>External Link</label>
+								<span>
+									<a
+										href={selectedObject.externalUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{selectedObject.externalUrl}
+									</a>
+								</span>
+							</div>
+						: ''}
+						{selectedObject.description ?
+							<div className="object-detail-meta">
+								<label>Description</label>
+								<span>{selectedObject.description}</span>
+							</div>
+						: ''}
+					</div>
+
+				</div>
+
+				{selectedObject.miradorLink ?
+					<div className={this.state.miradorOpen ? 'object-mirador-viewer object-mirador-viewer--open' : 'object-mirador-viewer' }>
+						<i
+							className="mdi mdi-close"
+							onClick={this.closeMiradorViewer}
+						/>
+						<iframe src={selectedObject.miradorLink} />
+					</div>
+
+					: ""
+				}
+
+			</div>
+			:
+				<div className="loading-collections loading-visible">
+					<div className="dot-spinner">
+						<div className="bounce1" />
+						<div className="bounce2" />
+						<div className="bounce3" />
+					</div>
+				</div>
+			}
+		</div>
+		);
+	},
 });

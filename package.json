@@ -4,10 +4,12 @@
   "description": "Meteor app for the Beyond Words exhibition",
   "main": "bundle/main.js",
   "dependencies": {
+    "gm": "^1.23.0",
     "ion-rangeslider": "^2.1.4",
     "linkifyjs": "^2.0.4",
     "material-ui": "^0.15.1",
     "moment-timezone": "^0.5.4",
+    "openseadragon": "^2.2.1",
     "pseries": "^2.0.0",
     "react": "^15.2.1",
     "react-addons-create-fragment": "^15.0.2",
@@ -22,15 +24,11 @@
     "react-list": "^0.7.18",
     "react-masonry-component": "^4.2.1",
     "react-mounter": "^1.2.0",
-    "react-slick": "^0.12.2",
+    "react-slick": "^0.13.6",
     "react-tap-event-plugin": "^1.0.0",
     "slug": "^0.9.1",
     "throttle-debounce": "^1.0.1",
     "twit": "^2.2.4"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

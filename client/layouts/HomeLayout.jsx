@@ -1,12 +1,13 @@
 HomeLayout = React.createClass({
-	render(){
-		return(
+
+	render() {
+		return (
 			<div className="archimedes-layout home-layout">
 				<Header />
 				<HomeView />
 				<Footer />
 			</div>
-			);
-		}
+		);
+	},
 
 });

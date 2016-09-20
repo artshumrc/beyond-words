@@ -34,10 +34,10 @@ juliancwirko:s-alert-stackslide
 momentjs:moment
 zimme:active-route
 twbs:bootstrap
-reywood:publish-composite
+#reywood:publish-composite
 natestrauser:animate-css
 meteorhacks:subs-manager
-yogiben:admin
+yogiben:admin@1.2.4
 timmyg:wow
 tsega:skrollr
 utilities:avatar
@@ -83,8 +83,10 @@ johannesma:meteor-flexslider
 mrt:twit
 mfactory:admin-lte
 jalik:ufs
+jalik:ufs-local
 jalik:ufs-gridfs
 buishi:autoform-ufs
 mpowaga:autoform-summernote
 #yasaricli:slugify
 todda00:friendly-slugs
+solderzzc:disable-hot-code-push
