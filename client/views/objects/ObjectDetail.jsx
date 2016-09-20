@@ -174,7 +174,7 @@ ObjectDetail = React.createClass({
 								<span>{selectedObject.illuminator}</span>
 							</div>
 						: ''}
-						{selectedObject.externalLink ?
+						{selectedObject.externalUrl ?
 							<div className="object-detail-meta">
 								<label>External Link</label>
 								<span>

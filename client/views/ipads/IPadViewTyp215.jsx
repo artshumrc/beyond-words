@@ -109,10 +109,8 @@ IPadViewTyp215 = React.createClass({
 		const iframe = '';
 
 		const slides = [
-			'/viewer/1Typ215-1r.jpg',
 			'/viewer/2Typ215-1v.jpg',
 			'/viewer/3Typ215-2r.jpg',
-			'/viewer/4Typ215-2v.jpg',
 			'/viewer/5Typ215-3r.jpg',
 			'/viewer/6Typ215-5v.jpg',
 			'/viewer/7Typ215-6.jpg',
@@ -124,7 +122,6 @@ IPadViewTyp215 = React.createClass({
 			'/viewer/13Typ215-122.jpg',
 			'/viewer/14Typ215-122r.jpg',
 			'/viewer/15Typ215-195v.jpg',
-			'/viewer/16Typ215-196r.jpg',
 		];
 
 		const title = 'Byzantine Gospels (“Harvard Gospels”)';
