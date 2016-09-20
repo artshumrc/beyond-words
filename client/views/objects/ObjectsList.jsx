@@ -59,7 +59,7 @@ ObjectsList = React.createClass({
 				break;
 
 			case 'hasViewer':
-				query.$or = [{$where: "this.miradorLink && this.miradorLink.length > 0"}, {hasImageViewer: true}];
+				query.$or = [{$where: "(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)"}, {hasImageViewer: true}];
 				break;
 
 			case 'scribes':
