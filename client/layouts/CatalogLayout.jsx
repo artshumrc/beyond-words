@@ -16,11 +16,6 @@ CatalogLayout = React.createClass({
 		};
 	},
 
-	componentDidMount(){
-		debugger;
-
-	},
-
 	loadMoreObjects() {
 		//console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
 		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
