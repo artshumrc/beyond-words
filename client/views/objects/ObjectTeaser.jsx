@@ -136,9 +136,9 @@ ObjectTeaser = React.createClass({
 							}
 							{object.institution ?
 								<div className="object-teaser-meta">
-									<label>Institution</label>
+									<label>Institution{(object.institution_2 || object.institution_3) ? 's' : ''}</label>
 									<p>
-										{object.institution}
+										{object.institution}{object.institution_2 ? (', ' + object.institution_2) : ''}{object.institution_3 ? (', ' + object.institution_3) : ''}
 									</p>
 								</div>
 								:

@@ -134,8 +134,10 @@ ObjectDetail = React.createClass({
 						: ''}
 						{selectedObject.institution ?
 							<div className="object-detail-meta">
-								<label>Institution</label>
-								<span>{selectedObject.institution}</span>
+								<label>Institution{(selectedObject.institution_2 || selectedObject.institution_3) ? 's' : ''}</label>
+								<span>
+									{selectedObject.institution}{selectedObject.institution_2 ? (', ' + selectedObject.institution_2) : ''}{selectedObject.institution_3 ? (', ' + selectedObject.institution_3) : ''}
+								</span>
 							</div>
 						: ''}
 						{selectedObject.collection ?

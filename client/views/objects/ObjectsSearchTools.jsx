@@ -4,6 +4,7 @@ import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+import debounce from 'throttle-debounce/debounce';
 
 ObjectsSearchTools = React.createClass({
 
@@ -11,6 +12,7 @@ ObjectsSearchTools = React.createClass({
 		filters: React.PropTypes.array,
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
+		handleChangeCatalogNSearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
 		toggleMiradorSearch: React.PropTypes.func,
 
@@ -88,8 +90,11 @@ ObjectsSearchTools = React.createClass({
 		});
 	},
 
-	handleChangeTextsearch(event) {
-		this.props.handleChangeTextsearch(event.target.value);
+	handleChangeTextsearch() {
+		this.props.handleChangeTextsearch(this.refs.textSearch.input.value);
+	},
+	handleChangeCatalogNSearch() {
+		this.props.handleChangeCatalogNSearch(this.refs.catalogNSearch.input.value);
 	},
 
 
@@ -308,12 +313,21 @@ ObjectsSearchTools = React.createClass({
 							</ul>
 
 						</div>
+						<div className="search-tool text-search catalog-n-search">
+							<TextField
+								hintText=""
+								floatingLabelText="Catalog No."
+								ref="catalogNSearch"
+								onChange={debounce(500, this.handleChangeCatalogNSearch)}
+							/>
+						</div>
 
 						<div className="search-tool text-search">
 							<TextField
 								hintText=""
-								floatingLabelText="Search"
-								onChange={this.handleChangeTextsearch}
+								floatingLabelText="Text Search"
+								ref="textSearch"
+								onChange={debounce(500, this.handleChangeTextsearch)}
 							/>
 						</div>
 					</div>

@@ -54,6 +54,10 @@ ObjectsList = React.createClass({
 				query.$text = { $search: filter.values[0] };
 				break;
 
+			case 'catalogNumber':
+				query.catalog_n = parseInt(filter.values[0]);
+				break;
+
 			case 'hasViewer':
 				query.$or = [{$where: "this.miradorLink && this.miradorLink.length > 0"}, {hasImageViewer: true}];
 				break;

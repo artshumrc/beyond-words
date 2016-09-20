@@ -9,7 +9,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadVideoView = React.createClass({
+IPadVideoView1 = React.createClass({
 
 	propTypes: {
 	},
@@ -157,11 +157,19 @@ IPadVideoView = React.createClass({
 		return (
 			<div className="page page-ipad page-ipad-videos page-ipad-videos-single">
 				<div className="ipad-video video-1">
-					<span className="video-title">A Medieval Bookmark</span>
+					<span className="video-title">Illuminating Manuscripts</span>
 					<video id="video1" controls>
 						<source
-							src="/videos/typ277.mov"
+							src="/videos/Illumination_1080.mp4"
 						></source>
+					</video>
+				</div>
+				<div className="ipad-video video-2">
+					<span className="video-title">Medieval Binding</span>
+					<video id="video2" controls>
+						<source
+							src="/videos/Binding_1080.mp4"
+						/>
 					</video>
 				</div>
 			</div>

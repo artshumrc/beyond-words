@@ -11,6 +11,7 @@ HeaderCatalog = React.createClass({
 		filters: React.PropTypes.array,
 		toggleSearchTerm: React.PropTypes.func,
 		handleChangeTextsearch: React.PropTypes.func,
+		handleChangeCatalogNSearch: React.PropTypes.func,
 		handleChangeDate: React.PropTypes.func,
 		catalogTitleText: React.PropTypes.string,
 		selectedObject: React.PropTypes.object,
@@ -91,6 +92,7 @@ HeaderCatalog = React.createClass({
 					toggleMiradorSearch={this.props.toggleMiradorSearch}
 					handleChangeDate={this.props.handleChangeDate}
 					handleChangeTextsearch={this.props.handleChangeTextsearch}
+					handleChangeCatalogNSearch={this.props.handleChangeCatalogNSearch}
 					open={this.state.rightMenuOpen}
 					closeRightMenu={this.closeRightMenu}
 				/>
@@ -129,6 +131,7 @@ HeaderCatalog = React.createClass({
 										toggleMiradorSearch={this.props.toggleMiradorSearch}
 										handleChangeDate={this.props.handleChangeDate}
 										handleChangeTextsearch={this.props.handleChangeTextsearch}
+										handleChangeCatalogNSearch={this.props.handleChangeCatalogNSearch}
 									/>
 								</div>
 							</div>{/* <!-- .module-group.right -->*/}

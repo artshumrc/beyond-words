@@ -155,6 +155,52 @@ CatalogLayout = React.createClass({
 
 		this.setState({
 			filters,
+			objectToSelectSlug: null,
+			selectedObject: {},
+			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+		});
+	},
+
+	handleChangeCatalogNSearch(catalogN) {
+		const filters = this.state.filters;
+
+		if (catalogN && catalogN.length) {
+			let textsearchInFilters = false;
+
+			filters.forEach((filter, i) => {
+				if (filter.key === 'catalogNumber') {
+					filters[i].values = [catalogN];
+					textsearchInFilters = true;
+				}
+			});
+
+			if (!textsearchInFilters) {
+				filters.push({
+					key: 'catalogNumber',
+					values: [catalogN],
+				});
+			}
+		} else {
+			let filterToRemove;
+
+			filters.forEach((filter, i) => {
+				if (filter.key === 'catalogNumber') {
+					filterToRemove = i;
+				}
+			});
+
+			if (typeof filterToRemove !== 'undefined') {
+				filters.splice(filterToRemove, 1);
+			}
+		}
+
+		this.setState({
+			filters,
+			objectToSelectSlug: null,
+			selectedObject: {},
+			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 	},
 
@@ -224,6 +270,10 @@ CatalogLayout = React.createClass({
 
 		this.setState({
 			filters,
+			objectToSelectSlug: null,
+			selectedObject: {},
+			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 	},
 
@@ -268,6 +318,7 @@ CatalogLayout = React.createClass({
 					toggleMiradorSearch={this.toggleMiradorSearch}
 					handleChangeDate={this.handleChangeDate}
 					handleChangeTextsearch={this.handleChangeTextsearch}
+					handleChangeCatalogNSearch={this.handleChangeCatalogNSearch}
 					catalogTitleText={this.state.catalogTitleText}
 					toggleCatalogLayout={this.toggleCatalogLayout}
 					catalogLayout={this.state.catalogLayout}
