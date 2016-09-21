@@ -101,6 +101,10 @@ ObjectsSearchToolsPanel = React.createClass({
 				padding: '0px 10px',
 				background: '#001439',
 			},
+			cardHeader: {
+				fontFamily: 'Hind',
+				textTransform: 'uppercase',
+			},
 		};
 
 		return (
@@ -121,6 +125,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				<Card>
 					<CardHeader
 						title="Date"
+						style={styles.cardHeader}
 						actAsExpander
 						showExpandableButton
 					/>
@@ -135,6 +140,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				<Card>
 					<CardHeader
 						title="Scribes"
+						style={styles.cardHeader}
 						actAsExpander
 						showExpandableButton
 					/>
@@ -170,6 +176,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				<Card>
 					<CardHeader
 						title="Illuminators"
+						style={styles.cardHeader}
 						actAsExpander
 						showExpandableButton
 					/>
@@ -205,6 +212,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				<Card>
 					<CardHeader
 						title="Institutions"
+						style={styles.cardHeader}
 						actAsExpander
 						showExpandableButton
 					/>
@@ -240,6 +248,7 @@ ObjectsSearchToolsPanel = React.createClass({
 				<Card>
 					<CardHeader
 						title="Places"
+						style={styles.cardHeader}
 						actAsExpander
 						showExpandableButton
 					/>

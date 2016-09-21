@@ -142,6 +142,72 @@ header .navbar-header .right-drawer-toggle{
 
 
 }
+@media screen and (max-width: 719px) {
+	.header-lower-catalog-info .toggle-view-mode-buttons {
+		display:none;
+	}
+
+	.object-details {
+		text-align:center;
+	}
+
+	.object-details .object-detail-thumbnail-wrap {
+		width:100%;
+		padding:0;
+		text-align:center;
+		margin:0 auto 30px;
+		max-width:400px;
+
+		img {
+			margin:0 auto;
+		}
+	}
+	.object-details .object-detail-text-wrap {
+		width:100%;
+		margin:0 auto;
+		padding:0;
+		text-align:left;
+	}
+
+}
+@media screen and (max-width: 690px) {
+	section#lenders a {
+		width:45%;
+	}
+}
+@media screen and (max-width: 620px) {
+	section#twitter .bw-tweet-wrapper {
+		width:95%;
+		margin:0px auto;
+
+	}
+	section#symposium .program-tabs {
+		width:100%;
+	}
+
+  .program-tabs {
+		> div:nth-child(3) {
+      padding:40px 10px !important;
+    }
+  }
+
+}
+
+@media screen and (max-width: 470px) {
+	section#lenders a {
+		width:95%;
+		margin:10px 1% 10px 3%;
+	}
+	.catalog-layout .object-details .object-details-inner {
+		padding:20px 30px;
+	}
+	.catalog-layout .object-details .object-details-inner h2 {
+		font-size:22px;
+	}
+	.objects-list .slick-slider {
+		display:none;
+	}
+}
 
 @media screen and (max-width: 410px) {
 
@@ -158,10 +224,5 @@ header .navbar-header .right-drawer-toggle{
 
   }
 
-  .program-tabs {
-    > div:nth-child(3) {
-      padding:40px 10px;
-    }
-  }
 
 }
