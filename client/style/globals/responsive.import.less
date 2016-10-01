@@ -1,8 +1,31 @@
 header .navbar-header .right-drawer-toggle{
     display: none !important;
 }
-@media screen and (max-width: 1215px) {
 
+@media screen and (max-width: 1275px) {
+	.module.museum-widget-handle {
+		display:none;
+	}
+
+}
+
+@media screen and (max-width: 1215px) {
+  header.header-catalog .navbar-collapse.collapse.module-group.right {
+    display:none !important;
+  }
+
+  header.header-catalog .navbar-header .right-drawer-toggle{
+    display: inline-block !important;
+    float: right;
+  }
+
+  header.header-catalog .navbar-header {
+    float: none;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
   header .navbar-collapse.collapse.module-group.right {
     display:none !important;
   }
@@ -16,9 +39,7 @@ header .navbar-header .right-drawer-toggle{
     float: none;
   }
 
-}
 
-@media screen and (max-width: 1000px) {
 	.page-ipad .ipad-container--spread-view {
 		padding:130px 0px;
 
@@ -168,12 +189,14 @@ header .navbar-header .right-drawer-toggle{
 		padding:0;
 		text-align:left;
 	}
+	li.event-item .event-info {
+		display:block;
+		margin:5px auto;
+		width:90%;
+	}
 
 }
 @media screen and (max-width: 690px) {
-	section#lenders a {
-		width:45%;
-	}
 }
 @media screen and (max-width: 620px) {
 	section#twitter .bw-tweet-wrapper {
@@ -194,10 +217,6 @@ header .navbar-header .right-drawer-toggle{
 }
 
 @media screen and (max-width: 470px) {
-	section#lenders a {
-		width:95%;
-		margin:10px 1% 10px 3%;
-	}
 	.catalog-layout .object-details .object-details-inner {
 		padding:20px 30px;
 	}

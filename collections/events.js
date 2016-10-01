@@ -8,8 +8,28 @@ Schemas.Events = new SimpleSchema({
 		type: String,
 		optional: true,
 	},
+	location: {
+		type: String,
+		optional: true,
+	},
 	date: {
 		type: Date,
+		label: 'Date and time (start)',
+		autoform:{
+			afFieldInput: {
+				type: 'datetime-local',
+			},
+		},
+	},
+	endDate: {
+		type: Date,
+		label: 'Date and time (end)',
+		optional: true,
+		autoform:{
+			afFieldInput: {
+				type: 'datetime-local',
+			},
+		},
 	},
 	createdAt: {
 		type: Date,

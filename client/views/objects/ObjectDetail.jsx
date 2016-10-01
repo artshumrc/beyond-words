@@ -11,6 +11,7 @@ ObjectDetail = React.createClass({
 	getInitialState() {
 		return {
 			miradorOpen: false,
+			viewerOpen: false,
 		};
 	},
 
@@ -46,6 +47,22 @@ ObjectDetail = React.createClass({
 		return {
 			attachment,
 		};
+	},
+
+	openViewer(){
+
+		this.setState({
+			viewerOpen: true,
+		});
+
+	},
+
+	closeViewer(){
+
+		this.setState({
+			viewerOpen: false,
+		});
+
 	},
 
 	openMiradorViewer(){
@@ -102,6 +119,18 @@ ObjectDetail = React.createClass({
 							>
 								<i className="mdi mdi-image-filter" />
 								<span>View in Mirador</span>
+
+							</div>
+
+							: ""
+						}
+						{selectedObject.hasImageViewer ?
+							<div
+								className="thumbnail-embedded-overlay"
+								onClick={this.openViewer}
+							>
+								<i className="mdi mdi-image-filter" />
+								<span>Turn the Pages in Beyond Words Viewer</span>
 
 							</div>
 
@@ -201,12 +230,23 @@ ObjectDetail = React.createClass({
 				</div>
 
 				{selectedObject.miradorLink ?
-					<div className={this.state.miradorOpen ? 'object-mirador-viewer object-mirador-viewer--open' : 'object-mirador-viewer' }>
+					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
 						<i
-							className="mdi mdi-close"
+							className="mdi mdi-close close-viewer"
 							onClick={this.closeMiradorViewer}
 						/>
 						<iframe src={selectedObject.miradorLink} />
+					</div>
+
+					: ""
+				}
+				{selectedObject.hasImageViewer ?
+					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
+						<i
+							className="mdi mdi-close close-viewer"
+							onClick={this.closeViewer}
+						/>
+						<BeyondWordsViewer />
 					</div>
 
 					: ""

@@ -336,7 +336,7 @@
 		padding-right:5%;
 		position:relative;
 
-		.thumbnail-mirador-overlay {
+		.thumbnail-embedded-overlay {
 			position:absolute;
 			bottom:20px;
 			left:20px;
@@ -405,7 +405,7 @@
 
 }
 
-.object-mirador-viewer {
+.object-embedded-viewer {
 	display:none;
 	width:100%;
 	height:100%;
@@ -418,12 +418,12 @@
 	text-align:center;
 
 
-	&.object-mirador-viewer--open {
+	&.object-embedded-viewer--open {
 		display:block;
 
 	}
 
-	iframe {
+	iframe, .embedded-beyondwords-viewer {
 		box-shadow:0px 0px 5px rgba(0, 0, 0, 1);
 		width:88%;
 		height:90%;
@@ -434,7 +434,7 @@
 
 	}
 
-	i {
+	i.close-viewer {
 		position:absolute;
 		top:60px;
 		right:40px;
@@ -446,6 +446,7 @@
 		border-radius:100%;
 		padding:17px 10px;
 		cursor:pointer;
+		z-index:1;
 
 		&:hover {
 			background:@md-primary;
@@ -464,7 +465,7 @@
 	height:500px;
 	background:#333;
 
-	.mirador-help-text {
+	.embedded-help-text {
 		width:100%;
 		font-size:22px;
 		text-align:center;
@@ -477,7 +478,7 @@
 
 	}
 
-	.mirador-viewer {
+	.embedded-viewer {
 		width:100%;
 		height:0;
 

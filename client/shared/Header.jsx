@@ -164,7 +164,7 @@ Header = React.createClass({
 										</li>
 									</ul>
 								</div>
-								<div className="module widget-handle left">
+								<div className="module widget-handle left museum-widget-handle">
 									<ul className="nav navbar-nav navbar-right">
 										<li>
 											<FlatButton

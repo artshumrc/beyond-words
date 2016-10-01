@@ -4,6 +4,7 @@
   "description": "Meteor app for the Beyond Words exhibition",
   "main": "bundle/main.js",
   "dependencies": {
+    "add2calendar": "^1.0.0",
     "gm": "^1.23.0",
     "ion-rangeslider": "^2.1.4",
     "linkifyjs": "^2.0.4",

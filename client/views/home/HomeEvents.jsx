@@ -35,24 +35,6 @@ HomeEvents = React.createClass({
 		return { events: Events.find({}, { sort: { date: 1 } }).fetch() };
 	},
 
-	linkToEventOrScroll(e) {
-		let $target = $(e.target);
-
-		if (!$target.hasClass('event-link')) {
-			$target = $target.parents('.event-link');
-		}
-
-		if ($target.prop('href').indexOf(window.location.host) >= 0) {
-			let scrollElemId = '#';
-
-			scrollElemId += $target.prop('href').split('#')[1];
-
-			$('html, body').animate({ scrollTop: $(scrollElemId).offset().top - 100 }, 300);
-
-			e.preventDefault();
-		}
-	},
-
 	openRegistrationModal() {
 		this.setState({
 			registrationModalOpen: true,
@@ -219,26 +201,10 @@ HomeEvents = React.createClass({
 						</h5>
 						<ul className="events-list">
 							{this.data.events.map((event, i) => (
-								<li
+								<EventItem
 									key={i}
-									className="event-item wow fadeIn"
-								>
-									<div className="event-calendar-date">
-										<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
-										<h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
-										<h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
-									</div>
-									<div className="event-info">
-										<a
-											className="event-link"
-											href={event.link}
-											target="_blank" rel="noopener noreferrer"
-											onClick={that.linkToEventOrScroll}
-										>
-											<h3 className="event-title">{event.title}</h3>
-										</a>
-									</div>
-								</li>
+									event={event}
+									/>
 							))}
 						</ul>
 					</div>
