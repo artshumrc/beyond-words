@@ -252,7 +252,7 @@ ObjectsList = React.createClass({
 				:
 					<div>
 						<InfiniteScroll
-							endPadding={200}
+							endPadding={100}
 							loadMore={debounce(1000, this.props.loadMoreObjects)}
 						>
 
