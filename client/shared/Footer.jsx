@@ -133,7 +133,7 @@ Footer = React.createClass({
 						<div className="row">
 							<div className="col-sm-12 text-center">
 								<span className="copyright-information fade-1-4">
-									Copyright of the Beyond Words Exhibition, {year}.
+									Copyright Beyond Words Exhibition, {year}.
 								</span>
 							</div>
 						</div>

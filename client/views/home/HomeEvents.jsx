@@ -67,7 +67,7 @@ HomeEvents = React.createClass({
 				regFormNov5: !this.state.regFormNov5,
 			});
 		} else {
-			console.log('handleChange error');
+			//console.log('handleChange error');
 		}
 	},
 
@@ -124,7 +124,7 @@ HomeEvents = React.createClass({
 			// on the client
 			Meteor.call('register', values, (error) => {
 				if (error) {
-					console.log(error);
+					//console.log(error);
 				}
 			});
 

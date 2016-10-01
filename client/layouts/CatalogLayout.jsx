@@ -315,7 +315,7 @@ CatalogLayout = React.createClass({
 	},
 
 	render() {
-		console.log('CatalogLayout.filters', this.state.filters);
+		//console.log('CatalogLayout.filters', this.state.filters);
 		return (
 			<div className="archimedes-layout catalog-layout">
 
@@ -347,6 +347,7 @@ CatalogLayout = React.createClass({
 					closeSelectedObject={this.closeSelectedObject}
 				/>
 
+				<CatalogFooter />
 			</div>
 		);
 	},

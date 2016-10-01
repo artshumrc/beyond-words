@@ -90,7 +90,7 @@ ObjectsList = React.createClass({
 			}
 		});
 
-		console.log('Objects query:', query);
+		//console.log('Objects query:', query);
 		const handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
 		if (handle.ready()) {
 			objects = Objects.find({}, {}).fetch();
@@ -229,8 +229,8 @@ ObjectsList = React.createClass({
 						/>
 
 						{this.objects.length ?
-							<div className="row">
-								<div className="col-xs-11 center-block clear">
+							<div className="objects-detail-slider">
+								<div className="objects-detail-slider-inner clear">
 									<Slider ref='slider' {...settings}>
 										{this.objects.map((object, i) => (
 											<div key={i}>
@@ -239,7 +239,7 @@ ObjectsList = React.createClass({
 														key={object._id}
 														object={object}
 														selectObject={self.props.selectObject}
-													/>;
+													/>
 												</div>
 											</div>
 										))}

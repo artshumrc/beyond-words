@@ -397,5 +397,4 @@ var Add2Calendar = function(eventData) {
   this.init();
 };
 
-console.log("add2calendar", Add2Calendar);
 export default Add2Calendar;
