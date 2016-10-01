@@ -172,7 +172,6 @@ ObjectsList = React.createClass({
 		});
 
 		const masonryOptions = {
-			// columnWidth : "400px",
 			// isFitWidth : true,
 			transitionDuration: 300,
 		};

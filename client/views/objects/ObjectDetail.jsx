@@ -114,7 +114,7 @@ ObjectDetail = React.createClass({
 						}
 						{selectedObject.miradorLink ?
 							<div
-								className="thumbnail-mirador-overlay"
+								className="thumbnail-embedded-overlay"
 								onClick={this.openMiradorViewer}
 							>
 								<i className="mdi mdi-image-filter" />
