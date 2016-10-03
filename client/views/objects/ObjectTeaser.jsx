@@ -73,11 +73,11 @@ ObjectTeaser = React.createClass({
 									</span>
 								</div>
 								{(imageUrl.length) ?
-									<img alt="object thumbnail" className="object-detail-thumbnail" src={imageUrl} />
+									<img alt={authorTitle} className="object-detail-thumbnail" src={imageUrl} />
 									:
 									<img
-										alt="default thumbnail"
-										className="object-detail-thumbnail"
+										alt={authorTitle}
+										className="object-detail-thumbnail default"
 										src="/images/default_image.jpg"
 									/>
 								}
@@ -94,11 +94,11 @@ ObjectTeaser = React.createClass({
 									</span>
 								</div>
 								{('url' in image && image.url.length) ?
-									<img alt="object thumbnail" className="object-detail-thumbnail" src={image.url} />
+									<img alt={authorTitle} className="object-detail-thumbnail" src={image.url} />
 									:
 									<img
-										alt="default thumbnail"
-										className="object-detail-thumbnail"
+										alt={authorTitle}
+										className="object-detail-thumbnail default"
 										src="/images/default_image.jpg"
 									/>
 								}

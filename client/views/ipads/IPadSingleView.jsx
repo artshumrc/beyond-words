@@ -93,7 +93,7 @@ IPadSingleView = React.createClass({
 		return (
 			<div className="container ipad-container ipad-container--single-view">
 				{this.state.open ?
-					<FullscreenViewer
+					<IPadFullscreenViewer
 						imageUrl={this.state.slide}
 						open={this.state.open}
 						handleClose={this.handleSlideClose}

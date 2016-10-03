@@ -20,6 +20,8 @@ ObjectsList = React.createClass({
 		limit: React.PropTypes.number,
 		closeSelectedObject: React.PropTypes.func,
 		catalogLayout: React.PropTypes.string,
+		openViewer: React.PropTypes.func,
+		openMiradorViewer: React.PropTypes.func,
 	},
 
 	childContextTypes: {
@@ -226,6 +228,8 @@ ObjectsList = React.createClass({
 							objectToSelectSlug={this.props.objectToSelectSlug}
 							closeSelectedObject={this.props.closeSelectedObject}
 							selectObject={self.props.selectObject}
+							openViewer={self.props.openViewer}
+							openMiradorViewer={self.props.openMiradorViewer}
 						/>
 
 						{this.objects.length ?
@@ -252,8 +256,8 @@ ObjectsList = React.createClass({
 				:
 					<div>
 						<InfiniteScroll
-							endPadding={100}
-							loadMore={debounce(1000, this.props.loadMoreObjects)}
+							endPadding={20}
+							loadMore={debounce(00, this.props.loadMoreObjects)}
 						>
 
 							{this.props.catalogLayout === 'grid' ?

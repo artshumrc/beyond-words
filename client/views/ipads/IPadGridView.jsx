@@ -50,7 +50,7 @@ IPadGridView = React.createClass({
 		return (
 			<div className="container ipad-container ipad-container--grid-view">
 				{this.state.open ?
-					<FullscreenViewer
+					<IPadFullscreenViewer
 						imageUrl={this.state.slide}
 						open={this.state.open}
 						handleClose={this.handleSlideClose}

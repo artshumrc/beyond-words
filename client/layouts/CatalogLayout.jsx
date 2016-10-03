@@ -13,6 +13,8 @@ CatalogLayout = React.createClass({
 			filters: [],
 			skip: 0,
 			limit: 12,
+			miradorOpen: false,
+			viewerOpen: true,
 		};
 	},
 
@@ -314,8 +316,45 @@ CatalogLayout = React.createClass({
 		location.hash = "";
 	},
 
+	openViewer(){
+		console.log("open viewer");
+
+		this.setState({
+			viewerOpen: true,
+		});
+
+	},
+
+	closeViewer(){
+
+		this.setState({
+			viewerOpen: false,
+		});
+
+	},
+
+	openMiradorViewer(){
+
+		this.setState({
+			miradorOpen: true,
+		});
+
+	},
+
+	closeMiradorViewer(){
+
+		this.setState({
+			miradorOpen: false,
+		});
+
+	},
+
+
 	render() {
 		//console.log('CatalogLayout.filters', this.state.filters);
+		const selectedObject = this.state.selectedObject;
+		console.log(selectedObject);
+
 		return (
 			<div className="archimedes-layout catalog-layout">
 
@@ -345,9 +384,36 @@ CatalogLayout = React.createClass({
 					objectToSelectSlug={this.state.objectToSelectSlug}
 					selectObject={this.selectObject}
 					closeSelectedObject={this.closeSelectedObject}
+					openViewer={this.openViewer}
+					openMiradorViewer={this.openMiradorViewer}
 				/>
 
 				<CatalogFooter />
+
+				{selectedObject.miradorLink ?
+					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
+						<i
+							className="mdi mdi-close close-viewer"
+							onClick={this.closeMiradorViewer}
+						/>
+						<iframe src={selectedObject.miradorLink} />
+					</div>
+
+					: ""
+				}
+				{selectedObject.hasImageViewer ?
+					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
+						<i
+							className="mdi mdi-close close-viewer"
+							onClick={this.closeViewer}
+						/>
+						<BeyondWordsViewer
+							selectedObject={selectedObject}
+							/>
+					</div>
+
+					: ""
+				}
 			</div>
 		);
 	},
