@@ -49,9 +49,12 @@ ObjectTeaser = React.createClass({
 		const self = this;
 
 		setTimeout(function(){
-			self.setState({
-				attachmentCheck: true,
-			});
+			if(!self.data.attachment){
+				self.setState({
+					attachmentCheck: true,
+				});
+
+			}
 
 		}, 3000);
 
