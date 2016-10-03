@@ -14,7 +14,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			limit: 12,
 			miradorOpen: false,
-			viewerOpen: true,
+			viewerOpen: false,
 		};
 	},
 
@@ -288,7 +288,12 @@ CatalogLayout = React.createClass({
 	toggleCatalogLayout(layout) {
 		this.setState({
 			catalogLayout: layout,
+			objectToSelectSlug: null,
+			selectedObject: {},
+			skip: 0,
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
+		location.hash = "";
 	},
 
 	selectObject(selectedObject) {
