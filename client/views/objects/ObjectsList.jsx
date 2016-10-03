@@ -233,21 +233,18 @@ ObjectsList = React.createClass({
 						/>
 
 						{this.objects.length ?
-							<div className="objects-detail-slider">
-								<div className="objects-detail-slider-inner clear">
-									<Slider ref='slider' {...settings}>
-										{this.objects.map((object, i) => (
-											<div key={i}>
-												<div className="object-slider-teaser">
-													<ObjectTeaser
-														key={object._id}
-														object={object}
-														selectObject={self.props.selectObject}
-													/>
-												</div>
-											</div>
-										))}
-									</Slider>
+							<div className="objects-detail-scroll">
+								<div className="objects-detail-scroll-inner clear">
+									{this.objects.map((object, i) => (
+										<div
+											key={i}
+											className="object-scroll-teaser">
+											<ObjectTeaser
+												object={object}
+												selectObject={self.props.selectObject}
+											/>
+										</div>
+									))}
 								</div>
 							</div>
 						: ""}
@@ -256,8 +253,8 @@ ObjectsList = React.createClass({
 				:
 					<div>
 						<InfiniteScroll
-							endPadding={20}
-							loadMore={debounce(00, this.props.loadMoreObjects)}
+							endPadding={600}
+							loadMore={debounce(100, this.props.loadMoreObjects)}
 						>
 
 							{this.props.catalogLayout === 'grid' ?

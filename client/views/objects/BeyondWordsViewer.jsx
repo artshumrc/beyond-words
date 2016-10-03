@@ -19,8 +19,6 @@ BeyondWordsViewer = React.createClass({
 		muiTheme: React.PropTypes.object.isRequired,
 	},
 
-	mixins: [ReactMeteorData],
-
 	getInitialState() {
 		return {
 			view: 'grid',
@@ -31,22 +29,6 @@ BeyondWordsViewer = React.createClass({
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
-
-	getMeteorData() {
-		const query = {};
-		let object = {};
-
-		/*
-		const objectSubscription = Meteor.subscribe('objects', {});
-		if (objectSubscription.ready()) {
-			object = Objects.find().fetch()[0];// .findOne({});
-		}
-		*/
-
-		return {
-			object,
-		};
 	},
 
 	handleViewChange(event, value) {
@@ -105,31 +87,13 @@ BeyondWordsViewer = React.createClass({
 			},
 		};
 
-		const slides = [
-			'hew_ms_widener_2_0020.jpg',
-			'hew_ms_widener_2_0021.jpg',
-			'hew_ms_widener_2_0068.jpg',
-			'hew_ms_widener_2_0069.jpg',
-			'hew_ms_widener_2_0080.jpg',
-			'hew_ms_widener_2_0081.jpg',
-			'hew_ms_widener_2_0098.jpg',
-			'hew_ms_widener_2_0099.jpg',
-			'hew_ms_widener_2_0102.jpg',
-			'hew_ms_widener_2_0103.jpg',
-			'hew_ms_widener_2_0106.jpg',
-			'hew_ms_widener_2_0107.jpg',
-			'hew_ms_widener_2_0110.jpg',
-			'hew_ms_widener_2_0111.jpg',
-			'hew_ms_widener_2_0112.jpg',
-			'hew_ms_widener_2_0113.jpg',
-			'hew_ms_widener_2_0118.jpg',
-			'hew_ms_widener_2_0119.jpg',
-		];
+		let selectedObject = this.props.selectedObject;
+		let slides = selectedObject.viewerImages;
 
 		let authorTitle = '';
 
-		if ('author_title' in object && typeof object.author_title !== 'undefined') {
-			authorTitle = object.author_title;
+		if ('author_title' in selectedObject && typeof selectedObject.author_title !== 'undefined') {
+			authorTitle = selectedObject.author_title;
 		}
 
 

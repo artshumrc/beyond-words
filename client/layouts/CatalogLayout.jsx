@@ -19,7 +19,6 @@ CatalogLayout = React.createClass({
 	},
 
 	loadMoreObjects() {
-		//console.log('CatalogLayout.loadMoreObjects', this.state.skip + this.state.limit);
 		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
 			this.setState({
 				skip: this.state.skip + this.state.limit,
@@ -322,7 +321,6 @@ CatalogLayout = React.createClass({
 	},
 
 	openViewer(){
-		console.log("open viewer");
 
 		this.setState({
 			viewerOpen: true,
@@ -358,7 +356,6 @@ CatalogLayout = React.createClass({
 	render() {
 		//console.log('CatalogLayout.filters', this.state.filters);
 		const selectedObject = this.state.selectedObject;
-		console.log(selectedObject);
 
 		return (
 			<div className="archimedes-layout catalog-layout">

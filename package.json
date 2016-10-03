@@ -9,6 +9,7 @@
     "ion-rangeslider": "^2.1.4",
     "linkifyjs": "^2.0.4",
     "material-ui": "^0.15.1",
+    "modernizr": "^3.3.1",
     "moment-timezone": "^0.5.4",
     "openseadragon": "^2.2.1",
     "pseries": "^2.0.0",
