@@ -6,12 +6,12 @@ ObjectDetail = React.createClass({
 		objectToSelectSlug: React.PropTypes.string,
 		closeSelectedObject: React.PropTypes.func,
 		selectObject: React.PropTypes.func,
+		openViewer: React.PropTypes.func,
+		openMiradorViewer: React.PropTypes.func,
 	},
 
 	getInitialState() {
 		return {
-			miradorOpen: false,
-			viewerOpen: false,
 		};
 	},
 
@@ -50,35 +50,8 @@ ObjectDetail = React.createClass({
 	},
 
 	openViewer(){
-
-		this.setState({
-			viewerOpen: true,
-		});
-
-	},
-
-	closeViewer(){
-
-		this.setState({
-			viewerOpen: false,
-		});
-
-	},
-
-	openMiradorViewer(){
-
-		this.setState({
-			miradorOpen: true,
-		});
-
-	},
-
-	closeMiradorViewer(){
-
-		this.setState({
-			miradorOpen: false,
-		});
-
+		console.log("ObjectDetail.openViewer");
+		this.props.openViewer();
 	},
 
 	render() {
@@ -114,8 +87,8 @@ ObjectDetail = React.createClass({
 						}
 						{selectedObject.miradorLink ?
 							<div
-								className="thumbnail-mirador-overlay"
-								onClick={this.openMiradorViewer}
+								className="thumbnail-embedded-overlay"
+								onClick={this.props.openMiradorViewer}
 							>
 								<i className="mdi mdi-image-filter" />
 								<span>View in Mirador</span>
@@ -130,7 +103,7 @@ ObjectDetail = React.createClass({
 								onClick={this.openViewer}
 							>
 								<i className="mdi mdi-image-filter" />
-								<span>Turn the Pages in Beyond Words Viewer</span>
+								<span>Turn the Pages</span>
 
 							</div>
 
@@ -228,29 +201,6 @@ ObjectDetail = React.createClass({
 					</div>
 
 				</div>
-
-				{selectedObject.miradorLink ?
-					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
-						<i
-							className="mdi mdi-close close-viewer"
-							onClick={this.closeMiradorViewer}
-						/>
-						<iframe src={selectedObject.miradorLink} />
-					</div>
-
-					: ""
-				}
-				{selectedObject.hasImageViewer ?
-					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
-						<i
-							className="mdi mdi-close close-viewer"
-							onClick={this.closeViewer}
-						/>
-						<BeyondWordsViewer />
-					</div>
-
-					: ""
-				}
 
 			</div>
 			:

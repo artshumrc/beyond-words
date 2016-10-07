@@ -1,24 +1,21 @@
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
 
-IPadSpreadView = React.createClass({
+ViewerSpread = React.createClass({
 
 	propTypes: {
 		slides: React.PropTypes.array,
 	},
 
+	childContextTypes: {
+		muiTheme: React.PropTypes.object.isRequired,
+	},
+
 	getDefaultProps() {
 		return {
 			slides: [
-				'/images/BannerSQ.jpg',
-				'/images/BannerSQ.jpg',
-				'/images/BannerSQ.jpg',
-				'/images/BannerSQ.jpg',
-				'/images/BannerSQ.jpg',
-				'/images/BannerSQ.jpg',
 				'/images/BannerSQ.jpg',
 			],
 		};
@@ -95,56 +92,44 @@ IPadSpreadView = React.createClass({
 			slidesToShow: 2,
 			slidesToScroll: 2,
 			slickGoTo: this.state.slickGoTo || 0,
-			arrows: false,
+			arrows: true,
 		};
+
+		const supportsObjectFit = Modernizr.testProp("object-fit");
+		
 		return (
-			<div className="container ipad-container ipad-container--spread-view">
+			<div className="container viewer-container viewer-container--spread-view">
 				{this.state.open ?
-					<IPadFullscreenViewer
-						imageUrl={this.state.slide}
+					<FullscreenViewer
+						imageUrl={'https://s3.amazonaws.com/beyond-words/medium/' + this.state.slide}
 						open={this.state.open}
 						handleClose={this.handleSlideClose}
 					/>
 					:
 					''
 				}
-				<div className="row">
-					<div className="col-xs-11 center-block clear">
-						<Slider className="spread-view-slider"{...settings}>
-						{this.props.slides.map((slide, i) => (
-							<div key={i}>
-								<div className="image">
-									<Paper zDepth={0}>
-										<img
-											alt="slide"
-											onClick={this.handleSlideOpen.bind(this, slide)}
-											className="center-block"
-											src={slide}
-										/>
-									</Paper>
-								</div>
-							</div>
-						))}
-						</Slider>
-						<p className="coaching-text">
-							Swipe to turn the page. Tap to zoom in.
-						</p>
+				<Slider className="spread-view-slider"{...settings}>
+				{this.props.slides.map((slide, i) => (
+					<div key={i}>
+						<div className="image">
+							<img
+								onClick={this.handleSlideOpen.bind(this, slide)}
+								className="center-block"
+								style={{backgroundImage:'url("https://s3.amazonaws.com/beyond-words/medium/' + slide + '")'}}
+								src={(supportsObjectFit) ? 'https://s3.amazonaws.com/beyond-words/medium/' + slide : ""}
+							/>
+						</div>
 					</div>
-				</div>
-				<div className="row">
-					<div className="col-xs-12 center-block clear">
-						<ThumbnailScrollSpread
-							activeSlide={this.state.slickGoTo}
-							thumbnailList={this.props.slides}
-							scrollToSlide={this.scrollToSlide}
-						/>
-					</div>
+				))}
+				</Slider>
+				<div className="bottom-panel">
+					<ViewerThumbnailScrollSpread
+						activeSlide={this.state.slickGoTo}
+						thumbnailList={this.props.slides}
+						scrollToSlide={this.scrollToSlide}
+					/>
 				</div>
 			</div>
 		);
 	},
 });
-
-IPadSpreadView.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
-};

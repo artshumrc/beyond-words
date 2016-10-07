@@ -119,6 +119,19 @@ Schemas.Objects = new SimpleSchema({
 		optional: true,
 	},
 
+	viewerImages: {
+		type: Array,
+		label: 'Image locations on Amazon S3 for the Beyond Words image viewer',
+		optional: true,
+
+	},
+
+	'viewerImages.$': {
+		type: String,
+		optional: true,
+		
+	},
+
 	created: {
 		type: Date,
 		optional: true,

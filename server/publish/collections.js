@@ -16,6 +16,15 @@ if (Meteor.isServer) {
 		});
 	});
 
+	Meteor.publish('manuscripts', () => {
+		return Objects.find({}, {
+			sort: {
+				catalog_n: 1,
+			},
+		});
+	});
+
+
 	Meteor.publish('object', (slug) => {
 		check(slug, String);
 		return Objects.find({

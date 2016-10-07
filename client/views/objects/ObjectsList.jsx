@@ -20,6 +20,8 @@ ObjectsList = React.createClass({
 		limit: React.PropTypes.number,
 		closeSelectedObject: React.PropTypes.func,
 		catalogLayout: React.PropTypes.string,
+		openViewer: React.PropTypes.func,
+		openMiradorViewer: React.PropTypes.func,
 	},
 
 	childContextTypes: {
@@ -90,7 +92,7 @@ ObjectsList = React.createClass({
 			}
 		});
 
-		console.log('Objects query:', query);
+		//console.log('Objects query:', query);
 		const handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
 		if (handle.ready()) {
 			objects = Objects.find({}, {}).fetch();
@@ -172,7 +174,6 @@ ObjectsList = React.createClass({
 		});
 
 		const masonryOptions = {
-			// columnWidth : "400px",
 			// isFitWidth : true,
 			transitionDuration: 300,
 		};
@@ -227,24 +228,23 @@ ObjectsList = React.createClass({
 							objectToSelectSlug={this.props.objectToSelectSlug}
 							closeSelectedObject={this.props.closeSelectedObject}
 							selectObject={self.props.selectObject}
+							openViewer={self.props.openViewer}
+							openMiradorViewer={self.props.openMiradorViewer}
 						/>
 
 						{this.objects.length ?
-							<div className="row">
-								<div className="col-xs-11 center-block clear">
-									<Slider ref='slider' {...settings}>
-										{this.objects.map((object, i) => (
-											<div key={i}>
-												<div className="object-slider-teaser">
-													<ObjectTeaser
-														key={object._id}
-														object={object}
-														selectObject={self.props.selectObject}
-													/>;
-												</div>
-											</div>
-										))}
-									</Slider>
+							<div className="objects-detail-scroll">
+								<div className="objects-detail-scroll-inner clear">
+									{this.objects.map((object, i) => (
+										<div
+											key={i}
+											className="object-scroll-teaser">
+											<ObjectTeaser
+												object={object}
+												selectObject={self.props.selectObject}
+											/>
+										</div>
+									))}
 								</div>
 							</div>
 						: ""}
@@ -253,8 +253,8 @@ ObjectsList = React.createClass({
 				:
 					<div>
 						<InfiniteScroll
-							endPadding={200}
-							loadMore={debounce(1000, this.props.loadMoreObjects)}
+							endPadding={600}
+							loadMore={debounce(100, this.props.loadMoreObjects)}
 						>
 
 							{this.props.catalogLayout === 'grid' ?

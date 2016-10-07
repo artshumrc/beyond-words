@@ -17,6 +17,16 @@ ObjectTeaser = React.createClass({
 
 	mixins: [ReactMeteorData],
 
+	childContextTypes: {
+		muiTheme: React.PropTypes.object.isRequired,
+	},
+
+	getInitialState() {
+		return {
+			attachmentCheck: false,
+		};
+	},
+
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
@@ -35,6 +45,22 @@ ObjectTeaser = React.createClass({
 		};
 	},
 
+	componentDidMount(){
+		const self = this;
+
+		setTimeout(function(){
+			if(!self.data.attachment){
+				self.setState({
+					attachmentCheck: true,
+				});
+
+			}
+
+		}, 3000);
+
+
+	},
+
 
 	render() {
 		const object = this.props.object;
@@ -50,13 +76,18 @@ ObjectTeaser = React.createClass({
 			description = object.description;
 		}
 
+		let styles = {
+			thumbnailImage : {
+			},
+		};
+
 		let image = {};
 		let imageUrl = "";
 		if (this.data.attachment) {
 			image = this.data.attachment;
 			imageUrl = image.url();
+			styles.thumbnailImage.backgroundImage = 'url("' + imageUrl + '")';
 		}
-
 
 		return (
 			<div className="object-teaser col-md-4 col-sm-6">
@@ -73,13 +104,24 @@ ObjectTeaser = React.createClass({
 									</span>
 								</div>
 								{(imageUrl.length) ?
-									<img alt="object thumbnail" className="object-detail-thumbnail" src={imageUrl} />
+									<div>
+										<div
+											alt={authorTitle}
+											className="object-detail-thumbnail"
+											style={styles.thumbnailImage}
+										/>
+									</div>
 									:
-									<img
-										alt="default thumbnail"
-										className="object-detail-thumbnail"
-										src="/images/default_image.jpg"
-									/>
+									<div>
+										<div className={"default-image-text " + (this.state.attachmentCheck ? " default-image-text-visible" : "")}>
+											<span>Preview image not available</span>
+										</div>
+										<img
+											alt={authorTitle}
+											className="object-detail-thumbnail default"
+											src="/images/default_image.jpg"
+										/>
+									</div>
 								}
 							</div>
 						</a>
@@ -93,14 +135,25 @@ ObjectTeaser = React.createClass({
 										{object.catalog_n}.
 									</span>
 								</div>
-								{('url' in image && image.url.length) ?
-									<img alt="object thumbnail" className="object-detail-thumbnail" src={image.url} />
+								{(imageUrl.length) ?
+									<div>
+										<div
+											alt={authorTitle}
+											className="object-detail-thumbnail"
+											style={styles.thumbnailImage}
+										/>
+									</div>
 									:
-									<img
-										alt="default thumbnail"
-										className="object-detail-thumbnail"
-										src="/images/default_image.jpg"
-									/>
+									<div>
+										<div className={"default-image-text " + (this.state.attachmentCheck ? " default-image-text-visible" : "")}>
+											<span>Preview image not available</span>
+										</div>
+										<img
+											alt={authorTitle}
+											className="object-detail-thumbnail default"
+											src="/images/default_image.jpg"
+										/>
+									</div>
 								}
 							</div>
 						</a>
@@ -203,7 +256,3 @@ ObjectTeaser = React.createClass({
 	},
 
 });
-
-ObjectTeaser.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
-};

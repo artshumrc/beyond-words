@@ -43,7 +43,7 @@ ObjectsSearchTools = React.createClass({
 	componentDidMount() {
 		Meteor.call('searchTools', (err, res) => {
 			if (err) {
-				console.log(err);
+				//console.log(err);
 			} else {
 				//console.log('searchTools response', res);
 				this.setState({

@@ -13,32 +13,48 @@ FullscreenViewer = React.createClass({
 		handleClose: React.PropTypes.func.isRequired,
 	},
 
+	childContextTypes: {
+		muiTheme: React.PropTypes.object.isRequired,
+	},
+
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
 
 	componentDidMount() {
 		const self = this;
+
+		const mediumUrl = self.props.imageUrl;
+		let dziUrl = self.props.imageUrl + ".dzi";
+
+		// add exception for hew wid 2 mss
+		if(~dziUrl.indexOf("hew_ms_widener_2")){
+			dziUrl = dziUrl.replace("jpg", "jp2");
+		}
+
 		/* eslint new-cap: "off" */
 		this.viewer = OpenSeadragon({
 			id: 'fullscreen-image',
-			prefixUrl: '/openseadragon/images/',
+			prefixUrl: 'https://s3.amazonaws.com/beyond-words/',
 			autoHideControls: true,
-			iOSDevice: true,
+			//iOSDevice: true,
 			showHomeControl: false,
 			showFullPageControl: false,
-			// TODO: Change this once dzi files are available
 			tileSources: {
 				type: 'image',
-				url: self.props.imageUrl,
+				url: mediumUrl,
 			},
+			/*
+			tileSources: dziUrl,
+			*/
 		});
-		this.viewer.setFullScreen(true);
-		this.viewer.addHandler('canvas-double-click', () => {
+		//this.viewer.setFullScreen(true);
+		/*this.viewer.addHandler('canvas-double-click', () => {
 			//const ifFullScreen = self.viewer.isFullPage();
 			//self.viewer.setFullScreen(!ifFullScreen);
 			//self.props.handleClose();
 		});
+		*/
 	},
 
 	handleClose() {
@@ -52,7 +68,6 @@ FullscreenViewer = React.createClass({
 		const self = this;
 		const styles = {
 			fullscreenImage: {
-				height: 500,
 			},
 			noPadding: {
 				padding: 0,
@@ -68,34 +83,31 @@ FullscreenViewer = React.createClass({
 
 			},
 		};
+
 		return (
-			<Dialog
-				open={this.props.open}
-				className="fullscreen-viewer"
-				onRequestClose={this.handleClose}
+			<div
+				className={"fullscreen-viewer" + (this.props.open ? " fullscreen-viewer--open" : "")}
 				bodyStyle={styles.noPadding}
 			>
-				<IconButton
-					className="fullscreen-viewer-close"
-					style={styles.closeButton}
-					onClick={this.handleClose}
-				>
-					<ContentClear />
-				</IconButton>
-				<div id="fullscreen-image" style={styles.fullscreenImage} >
+				<div className="fullscreen-viewer-inner">
 					<IconButton
 						className="fullscreen-viewer-close"
-						tooltip="Close" style={styles.closeButton}
-						onClick={self.handleClose}
+						style={styles.closeButton}
+						onClick={this.handleClose}
 					>
 						<ContentClear />
 					</IconButton>
+					<div id="fullscreen-image" style={styles.fullscreenImage} >
+						<IconButton
+							className="fullscreen-viewer-close"
+							style={styles.closeButton}
+							onClick={self.handleClose}
+						>
+							<ContentClear />
+						</IconButton>
+					</div>
 				</div>
-			</Dialog>
+			</div>
 		);
 	},
 });
-
-FullscreenViewer.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
-};
