@@ -78,6 +78,9 @@ ViewerSingle = React.createClass({
 			slickGoTo: this.state.slickGoTo || 0,
 			arrows: true,
 		};
+
+		const supportsObjectFit = Modernizr.testProp("object-fit");
+
 		return (
 			<div className="container viewer-container viewer-container--single-view">
 				{this.state.open ?
@@ -102,6 +105,8 @@ ViewerSingle = React.createClass({
 							onClick={this.handleSlideOpen.bind(this, slide)}
 							className="center-block"
 							style={{backgroundImage:'url("https://s3.amazonaws.com/beyond-words/medium/' + slide + '")'}}
+							src={(supportsObjectFit) ? 'https://s3.amazonaws.com/beyond-words/medium/' + slide : ""}
+
 						/>
 					</div>
 				))}
