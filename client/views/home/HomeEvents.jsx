@@ -255,7 +255,6 @@ HomeEvents = React.createClass({
 							<h5>
 								8:30 Coffee
 							</h5>
-							<br />
 
 							<h5>9:00 Welcome: Nancy Netzer, Director, McMullen Museum of Art, Boston College <br />Historical Texts in Context<br />Chair: Lisa Fagin Davis, Executive Director, Medieval Academy of America</h5>
 
@@ -301,9 +300,8 @@ HomeEvents = React.createClass({
 							</p>
 
 							<h5>12:15 Lunch on your own / Exhibition Viewing</h5>
-							<br />
+
 							<h5>Finding an Audience <br />Chair: Jeffrey Hamburger, Kuno Francke Professor of German Art & Culture, History of Art and Architecture, Harvard University </h5>
-							<br />
 
 							<h5>1:45 Christine Seidel, Staatliche Museen zu Berlin, Stiftung Preussischer Kulturbesitz, Berlin, “Picturing and Collecting Classical Texts in 15th century France”
 							</h5>
@@ -316,7 +314,6 @@ HomeEvents = React.createClass({
 							</p>
 
 							<h5>2:45 Coffee</h5>
-							<br />
 
 							<h5>
 								3:15 Scot McKendrick, Western Heritage Collections, British Library, London
@@ -348,7 +345,6 @@ HomeEvents = React.createClass({
 							</p>
 
 							<h5>5:15-6:30 Reception</h5>
-							<br />
 
 						</Tab>
 
@@ -358,9 +354,13 @@ HomeEvents = React.createClass({
 						>
 							<h4 className="symposium-day">Friday, 4 November, Isabella Stewart Gardner Museum</h4>
 							<br />
+							<h5>8:30 Coffee (and speaker set-up)</h5>
+
+							<h5>9:00 Welcome: Peggy Fogelman, Norma Jean Calderwood Director, Isabella Stewart Gardner Museum<br />Illumination at the Italian Courts<br />Chair: Anne-Marie Eze, Houghton Library Harvard University</h5>
+
 							<h5>
-								Federica Toniolo (Università degli Studi di Padova), “Court Patronage in Renaissance
-								Italy: Illuminated Manuscripts as Diplomatic Gifts”
+								9:15 Federica Toniolo, Dipartimento dei Beni Culturali, Università degli Studi di Padova
+								“Court Patronage in Renaissance Italy: Illuminated Manuscripts as Diplomatic Gifts”
 							</h5>
 							<p>
 								This paper focusses on Renaissance Italian illuminated manuscripts made as luxury
@@ -374,8 +374,8 @@ HomeEvents = React.createClass({
 								of the monumental arts.
 							</p>
 							<h5>
-								Ada Labriola (Independent Scholar, Florence), "The Florentine Presence at the
-								Gonzaga Court in Mantua on the Eve of the Renaissance: Houghton Library MS Typ 329"
+								10:15 Ada Labriola, Independent Scholar, Florence
+								"The Florentine Presence at the Gonzaga Court in Mantua on the Eve of the Renaissance: Houghton Library MS Typ 329"
 							</h5>
 							<p>
 								Niccolò da Ferrara's Polistorio was made for Francesco Gonzaga, signore of Mantua,
@@ -387,8 +387,8 @@ HomeEvents = React.createClass({
 								between Florence and Mantua on the Eve of the Renaissance.
 							</p>
 							<h5>
-								Helena Szépe (University of South Florida, Tampa),  “The Purposes of Illumination in
-								Venetian Legal Statutes and Documents”
+								11:15 Helena Szépe, School of Art & Art History, University of South Florida, Tampa
+								“Illumination in Venetian Statute Books”
 							</h5>
 							<p>
 								The privilege of being a patrician in the Venetian Republic required the duty of
@@ -405,11 +405,11 @@ HomeEvents = React.createClass({
 								Paphos, 1558 (Houghton Library MS Typ 330); and Commission leaf to Daniele Dolfin
 								as Podesta and captain of Treviso, 1596, (Wellesley College Davis Museum).
 							</p>
+
+							<h5>12:15 Lunch on your own / Exhibition Viewing<br />Afternoon Session: Renaissance Liturgical Manuscripts<br />Chair: Nathaniel Silver, Assistant Curator of Collections, Isabella Stewart Gardner Museum</h5>
 							<h5>
-								Francesca Manzari ("Sapienza" Università di Roma),
-								“Patronage and Artists in the Calderini Pontifical (Houghton Library, MS Typ.1):
-								The Revival of Illumination in Rome during the Schism and its Flowering in
-								Florence during the Council”
+								1:45 Francesca Manzari, Dipartimento di Scienze documentarie, linguistico-filologiche e geografiche, "Sapienza" Università di Roma
+								“The Patronage and Artists of the Calderini Pontifical (Houghton Library MS Typ 1): The Revival of Manuscript Illumination in Rome during the Schism and the Flowering of Illuminators in Florence during the Council”
 							</h5>
 							<p>
 								The creation of the Calderini Pontifical's spectacular illustrative programme has
@@ -420,9 +420,12 @@ HomeEvents = React.createClass({
 								provenance history will be discussed in the perspective of the practices in
 								collecting Italian illumination documented over the centuries.
 							</p>
+
+							<h5>2:45 Coffee</h5>
+
 							<h5>
-								Lilian Armstrong (Wellesley College, Wellesley), “Venetian Choirbooks in the
-								Early Quattrocento: Two Graduals for a Benedictine Convent”
+								3:15 Lilian Armstrong, Department of Art, Wellesley College, Wellesley
+								“Venetian Choirbooks in the Early Quattrocento: Two Graduals for a Benedictine Convent”
 							</h5>
 							<p>
 								The Durant Gradual at Wellesley College contains heretofore unpublished
@@ -434,8 +437,8 @@ HomeEvents = React.createClass({
 								of choirbooks produced in Venice in the early Quattrocento.
 							</p>
 							<h5>
-								Christine Sciacca (J. Paul Getty Museum, Los Angeles), “A Visionary Artist
-								and a Benedictine Worldview: The San Sisto Choir Books”
+								4:15 Christine Sciacca, Department of Manuscripts, J. Paul Getty Museum, Los Angeles
+								“A Visionary Artist and a Benedictine Worldview: The San Sisto Choir Books”
 							</h5>
 							<p>
 								In the late fifteenth century, the Benedictine abbey of San Sisto in Piacenza
@@ -449,6 +452,8 @@ HomeEvents = React.createClass({
 								books’ illuminations, Francesco da Castello, and his treatment of the iconography
 								that held particular meaning for the San Sisto monks.
 							</p>
+							<h5>5:15 Conclusion</h5>
+
 						</Tab>
 
 						<Tab
@@ -456,12 +461,21 @@ HomeEvents = React.createClass({
 							style={styles.tab}
 						>
 							<h4 className="symposium-day">
-								Saturday, 5 November, Houghton Library, Harvard University
+								Saturday, 5 November, Sever Hall 113, Harvard University
 							</h4>
 							<br />
+
+							<h5>8:30 Coffee and speakers setup</h5>
+
 							<h5>
-								Brigitte Bedos-Rezak (New York University), “Writing Culture and Society in
-								Medieval Yorkshire: The Cistercian Charters of Sawley Abbey at Houghton Library”
+								9:00 Welcome: Tom Hyry, Florence Fearrington Librarian of Houghton Library<br />
+								New Directions <br />
+								Chair: William Stoneman, Curator of Early Books & Manuscripts, Houghton Library, Harvard University
+							</h5>
+
+							<h5>
+								9:15 Brigitte Bedos-Rezak, Department of History, New York University
+								“Writing Culture and Society in Medieval Yorkshire: The Cistercian Charters of Sawley Abbey at Houghton Library”
 							</h5>
 							<p>
 								Houghton Library MS Lat 421 consists of some fifteen sealed charters (mid-13th
@@ -484,22 +498,39 @@ HomeEvents = React.createClass({
 								of patrons, and to promote its culture, welfare, status, and identity.
 							</p>
 							<h5>
-								Peter Kidd (Freelance Researcher, London), "Leaves and Cuttings from the
-								Collection of Jack Ball, Arms Dealer and Fraudster"
+								10:15: Peter Kidd, Freelance Researcher, London
+								"Leaves and Cuttings from the Collection of Jack Ball, Arms Dealer and Fraudster"
 							</h5>
 							<p>
 								Five illuminated leaves, now at Houghton Library and the Boston Public Library (MSS Typ 704.1(12-13) and BPL pb Med. 205-207, respectively), have recently been recognized as coming from an early 20th-century English collection, formed by a shady character who was successively a chauffeur, Captain in the Royal Air Force, bankrupt, forger of Irish antiquities, international arms dealer, and adulterer. This paper will consider his now-dispersed collection of leaves and cuttings, and begin the process of tracing their present whereabouts.
 							</p>
 							<h5>
-								Erik Kwakkel (Centre for the Arts in Society, Leiden University), "Variations
-								on a Theme: Paleographical Diversity in the Twelfth Century"
+								11:15 Erik Kwakkel, Centre for the Arts in Society, Leiden University
+								“Variations on a Theme: Paleographical Diversity in the Twelfth Century”
 							</h5>
 							<p>
 								Focusing on twelfth-century book script this paper examines to what extent scribes varied the execution of letterforms, and why they did. Explored will be the influence of time and geographical space, the scriptorium in which an individual was trained, and the monastic order the scribe was part of. The discussion will include Houghton Library MSS Typ 204 and 703 to show regional variety, and Boston Public Library f Med. 75 and f Med. 15 to show the transition from Late Caroline to Early Gothic.
 							</p>
+
+							<h5>12:15 Lunch on your own / Exhibition Viewing<br />
+								In Context<br />
+								Chair: Megan McNamee, Center for Advanced Study in the Visual Arts, National Gallery of Art
+							</h5>
+
 							<h5>
-								Kate Rudy (University of St. Andrews, Fife), "Convents in Competition:
-								Boston Public Library q.Med. 86 in the Context of Delft Manuscript Production"
+								1:45 Patricia Stirnemann, Institut de Recherche et d’Histoire des Textes, Centre National de la Recherche Scientifique, Paris
+								“Gilbert de la Porrée and Chartres”
+							</h5>
+							<p>
+								This paper will start by examining Houghton Library MS Typ 277 and explore
+								the transmission of the works of Gilbert de la Porrée and the role of Chartres.
+							</p>
+
+							<h5>2:45 Coffee</h5>
+
+							<h5>
+								3:15 Kate Rudy, School of Art History, University of St. Andrews, Fife
+								“Convents in Competition: Boston Public Library q.Med. 86 in the Context of Delft Manuscript Production"
 							</h5>
 							<p>
 								In the fifteenth century Delft had at least 12 female convents, several of
@@ -517,24 +548,20 @@ HomeEvents = React.createClass({
 								streamlined production while at the same time affording greater individuation
 								of the finished book.
 							</p>
+
 							<h5>
-								Patricia Stirnemann (Institut de Recherche et d’Histoire des Textes,
-								Centre National de la Recherche Scientifique, Paris), “Gilbert de la
-								Porrée and Chartres”
-							</h5>
-							<p>
-								This paper will start by examining Houghton Library MS Typ 277 and explore
-								the transmission of the works of Gilbert de la Porrée and the role of Chartres.
-							</p>
-							<h5>
-								Anne D. Hedeman (University of Kansas, Lawrence), “Rereading Boccaccio in
-								Etienne Chevalier ‘s Decameron (Houghton Library MS Richardson 31)”
+								4:15 Anne D. Hedeman, Kress Foundation Department of Art History, University of Kansas, Lawrence
+								“Rereading Boccaccio in Etienne Chevalier ‘s Decameron (Houghton Library MS Richardson 31)”
 							</h5>
 							<p>
 								This paper will analyze the blend of traditional and innovative illuminations
 								in Etienne Chevalier’s Decameron within the frameworks of Decameron illustration,
 								the  artistic production of the Dunois Master, and books owned by Etienne Chevalier.
 							</p>
+
+							<h5>5:15- 6:30 Reception: Edison & Newman Room, Houghton Library </h5>
+
+
 						</Tab>
 					</Tabs>
 				</section>
