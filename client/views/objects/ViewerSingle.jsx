@@ -99,10 +99,9 @@ ViewerSingle = React.createClass({
 						className="image"
 					>
 						<img
-							alt={slide}
 							onClick={this.handleSlideOpen.bind(this, slide)}
 							className="center-block"
-							src={'https://s3.amazonaws.com/beyond-words/medium/' + slide}
+							style={{backgroundImage:'url("https://s3.amazonaws.com/beyond-words/medium/' + slide + '")'}}
 						/>
 					</div>
 				))}
