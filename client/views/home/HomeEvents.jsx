@@ -253,20 +253,15 @@ HomeEvents = React.createClass({
 							</h4>
 							<br />
 							<h5>
-								Jessica Berenbeim (Magdalen College, University of Oxford),
-								"Historical Distance and Livy's Artistic Afterlife"
+								8:30 Coffee
 							</h5>
-							<p>
-								This paper will look at the visual reception of Livy's Roman History,
-								with special attention to Houghton Library MS Richardson 32 and its
-								relatives, as a point of departure for thinking about late-medieval
-								historiography and problems of historical distance.
-							</p>
+							<br />
+
+							<h5>9:00 Welcome: Nancy Netzer, Director, McMullen Museum of Art, Boston College <br />Historical Texts in Context<br />Chair: Lisa Fagin Davis, Executive Director, Medieval Academy of America</h5>
 
 							<h5>
-								Alixe Bovey (Courtauld Institute of Art, London), “Kings as Kin:
-								Picturing the English Monarchy in Houghton Library MS Typ 11 and
-								related Genealogical Roll Chronicles”
+								9:15 Alixe Bovey, Courtauld Institute of Art, London
+								“Kings as Kin: Picturing the English Monarchy in Houghton Library MS Typ 11 and related Genealogical Roll Chronicles”
 							</h5>
 							<p>
 								The vogue for illustrated genealogies of  English monarchs in the
@@ -281,8 +276,8 @@ HomeEvents = React.createClass({
 							</p>
 
 							<h5>
-								Sonja Drimmer (University of Massachusetts, Amherst),
-								"The Shapes ofHistory in Late Medieval England"
+								10:15 Sonja Drimmer, History of Art & Architecture, University of Massachusetts, Amherst
+								"The Shapes of History in Late Medieval England"
 							</h5>
 							<p>
 								Does history have a shape? This paper will examine two manuscripts,
@@ -295,24 +290,37 @@ HomeEvents = React.createClass({
 							</p>
 
 							<h5>
-								Nicholas Herman (Schoenberg Institute for Manuscript Studies,
-								University of Pennsylvania), “‘Richement et sumptueusement historié’:
-								Bourdichon’s Isabella Stewart Gardner Hours in Its Artistic Context”
+								11:15: Jessica Berenbeim, Magdalen College, University of Oxford
+								"Historical Distance and Livy's Artistic Afterlife”
 							</h5>
 							<p>
-								Jean Bourdichon (1457–1521) was among the most accomplished court artists
-								of his time and was directly employed by four successive French kings.
-								However, most of his work, including the sumptuous illuminations in a
-								book of hours preserved at the Isabella Stewart Gardner Museum, MS 6.T.1,
-								remains undocumented and unsigned. This paper will connect the highly
-								accomplished Boston Hours with the artist’s other commissions of the 1510s,
-								and place the refined miniatures within a broader artistic context that
-								melded indigenous traditions with novelties from beyond the Alps.
+								This paper will look at the visual reception of Livy's Roman History,
+								with special attention to Houghton Library MS Richardson 32 and its
+								relatives, as a point of departure for thinking about late-medieval
+								historiography and problems of historical distance.
 							</p>
+
+							<h5>12:15 Lunch on your own / Exhibition Viewing</h5>
+							<br />
+							<h5>Finding an Audience <br />Chair: Jeffrey Hamburger, Kuno Francke Professor of German Art & Culture, History of Art and Architecture, Harvard University </h5>
+							<br />
+
+							<h5>1:45 Christine Seidel, Staatliche Museen zu Berlin, Stiftung Preussischer Kulturbesitz, Berlin, “Picturing and Collecting Classical Texts in 15th century France”
+							</h5>
+							<p>
+								This paper will examine the Houghton Library Virgil (MS Richardson 38) in
+								terms of layout, illustration and origin and relate it to broader questions
+								concerning the ownership and appearance of classical texts copied in France
+								between c. 1440 and 1500, as well as their visual transformation in the
+								course of the 15th century.
+							</p>
+
+							<h5>2:45 Coffee</h5>
+							<br />
+
 							<h5>
-								Scot McKendrick (British Library, London), “Vicarious Entertainment for
-								the Mature Aristocrat and Bibliophile Louis of Gruuthuse
-								(Houghton Library MSS Typ 129 and 130)”
+								3:15 Scot McKendrick, Western Heritage Collections, British Library, London
+								“Vicarious Entertainment for the Mature Aristocrat and Bibliophile Louis of Gruuthuse (Houghton Library MSS Typ 129 and 130)”
 							</h5>
 							<p>
 								During the late Middle Ages aristocratic readers were fascinated with
@@ -324,18 +332,24 @@ HomeEvents = React.createClass({
 								of the patron and the means by which the makers of the books fulfilled
 								his aspirations.
 							</p>
+
 							<h5>
-								Christine Seidel (Staatliche Museen zu Berlin, Stiftung Preußischer
-								Kulturbesitz, Berlin), “Picturing and Collecting Classical Texts
-								in 15th century France”
+								4:15 Nicholas A. Herman, Curator of Manuscripts, Schoenberg Institute for Manuscript Studies, University of Pennsylvania, Philadelphia, “‘Richement et sumptueusement historié’: Bourdichon’s Isabella Stewart Gardner Hours in its Artistic Context”
 							</h5>
 							<p>
-								This paper will examine the Houghton Library Virgil (MS Richardson 38) in
-								terms of layout, illustration and origin and relate it to broader questions
-								concerning the ownership and appearance of classical texts copied in France
-								between c. 1440 and 1500, as well as their visual transformation in the
-								course of the 15th century.
+								Jean Bourdichon (1457–1521) was among the most accomplished court artists
+								of his time and was directly employed by four successive French kings.
+								However, most of his work, including the sumptuous illuminations in a
+								book of hours preserved at the Isabella Stewart Gardner Museum, MS 6.T.1,
+								remains undocumented and unsigned. This paper will connect the highly
+								accomplished Boston Hours with the artist’s other commissions of the 1510s,
+								and place the refined miniatures within a broader artistic context that
+								melded indigenous traditions with novelties from beyond the Alps.
 							</p>
+
+							<h5>5:15-6:30 Reception</h5>
+							<br />
+
 						</Tab>
 
 						<Tab
