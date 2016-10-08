@@ -21,14 +21,16 @@ EventItem = React.createClass({
 			endDate;
 		let tmp;
 
-		startDate = moment.utc(event.date).toString();
+		tmp = moment.utc(event.date);
+		tmp.hours(tmp.hours()+4);
+		startDate = tmp.toString();
 
 		if('endDate' in event){
 			tmp = moment.utc(event.endDate);
 
 		}else {
 			tmp = moment.utc(event.date);
-			tmp.hours(tmp.hours()+2);
+			tmp.hours(tmp.hours()+6);
 
 		}
 		endDate = tmp.toString();
