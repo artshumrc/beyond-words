@@ -461,7 +461,7 @@ HomeEvents = React.createClass({
 							style={styles.tab}
 						>
 							<h4 className="symposium-day">
-								Saturday, 5 November, Sever Hall 113, Harvard University
+								Saturday, 5 November, <a href="https://map.harvard.edu/" target="_blank">Sever Hall 113, Harvard University</a>
 							</h4>
 							<br />
 

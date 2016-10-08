@@ -19,12 +19,18 @@ EventItem = React.createClass({
 		const event = this.props.event;
 		let startDate,
 			endDate;
+		let tmp;
 
-		const tmp = new Date();
-		tmp.setDate(tmp.getDate() + 7); // next 7 days
-		startDate = tmp.toString();
+		startDate = this.props.event.date.toString();
 
-		tmp.setDate(tmp.getDate() + 1); // next 8 days
+		if('endDate' in this.props.event){
+			tmp = this.props.event.endDate;
+
+		}else {
+			tmp = this.props.event.date;
+			tmp.setHours(tmp.getHours()+3);
+
+		}
 		endDate = tmp.toString();
 
 		const singleEventArgs = {
