@@ -217,7 +217,7 @@ ObjectDetail = React.createClass({
 							</div>
 						: ''}
 						{(pdfUrl.length) ?
-							<div className="object-detail-meta">
+							<div className="object-detail-meta object-detail-meta--pdf">
 								<a href={pdfUrl} target="_blank">
 									<label>PDF Download</label>
 									<i className="mdi mdi-download" />
