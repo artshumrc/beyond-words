@@ -32,7 +32,24 @@ HomeEvents = React.createClass({
 	},
 
 	getMeteorData() {
-		return { events: Events.find({}, { sort: { date: 1 } }).fetch() };
+		let nov3Sessions = [];
+		let nov4Sessions = [];
+		let nov5Sessions = [];
+
+		const sessionSubscription = Meteor.subscribe('symposiumSessions');
+		if (sessionSubscription.ready()) {
+			nov3Sessions = SymposiumSession.find({ nov3: true }).fetch();
+			nov4Sessions = SymposiumSession.find({ nov4: true }).fetch();
+			nov5Sessions = SymposiumSession.find({ nov5: true }).fetch();
+		}
+
+
+		return {
+			events: Events.find({}, { sort: { date: 1 } }).fetch(),
+			nov3Sessions,
+			nov4Sessions,
+			nov5Sessions,
+		};
 	},
 
 	openRegistrationModal() {
@@ -252,6 +269,13 @@ HomeEvents = React.createClass({
 								Thursday, 3 November, McMullen Museum, Boston College
 							</h4>
 							<br />
+
+							{this.data.nov3Sessions.map((session) => (
+								<SymposiumSession
+									session={session}
+								/>
+							))}
+
 							<h5>
 								8:30 Coffee
 							</h5>

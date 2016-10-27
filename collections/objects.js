@@ -48,6 +48,17 @@ Schemas.Objects = new SimpleSchema({
 			}
 		},
 	},
+	pdf: {
+		type: String,
+		optional: true,
+		label: 'PDF Record',
+		autoform: {
+			afFieldInput : {
+				type: 'fileUpload',
+				collection: 'Attachments',
+			}
+		},
+	},
 	date: {
 		type: String,
 		label: 'Flexible date field (whatever should be used for display)',
@@ -129,7 +140,16 @@ Schemas.Objects = new SimpleSchema({
 	'viewerImages.$': {
 		type: String,
 		optional: true,
-		
+
+	},
+
+	notes: {
+		type: String,
+		label: 'Additional Notes',
+		optional: true,
+		autoform: {
+			rows: 5,
+		},
 	},
 
 	created: {
