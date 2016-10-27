@@ -67,7 +67,6 @@ EventItem = React.createClass({
 	},
 
 
-
 	render(){
 		const event = this.props.event;
 		const self = this;

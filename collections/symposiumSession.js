@@ -8,38 +8,6 @@ Schemas.SymposiumSessions = new SimpleSchema({
 		type: String,
 		optional: true,
 	}, */
-	location: {
-		type: String,
-		optional: true,
-	},
-	date: {
-		type: Date,
-		label: 'Date and time (start)',
-		autoform: {
-			afFieldInput: {
-				type: 'datetime-local',
-			},
-		},
-	},
-
-	endDate: {
-		type: Date,
-		label: 'Date and time (end)',
-		optional: true,
-		autoform: {
-			afFieldInput: {
-				type: 'datetime-local',
-			},
-		},
-	},
-
-	description: {
-		type: String,
-		optional: true,
-		autoform: {
-			rows: 5,
-		},
-	},
 
 	nov3: {
 		type: Boolean,
@@ -56,25 +24,24 @@ Schemas.SymposiumSessions = new SimpleSchema({
 		optional: true,
 	},
 
-	createdAt: {
+	date: {
 		type: Date,
-		autoValue() {
-			if (this.isInsert) {
-				return new Date();
-			}
-			return null;
+		label: 'Starting time',
+		autoform: {
+			afFieldInput: {
+				type: 'datetime-local',
+			},
 		},
 	},
-	updatedAt: {
-		type: Date,
+
+	description: {
+		type: String,
 		optional: true,
-		autoValue() {
-			if (this.isUpdate) {
-				return new Date();
-			}
-			return null;
+		autoform: {
+			rows: 5,
 		},
 	},
+
 });
 
 SymposiumSessions.attachSchema(Schemas.SymposiumSessions);

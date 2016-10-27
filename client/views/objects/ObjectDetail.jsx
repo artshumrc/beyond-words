@@ -21,12 +21,17 @@ ObjectDetail = React.createClass({
 
 	getMeteorData() {
 		let attachment = null;
+		let pdfAttachment = null;
 		let selectedObject = null;
 
 		const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
-		if (imageSubscription.ready() && typeof this.props.selectedObject.image !== 'undefined') {
-			attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
-			// thumbnails = Thumbnails.find({}).fetch();
+		if (imageSubscription.ready()) {
+			if (typeof this.props.selectedObject.image !== 'undefined') {
+				attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
+			}
+			if (typeof this.props.selectedObject.pdf !== 'undefined') {
+				pdfAttachment = Attachments.findOne({ _id: this.props.selectedObject.pdf });
+			}
 		}
 
 		//console.log("ObjectDetail.props", this.props);
@@ -43,9 +48,9 @@ ObjectDetail = React.createClass({
 		}
 
 
-
 		return {
 			attachment,
+			pdfAttachment,
 		};
 	},
 
@@ -62,6 +67,13 @@ ObjectDetail = React.createClass({
 		if (this.data.attachment) {
 			image = this.data.attachment;
 			imageUrl = image.url();
+		}
+
+		let pdf = {};
+		let pdfUrl = '';
+		if (this.data.pdfAttachment) {
+			pdf = this.data.pdfAttachment;
+			pdfUrl = pdf.url();
 		}
 
 		return (
@@ -196,6 +208,20 @@ ObjectDetail = React.createClass({
 							<div className="object-detail-meta">
 								<label>Description</label>
 								<span>{selectedObject.description}</span>
+							</div>
+						: ''}
+						{selectedObject.notes ?
+							<div className="object-detail-meta">
+								<label>Additional Notes</label>
+								<span>{selectedObject.notes}</span>
+							</div>
+						: ''}
+						{(pdfUrl.length) ?
+							<div className="object-detail-meta">
+								<a href={pdfUrl} target="_blank">
+									<label>PDF Download</label>
+									<i className="mdi mdi-download" />
+								</a>
 							</div>
 						: ''}
 					</div>

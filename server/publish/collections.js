@@ -32,6 +32,8 @@ if (Meteor.isServer) {
 		});
 	});
 
+	Meteor.publish('symposiumSessions', () => SymposiumSessions.find({}, { sort: { date: 1 } }));
+
 	Meteor.publish('events', () => Events.find());
 	Meteor.publish('attachments', () => Attachments.find());
 
