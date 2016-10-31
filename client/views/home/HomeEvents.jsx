@@ -238,9 +238,8 @@ HomeEvents = React.createClass({
 					{!this.state.hasRegistered ?
 						<a
 							className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
-							onClick={this.openRegistrationModal}
 						>
-							<span>Register Now</span>
+							<span>Registration is now closed</span>
 							<div className="md-ripple-container" />
 
 						</a>
