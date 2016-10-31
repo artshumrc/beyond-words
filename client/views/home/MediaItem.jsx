@@ -29,32 +29,40 @@ MediaItem = React.createClass({
 		const mediaItem = this.props.mediaItem;
 		const self = this;
 
+		const styles = {
+			thumbnailImage: {
+			},
+		};
+
 		let image = {};
 		let imageUrl = '';
+		/*
 		if (this.data.attachment) {
 			image = this.data.attachment;
 			imageUrl = image.url();
 			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
 		}
+		*/
+
+		console.log(image);
 
 		return (
 			<div
 				className={`media-item wow fadeIn media-item--${mediaItem._id}`}
 			>
-				{imageUrl.length ?
-					<a
-						className="media-item-link"
-						href={mediaItem.link}
-						target="_blank" rel="noopener noreferrer"
-						onClick={self.linkTomediaItemOrScroll}
-					>
-						<img
-							alt={`${mediaItem.title} - ${mediaItem.source}`}
-							src={imageUrl}
+				<a
+					className={`media-item-link media-item-image-link ${(imageUrl.length ? 'media-item-image-link--with-image' : '')}`}
+					href={mediaItem.link}
+					target="_blank" rel="noopener noreferrer"
+					onClick={self.linkTomediaItemOrScroll}
+				>
+					{imageUrl.length ?
+						<div
 							className="media-item-image"
+							style={styles.thumbnailImage}
 						/>
-					</a>
-				: ''}
+					: ''}
+				</a>
 				<div className="media-item-info">
 					<span
 						className="media-item-source"

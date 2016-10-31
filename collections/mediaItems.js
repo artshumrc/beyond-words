@@ -32,7 +32,7 @@ Schemas.MediaItems = new SimpleSchema({
 	},
 	*/
 
-	image: {
+	/* image: {
 		type: String,
 		optional: true,
 		label: 'Image thumbnail (not for viewer)',
@@ -42,7 +42,7 @@ Schemas.MediaItems = new SimpleSchema({
 				collection: 'Attachments',
 			},
 		},
-	},
+	}, */
 
 	createdAt: {
 		type: Date,
