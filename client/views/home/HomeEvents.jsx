@@ -23,6 +23,7 @@ HomeEvents = React.createClass({
 			regFormNov4: false,
 			regFormNov5: false,
 			hasRegistered: false,
+			pastEventsShow: false,
 		};
 	},
 
@@ -83,7 +84,7 @@ HomeEvents = React.createClass({
 				regFormNov5: !this.state.regFormNov5,
 			});
 		} else {
-			//console.log('handleChange error');
+			// console.log('handleChange error');
 		}
 	},
 
@@ -140,7 +141,7 @@ HomeEvents = React.createClass({
 			// on the client
 			Meteor.call('register', values, (error) => {
 				if (error) {
-					//console.log(error);
+					// console.log(error);
 				}
 			});
 
@@ -154,9 +155,13 @@ HomeEvents = React.createClass({
 		}
 	},
 
-	render() {
-		const that = this;
+	togglePastEvents() {
+		this.setState({
+			pastEventsShow: !this.state.pastEventsShow,
+		});
+	},
 
+	render() {
 		const styles = {
 			contentContainerStyle: {
 				background: '#fafafa',
@@ -203,11 +208,22 @@ HomeEvents = React.createClass({
 
 		const errorText = this.state.errorText;
 		const checkboxErrorText = this.state.checkboxErrorText;
-		console.log(this.data);
+
+		const pastEvents = [];
+		const futureEvents = [];
+		const now = Date.now();
+
+		this.data.events.forEach((event) => {
+			if (event.date.getTime() > now) {
+				futureEvents.push(event);
+			} else {
+				pastEvents.push(event);
+			}
+		});
 
 		return (
 			<div>
-				<section id="events">
+				<section id="events" className={`events-section ${this.state.pastEventsShow ? 'events-section--past-events' : ''}`}>
 					<div className="container">
 						<h2 className="events-title text-center">Events</h2>
 						<h5 className="thin text-center">
@@ -216,14 +232,48 @@ HomeEvents = React.createClass({
 								the Samuel H. Kress Foundation.
 							</em>
 						</h5>
-						<ul className="events-list">
-							{this.data.events.map((event, i) => (
+						<ul className="events-list future-events-list">
+							{futureEvents.map((event, i) => (
 								<EventItem
 									key={i}
 									event={event}
-									/>
+									pastEvent={false}
+								/>
 							))}
 						</ul>
+
+						<br />
+						<br />
+						<br />
+
+						<div className='past-events'>
+							<h3 className="thin text-center">
+								Past Events
+							</h3>
+							<ul className="events-list">
+								{pastEvents.map((event, i) => (
+									<EventItem
+										key={i}
+										event={event}
+										pastEvent={true}
+									/>
+								))}
+							</ul>
+						</div>
+
+						<a
+							className="btn btn-large md-button more-events-button md-ink-ripple paper-shadow"
+							onClick={this.togglePastEvents}
+						>
+							{this.state.pastEventsShow ?
+								<span>Hide past events</span>
+							:
+								<span>Show past events</span>
+							}
+							<div className="md-ripple-container" />
+
+						</a>
+
 					</div>
 				</section>
 				<section id="symposium">

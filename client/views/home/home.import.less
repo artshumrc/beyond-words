@@ -490,7 +490,25 @@ section#catalog {
 
 section#events {
   background:#eee;
+	text-align: center;
+
+	&.events-section--past-events {
+		.past-events {
+			display:block;
+		}
+	}
+
+	.more-events-button {
+		display:inline-block;
+		margin:0 auto;
+	}
+
 }
+
+.past-events {
+	display:none;
+}
+
 li.event-item {
   padding: 10px 10px 10px 0;
   border: 1px solid #ccc;

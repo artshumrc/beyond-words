@@ -42,8 +42,6 @@ MediaItem = React.createClass({
 			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
 		}
 
-		console.log(image);
-
 		return (
 			<div
 				className={`media-item wow fadeIn media-item--${mediaItem._id}`}

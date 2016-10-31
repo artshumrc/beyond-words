@@ -8,14 +8,15 @@ import moment from 'moment-timezone';
 EventItem = React.createClass({
 
 	propTypes: {
-		event: React.PropTypes.object,
+		event: React.PropTypes.object.isRequired,
+		pastEvent: React.PropTypes.bool,
 	},
 
 	childContextTypes: {
 		muiTheme: React.PropTypes.object.isRequired,
 	},
 
-	componentDidMount(){
+	componentDidMount() {
 		const event = this.props.event;
 		let startDate,
 			endDate;
@@ -69,10 +70,11 @@ EventItem = React.createClass({
 
 	render(){
 		const event = this.props.event;
+		const pastEvent = this.props.pastEvent;
 		const self = this;
 
 		return <li
-						className={"event-item wow fadeIn event-item--" + event._id}
+						className={`event-item wow fadeIn event-item--${event._id} ${pastEvent ? 'event-item--past-event' : ''}`}
 					>
 						<div className="event-calendar-date">
 							<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
