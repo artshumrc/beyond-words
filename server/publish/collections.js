@@ -36,6 +36,7 @@ if (Meteor.isServer) {
 
 	Meteor.publish('events', () => Events.find());
 	Meteor.publish('attachments', () => Attachments.find());
+	Meteor.publish('mediaItems', () => MediaItems.find());
 
 
 	Meteor.publish('images', () => {

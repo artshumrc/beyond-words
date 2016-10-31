@@ -20,6 +20,7 @@ HomeContent = React.createClass({
 				<HomeCover />
 				<HomeOverview />
 				<HomeNarrative />
+				<HomeMedia />
 				<HomeTwitter />
 				<HomePlanYourTrip />
 				<HomeEvents />
