@@ -15,11 +15,11 @@ ObjectTeaser = React.createClass({
 		selectObject: React.PropTypes.func,
 	},
 
-	mixins: [ReactMeteorData],
-
 	childContextTypes: {
 		muiTheme: React.PropTypes.object.isRequired,
 	},
+
+	mixins: [ReactMeteorData],
 
 	getInitialState() {
 		return {
@@ -29,20 +29,6 @@ ObjectTeaser = React.createClass({
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
-
-	getMeteorData() {
-		let attachment = null;
-
-		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
-		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
-			attachment = Attachments.findOne({ _id: this.props.object.image });
-			//thumbnails = Thumbnails.find({}).fetch();
-		}
-
-		return {
-			attachment,
-		};
 	},
 
 	componentDidMount(){
@@ -59,6 +45,20 @@ ObjectTeaser = React.createClass({
 		}, 3000);
 
 
+	},
+
+	getMeteorData() {
+		let attachment = null;
+
+		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
+		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
+			attachment = Attachments.findOne({ _id: this.props.object.image });
+			//thumbnails = Thumbnails.find({}).fetch();
+		}
+
+		return {
+			attachment,
+		};
 	},
 
 

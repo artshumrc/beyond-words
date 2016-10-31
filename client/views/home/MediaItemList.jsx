@@ -1,4 +1,4 @@
-import moment from 'moment-timezone';
+import Masonry from 'react-masonry-component/lib';
 
 MediaItemList = React.createClass({
 
@@ -24,8 +24,14 @@ MediaItemList = React.createClass({
 	},
 
 	render() {
+		const masonryOptions = {
+			isFitWidth: true,
+			transitionDuration: 300,
+		};
+
 		return (
-			<div
+			<Masonry
+				options={masonryOptions}
 				className="media-item-list"
 			>
 				{this.data.mediaItems.map((mediaItem, index) => (
@@ -34,7 +40,7 @@ MediaItemList = React.createClass({
 						mediaItem={mediaItem}
 					/>
 				))}
-			</div>
+			</Masonry>
 		);
 	},
 });

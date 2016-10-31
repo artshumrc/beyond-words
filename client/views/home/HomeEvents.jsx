@@ -255,7 +255,7 @@ HomeEvents = React.createClass({
 					}
 
 					<Tabs
-						className="program-tabs"
+						className="program-tabs container"
 						contentContainerStyle={styles.contentContainerStyle}
 						inkBarStyle={styles.inkBarStyle}
 						tabItemContainerStyle={styles.tabItemContainerStyle}
