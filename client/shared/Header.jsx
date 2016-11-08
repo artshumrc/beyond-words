@@ -33,6 +33,11 @@ Header = React.createClass({
 
 		e.preventDefault();
 	},
+	scrollToNews(e) {
+		$('html, body').animate({ scrollTop: $('#news').offset().top - 100 }, 300);
+
+		e.preventDefault();
+	},
 	scrollToSymposium(e) {
 		$('html, body').animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
 
@@ -117,9 +122,19 @@ Header = React.createClass({
 										<li>
 											<FlatButton
 												style={styles.flatButton}
-												label="EVENTS" href="#events"
+												label="EVENTS"
+												href="#events"
 												onClick={this.scrollToEvents}
 												onTouchTap={this.scrollToEvents}
+											/>
+										</li>
+										<li>
+											<FlatButton
+												style={styles.flatButton}
+												label="NEWS"
+												href="#news"
+												onClick={this.scrollToNews}
+												onTouchTap={this.scrollToNews}
 											/>
 										</li>
 										<li>
