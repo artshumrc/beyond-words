@@ -5,7 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 
-FullscreenViewer = React.createClass({
+IPadFullscreenViewer = React.createClass({
 
 	propTypes: {
 		imageUrl: React.PropTypes.string.isRequired,

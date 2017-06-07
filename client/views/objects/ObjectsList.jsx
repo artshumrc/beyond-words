@@ -1,6 +1,5 @@
 import Masonry from 'react-masonry-component/lib';
 import { debounce } from 'throttle-debounce';
-import Slider from 'react-slick';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import InfiniteScroll from '../../../imports/InfiniteScroll.jsx';
