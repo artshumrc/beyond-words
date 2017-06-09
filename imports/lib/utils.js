@@ -56,7 +56,7 @@ this.Utils = {
 		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 	loginRequired: () => Router.go('/sign-in'),
 	scroll_to_top: () => $('html,body').animate({ scrollTop: $('body').offset().top }, 500),
-	scroll_to_elem: (selector) =>
+	scroll_to_elem: selector =>
 		$('html,body').animate({ scrollTop: $(selector).offset().top }, 500),
 	init_headroom: () => {
 		const headroom = new Headroom(document.getElementById('header'));

@@ -85,12 +85,12 @@ LeftMenu = React.createClass({
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>
-				<MenuItem
+					<MenuItem
 						href="/#catalog"
 						primaryText="PRINT CATALOG"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
-					/>
+     />
 					<MenuItem
 						href="/#lenders"
 						primaryText="LENDERS"

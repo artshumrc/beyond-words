@@ -147,27 +147,27 @@ Header = React.createClass({
 											/>
 										</li>
 										<li
-											className='catalog-item'
-											>
+											className="catalog-item"
+          >
 											<FlatButton
 												style={styles.flatButton}
 												label="CATALOG"
 												href="/catalog"
 											/>
-										<div className='dropdown-panel'>
-											<FlatButton
-												style={styles.flatButton}
-												label="ONLINE"
-												href="/catalog"
-											/>
-											<FlatButton
+											<div className="dropdown-panel">
+												<FlatButton
+													style={styles.flatButton}
+													label="ONLINE"
+													href="/catalog"
+            />
+												<FlatButton
 													style={styles.flatButton}
 													label="PRINT"
 													href="#"
 													onClick={this.scrollToCatalog}
 													onTouchTap={this.scrollToSymposium}
-												/>
-										</div>
+            />
+											</div>
 										</li>
 										<li>
 											<FlatButton

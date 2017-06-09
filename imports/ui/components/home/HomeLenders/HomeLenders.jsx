@@ -14,7 +14,7 @@ HomeLenders = React.createClass({
 
 	render() {
 		const masonryOptions = {
-			fitWidth : true,
+			fitWidth: true,
 			transitionDuration: 300,
 		};
 

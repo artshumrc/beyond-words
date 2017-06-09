@@ -30,7 +30,7 @@ ThumbnailScroll = React.createClass({
 					{this.props.thumbnailList.map((thumbnail, i) => (
 						<div
 							key={i}
-							className={(this.props.activeSlide === i ) ?
+							className={(this.props.activeSlide === i) ?
 								'image thumbnail-image-scroll thumbnail-image--active-slide'
 								: 'image thumbnail-image-scroll'
 							}

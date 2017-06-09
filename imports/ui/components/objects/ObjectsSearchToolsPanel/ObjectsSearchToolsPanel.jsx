@@ -40,9 +40,9 @@ ObjectsSearchToolsPanel = React.createClass({
 	componentDidMount() {
 		Meteor.call('searchTools', (err, res) => {
 			if (err) {
-				//console.log(err);
+				// console.log(err);
 			} else {
-				//console.log('searchTools response', res);
+				// console.log('searchTools response', res);
 				this.setState({
 					scribes: res.scribes,
 					illuminators: res.illuminators,

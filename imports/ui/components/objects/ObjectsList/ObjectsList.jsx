@@ -60,7 +60,7 @@ ObjectsList = React.createClass({
 				break;
 
 			case 'hasViewer':
-				query.$or = [{$where: "(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)"}, {hasImageViewer: true}];
+				query.$or = [{$where: '(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)'}, {hasImageViewer: true}];
 				break;
 
 			case 'scribes':
@@ -91,7 +91,7 @@ ObjectsList = React.createClass({
 			}
 		});
 
-		//console.log('Objects query:', query);
+		// console.log('Objects query:', query);
 		const handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
 		if (handle.ready()) {
 			objects = Objects.find({}, {}).fetch();
@@ -145,7 +145,7 @@ ObjectsList = React.createClass({
 		}
 	},
 	renderObjects() {
-		return this.objects.map((object) => (
+		return this.objects.map(object => (
 			<ObjectTeaser
 				key={object._id}
 				object={object}
@@ -162,7 +162,7 @@ ObjectsList = React.createClass({
 		} else {
 			// $("html, body").animate({ scrollTop: 0 }, "fast");
 			this.data.objects.forEach((object) => {
-				if (!self.objects.some((existingObject) => existingObject._id === object._id)) {
+				if (!self.objects.some(existingObject => existingObject._id === object._id)) {
 					self.objects.push(object);
 				}
 			});
@@ -178,9 +178,9 @@ ObjectsList = React.createClass({
 		};
 
 		const selectedObject = this.props.selectedObject;
-		if(selectedObject && "objectDetailSlider" in self.refs){
-			this.objects.forEach(function(object, i){
-				if(object.catalog_n === selectedObject.catalog_n){
+		if (selectedObject && 'objectDetailSlider' in self.refs) {
+			this.objects.forEach(function(object, i) {
+				if (object.catalog_n === selectedObject.catalog_n) {
 					self.refs.objectDetailSlider.slickGoTo(i);
 
 				}
@@ -190,7 +190,7 @@ ObjectsList = React.createClass({
 
 		const settings = {
 			focusOnSelect: true,
-			//dots: true,
+			// dots: true,
 			infinite: false,
 			slidesToShow: 4,
 			slidesToScroll: 1,
@@ -237,7 +237,8 @@ ObjectsList = React.createClass({
 									{this.objects.map((object, i) => (
 										<div
 											key={i}
-											className="object-scroll-teaser">
+											className="object-scroll-teaser"
+          >
 											<ObjectTeaser
 												object={object}
 												selectObject={self.props.selectObject}
@@ -246,7 +247,7 @@ ObjectsList = React.createClass({
 									))}
 								</div>
 							</div>
-						: ""}
+						: ''}
 
 					</div>
 				:
@@ -266,9 +267,9 @@ ObjectsList = React.createClass({
 									{this.renderObjects()}
 								</Masonry>
 								:
-								<div className="objects-container objects-container--list row">
-									{this.renderObjects()}
-								</div>
+									<div className="objects-container objects-container--list row">
+										{this.renderObjects()}
+									</div>
 							}
 						</InfiniteScroll>
 

@@ -111,19 +111,19 @@ IPadSpreadView = React.createClass({
 				<div className="row">
 					<div className="col-xs-11 center-block clear">
 						<Slider className="spread-view-slider"{...settings}>
-						{this.props.slides.map((slide, i) => (
-							<div key={i}>
-								<div className="image">
-									<Paper zDepth={0}>
-										<img
-											alt="slide"
-											onClick={this.handleSlideOpen.bind(this, slide)}
-											className="center-block"
-											src={slide}
-										/>
-									</Paper>
+							{this.props.slides.map((slide, i) => (
+								<div key={i}>
+									<div className="image">
+										<Paper zDepth={0}>
+											<img
+												alt="slide"
+												onClick={this.handleSlideOpen.bind(this, slide)}
+												className="center-block"
+												src={slide}
+           />
+										</Paper>
+									</div>
 								</div>
-							</div>
 						))}
 						</Slider>
 						<p className="coaching-text">

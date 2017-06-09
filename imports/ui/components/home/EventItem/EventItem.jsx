@@ -23,29 +23,29 @@ EventItem = React.createClass({
 		let tmp;
 
 		tmp = moment.utc(event.date);
-		tmp.hours(tmp.hours()+4);
+		tmp.hours(tmp.hours() + 4);
 		startDate = tmp.toString();
 
-		if('endDate' in event){
+		if ('endDate' in event) {
 			tmp = moment.utc(event.endDate);
 
-		}else {
+		} else {
 			tmp = moment.utc(event.date);
-			tmp.hours(tmp.hours()+6);
+			tmp.hours(tmp.hours() + 6);
 
 		}
 		endDate = tmp.toString();
 
 		const singleEventArgs = {
-			title			 : event.title,
-			start			 : startDate,
-			end				 : endDate,
-			location		: event.location || "Houghton Library, Harvard University, Harvard Yard, Cambridge, MA 02138",
-			description : event.description || "description",
+			title: event.title,
+			start: startDate,
+			end: endDate,
+			location: event.location || 'Houghton Library, Harvard University, Harvard Yard, Cambridge, MA 02138',
+			description: event.description || 'description',
 		};
 		const singleEvent = new Add2Calendar(singleEventArgs);
 		const singleEventNode = singleEvent.getSingleEventWidgetNode();
-		document.querySelector('.event-item--' + event._id + ' .add-to-calendar').appendChild(singleEventNode);
+		document.querySelector(`.event-item--${event._id} .add-to-calendar`).appendChild(singleEventNode);
 
 	},
 
@@ -68,39 +68,38 @@ EventItem = React.createClass({
 	},
 
 
-	render(){
+	render() {
 		const event = this.props.event;
 		const pastEvent = this.props.pastEvent;
 		const self = this;
 
-		return <li
-						className={`event-item wow fadeIn event-item--${event._id} ${pastEvent ? 'event-item--past-event' : ''}`}
-					>
-						<div className="event-calendar-date">
-							<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
-							<h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
-							<h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
-						</div>
-						<div className="event-info">
-							{event.link && event.link !== "#" ?
-								<a
-									className="event-link"
-									href={event.link}
-									target="_blank" rel="noopener noreferrer"
-									onClick={self.linkToEventOrScroll}
-								>
-									<h3 className="event-title">
-										{event.title}
-										<i className="mdi mdi-open-in-new"></i>
-									</h3>
-								</a>
+		return (<li
+			className={`event-item wow fadeIn event-item--${event._id} ${pastEvent ? 'event-item--past-event' : ''}`}
+  >
+			<div className="event-calendar-date">
+				<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
+				<h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
+				<h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
+			</div>
+			<div className="event-info">
+				{event.link && event.link !== '#' ?
+					<a
+						className="event-link"
+						href={event.link}
+						target="_blank" rel="noopener noreferrer"
+						onClick={self.linkToEventOrScroll}
+     >
+						<h3 className="event-title">
+							{event.title}
+							<i className="mdi mdi-open-in-new" />
+						</h3>
+					</a>
 							:
 								<h3 className="event-title">{event.title}</h3>
 							}
-							<div className="add-to-calendar">
-							</div>
-						</div>
-					</li>
+				<div className="add-to-calendar" />
+			</div>
+		</li>);
 
 	}
 });

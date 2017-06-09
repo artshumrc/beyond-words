@@ -28,7 +28,7 @@ ViewerThumbnailScrollSpread = React.createClass({
 					{this.props.thumbnailList.map((thumbnail, i) => (
 						<div
 							key={i}
-							className={(this.props.activeSlide === (i - 1) || this.props.activeSlide === (i) ) ?
+							className={(this.props.activeSlide === (i - 1) || this.props.activeSlide === (i)) ?
 								'image thumbnail-image-scroll thumbnail-image--active-slide'
 								: 'image thumbnail-image-scroll'
 							}
@@ -37,7 +37,7 @@ ViewerThumbnailScrollSpread = React.createClass({
 							<img
 								alt="thumbnail"
 								className="center-block"
-								src={'https://s3.amazonaws.com/beyond-words/thumbnails/' + thumbnail}
+								src={`https://s3.amazonaws.com/beyond-words/thumbnails/${thumbnail}`}
 							/>
 						</div>
 					))}

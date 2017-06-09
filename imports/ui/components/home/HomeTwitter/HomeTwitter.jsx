@@ -29,7 +29,7 @@ HomeTwitter = React.createClass({
 	},
 	render() {
 		// console.log(this.data.ready, this.data.tweets);
-		const linkifyTwitter = (text) => linkifyHtml(text, {
+		const linkifyTwitter = text => linkifyHtml(text, {
 			formatHref(value, type) {
 				if (type === 'hashtag') {
 					return `https://twitter.com/hashtag/${value.substring(1)}`;

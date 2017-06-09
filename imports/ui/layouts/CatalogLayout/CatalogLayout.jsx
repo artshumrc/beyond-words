@@ -19,13 +19,13 @@ CatalogLayout = React.createClass({
 	},
 
 	loadMoreObjects() {
-		if(!(this.props.selectedObjectSlug || "catalog_n" in this.state.selectedObject)){
+		if (!(this.props.selectedObjectSlug || 'catalog_n' in this.state.selectedObject)) {
 			this.setState({
 				skip: this.state.skip + this.state.limit,
 			});
 
-		}else {
-			//console.log("did not load more objects");
+		} else {
+			// console.log("did not load more objects");
 		}
 	},
 
@@ -76,11 +76,11 @@ CatalogLayout = React.createClass({
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 
-		if(location.pathname !== "/catalog" || location.pathname !== "/catalog/") {
-			FlowRouter.go("/catalog");
+		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
+			FlowRouter.go('/catalog');
 
 		}
-		location.hash = "";
+		location.hash = '';
 
 	},
 
@@ -88,22 +88,22 @@ CatalogLayout = React.createClass({
 		let filters = this.state.filters;
 		let isInFilters = false;
 
-		filters.forEach(function(filter){
-			if(filter.key === 'hasViewer'){
+		filters.forEach(function(filter) {
+			if (filter.key === 'hasViewer') {
 				filter.values[0] = value;
 				isInFilters = true;
 			}
 		});
 
-		if(!isInFilters){
+		if (!isInFilters) {
 			filters.push({
 				key: 'hasViewer',
 				values: [true],
-			})
+			});
 		}
 
-		if(isInFilters && value === false){
-			filters = filters.filter(function( obj ) {
+		if (isInFilters && value === false) {
+			filters = filters.filter(function(obj) {
 				return obj.key !== 'hasViewer';
 			});
 		}
@@ -116,11 +116,11 @@ CatalogLayout = React.createClass({
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 
-		if(location.pathname !== "/catalog" || location.pathname !== "/catalog/") {
-			FlowRouter.go("/catalog");
+		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
+			FlowRouter.go('/catalog');
 
 		}
-		location.hash = "";
+		location.hash = '';
 	},
 
 	handleChangeTextsearch(textsearch) {
@@ -163,7 +163,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-		location.hash = "";
+		location.hash = '';
 	},
 
 	handleChangeCatalogNSearch(catalogN) {
@@ -206,7 +206,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-		location.hash = "";
+		location.hash = '';
 	},
 
 	handleChangeDate(e) {
@@ -280,7 +280,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-		location.hash = "";
+		location.hash = '';
 	},
 
 
@@ -292,7 +292,7 @@ CatalogLayout = React.createClass({
 			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-		location.hash = "";
+		location.hash = '';
 	},
 
 	selectObject(selectedObject) {
@@ -304,8 +304,8 @@ CatalogLayout = React.createClass({
 			selectedObject,
 			catalogTitleText,
 		});
-		$("html, body").animate({ scrollTop: 0 }, "slow");
-		if(location.pathname.indexOf(selectedObject.slug) < 0){
+		$('html, body').animate({ scrollTop: 0 }, 'slow');
+		if (location.pathname.indexOf(selectedObject.slug) < 0) {
 			// FlowRouter.go("/catalog/" + selectedObject.slug);
 		}
 	},
@@ -313,14 +313,14 @@ CatalogLayout = React.createClass({
 	closeSelectedObject() {
 		this.setState({
 			selectedObject: {},
-			objectToSelectSlug: "",
+			objectToSelectSlug: '',
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
-		FlowRouter.go("/catalog");
-		location.hash = "";
+		FlowRouter.go('/catalog');
+		location.hash = '';
 	},
 
-	openViewer(){
+	openViewer() {
 
 		this.setState({
 			viewerOpen: true,
@@ -328,7 +328,7 @@ CatalogLayout = React.createClass({
 
 	},
 
-	closeViewer(){
+	closeViewer() {
 
 		this.setState({
 			viewerOpen: false,
@@ -336,7 +336,7 @@ CatalogLayout = React.createClass({
 
 	},
 
-	openMiradorViewer(){
+	openMiradorViewer() {
 
 		this.setState({
 			miradorOpen: true,
@@ -344,7 +344,7 @@ CatalogLayout = React.createClass({
 
 	},
 
-	closeMiradorViewer(){
+	closeMiradorViewer() {
 
 		this.setState({
 			miradorOpen: false,
@@ -354,7 +354,7 @@ CatalogLayout = React.createClass({
 
 
 	render() {
-		//console.log('CatalogLayout.filters', this.state.filters);
+		// console.log('CatalogLayout.filters', this.state.filters);
 		const selectedObject = this.state.selectedObject;
 
 		return (
@@ -393,7 +393,7 @@ CatalogLayout = React.createClass({
 				<CatalogFooter />
 
 				{selectedObject.miradorLink ?
-					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
+					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer'}>
 						<i
 							className="mdi mdi-close close-viewer"
 							onClick={this.closeMiradorViewer}
@@ -401,20 +401,20 @@ CatalogLayout = React.createClass({
 						<iframe src={selectedObject.miradorLink} />
 					</div>
 
-					: ""
+					: ''
 				}
 				{selectedObject.hasImageViewer ?
-					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer' }>
+					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer'}>
 						<i
 							className="mdi mdi-close close-viewer"
 							onClick={this.closeViewer}
 						/>
 						<BeyondWordsViewer
 							selectedObject={selectedObject}
-							/>
+      />
 					</div>
 
-					: ""
+					: ''
 				}
 			</div>
 		);

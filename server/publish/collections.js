@@ -16,7 +16,7 @@ if (Meteor.isServer) {
 		});
 	});
 
-	Meteor.publish('manuscripts', () => {
+	Meteor.publish('manuscripts', () => { // eslint-disable-line
 		return Objects.find({}, {
 			sort: {
 				catalog_n: 1,

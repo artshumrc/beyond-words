@@ -2,7 +2,7 @@ Template.registerHelper('Config', () => Config);
 
 Template.registerHelper('NCSchemas', () => NCSchemas);
 
-Template.registerHelper('socialMedia', () => _.map(Config.socialMedia, (obj) => obj));
+Template.registerHelper('socialMedia', () => _.map(Config.socialMedia, obj => obj));
 
 Template.registerHelper('Utils', () => Utils);
 
@@ -16,4 +16,4 @@ Template.registerHelper('currentRoute', () => {
 Template.registerHelper('isRouteReady', () =>
 	Router && Router.current && Router.current() && Router.current()._waitlist._notReadyCount === 0);
 
-Template.registerHelper('joinArray', (array) => array.join(', '));
+Template.registerHelper('joinArray', array => array.join(', '));

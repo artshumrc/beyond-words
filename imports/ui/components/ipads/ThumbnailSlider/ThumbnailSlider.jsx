@@ -52,14 +52,14 @@ ThumbnailSlider = React.createClass({
 				className="thumbnail-slider"
 			>
 				<Slider {...settings}>
-				{this.props.thumbnailList.map((thumbnail, i) => (
-					<div key={i}>
-						<div className="image">
-							<Paper zDepth={2}>
-								<img alt="thumbnail" className="center-block" src={thumbnail} />
-							</Paper>
+					{this.props.thumbnailList.map((thumbnail, i) => (
+						<div key={i}>
+							<div className="image">
+								<Paper zDepth={2}>
+									<img alt="thumbnail" className="center-block" src={thumbnail} />
+								</Paper>
+							</div>
 						</div>
-					</div>
 				))}
 				</Slider>
 			</Paper>

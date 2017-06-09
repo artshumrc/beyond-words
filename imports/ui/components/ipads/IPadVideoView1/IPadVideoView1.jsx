@@ -34,7 +34,7 @@ IPadVideoView1 = React.createClass({
 
 	getMeteorData() {
 		const query = {};
-		let object = {};
+		const object = {};
 
 		/*
 		const objectSubscription = Meteor.subscribe('objects', {});
@@ -161,7 +161,7 @@ IPadVideoView1 = React.createClass({
 					<video id="video1" controls>
 						<source
 							src="/videos/Illumination_1080.mp4"
-						></source>
+      />
 					</video>
 				</div>
 				<div className="ipad-video video-2">

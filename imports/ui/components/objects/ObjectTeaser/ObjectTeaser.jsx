@@ -31,11 +31,11 @@ ObjectTeaser = React.createClass({
 		return { muiTheme: getMuiTheme(baseTheme) };
 	},
 
-	componentDidMount(){
+	componentDidMount() {
 		const self = this;
 
-		setTimeout(function(){
-			if(!self.data.attachment){
+		setTimeout(function() {
+			if (!self.data.attachment) {
 				self.setState({
 					attachmentCheck: true,
 				});
@@ -53,7 +53,7 @@ ObjectTeaser = React.createClass({
 		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
 		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
 			attachment = Attachments.findOne({ _id: this.props.object.image });
-			//thumbnails = Thumbnails.find({}).fetch();
+			// thumbnails = Thumbnails.find({}).fetch();
 		}
 
 		return {
@@ -76,17 +76,17 @@ ObjectTeaser = React.createClass({
 			description = object.description;
 		}
 
-		let styles = {
-			thumbnailImage : {
+		const styles = {
+			thumbnailImage: {
 			},
 		};
 
 		let image = {};
-		let imageUrl = "";
+		let imageUrl = '';
 		if (this.data.attachment) {
 			image = this.data.attachment;
 			imageUrl = image.url();
-			styles.thumbnailImage.backgroundImage = 'url("' + imageUrl + '")';
+			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
 		}
 
 		return (
@@ -112,51 +112,51 @@ ObjectTeaser = React.createClass({
 										/>
 									</div>
 									:
-									<div>
-										<div className={"default-image-text " + (this.state.attachmentCheck ? " default-image-text-visible" : "")}>
-											<span>Preview image not available</span>
+										<div>
+											<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
+												<span>Preview image not available</span>
+											</div>
+											<img
+												alt={authorTitle}
+												className="object-detail-thumbnail default"
+												src="/images/default_image.jpg"
+           />
 										</div>
-										<img
-											alt={authorTitle}
-											className="object-detail-thumbnail default"
-											src="/images/default_image.jpg"
-										/>
-									</div>
 								}
 							</div>
 						</a>
 						:
-						<a
-							href={objectUrl}
-						>
-							<div className="object-thumbnail-wrap">
-								<div className="object-catalog-n">
-									<span>
-										{object.catalog_n}.
-									</span>
-								</div>
-								{(imageUrl.length) ?
-									<div>
-										<div
-											alt={authorTitle}
-											className="object-detail-thumbnail"
-											style={styles.thumbnailImage}
-										/>
+							<a
+								href={objectUrl}
+       >
+								<div className="object-thumbnail-wrap">
+									<div className="object-catalog-n">
+										<span>
+											{object.catalog_n}.
+										</span>
 									</div>
-									:
-									<div>
-										<div className={"default-image-text " + (this.state.attachmentCheck ? " default-image-text-visible" : "")}>
-											<span>Preview image not available</span>
+									{(imageUrl.length) ?
+										<div>
+											<div
+												alt={authorTitle}
+												className="object-detail-thumbnail"
+												style={styles.thumbnailImage}
+           />
 										</div>
-										<img
-											alt={authorTitle}
-											className="object-detail-thumbnail default"
-											src="/images/default_image.jpg"
-										/>
-									</div>
+									:
+										<div>
+											<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
+												<span>Preview image not available</span>
+											</div>
+											<img
+												alt={authorTitle}
+												className="object-detail-thumbnail default"
+												src="/images/default_image.jpg"
+           />
+										</div>
 								}
-							</div>
-						</a>
+								</div>
+							</a>
 					}
 					<div className="object-text-wrap">
 						{this.props.selectObject ?
@@ -167,9 +167,9 @@ ObjectTeaser = React.createClass({
 								<h3>{Utils.trunc(authorTitle, 60)}</h3>
 							</a>
 							:
-							<a href={objectUrl}>
-								<h3>{Utils.trunc(authorTitle, 60)}</h3>
-							</a>
+								<a href={objectUrl}>
+									<h3>{Utils.trunc(authorTitle, 60)}</h3>
+								</a>
 						}
 						<span className="object-teaser-subtitle">{object.date}</span>
 						<p>
@@ -191,7 +191,7 @@ ObjectTeaser = React.createClass({
 								<div className="object-teaser-meta">
 									<label>Institution{(object.institution_2 || object.institution_3) ? 's' : ''}</label>
 									<p>
-										{object.institution}{object.institution_2 ? (', ' + object.institution_2) : ''}{object.institution_3 ? (', ' + object.institution_3) : ''}
+										{object.institution}{object.institution_2 ? (`, ${object.institution_2}`) : ''}{object.institution_3 ? (`, ${object.institution_3}`) : ''}
 									</p>
 								</div>
 								:

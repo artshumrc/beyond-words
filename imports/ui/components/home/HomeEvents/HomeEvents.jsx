@@ -246,7 +246,7 @@ HomeEvents = React.createClass({
 						<br />
 						<br />
 
-						<div className='past-events'>
+						<div className="past-events">
 							<h3 className="thin text-center">
 								Past Events
 							</h3>
@@ -255,7 +255,7 @@ HomeEvents = React.createClass({
 									<EventItem
 										key={i}
 										event={event}
-										pastEvent={true}
+										pastEvent
 									/>
 								))}
 							</ul>
@@ -294,13 +294,13 @@ HomeEvents = React.createClass({
 
 						</a>
 						:
-						<a
-							className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
-						>
-							<span>Thank you for registering</span>
-							<div className="md-ripple-container" />
+							<a
+								className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+       >
+								<span>Thank you for registering</span>
+								<div className="md-ripple-container" />
 
-						</a>
+							</a>
 					}
 
 					<Tabs

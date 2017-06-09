@@ -25,11 +25,11 @@ FullscreenViewer = React.createClass({
 		const self = this;
 
 		const mediumUrl = self.props.imageUrl;
-		let dziUrl = self.props.imageUrl + ".dzi";
+		let dziUrl = `${self.props.imageUrl}.dzi`;
 
 		// add exception for hew wid 2 mss
-		if(~dziUrl.indexOf("hew_ms_widener_2")){
-			dziUrl = dziUrl.replace("jpg", "jp2");
+		if (~dziUrl.indexOf('hew_ms_widener_2')) {
+			dziUrl = dziUrl.replace('jpg', 'jp2');
 		}
 
 		/* eslint new-cap: "off" */
@@ -37,7 +37,7 @@ FullscreenViewer = React.createClass({
 			id: 'fullscreen-image',
 			prefixUrl: 'https://s3.amazonaws.com/beyond-words/',
 			autoHideControls: true,
-			//iOSDevice: true,
+			// iOSDevice: true,
 			showHomeControl: false,
 			showFullPageControl: false,
 			tileSources: {
@@ -48,8 +48,8 @@ FullscreenViewer = React.createClass({
 			tileSources: dziUrl,
 			*/
 		});
-		//this.viewer.setFullScreen(true);
-		/*this.viewer.addHandler('canvas-double-click', () => {
+		// this.viewer.setFullScreen(true);
+		/* this.viewer.addHandler('canvas-double-click', () => {
 			//const ifFullScreen = self.viewer.isFullPage();
 			//self.viewer.setFullScreen(!ifFullScreen);
 			//self.props.handleClose();
@@ -86,7 +86,7 @@ FullscreenViewer = React.createClass({
 
 		return (
 			<div
-				className={"fullscreen-viewer" + (this.props.open ? " fullscreen-viewer--open" : "")}
+				className={`fullscreen-viewer${this.props.open ? ' fullscreen-viewer--open' : ''}`}
 				bodyStyle={styles.noPadding}
 			>
 				<div className="fullscreen-viewer-inner">

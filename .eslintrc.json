@@ -68,6 +68,12 @@
 		"react/prefer-es6-class": "off",
 		"no-unused-vars": "off",
 		"no-prototype-builtins": "off",
+		"react/forbid-prop-types": "off",
+		"react/no-unused-prop-types": "off",
+		"jsx-a11y/no-static-element-interactions": "off",
+		"import/no-absolute-path": "off",
+		"func-names": "off",
+		"react/no-danger": "off",
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
 	}
 }

@@ -1,6 +1,6 @@
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import isDblTouchTap from "/imports/isDblTouchTap"
+import isDblTouchTap from '/imports/isDblTouchTap';
 import Masonry from 'react-masonry-component/lib';
 
 ViewerGrid = React.createClass({
@@ -46,7 +46,7 @@ ViewerGrid = React.createClass({
 	render() {
 		const self = this;
 		const masonryOptions = {
-			fitWidth : true,
+			fitWidth: true,
 			transitionDuration: 300,
 			originLeft: true,
 		};
@@ -55,7 +55,7 @@ ViewerGrid = React.createClass({
 			<div className="container viewer-container viewer-container--grid-view">
 				{this.state.open ?
 					<FullscreenViewer
-						imageUrl={'https://s3.amazonaws.com/beyond-words/medium/' + this.state.slide}
+						imageUrl={`https://s3.amazonaws.com/beyond-words/medium/${this.state.slide}`}
 						open={this.state.open}
 						handleClose={this.handleSlideClose}
 					/>
@@ -66,17 +66,17 @@ ViewerGrid = React.createClass({
 					options={masonryOptions}
 					className="grid-masonry"
 				>
-				{this.props.slides.map((slide, i) => (
-					<div key={i} className="grid-thumbnail">
-						<div className="image">
-							<img
-								alt="slide"
-								onClick={this.handleSlideOpen.bind(this, slide)}
-								className="center-block"
-								src={'https://s3.amazonaws.com/beyond-words/thumbnails/' + slide}
-							/>
+					{this.props.slides.map((slide, i) => (
+						<div key={i} className="grid-thumbnail">
+							<div className="image">
+								<img
+									alt="slide"
+									onClick={this.handleSlideOpen.bind(this, slide)}
+									className="center-block"
+									src={`https://s3.amazonaws.com/beyond-words/thumbnails/${slide}`}
+        />
+							</div>
 						</div>
-					</div>
 				))}
 				</Masonry>
 			</div>

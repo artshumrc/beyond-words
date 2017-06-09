@@ -39,9 +39,9 @@ IPadFullscreenViewer = React.createClass({
 		});
 		this.viewer.setFullScreen(true);
 		this.viewer.addHandler('canvas-double-click', () => {
-			//const ifFullScreen = self.viewer.isFullPage();
-			//self.viewer.setFullScreen(!ifFullScreen);
-			//self.props.handleClose();
+			// const ifFullScreen = self.viewer.isFullPage();
+			// self.viewer.setFullScreen(!ifFullScreen);
+			// self.props.handleClose();
 		});
 	},
 

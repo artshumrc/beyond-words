@@ -87,8 +87,8 @@ BeyondWordsViewer = React.createClass({
 			},
 		};
 
-		let selectedObject = this.props.selectedObject;
-		let slides = selectedObject.viewerImages;
+		const selectedObject = this.props.selectedObject;
+		const slides = selectedObject.viewerImages;
 
 		let authorTitle = '';
 

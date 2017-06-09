@@ -56,11 +56,11 @@ SinglePage = React.createClass({
 		const pageClass = `page page-${slug}`;
 		const headerImageSource = this.data.images[0] ? this.data.images[0].url : null;
 		if (headerImageSource) {
-			//console.log(headerImageSource);
+			// console.log(headerImageSource);
 			this.backgroundImages();
 		}
 		// var page = Pages.findOne({slug: slug});
-		//console.log(this.data.loading);
+		// console.log(this.data.loading);
 		if (this.data.loading) {
 			return (
 				<Loading />
@@ -76,7 +76,7 @@ SinglePage = React.createClass({
 
 				<section className="page-head fullscreen image-bg bg-dark">
 					<div className="background-image-holder less-blur blur">
-					{/* <img className="background-image" alt='image' src={headerImageSource}/>*/}
+						{/* <img className="background-image" alt='image' src={headerImageSource}/>*/}
 						<img
 							className="background-image"
 							role="presentation"

@@ -1,7 +1,7 @@
 Meteor.method('register', (content) => {
 	const validCandidate = {};
 
-	Object.keys(content).forEach(key => {
+	Object.keys(content).forEach((key) => {
 		let value = content[key];
 		if (['nov_3', 'nov_4', 'nov_5'].indexOf(key) >= 0) {
 			if (typeof value !== 'boolean') {

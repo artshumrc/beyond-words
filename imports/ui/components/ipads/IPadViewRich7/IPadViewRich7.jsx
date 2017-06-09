@@ -34,7 +34,7 @@ IPadViewRich7 = React.createClass({
 
 	getMeteorData() {
 		const query = {};
-		let object = {};
+		const object = {};
 
 		/*
 		const objectSubscription = Meteor.subscribe('objects', {});
@@ -178,225 +178,225 @@ IPadViewRich7 = React.createClass({
 				{iframe.length ?
 					<iframe src={iframe} width="100%" height="100%" />
 					:
-					<section className="page-content ipad-content">
-						<Toolbar
-							className="ipad-toolbar paper-shadow"
-							style={styles.toolBar}
-						>
-							<ToolbarGroup
-								className="toolbar-group toolbar-group-info"
-							>
-								<FontIcon
-									onClick={this.showInfoModal}
-									style={styles.icon}
-									className="mdi mdi-information"
-									color={grey500}
-									hoverColor={white}
-								/>
-								{/* <FontIcon
+						<section className="page-content ipad-content">
+							<Toolbar
+								className="ipad-toolbar paper-shadow"
+								style={styles.toolBar}
+       >
+								<ToolbarGroup
+									className="toolbar-group toolbar-group-info"
+        >
+									<FontIcon
+										onClick={this.showInfoModal}
+										style={styles.icon}
+										className="mdi mdi-information"
+										color={grey500}
+										hoverColor={white}
+         />
+									{/* <FontIcon
 									onClick={this.showVideo}
 									style={styles.icon}
 									className="mdi mdi-video"
 									color={grey500}
 									hoverColor={white}
 								/>*/}
-							</ToolbarGroup>
+								</ToolbarGroup>
 
-							<h3>{title}</h3>
+								<h3>{title}</h3>
 
-							<ToolbarGroup
-								className="toolbar-group toolbar-group-view-mode"
-							>
-								<RadioButtonGroup
-									style={styles.radioButtonGroup}
-									name="view"
-									defaultSelected="grid"
-									onChange={this.handleViewChange}
-								>
-									<RadioButton
-										value="grid"
-										checkedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-view-grid"
-											color={white}
-										/>}
-										uncheckedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-view-grid"
-											color={grey500}
-										/>}
-										style={styles.radioButton}
-									/>
-									<RadioButton
-										value="single"
-										checkedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-file-document-box"
-											color={white}
-										/>}
-										uncheckedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-file-document-box"
-											color={grey500}
-										/>}
-										style={styles.radioButton}
-									/>
-									<RadioButton
-										value="spread"
-										checkedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-book-open-variant"
-											color={white}
-										/>}
-										uncheckedIcon={<FontIcon
-											style={styles.icon}
-											className="mdi mdi-book-open-variant"
-											color={grey500}
-										/>}
-										style={styles.radioButton}
-									/>
-								</RadioButtonGroup>
-							</ToolbarGroup>
-						</Toolbar>
+								<ToolbarGroup
+									className="toolbar-group toolbar-group-view-mode"
+        >
+									<RadioButtonGroup
+										style={styles.radioButtonGroup}
+										name="view"
+										defaultSelected="grid"
+										onChange={this.handleViewChange}
+         >
+										<RadioButton
+											value="grid"
+											checkedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-view-grid"
+												color={white}
+           />}
+											uncheckedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-view-grid"
+												color={grey500}
+           />}
+											style={styles.radioButton}
+          />
+										<RadioButton
+											value="single"
+											checkedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-file-document-box"
+												color={white}
+           />}
+											uncheckedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-file-document-box"
+												color={grey500}
+           />}
+											style={styles.radioButton}
+          />
+										<RadioButton
+											value="spread"
+											checkedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-book-open-variant"
+												color={white}
+           />}
+											uncheckedIcon={<FontIcon
+												style={styles.icon}
+												className="mdi mdi-book-open-variant"
+												color={grey500}
+           />}
+											style={styles.radioButton}
+          />
+									</RadioButtonGroup>
+								</ToolbarGroup>
+							</Toolbar>
 
-						{(() => {
-							switch (this.state.view) {
-							case 'grid':
-								return <IPadGridView slides={slides} />;
-							case 'single':
-								return <IPadSingleView slides={slides} />;
-							case 'spread':
-								return <IPadSpreadView slides={slides} />;
-							default:
-								return <p>There is a problem displaying this view.</p>;
-							}
-						})()}
+							{(() => {
+								switch (this.state.view) {
+								case 'grid':
+									return <IPadGridView slides={slides} />;
+								case 'single':
+									return <IPadSingleView slides={slides} />;
+								case 'spread':
+									return <IPadSpreadView slides={slides} />;
+								default:
+									return <p>There is a problem displaying this view.</p>;
+								}
+							})()}
 
-						<Dialog
-							className="fullscreen-video"
-							open={this.state.videoOpen}
-							onRequestClose={this.handleClose}
-							bodyStyle={styles.noPadding}
-						>
-							<IconButton
-								className="close-fullscreen"
-								style={styles.closeButton}
-								onClick={this.handleClose}
-							>
-								<ContentClear />
-							</IconButton>
-							<div className="viewer-video">
-								<video controls>
-									<source
-										src="/videos/making_manuscripts_binding01.mp4"
-										type="video/mp4"
-									/>
-								</video>
-							</div>
+							<Dialog
+								className="fullscreen-video"
+								open={this.state.videoOpen}
+								onRequestClose={this.handleClose}
+								bodyStyle={styles.noPadding}
+       >
+								<IconButton
+									className="close-fullscreen"
+									style={styles.closeButton}
+									onClick={this.handleClose}
+        >
+									<ContentClear />
+								</IconButton>
+								<div className="viewer-video">
+									<video controls>
+										<source
+											src="/videos/making_manuscripts_binding01.mp4"
+											type="video/mp4"
+          />
+									</video>
+								</div>
 
-						</Dialog>
-						<div
-							className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
-						>
-							<IconButton
-								className="close-fullscreen"
-								style={styles.closeButton}
-								onClick={this.handleCloseInfoModal}
-							>
-								<ContentClear />
-							</IconButton>
-							<section className="object-details">
-								<div className="object-details-inner">
-									<div className="object-detail-text-wrap">
+							</Dialog>
+							<div
+								className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
+       >
+								<IconButton
+									className="close-fullscreen"
+									style={styles.closeButton}
+									onClick={this.handleCloseInfoModal}
+        >
+									<ContentClear />
+								</IconButton>
+								<section className="object-details">
+									<div className="object-details-inner">
+										<div className="object-detail-text-wrap">
 
-										<div className="object-detail-header">
-											<h2 className="card-title object-title">Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes</h2>
-										</div>
+											<div className="object-detail-header">
+												<h2 className="card-title object-title">Book of hours (“Habert du Berry d’Artois-Hoe Hours”), use of Sens and Troyes</h2>
+											</div>
 
-										<div className="object-detail-meta">
-											<label>Catalog No.</label>
-											<span>109</span>
-										</div>
-										{true ?
 											<div className="object-detail-meta">
-												<label>Date</label>
-												<span>c. 1470</span>
+												<label>Catalog No.</label>
+												<span>109</span>
 											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Date</label>
+													<span>c. 1470</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Place</label>
-												<span>Troyes, France</span>
-											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Place</label>
+													<span>Troyes, France</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Institution</label>
-												<span>Harvard University</span>
-											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Institution</label>
+													<span>Harvard University</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Collection</label>
-												<span>Houghton Library</span>
-											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Collection</label>
+													<span>Houghton Library</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Shelfmark</label>
-												<span>MS Richardson 7</span>
-											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Shelfmark</label>
+													<span>MS Richardson 7</span>
+												</div>
 										: ''}
-										{object.former_shelfmark ?
-											<div className="object-detail-meta">
-												<label>Former Shelfmark</label>
-												<span>Ms. 1510</span>
-											</div>
+											{object.former_shelfmark ?
+												<div className="object-detail-meta">
+													<label>Former Shelfmark</label>
+													<span>Ms. 1510</span>
+												</div>
 										: ''}
-										{object.scribe ?
-											<div className="object-detail-meta">
-												<label>Scribe</label>
-												<span>{object.scribe}</span>
-											</div>
+											{object.scribe ?
+												<div className="object-detail-meta">
+													<label>Scribe</label>
+													<span>{object.scribe}</span>
+												</div>
 										: ''}
-										{object.printer ?
-											<div className="object-detail-meta">
-												<label>Printer</label>
-												<span>{object.printer}</span>
-											</div>
+											{object.printer ?
+												<div className="object-detail-meta">
+													<label>Printer</label>
+													<span>{object.printer}</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Illuminator</label>
-												<span>Master of the Troyes Missal</span>
-											</div>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Illuminator</label>
+													<span>Master of the Troyes Missal</span>
+												</div>
 										: ''}
-										{object.externalUrl ?
-											<div className="object-detail-meta">
-												<label>External Link</label>
-												<span>
-													<a
-														href={object.externalUrl}
-														target="_blank"
-														rel="noopener noreferrer"
-													>
-														{object.externalUrl}
-													</a>
-												</span>
-											</div>
+											{object.externalUrl ?
+												<div className="object-detail-meta">
+													<label>External Link</label>
+													<span>
+														<a
+															href={object.externalUrl}
+															target="_blank"
+															rel="noopener noreferrer"
+              >
+															{object.externalUrl}
+														</a>
+													</span>
+												</div>
 										: ''}
-										{true ?
-											<div className="object-detail-meta">
-												<label>Description</label>
-												<span>
+											{true ?
+												<div className="object-detail-meta">
+													<label>Description</label>
+													<span>
 													Parchment, ff. i + 237, 266 x 184 (120 x 83) mm
-												</span>
-											</div>
+													</span>
+												</div>
 										: ''}
 
-									</div>
+										</div>
 
-									{/* <div className="object-detail-text-wrap">
+										{/* <div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
 											<h2 className="card-title object-title">{object.author_title}</h2>
@@ -483,13 +483,13 @@ IPadViewRich7 = React.createClass({
 
 									</div> */}
 
-								</div>
+									</div>
 
-							</section>
+								</section>
 
-						</div>
+							</div>
 
-					</section>
+						</section>
 				}
 			</div>
 		);

@@ -1,6 +1,6 @@
 App.icons({
-	'ipad': 'public/images/favicon_v3.png',
-	'ipad_2x': 'public/images/favicon_v3.png',
+	ipad: 'public/images/favicon_v3.png',
+	ipad_2x: 'public/images/favicon_v3.png',
 
 });
 

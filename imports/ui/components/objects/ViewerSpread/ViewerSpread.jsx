@@ -95,13 +95,13 @@ ViewerSpread = React.createClass({
 			arrows: true,
 		};
 
-		const supportsObjectFit = Modernizr.testProp("object-fit");
+		const supportsObjectFit = Modernizr.testProp('object-fit');
 		
 		return (
 			<div className="container viewer-container viewer-container--spread-view">
 				{this.state.open ?
 					<FullscreenViewer
-						imageUrl={'https://s3.amazonaws.com/beyond-words/medium/' + this.state.slide}
+						imageUrl={`https://s3.amazonaws.com/beyond-words/medium/${this.state.slide}`}
 						open={this.state.open}
 						handleClose={this.handleSlideClose}
 					/>
@@ -109,17 +109,17 @@ ViewerSpread = React.createClass({
 					''
 				}
 				<Slider className="spread-view-slider"{...settings}>
-				{this.props.slides.map((slide, i) => (
-					<div key={i}>
-						<div className="image">
-							<img
-								onClick={this.handleSlideOpen.bind(this, slide)}
-								className="center-block"
-								style={{backgroundImage:'url("https://s3.amazonaws.com/beyond-words/medium/' + slide + '")'}}
-								src={(supportsObjectFit) ? 'https://s3.amazonaws.com/beyond-words/medium/' + slide : ""}
-							/>
+					{this.props.slides.map((slide, i) => (
+						<div key={i}>
+							<div className="image">
+								<img
+									onClick={this.handleSlideOpen.bind(this, slide)}
+									className="center-block"
+									style={{backgroundImage: `url("https://s3.amazonaws.com/beyond-words/medium/${slide}")`}}
+									src={(supportsObjectFit) ? `https://s3.amazonaws.com/beyond-words/medium/${slide}` : ''}
+        />
+							</div>
 						</div>
-					</div>
 				))}
 				</Slider>
 				<div className="bottom-panel">

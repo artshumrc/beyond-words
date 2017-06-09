@@ -12,12 +12,12 @@ HomeNarrative = React.createClass({
 	},
 
 	toggleNarrative(e) {
-		const $narrativePanel = $(e.target).parents(".narrative-exhibit");
-		if($narrativePanel.hasClass("narrative-exhibit--expanded")){
-			$narrativePanel.removeClass("narrative-exhibit--expanded");
+		const $narrativePanel = $(e.target).parents('.narrative-exhibit');
+		if ($narrativePanel.hasClass('narrative-exhibit--expanded')) {
+			$narrativePanel.removeClass('narrative-exhibit--expanded');
 
-		}else {
-			$narrativePanel.addClass("narrative-exhibit--expanded");
+		} else {
+			$narrativePanel.addClass('narrative-exhibit--expanded');
 
 		}
 
@@ -74,7 +74,7 @@ HomeNarrative = React.createClass({
 								is manifest in the beauty of the books that were crafted in monasteries and convents.
 								Manuscripts on display at the Houghton Library highlight the scriptorium as both
 								a space for the production of manuscripts and the human collective that produced them.
-							</span>
+								</span>
 							</p>
 							<p className="read-more--hidden">
 								Major support for the Houghton Library portion of the exhibition has been provided
@@ -88,7 +88,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-								>
+       >
 								<span className="read-more-text">
 									Read More
 								</span>
@@ -119,7 +119,7 @@ HomeNarrative = React.createClass({
 								illumination. Various types of images, whether in prayer or professional books,
 								attest to the newfound importance of visual demonstration in matters of faith
 								and science alike.
-							</span>
+								</span>
 							</p>
 							<p className="read-more--hidden">
 								Major support for the McMullen portion of the exhibition has been provided by the
@@ -133,7 +133,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-								>
+       >
 								<span className="read-more-text">
 									Read More
 								</span>
@@ -157,13 +157,13 @@ HomeNarrative = React.createClass({
 						</h5>
 						<div className="narrative-read-more-panel">
 							<p>
-							<span className="preview-text">The Gardner Museum explores the birth of the modern book in fifteenth-century Italy,
+								<span className="preview-text">The Gardner Museum explores the birth of the modern book in fifteenth-century Italy,
 							which was the genesis of the radical shift from manuscript to print to digital culture
 							that evolved over the last 500 years. Against the backdrop of the present Digital Age
 							and current debates over the relevance of the book, the show invites visitors to
 							contemplate one era of revolution in the time of another.
-							</span>
-							<span className="read-more--hidden">
+								</span>
+								<span className="read-more--hidden">
 								&nbsp;The humanist book is revealed as an inexhaustible source of inspiration for artists
 								and the foremost nexus of intellectual and visual culture in the Italian Renaissance.
 								</span>
@@ -186,7 +186,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-								>
+       >
 								<span className="read-more-text">
 									Read More
 								</span>

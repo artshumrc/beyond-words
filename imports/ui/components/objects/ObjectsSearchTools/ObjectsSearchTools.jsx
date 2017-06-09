@@ -43,9 +43,9 @@ ObjectsSearchTools = React.createClass({
 	componentDidMount() {
 		Meteor.call('searchTools', (err, res) => {
 			if (err) {
-				//console.log(err);
+				// console.log(err);
 			} else {
-				//console.log('searchTools response', res);
+				// console.log('searchTools response', res);
 				this.setState({
 					scribes: res.scribes,
 					illuminators: res.illuminators,
@@ -107,8 +107,8 @@ ObjectsSearchTools = React.createClass({
 
 					<div className="search-tools">
 						<Toggle
-							className='search-tool search-type-mirador'
-							label='Has Viewer?'
+							className="search-tool search-type-mirador"
+							label="Has Viewer?"
 							onToggle={this.props.toggleMiradorSearch}
 						/>
 
