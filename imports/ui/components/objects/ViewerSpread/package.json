@@ -1,0 +1,6 @@
+{
+  "name": "ViewerSpread",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ViewerSpread.js"
+}

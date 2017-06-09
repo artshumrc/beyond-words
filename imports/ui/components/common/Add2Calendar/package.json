@@ -1,0 +1,6 @@
+{
+  "name": "Add2Calendar",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./Add2Calendar.js"
+}

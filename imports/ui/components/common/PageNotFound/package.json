@@ -1,0 +1,6 @@
+{
+  "name": "PageNotFound",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./PageNotFound.js"
+}

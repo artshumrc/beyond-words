@@ -2,7 +2,7 @@
 	"kind": "Service",
 	"apiVersion": "v1",
 	"metadata": {
-	"name": "ahcip-graphql-serv"
+	"name": "beyondwords-graphql-serv"
 	},
 	"spec": {
 		"ports": [
@@ -13,7 +13,7 @@
 			}
 		],
 		"selector": {
-			"name": "ahcip-app-pod"
+			"name": "beyondwords-app-pod"
 		},
 		"sessionAffinity": "ClientIP",
 		"type": "LoadBalancer"

@@ -2,9 +2,9 @@
 	"kind":"Deployment",
 	"apiVersion":"extensions/v1beta1",
 	"metadata": {
-		"name":"ahcip-app-dep",
+		"name":"beyondwords-app-dep",
 		"labels": {
-			"name":"ahcip-app-dep"
+			"name":"beyondwords-app-dep"
 		}
 	},
 	"spec":{
@@ -12,14 +12,14 @@
 		"template": {
 			"metadata": {
 				"labels": {
-					"name":"ahcip-app-pod"
+					"name":"beyondwords-app-pod"
 				}
 			},
 			"spec": {
 				"containers": [
 					{
-						"name": "ahcip-app-cont",
-						"image": "us.gcr.io/archimedes-01201/ahcip-app:latest",
+						"name": "beyondwords-app-cont",
+						"image": "us.gcr.io/archimedes-01201/beyondwords-app:latest",
 						"ports": [
 							{
 								"name": "http-server",
@@ -33,11 +33,11 @@
 							},
 							{
 								"name": "MONGO_URL",
-								"value": "mongodb://localhost/ahcipDev"
+								"value": "mongodb://localhost/beyondwordsDev"
 							},
 							{
 								"name": "ROOT_URL",
-								"value": "http://ahcip-dev.archimedes.digital"
+								"value": "http://beyondwords-dev.archimedes.digital"
 							},
 							{
 								"name": "UPLOAD_TMP",
