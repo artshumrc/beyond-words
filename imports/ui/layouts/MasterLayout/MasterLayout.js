@@ -1,6 +1,9 @@
-MasterLayout = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class MasterLayout extends React.Component {
 	propTypes: {
-		content: React.PropTypes.element,
+		content: PropTypes.element,
 	},
 
 	render() {

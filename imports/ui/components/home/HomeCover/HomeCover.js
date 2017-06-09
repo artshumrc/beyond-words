@@ -1,5 +1,7 @@
-HomeCover = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
 
+class HomeCover extends React.Component {
 	componentDidMount() {
 		// Image Sliders
 		$('.flexslider').flexslider({
@@ -8,16 +10,19 @@ HomeCover = React.createClass({
 			controlsContainer: '.slider-controls',
 			manualControls: '.slider-controls .bw-exhibit',
 		});
-	},
+	}
+
 	render() {
 		function flexNext() {
 			$('.flexslider').flexslider('next');
 			return false;
 		}
+
 		const flexPrev = () => {
 			$('.flexslider').flexslider('prev');
 			return false;
 		};
+
 		return (
 			<div>
 				<section id="intro" className="image-bg bg-dark cover fullscreen">
@@ -181,5 +186,5 @@ HomeCover = React.createClass({
 				</section>
 			</div>
 		);
-	},
-});
+	}
+}

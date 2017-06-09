@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  * Ref https://github.com/guillaumervls/react-infinite-scroll
  */

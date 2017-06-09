@@ -1,66 +1,56 @@
 
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import IconButton from 'material-ui/IconButton';
 
-HeaderCatalog = React.createClass({
-
-	propTypes: {
-		filters: React.PropTypes.array,
-		toggleSearchTerm: React.PropTypes.func,
-		handleChangeTextsearch: React.PropTypes.func,
-		handleChangeCatalogNSearch: React.PropTypes.func,
-		handleChangeDate: React.PropTypes.func,
-		catalogTitleText: React.PropTypes.string,
-		selectedObject: React.PropTypes.object,
-		toggleCatalogLayout: React.PropTypes.func,
-		closeSelectedObject: React.PropTypes.func,
-		catalogLayout: React.PropTypes.string,
-	},
-
+class HeaderCatalog extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getInitialState() {
 		return {
 			leftMenuOpen: false,
 			rightMenuOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	toggleLeftMenu() {
 		this.setState({
 			leftMenuOpen: !this.state.leftMenuOpen,
 		});
-	},
+	}
 
 	closeLeftMenu() {
 		this.setState({
 			leftMenuOpen: false,
 		});
-	},
+	}
+
 	toggleRightMenu() {
 		this.setState({
 			rightMenuOpen: !this.state.rightMenuOpen,
 		});
-	},
+	}
 
 	closeRightMenu() {
 		this.setState({
 			rightMenuOpen: false,
 		});
-	},
+	}
 
 	goBack() {
 		window.history.back();
-	},
+	}
 
 	render() {
 		const styles = {
@@ -75,9 +65,7 @@ HeaderCatalog = React.createClass({
 				width: 'auto',
 				minWidth: 'none',
 				height: '55px',
-
 			},
-
 		};
 
 		return (
@@ -171,5 +159,19 @@ HeaderCatalog = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
+
+HeaderCatalog.propTypes = {
+	filters: PropTypes.array,
+	toggleSearchTerm: PropTypes.func,
+	handleChangeTextsearch: PropTypes.func,
+	handleChangeCatalogNSearch: PropTypes.func,
+	handleChangeDate: PropTypes.func,
+	catalogTitleText: PropTypes.string,
+	selectedObject: PropTypes.object,
+	toggleCatalogLayout: PropTypes.func,
+	closeSelectedObject: PropTypes.func,
+	catalogLayout: PropTypes.string,
+	toggleMiradorSearch: PropTypes.func,
+};

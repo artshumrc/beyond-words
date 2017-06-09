@@ -1,6 +1,9 @@
-SinglePage = React.createClass({
+
+import React from 'react';
+import PropTypes from 'prop-types';
+class SinglePage extends React.Component {
 	propTypes: {
-		slug: React.PropTypes.string,
+		slug: PropTypes.string,
 	},
 	mixins: [ReactMeteorData],
 	getMeteorData() {

@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+/* eslint-disable */
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
@@ -9,16 +12,10 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadView = React.createClass({
-
-	propTypes: {
-	},
-
+class IPadView extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getInitialState() {
 		return {
@@ -26,11 +23,11 @@ IPadView = React.createClass({
 			videoOpen: false,
 			infoModalOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		const query = {};
@@ -48,34 +45,37 @@ IPadView = React.createClass({
 			ipad: IPads.find(query, { sort: { title: 1 } }).fetch(),
 			currentUser: Meteor.user(),
 		};
-	},
+	}
 
 	handleViewChange(event, value) {
 		this.setState({
 			view: value,
 		});
-	},
+	}
 
 	handleClose() {
 		this.setState({
 			videoOpen: false,
 		});
-	},
+	}
+
 	showVideo() {
 		this.setState({
 			videoOpen: true,
 		});
-	},
+	}
+
 	handleCloseInfoModal() {
 		this.setState({
 			infoModalOpen: false,
 		});
-	},
+	}
+
 	showInfoModal() {
 		this.setState({
 			infoModalOpen: true,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -143,288 +143,205 @@ IPadView = React.createClass({
 				{iframe.length ?
 					<iframe src={iframe} width="100%" height="100%" />
 					:
-						<section className="page-content ipad-content">
-							<Toolbar
-								className="ipad-toolbar paper-shadow"
-								style={styles.toolBar}
-       >
-								<ToolbarGroup
-									className="toolbar-group toolbar-group-info"
-        >
-									<FontIcon
-										onClick={this.showInfoModal}
-										style={styles.icon}
-										className="mdi mdi-information"
-										color={grey500}
-										hoverColor={white}
-         />
-									{/* <FontIcon
+					<section className="page-content ipad-content">
+						<Toolbar
+							className="ipad-toolbar paper-shadow"
+							style={styles.toolBar}
+						>
+							<ToolbarGroup
+								className="toolbar-group toolbar-group-info"
+							>
+								<FontIcon
+									onClick={this.showInfoModal}
+									style={styles.icon}
+									className="mdi mdi-information"
+									color={grey500}
+									hoverColor={white}
+								/>
+								{/* <FontIcon
 									onClick={this.showVideo}
 									style={styles.icon}
 									className="mdi mdi-video"
 									color={grey500}
 									hoverColor={white}
-								/>*/}
-								</ToolbarGroup>
+								/> */}
+							</ToolbarGroup>
 
-								<h3>{title}</h3>
+							<h3>{title}</h3>
 
-								<ToolbarGroup
-									className="toolbar-group toolbar-group-view-mode"
-        >
-									<RadioButtonGroup
-										style={styles.radioButtonGroup}
-										name="view"
-										defaultSelected="grid"
-										onChange={this.handleViewChange}
-         >
-										<RadioButton
-											value="grid"
-											checkedIcon={<FontIcon
+							<ToolbarGroup
+								className="toolbar-group toolbar-group-view-mode"
+							>
+								<RadioButtonGroup
+									style={styles.radioButtonGroup}
+									name="view"
+									defaultSelected="grid"
+									onChange={this.handleViewChange}
+								>
+									<RadioButton
+										value="grid"
+										checkedIcon={
+											<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={white}
-           />}
-											uncheckedIcon={<FontIcon
+											/>
+									 }
+										uncheckedIcon={
+											<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={grey500}
-           />}
-											style={styles.radioButton}
-          />
-										<RadioButton
-											value="single"
-											checkedIcon={<FontIcon
+											/>
+										}
+										style={styles.radioButton}
+									/>
+									<RadioButton
+										value="single"
+										checkedIcon={
+											<FontIcon
 												style={styles.icon}
 												className="mdi mdi-file-document-box"
 												color={white}
-           />}
-											uncheckedIcon={<FontIcon
-												style={styles.icon}
-												className="mdi mdi-file-document-box"
-												color={grey500}
-           />}
-											style={styles.radioButton}
-          />
-										<RadioButton
-											value="spread"
-											checkedIcon={<FontIcon
-												style={styles.icon}
-												className="mdi mdi-book-open-variant"
-												color={white}
-           />}
-											uncheckedIcon={<FontIcon
-												style={styles.icon}
-												className="mdi mdi-book-open-variant"
-												color={grey500}
-           />}
-											style={styles.radioButton}
-          />
-									</RadioButtonGroup>
-								</ToolbarGroup>
-							</Toolbar>
+											/>
+									 }
+										uncheckedIcon={<FontIcon
+											style={styles.icon}
+											className="mdi mdi-file-document-box"
+											color={grey500}
+				 />}
+										style={styles.radioButton}
+				/>
+									<RadioButton
+										value="spread"
+										checkedIcon={<FontIcon
+											style={styles.icon}
+											className="mdi mdi-book-open-variant"
+											color={white}
+				 />}
+										uncheckedIcon={<FontIcon
+											style={styles.icon}
+											className="mdi mdi-book-open-variant"
+											color={grey500}
+				 />}
+										style={styles.radioButton}
+				/>
+								</RadioButtonGroup>
+							</ToolbarGroup>
+						</Toolbar>
 
-							{(() => {
-								switch (this.state.view) {
-								case 'grid':
-									return <IPadGridView slides={slides} />;
-								case 'single':
-									return <IPadSingleView slides={slides} />;
-								case 'spread':
-									return <IPadSpreadView slides={slides} />;
-								default:
-									return <p>There is a problem displaying this view.</p>;
-								}
-							})()}
+						{(() => {
+							switch (this.state.view) {
+							case 'grid':
+								return <IPadGridView slides={slides} />;
+							case 'single':
+								return <IPadSingleView slides={slides} />;
+							case 'spread':
+								return <IPadSpreadView slides={slides} />;
+							default:
+								return <p>There is a problem displaying this view.</p>;
+							}
+						})()}
 
-							<Dialog
-								className="fullscreen-video"
-								open={this.state.videoOpen}
-								onRequestClose={this.handleClose}
-								bodyStyle={styles.noPadding}
-       >
-								<IconButton
-									className="close-fullscreen"
-									style={styles.closeButton}
-									onClick={this.handleClose}
-        >
-									<ContentClear />
-								</IconButton>
-								<div className="viewer-video">
-									<video controls>
-										<source
-											src="/videos/making_manuscripts_binding01.mp4"
-											type="video/mp4"
-          />
-									</video>
-								</div>
+						<Dialog
+							className="fullscreen-video"
+							open={this.state.videoOpen}
+							onRequestClose={this.handleClose}
+							bodyStyle={styles.noPadding}
+		 >
+							<IconButton
+								className="close-fullscreen"
+								style={styles.closeButton}
+								onClick={this.handleClose}
+			>
+								<ContentClear />
+							</IconButton>
+							<div className="viewer-video">
+								<video controls>
+									<source
+										src="/videos/making_manuscripts_binding01.mp4"
+										type="video/mp4"
+				/>
+								</video>
+							</div>
 
-							</Dialog>
-							<div
-								className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
-       >
-								<IconButton
-									className="close-fullscreen"
-									style={styles.closeButton}
-									onClick={this.handleCloseInfoModal}
-        >
-									<ContentClear />
-								</IconButton>
-								<section className="object-details">
-									<div className="object-details-inner">
-										<div className="object-detail-text-wrap">
-
-											<div className="object-detail-header">
-												<h2 className="card-title object-title">Book of hours</h2>
-											</div>
-
-											<div className="object-detail-meta">
-												<label>Catalog No.</label>
-												<span>45</span>
-											</div>
-											{true ?
-												<div className="object-detail-meta">
-													<label>Date</label>
-													<span>1470–80</span>
-												</div>
-										: ''}
-											{true ?
-												<div className="object-detail-meta">
-													<label>Place</label>
-													<span>London (?), England</span>
-												</div>
-										: ''}
-											{true ?
-												<div className="object-detail-meta">
-													<label>Institution</label>
-													<span>Harvard University</span>
-												</div>
-										: ''}
-											{true ?
-												<div className="object-detail-meta">
-													<label>Collection</label>
-													<span>Houghton Library</span>
-												</div>
-										: ''}
-											{true ?
-												<div className="object-detail-meta">
-													<label>Shelfmark</label>
-													<span>MS Widener 2</span>
-												</div>
-										: ''}
-											{object.former_shelfmark ?
-												<div className="object-detail-meta">
-													<label>Former Shelfmark</label>
-													<span>Ms. 1510</span>
-												</div>
-										: ''}
-											{object.scribe ?
-												<div className="object-detail-meta">
-													<label>Scribe</label>
-													<span>{object.scribe}</span>
-												</div>
-										: ''}
-											{object.printer ?
-												<div className="object-detail-meta">
-													<label>Printer</label>
-													<span>{object.printer}</span>
-												</div>
-										: ''}
-											{false ?
-												<div className="object-detail-meta">
-													<label>Illuminator</label>
-													<span>Master of the Troyes Missal</span>
-												</div>
-										: ''}
-											{object.externalUrl ?
-												<div className="object-detail-meta">
-													<label>External Link</label>
-													<span>
-														<a
-															href={object.externalUrl}
-															target="_blank"
-															rel="noopener noreferrer"
-              >
-															{object.externalUrl}
-														</a>
-													</span>
-												</div>
-										: ''}
-											{true ?
-												<div className="object-detail-meta">
-													<label>Description</label>
-													<span>
-													Parchment, ff. 111, 332 x 235 mm
-													</span>
-												</div>
-										: ''}
-
-										</div>
-
-										{/* <div className="object-detail-text-wrap">
+						</Dialog>
+						<div
+							className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
+		 >
+							<IconButton
+								className="close-fullscreen"
+								style={styles.closeButton}
+								onClick={this.handleCloseInfoModal}
+			>
+								<ContentClear />
+							</IconButton>
+							<section className="object-details">
+								<div className="object-details-inner">
+									<div className="object-detail-text-wrap">
 
 										<div className="object-detail-header">
-											<h2 className="card-title object-title">{object.author_title}</h2>
+											<h2 className="card-title object-title">Book of hours</h2>
 										</div>
 
 										<div className="object-detail-meta">
 											<label>Catalog No.</label>
-											<span>{object.catalog_n}</span>
+											<span>45</span>
 										</div>
-										{object.date ?
+										{true ?
 											<div className="object-detail-meta">
 												<label>Date</label>
-												<span>{object.date}</span>
+												<span>1470–80</span>
 											</div>
-										: ''}
-										{object.place ?
+									: ''}
+										{true ?
 											<div className="object-detail-meta">
 												<label>Place</label>
-												<span>{object.place}</span>
+												<span>London (?), England</span>
 											</div>
-										: ''}
-										{object.institution ?
+									: ''}
+										{true ?
 											<div className="object-detail-meta">
 												<label>Institution</label>
-												<span>{object.institution}</span>
+												<span>Harvard University</span>
 											</div>
-										: ''}
-										{object.collection ?
+									: ''}
+										{true ?
 											<div className="object-detail-meta">
 												<label>Collection</label>
-												<span>{object.collection}</span>
+												<span>Houghton Library</span>
 											</div>
-										: ''}
-										{object.shelfmark ?
+									: ''}
+										{true ?
 											<div className="object-detail-meta">
 												<label>Shelfmark</label>
-												<span>{object.shelfmark}</span>
+												<span>MS Widener 2</span>
 											</div>
-										: ''}
+									: ''}
 										{object.former_shelfmark ?
 											<div className="object-detail-meta">
 												<label>Former Shelfmark</label>
-												<span>{object.former_shelfmark}</span>
+												<span>Ms. 1510</span>
 											</div>
-										: ''}
+									: ''}
 										{object.scribe ?
 											<div className="object-detail-meta">
 												<label>Scribe</label>
 												<span>{object.scribe}</span>
 											</div>
-										: ''}
+									: ''}
 										{object.printer ?
 											<div className="object-detail-meta">
 												<label>Printer</label>
 												<span>{object.printer}</span>
 											</div>
-										: ''}
-										{object.illumintator ?
+									: ''}
+										{false ?
 											<div className="object-detail-meta">
 												<label>Illuminator</label>
-												<span>{object.illuminator}</span>
+												<span>Master of the Troyes Missal</span>
 											</div>
-										: ''}
+									: ''}
 										{object.externalUrl ?
 											<div className="object-detail-meta">
 												<label>External Link</label>
@@ -433,30 +350,119 @@ IPadView = React.createClass({
 														href={object.externalUrl}
 														target="_blank"
 														rel="noopener noreferrer"
-													>
+						>
 														{object.externalUrl}
 													</a>
 												</span>
 											</div>
-										: ''}
-										{object.illumintator ?
+									: ''}
+										{true ?
 											<div className="object-detail-meta">
 												<label>Description</label>
-												<span>{object.description}</span>
+												<span>
+												Parchment, ff. 111, 332 x 235 mm
+												</span>
 											</div>
-										: ''}
-
-									</div> */}
+									: ''}
 
 									</div>
 
-								</section>
+									{/* <div className="object-detail-text-wrap">
 
-							</div>
+									<div className="object-detail-header">
+										<h2 className="card-title object-title">{object.author_title}</h2>
+									</div>
 
-						</section>
+									<div className="object-detail-meta">
+										<label>Catalog No.</label>
+										<span>{object.catalog_n}</span>
+									</div>
+									{object.date ?
+										<div className="object-detail-meta">
+											<label>Date</label>
+											<span>{object.date}</span>
+										</div>
+									: ''}
+									{object.place ?
+										<div className="object-detail-meta">
+											<label>Place</label>
+											<span>{object.place}</span>
+										</div>
+									: ''}
+									{object.institution ?
+										<div className="object-detail-meta">
+											<label>Institution</label>
+											<span>{object.institution}</span>
+										</div>
+									: ''}
+									{object.collection ?
+										<div className="object-detail-meta">
+											<label>Collection</label>
+											<span>{object.collection}</span>
+										</div>
+									: ''}
+									{object.shelfmark ?
+										<div className="object-detail-meta">
+											<label>Shelfmark</label>
+											<span>{object.shelfmark}</span>
+										</div>
+									: ''}
+									{object.former_shelfmark ?
+										<div className="object-detail-meta">
+											<label>Former Shelfmark</label>
+											<span>{object.former_shelfmark}</span>
+										</div>
+									: ''}
+									{object.scribe ?
+										<div className="object-detail-meta">
+											<label>Scribe</label>
+											<span>{object.scribe}</span>
+										</div>
+									: ''}
+									{object.printer ?
+										<div className="object-detail-meta">
+											<label>Printer</label>
+											<span>{object.printer}</span>
+										</div>
+									: ''}
+									{object.illumintator ?
+										<div className="object-detail-meta">
+											<label>Illuminator</label>
+											<span>{object.illuminator}</span>
+										</div>
+									: ''}
+									{object.externalUrl ?
+										<div className="object-detail-meta">
+											<label>External Link</label>
+											<span>
+												<a
+													href={object.externalUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													{object.externalUrl}
+												</a>
+											</span>
+										</div>
+									: ''}
+									{object.illumintator ?
+										<div className="object-detail-meta">
+											<label>Description</label>
+											<span>{object.description}</span>
+										</div>
+									: ''}
+
+								</div> */}
+
+								</div>
+
+							</section>
+
+						</div>
+
+					</section>
 				}
 			</div>
 		);
-	},
-});
+	}
+}

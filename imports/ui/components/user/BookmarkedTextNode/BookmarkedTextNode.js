@@ -11,16 +11,16 @@ import Works from '/imports/api/collections/works';
 import muiTheme from '/imports/lib/muiTheme';
 
 
-const BookmarkedTextNode = React.createClass({
+const class BookmarkedTextNode extends React.Component {
 
 	propTypes: {
-		text: React.PropTypes.object,
-		work: React.PropTypes.object,
-		isOdd: React.PropTypes.bool,
+		text: PropTypes.object,
+		work: PropTypes.object,
+		isOdd: PropTypes.bool,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getChildContext() {

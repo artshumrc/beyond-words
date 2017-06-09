@@ -1,6 +1,9 @@
-IPadLayout = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class IPadLayout extends React.Component {
 	propTypes: {
-		content: React.PropTypes.element,
+		content: PropTypes.element,
 	},
 
 	render() {

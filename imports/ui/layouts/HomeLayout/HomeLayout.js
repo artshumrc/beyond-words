@@ -1,4 +1,7 @@
-HomeLayout = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class HomeLayout extends React.Component {
 
 	render() {
 		return (

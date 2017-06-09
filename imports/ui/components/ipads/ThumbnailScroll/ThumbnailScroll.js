@@ -1,17 +1,16 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
 
-ThumbnailScroll = React.createClass({
+class ThumbnailScroll extends React.Component {
 
-	propTypes: {
-		thumbnailList: React.PropTypes.array.isRequired,
-		activeSlide: React.PropTypes.number.isRequired,
-		scrollToSlide: React.PropTypes.func.isRequired,
-	},
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
+
 	render() {
 		const self = this;
 		const styles = {
@@ -44,9 +43,15 @@ ThumbnailScroll = React.createClass({
 				</div>
 			</Paper>
 		);
-	},
-});
+	}
+}
 
 ThumbnailScroll.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
+};
+
+ThumbnailScroll.propTypes = {
+	thumbnailList: PropTypes.array.isRequired,
+	activeSlide: PropTypes.number.isRequired,
+	scrollToSlide: PropTypes.func.isRequired,
 };

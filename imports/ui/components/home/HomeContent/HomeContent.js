@@ -1,17 +1,12 @@
-HomeContent = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
 
-	componentDidMount() {
-		/*
-		* Init wow animations on homepage
-		*/
-		// let wow = new WOW().init();
-	},
-
+class HomeContent extends React.Component {
 	scrollToAbout(e) {
 		$('html, body').animate({ scrollTop: $('#about').height() - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
 
 
 	render() {
@@ -28,5 +23,5 @@ HomeContent = React.createClass({
 				<HomeLenders />
 			</div>
 		);
-	},
-});
+	}
+}

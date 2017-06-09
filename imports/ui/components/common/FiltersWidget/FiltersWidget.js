@@ -1,21 +1,21 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import RaisedButton from 'material-ui/RaisedButton';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-FiltersWidget = React.createClass({
+import muiTheme from '/imports/lib/muiTheme';
 
-	propTypes: {
-		filters: React.PropTypes.array.isRequired,
-		toggleSearchTerm: React.PropTypes.func,
-	},
+class FiltersWidget extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	render() {
 		const self = this;
@@ -71,5 +71,10 @@ FiltersWidget = React.createClass({
 				})}
 			</div>
 		);
-	},
-});
+	}
+}
+
+FiltersWidget.propTypes = {
+	filters: PropTypes.array.isRequired,
+	toggleSearchTerm: PropTypes.func,
+};

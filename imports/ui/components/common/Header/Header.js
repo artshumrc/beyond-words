@@ -1,58 +1,65 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { white } from 'material-ui/styles/colors';
 
-Header = React.createClass({
+class Header extends React.Component {
 
 	getInitialState() {
 		return {
 			leftMenuOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	toggleLeftMenu() {
 		this.setState({
 			leftMenuOpen: !this.state.leftMenuOpen,
 		});
-	},
+	}
 
 	closeLeftMenu() {
 		this.setState({
 			leftMenuOpen: false,
 		});
-	},
+	}
 
 	scrollToEvents(e) {
 		$('html, body').animate({ scrollTop: $('#events').offset().top - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
+
 	scrollToNews(e) {
 		$('html, body').animate({ scrollTop: $('#news').offset().top - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
+
 	scrollToSymposium(e) {
 		$('html, body').animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
+
 	scrollToCatalog(e) {
 		$('html, body').animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
+
 	scrollToPlanYourTrip(e) {
 		$('html, body').animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
 
 		e.preventDefault();
-	},
+	}
 
 	render() {
 		const styles = {
@@ -148,7 +155,7 @@ Header = React.createClass({
 										</li>
 										<li
 											className="catalog-item"
-          >
+										>
 											<FlatButton
 												style={styles.flatButton}
 												label="CATALOG"
@@ -159,14 +166,14 @@ Header = React.createClass({
 													style={styles.flatButton}
 													label="ONLINE"
 													href="/catalog"
-            />
+												/>
 												<FlatButton
 													style={styles.flatButton}
 													label="PRINT"
 													href="#"
 													onClick={this.scrollToCatalog}
 													onTouchTap={this.scrollToSymposium}
-            />
+												/>
 											</div>
 										</li>
 										<li>
@@ -175,6 +182,7 @@ Header = React.createClass({
 												label="AUDIOGUIDE"
 												href="//beyondwords.oncell.com/"
 												target="_blank"
+												rel="noopener noreferrer"
 											/>
 										</li>
 									</ul>
@@ -228,9 +236,9 @@ Header = React.createClass({
 				</header>
 			</div>
 		);
-	},
-});
+	}
+}
 
 Header.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
 };

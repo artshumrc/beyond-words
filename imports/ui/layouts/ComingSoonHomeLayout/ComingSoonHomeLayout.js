@@ -1,4 +1,7 @@
-ComingSoonHomeLayout = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class ComingSoonHomeLayout extends React.Component {
 	componentDidMount() {
 		if (typeof location.hash !== 'undefined' && location.hash.length > 0) {
 			setTimeout(() => {

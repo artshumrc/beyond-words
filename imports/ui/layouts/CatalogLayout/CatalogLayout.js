@@ -1,7 +1,10 @@
-CatalogLayout = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class CatalogLayout extends React.Component {
 
 	propTypes: {
-		selectedObjectSlug: React.PropTypes.string,
+		selectedObjectSlug: PropTypes.string,
 	},
 
 	getInitialState() {

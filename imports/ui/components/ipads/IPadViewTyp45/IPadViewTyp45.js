@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+/* eslint-disable */
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
@@ -9,16 +12,10 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadViewTyp45 = React.createClass({
-
-	propTypes: {
-	},
-
+class IPadViewTyp45 extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getInitialState() {
 		return {
@@ -26,11 +23,11 @@ IPadViewTyp45 = React.createClass({
 			videoOpen: false,
 			infoModalOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		const query = {};
@@ -48,34 +45,37 @@ IPadViewTyp45 = React.createClass({
 			ipad: IPads.find(query, { sort: { title: 1 } }).fetch(),
 			currentUser: Meteor.user(),
 		};
-	},
+	}
 
 	handleViewChange(event, value) {
 		this.setState({
 			view: value,
 		});
-	},
+	}
 
 	handleClose() {
 		this.setState({
 			videoOpen: false,
 		});
-	},
+	}
+
 	showVideo() {
 		this.setState({
 			videoOpen: true,
 		});
-	},
+	}
+
 	handleCloseInfoModal() {
 		this.setState({
 			infoModalOpen: false,
 		});
-	},
+	}
+
 	showInfoModal() {
 		this.setState({
 			infoModalOpen: true,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -151,17 +151,17 @@ IPadViewTyp45 = React.createClass({
 							<Toolbar
 								className="ipad-toolbar paper-shadow"
 								style={styles.toolBar}
-       >
+			 >
 								<ToolbarGroup
 									className="toolbar-group toolbar-group-info"
-        >
+				>
 									<FontIcon
 										onClick={this.showInfoModal}
 										style={styles.icon}
 										className="mdi mdi-information"
 										color={grey500}
 										hoverColor={white}
-         />
+				 />
 									{/* <FontIcon
 									onClick={this.showVideo}
 									style={styles.icon}
@@ -175,55 +175,55 @@ IPadViewTyp45 = React.createClass({
 
 								<ToolbarGroup
 									className="toolbar-group toolbar-group-view-mode"
-        >
+				>
 									<RadioButtonGroup
 										style={styles.radioButtonGroup}
 										name="view"
 										defaultSelected="grid"
 										onChange={this.handleViewChange}
-         >
+				 >
 										<RadioButton
 											value="grid"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 										<RadioButton
 											value="single"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-file-document-box"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-file-document-box"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 										<RadioButton
 											value="spread"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-book-open-variant"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-book-open-variant"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 									</RadioButtonGroup>
 								</ToolbarGroup>
 							</Toolbar>
@@ -246,12 +246,12 @@ IPadViewTyp45 = React.createClass({
 								open={this.state.videoOpen}
 								onRequestClose={this.handleClose}
 								bodyStyle={styles.noPadding}
-       >
+			 >
 								<IconButton
 									className="close-fullscreen"
 									style={styles.closeButton}
 									onClick={this.handleClose}
-        >
+				>
 									<ContentClear />
 								</IconButton>
 								<div className="viewer-video">
@@ -259,19 +259,19 @@ IPadViewTyp45 = React.createClass({
 										<source
 											src="/videos/making_manuscripts_binding01.mp4"
 											type="video/mp4"
-          />
+					/>
 									</video>
 								</div>
 
 							</Dialog>
 							<div
 								className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
-       >
+			 >
 								<IconButton
 									className="close-fullscreen"
 									style={styles.closeButton}
 									onClick={this.handleCloseInfoModal}
-        >
+				>
 									<ContentClear />
 								</IconButton>
 								<section className="object-details">
@@ -348,7 +348,7 @@ IPadViewTyp45 = React.createClass({
 															href={object.externalUrl}
 															target="_blank"
 															rel="noopener noreferrer"
-              >
+							>
 															{object.externalUrl}
 														</a>
 													</span>
@@ -462,5 +462,5 @@ IPadViewTyp45 = React.createClass({
 				}
 			</div>
 		);
-	},
-});
+	}
+}

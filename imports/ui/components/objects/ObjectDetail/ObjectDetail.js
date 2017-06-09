@@ -1,24 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 // Single object detail view
-ObjectDetail = React.createClass({
-
-	propTypes: {
-		selectedObject: React.PropTypes.object,
-		objectToSelectSlug: React.PropTypes.string,
-		closeSelectedObject: React.PropTypes.func,
-		selectObject: React.PropTypes.func,
-		openViewer: React.PropTypes.func,
-		openMiradorViewer: React.PropTypes.func,
-	},
-
-	getInitialState() {
-		return {
-		};
-	},
-
-	mixins: [ReactMeteorData],
-
-	objectSelected: false,
-
+class ObjectDetail extends React.Component {
 	getMeteorData() {
 		let attachment = null;
 		let pdfAttachment = null;
@@ -43,21 +27,18 @@ ObjectDetail = React.createClass({
 				this.props.selectObject(object);
 				this.objectSelected = true;
 			}
-
-
 		}
-
 
 		return {
 			attachment,
 			pdfAttachment,
 		};
-	},
+	}
 
 	openViewer() {
 		console.log('ObjectDetail.openViewer');
 		this.props.openViewer();
-	},
+	}
 
 	render() {
 		const selectedObject = this.props.selectedObject;
@@ -89,31 +70,31 @@ ObjectDetail = React.createClass({
 										alt="object thumbnail"
 										className="object-detail-thumbnail paper-shadow"
 										src={imageUrl}
-         />
-							:
-								<img
-									alt="object thumbnail"
-									className="object-detail-thumbnail paper-shadow"
-									src="/images/default_image.jpg"
-        />
-						}
+									/>
+								:
+									<img
+										alt="object thumbnail"
+										className="object-detail-thumbnail paper-shadow"
+										src="/images/default_image.jpg"
+									/>
+								}
 								{selectedObject.miradorLink ?
 									<div
 										className="thumbnail-embedded-overlay"
 										onClick={this.props.openMiradorViewer}
-         >
+									>
 										<i className="mdi mdi-image-filter" />
 										<span>View in Mirador</span>
 
 									</div>
 
-							: ''
-						}
+									: ''
+								}
 								{selectedObject.hasImageViewer ?
 									<div
 										className="thumbnail-embedded-overlay"
 										onClick={this.openViewer}
-         >
+									>
 										<i className="mdi mdi-image-filter" />
 										<span>Turn the Pages</span>
 
@@ -198,7 +179,7 @@ ObjectDetail = React.createClass({
 												href={selectedObject.externalUrl}
 												target="_blank"
 												rel="noopener noreferrer"
-           >
+											>
 												{selectedObject.externalUrl}
 											</a>
 										</span>
@@ -218,7 +199,7 @@ ObjectDetail = React.createClass({
 						: ''}
 								{(pdfUrl.length) ?
 									<div className="object-detail-meta object-detail-meta--pdf">
-										<a href={pdfUrl} target="_blank">
+										<a href={pdfUrl} target="_blank" rel="noopener noreferrer">
 											<label>PDF Download</label>
 											<i className="mdi mdi-download" />
 										</a>
@@ -229,16 +210,25 @@ ObjectDetail = React.createClass({
 						</div>
 
 					</div>
-			:
-				<div className="loading-collections loading-visible">
-					<div className="dot-spinner">
-						<div className="bounce1" />
-						<div className="bounce2" />
-						<div className="bounce3" />
+				:
+					<div className="loading-collections loading-visible">
+						<div className="dot-spinner">
+							<div className="bounce1" />
+							<div className="bounce2" />
+							<div className="bounce3" />
+						</div>
 					</div>
-				</div>
-			}
+				}
 			</div>
 		);
-	},
-});
+	}
+}
+
+ObjectDetail.propTypes = {
+	selectedObject: PropTypes.object,
+	objectToSelectSlug: PropTypes.string,
+	closeSelectedObject: PropTypes.func,
+	selectObject: PropTypes.func,
+	openViewer: PropTypes.func,
+	openMiradorViewer: PropTypes.func,
+};

@@ -1,16 +1,11 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component/lib';
 
-MediaItemList = React.createClass({
-
-	propTypes: {
-		mediaItem: React.PropTypes.object,
-	},
-
+class MediaItemList extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getMeteorData() {
 		let mediaItems = [];
@@ -21,7 +16,7 @@ MediaItemList = React.createClass({
 		return {
 			mediaItems,
 		};
-	},
+	}
 
 	render() {
 		const masonryOptions = {
@@ -42,5 +37,9 @@ MediaItemList = React.createClass({
 				))}
 			</Masonry>
 		);
-	},
-});
+	}
+}
+
+MediaItemList.propTypes = {
+	mediaItem: PropTypes.object,
+};

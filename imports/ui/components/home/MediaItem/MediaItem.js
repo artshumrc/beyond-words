@@ -1,16 +1,13 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
 
-MediaItem = React.createClass({
-
-	propTypes: {
-		mediaItem: React.PropTypes.object,
-	},
+class MediaItem extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getMeteorData() {
 		let attachment = null;
@@ -23,7 +20,7 @@ MediaItem = React.createClass({
 		return {
 			attachment,
 		};
-	},
+	}
 
 	render() {
 		const mediaItem = this.props.mediaItem;
@@ -82,5 +79,9 @@ MediaItem = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
+
+MediaItem.propTypes = {
+	mediaItem: PropTypes.object,
+};

@@ -1,27 +1,27 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-HomeNarrative = React.createClass({
+class HomeNarrative extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	toggleNarrative(e) {
 		const $narrativePanel = $(e.target).parents('.narrative-exhibit');
 		if ($narrativePanel.hasClass('narrative-exhibit--expanded')) {
 			$narrativePanel.removeClass('narrative-exhibit--expanded');
-
 		} else {
 			$narrativePanel.addClass('narrative-exhibit--expanded');
-
 		}
-
-	},
+	}
 
 	render() {
 		return (
@@ -66,7 +66,7 @@ HomeNarrative = React.createClass({
 						</h5>
 						<div className="narrative-read-more-panel">
 							<p>
-								<span className="preview-text">In the Houghton Library’s portion of the exhibit, the emphasis is  on the centrality
+								<span className="preview-text">In the Houghton Library’s portion of the exhibit, the emphasis is	on the centrality
 								ofbooks to monastic life. Male and female monasticism revolved around religion, but at its heart was a cult of the book: not just the bible, all books.
 								</span>
 								<span className="read-more--hidden">&nbsp;Monastic scriptoria guaranteed the survival and transmission of
@@ -88,7 +88,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-       >
+							>
 								<span className="read-more-text">
 									Read More
 								</span>
@@ -133,7 +133,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-       >
+							>
 								<span className="read-more-text">
 									Read More
 								</span>
@@ -171,12 +171,12 @@ HomeNarrative = React.createClass({
 							<p className="read-more--hidden">
 							At the Isabella Stewart Gardner Museum, exhibition support is provided by the
 							Gladys Krieble Delmas Foundation, the Robert Lehman Foundation, the Andrew W. Mellon
-							Foundation and the National Endowment for the Humanities.  This exhibition also is
+							Foundation and the National Endowment for the Humanities.	This exhibition also is
 							supported in part by the Massachusetts Cultural Council, which receives support from
 							the State of Massachusetts and the National Endowment for the Humanities, as well as by
 							the Boston Cultural Council, a local agency which is funded by the Massachusetts
 							Cultural Council, and administrated by the Mayor's Office of Arts and Culture.
-							Media Sponsor:  The Boston Globe.  Any views, findings, conclusions, or recommendations
+							Media Sponsor:	The Boston Globe.	Any views, findings, conclusions, or recommendations
 							expressed in this exhibition do not necessarily represent those of the
 							National Endowment for the Humanities.
 							</p>
@@ -186,7 +186,7 @@ HomeNarrative = React.createClass({
 							<div
 								className="narrative-read-more-button"
 								onClick={this.toggleNarrative}
-       >
+							>
 								<span className="read-more-text">
 									Read More
 								</span>
@@ -200,6 +200,5 @@ HomeNarrative = React.createClass({
 				</section>
 			</div>
 		);
-	},
-})
-;
+	}
+}

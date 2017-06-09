@@ -1,20 +1,23 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-SearchTermButton = React.createClass({
+class SearchTermButton extends React.Component {
 
 	propTypes: {
-		toggleSearchTerm: React.PropTypes.func.isRequired,
-		label: React.PropTypes.string.isRequired,
-		searchTermKey: React.PropTypes.string.isRequired,
-		value: React.PropTypes.string.isRequired,
-		activeWork: React.PropTypes.bool,
-		active: React.PropTypes.bool,
+		toggleSearchTerm: PropTypes.func.isRequired,
+		label: PropTypes.string.isRequired,
+		searchTermKey: PropTypes.string.isRequired,
+		value: PropTypes.string.isRequired,
+		activeWork: PropTypes.bool,
+		active: PropTypes.bool,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getInitialState() {

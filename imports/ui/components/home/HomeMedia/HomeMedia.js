@@ -1,15 +1,18 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-HomeMedia = React.createClass({
+class HomeMedia extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	render() {
 		// console.log(this.data.ready, this.data.tweets);
@@ -23,5 +26,5 @@ HomeMedia = React.createClass({
 				</div>
 			</section>
 		);
-	},
-});
+	}
+}

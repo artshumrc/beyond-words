@@ -1,46 +1,24 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component/lib';
 import { debounce } from 'throttle-debounce';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import InfiniteScroll from '../../../imports/InfiniteScroll.jsx';
+import InfiniteScroll from '/imports/ui/components/common/InfiniteScroll';
 
-ObjectsList = React.createClass({
-
-
-	propTypes: {
-		selectedObject: React.PropTypes.object,
-		objectToSelectSlug: React.PropTypes.string,
-		selectObject: React.PropTypes.func,
-		filters: React.PropTypes.array,
-		addSearchTerm: React.PropTypes.func,
-		toggleSearchTerm: React.PropTypes.func,
-		loadMoreObjects: React.PropTypes.func,
-		skip: React.PropTypes.number,
-		limit: React.PropTypes.number,
-		closeSelectedObject: React.PropTypes.func,
-		catalogLayout: React.PropTypes.string,
-		openViewer: React.PropTypes.func,
-		openMiradorViewer: React.PropTypes.func,
-	},
-
+class ObjectsList extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
-
-	getInitialState() {
-		return {
-		};
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	componentDidMount() {
 		// this.hide();
-	},
+	}
 
 	getMeteorData() {
 		const query = {};
@@ -56,7 +34,7 @@ ObjectsList = React.createClass({
 				break;
 
 			case 'catalogNumber':
-				query.catalog_n = parseInt(filter.values[0]);
+				query.catalog_n = parseInt(filter.values[0], 10);
 				break;
 
 			case 'hasViewer':
@@ -114,13 +92,11 @@ ObjectsList = React.createClass({
 			objects,
 			stillMoreObjects,
 		};
-	},
+	}
 
 	handleImagesLoaded() {
 		// this.show();
-	},
-
-	objects: [],
+	}
 
 	toggleDropdown(e) {
 		let $target = $(e.target);
@@ -143,7 +119,8 @@ ObjectsList = React.createClass({
 				active_dropdown: toggleFacetName,
 			});
 		}
-	},
+	}
+
 	renderObjects() {
 		return this.objects.map(object => (
 			<ObjectTeaser
@@ -152,7 +129,7 @@ ObjectsList = React.createClass({
 				selectObject={this.props.selectObject}
 			/>
 		));
-	},
+	}
 
 	render() {
 		const self = this;
@@ -267,9 +244,9 @@ ObjectsList = React.createClass({
 									{this.renderObjects()}
 								</Masonry>
 								:
-									<div className="objects-container objects-container--list row">
-										{this.renderObjects()}
-									</div>
+								<div className="objects-container objects-container--list row">
+									{this.renderObjects()}
+								</div>
 							}
 						</InfiniteScroll>
 
@@ -293,5 +270,21 @@ ObjectsList = React.createClass({
 				}
 			</div>
 		);
-	},
-});
+	}
+}
+
+ObjectsList.propTypes = {
+	selectedObject: PropTypes.object,
+	objectToSelectSlug: PropTypes.string,
+	selectObject: PropTypes.func,
+	filters: PropTypes.array,
+	addSearchTerm: PropTypes.func,
+	toggleSearchTerm: PropTypes.func,
+	loadMoreObjects: PropTypes.func,
+	skip: PropTypes.number,
+	limit: PropTypes.number,
+	closeSelectedObject: PropTypes.func,
+	catalogLayout: PropTypes.string,
+	openViewer: PropTypes.func,
+	openMiradorViewer: PropTypes.func,
+};

@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
@@ -9,54 +12,55 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-BeyondWordsViewer = React.createClass({
-
-	propTypes: {
-		selectedObject: React.PropTypes.object,
-	},
+class BeyondWordsViewer extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+
+		this.state = {
 			view: 'grid',
 			videoOpen: false,
 			infoModalOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	handleViewChange(event, value) {
 		this.setState({
 			view: value,
 		});
-	},
+	}
 
 	handleClose() {
 		this.setState({
 			videoOpen: false,
 		});
-	},
+	}
+
 	showVideo() {
 		this.setState({
 			videoOpen: true,
 		});
-	},
+	}
+
 	handleCloseInfoModal() {
 		this.setState({
 			infoModalOpen: false,
 		});
-	},
+	}
+
 	showInfoModal() {
 		this.setState({
 			infoModalOpen: true,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -185,5 +189,9 @@ BeyondWordsViewer = React.createClass({
 
 			</div>
 		);
-	},
-});
+	}
+}
+
+BeyondWordsViewer.propTypes = {
+	selectedObject: PropTypes.object,
+};

@@ -1,4 +1,6 @@
-PageNotFound = React.createClass({
+import React from 'react';
+
+class PageNotFound extends React.Component {
 	render() {
 		return (
 			<div className="page-not-found 404">
@@ -22,5 +24,5 @@ PageNotFound = React.createClass({
 
 			</div>
 		);
-	},
-});
+	}
+}

@@ -8,16 +8,16 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import muiTheme from '/imports/lib/muiTheme';
 
 
-const AnnotationTextNode = React.createClass({
+const class AnnotationTextNode extends React.Component {
 
 	propTypes: {
-		annotation: React.PropTypes.object,
-		work: React.PropTypes.object,
-		isOdd: React.PropTypes.bool,
+		annotation: PropTypes.object,
+		work: PropTypes.object,
+		isOdd: PropTypes.bool,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getChildContext() {

@@ -1,14 +1,13 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
 
-IPadSpreadView = React.createClass({
-
-	propTypes: {
-		slides: React.PropTypes.array,
-	},
+class IPadSpreadView extends React.Component {
 
 	getDefaultProps() {
 		return {
@@ -22,7 +21,7 @@ IPadSpreadView = React.createClass({
 				'/images/BannerSQ.jpg',
 			],
 		};
-	},
+	}
 
 	getInitialState() {
 		return {
@@ -30,24 +29,24 @@ IPadSpreadView = React.createClass({
 			slide: '',
 			open: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	handleSlideOpen(slide) {
 		this.setState({
 			open: true,
 			slide,
 		});
-	},
+	}
 
 	handleSlideClose() {
 		this.setState({
 			open: false,
 		});
-	},
+	}
 
 	handleSlideChange(currentSlide) {
 		// check if currentSlide is valid
@@ -66,7 +65,7 @@ IPadSpreadView = React.createClass({
 				slickGoTo: currentSlide - 1,
 			});
 		}
-	},
+	}
 
 	scrollToSlide(currentSlide) {
 		// check if currentSlide is valid
@@ -85,8 +84,7 @@ IPadSpreadView = React.createClass({
 				slickGoTo: currentSlide - 1,
 			});
 		}
-	},
-
+	}
 
 	render() {
 		const settings = {
@@ -120,7 +118,7 @@ IPadSpreadView = React.createClass({
 												onClick={this.handleSlideOpen.bind(this, slide)}
 												className="center-block"
 												src={slide}
-           />
+											/>
 										</Paper>
 									</div>
 								</div>
@@ -142,9 +140,14 @@ IPadSpreadView = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
 
 IPadSpreadView.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
+};
+
+
+IPadSpreadView.propTypes = {
+	slides: PropTypes.array,
 };

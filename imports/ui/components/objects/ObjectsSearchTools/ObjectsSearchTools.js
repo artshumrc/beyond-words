@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -6,20 +9,20 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import debounce from 'throttle-debounce/debounce';
 
-ObjectsSearchTools = React.createClass({
+class ObjectsSearchTools extends React.Component {
 
 	propTypes: {
-		filters: React.PropTypes.array,
-		toggleSearchTerm: React.PropTypes.func,
-		handleChangeTextsearch: React.PropTypes.func,
-		handleChangeCatalogNSearch: React.PropTypes.func,
-		handleChangeDate: React.PropTypes.func,
-		toggleMiradorSearch: React.PropTypes.func,
+		filters: PropTypes.array,
+		toggleSearchTerm: PropTypes.func,
+		handleChangeTextsearch: PropTypes.func,
+		handleChangeCatalogNSearch: PropTypes.func,
+		handleChangeDate: PropTypes.func,
+		toggleMiradorSearch: PropTypes.func,
 
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	mixins: [ReactMeteorData],

@@ -1,30 +1,24 @@
 
+import React from 'react';
+import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Add2Calendar from '../../../imports/Add2Calendar';
 import moment from 'moment-timezone';
 
-EventItem = React.createClass({
+import muiTheme from '/imports/lib/muiTheme';
+import Add2Calendar from '/imports/ui/components/common/Add2Calendar';
 
-	propTypes: {
-		event: React.PropTypes.object.isRequired,
-		pastEvent: React.PropTypes.bool,
-	},
-
+class EventItem extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	componentDidMount() {
 		const event = this.props.event;
-		let startDate,
-			endDate;
 		let tmp;
 
 		tmp = moment.utc(event.date);
 		tmp.hours(tmp.hours() + 4);
-		startDate = tmp.toString();
 
 		if ('endDate' in event) {
 			tmp = moment.utc(event.endDate);
@@ -32,9 +26,10 @@ EventItem = React.createClass({
 		} else {
 			tmp = moment.utc(event.date);
 			tmp.hours(tmp.hours() + 6);
-
 		}
-		endDate = tmp.toString();
+
+		const endDate = tmp.toString();
+		const startDate = tmp.toString();
 
 		const singleEventArgs = {
 			title: event.title,
@@ -46,8 +41,7 @@ EventItem = React.createClass({
 		const singleEvent = new Add2Calendar(singleEventArgs);
 		const singleEventNode = singleEvent.getSingleEventWidgetNode();
 		document.querySelector(`.event-item--${event._id} .add-to-calendar`).appendChild(singleEventNode);
-
-	},
+	}
 
 	linkToEventOrScroll(e) {
 		let $target = $(e.target);
@@ -65,7 +59,7 @@ EventItem = React.createClass({
 
 			e.preventDefault();
 		}
-	},
+	}
 
 
 	render() {
@@ -73,33 +67,39 @@ EventItem = React.createClass({
 		const pastEvent = this.props.pastEvent;
 		const self = this;
 
-		return (<li
-			className={`event-item wow fadeIn event-item--${event._id} ${pastEvent ? 'event-item--past-event' : ''}`}
-  >
-			<div className="event-calendar-date">
-				<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
-				<h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
-				<h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
-			</div>
-			<div className="event-info">
-				{event.link && event.link !== '#' ?
-					<a
-						className="event-link"
-						href={event.link}
-						target="_blank" rel="noopener noreferrer"
-						onClick={self.linkToEventOrScroll}
-     >
-						<h3 className="event-title">
-							{event.title}
-							<i className="mdi mdi-open-in-new" />
-						</h3>
-					</a>
-							:
-								<h3 className="event-title">{event.title}</h3>
-							}
-				<div className="add-to-calendar" />
-			</div>
-		</li>);
-
+		return (
+			<li
+				className={`event-item wow fadeIn event-item--${event._id} ${pastEvent ? 'event-item--past-event' : ''}`}
+			>
+				<div className="event-calendar-date">
+					<h6 className="event-month">{moment.utc(event.date).format('MMMM')}</h6>
+					<h3 className="event-day thin">{moment.utc(event.date).format('D')}</h3>
+					<h6 className="event-weekday">{moment.utc(event.date).format('dddd')}</h6>
+				</div>
+				<div className="event-info">
+					{event.link && event.link !== '#' ?
+						<a
+							className="event-link"
+							href={event.link}
+							target="_blank" rel="noopener noreferrer"
+							onClick={self.linkToEventOrScroll}
+						>
+							<h3 className="event-title">
+								{event.title}
+								<i className="mdi mdi-open-in-new" />
+							</h3>
+						</a>
+					:
+						<h3 className="event-title">{event.title}</h3>
+					}
+					<div className="add-to-calendar" />
+				</div>
+			</li>
+		);
 	}
-});
+}
+
+EventItem.propTypes = {
+	event: PropTypes.object.isRequired,
+	pastEvent: PropTypes.bool,
+};

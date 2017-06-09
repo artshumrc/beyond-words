@@ -1,3 +1,6 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import 'openseadragon';
 import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -5,21 +8,14 @@ import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 
-IPadFullscreenViewer = React.createClass({
-
-	propTypes: {
-		imageUrl: React.PropTypes.string.isRequired,
-		open: React.PropTypes.bool.isRequired,
-		handleClose: React.PropTypes.func.isRequired,
-	},
-
+class IPadFullscreenViewer extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	componentDidMount() {
 		const self = this;
@@ -43,14 +39,14 @@ IPadFullscreenViewer = React.createClass({
 			// self.viewer.setFullScreen(!ifFullScreen);
 			// self.props.handleClose();
 		});
-	},
+	}
 
 	handleClose() {
 		if (typeof this.props.handleClose === 'function') {
 			this.props.handleClose();
 			this.viewer.setFullScreen(false);
 		}
-	},
+	}
 
 	render() {
 		const self = this;
@@ -97,5 +93,11 @@ IPadFullscreenViewer = React.createClass({
 				</div>
 			</Dialog>
 		);
-	},
-});
+	}
+}
+
+IPadFullscreenViewer.propTypes = {
+	imageUrl: PropTypes.string.isRequired,
+	open: PropTypes.bool.isRequired,
+	handleClose: PropTypes.func.isRequired,
+};

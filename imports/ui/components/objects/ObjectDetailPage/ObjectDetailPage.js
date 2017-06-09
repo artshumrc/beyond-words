@@ -1,11 +1,9 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
 // Single object detail view
-ObjectDetailPage = React.createClass({
-
-	propTypes: {
-		slug: React.PropTypes.string.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+class ObjectDetailPage extends React.Component {
 
 	getMeteorData() {
 		let object = {};
@@ -25,7 +23,7 @@ ObjectDetailPage = React.createClass({
 			images,
 			thumbnails,
 		};
-	},
+	}
 
 	render() {
 		const object = this.data.object;
@@ -54,23 +52,13 @@ ObjectDetailPage = React.createClass({
 								/>
 							</div>
 							:
-								<div className="object-detail-viewer object-detail--osd-viewer">
-									<Viewer />
-								</div>
+							<div className="object-detail-viewer object-detail--osd-viewer">
+								<Viewer />
+							</div>
 						}
 					</div>
-					:
-						<div>
-							{/* <section className="page-head fullscreen image-bg bg-dark object-detail-page-head">
-						<div className="background-image-holder less-blur blur">
-								<img className="background-image" alt='image' src="/images/manuscript_header.jpg"/>
-						</div>
-
-						<div className="background-screen primary">
-						</div>
-
-					</section>*/}
-						</div>
+				:
+					<div />
 				}
 
 				<section className="object-details paper-shadow">
@@ -83,11 +71,11 @@ ObjectDetailPage = React.createClass({
 									src={image.url}
 								/>
 								:
-									<img
-										alt="object thumbnail"
-										className="object-detail-thumbnail paper-shadow"
-										src="/images/default_image.jpg"
-         />
+								<img
+									alt="object thumbnail"
+									className="object-detail-thumbnail paper-shadow"
+									src="/images/default_image.jpg"
+								/>
 							}
 						</div>
 
@@ -195,12 +183,13 @@ ObjectDetailPage = React.createClass({
 								''
 							}
 						</div>
-
 					</div>
-
 				</section>
-
 			</div>
 		);
-	},
-});
+	}
+}
+
+ObjectDetailPage.propTypes = {
+	slug: PropTypes.string.isRequired,
+};

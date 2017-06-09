@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
@@ -9,16 +12,11 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadVideoView1 = React.createClass({
-
-	propTypes: {
-	},
+class IPadVideoView1 extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getInitialState() {
 		return {
@@ -26,11 +24,11 @@ IPadVideoView1 = React.createClass({
 			videoOpen: false,
 			infoModalOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		const query = {};
@@ -48,34 +46,37 @@ IPadVideoView1 = React.createClass({
 			ipad: IPads.find(query, { sort: { title: 1 } }).fetch(),
 			currentUser: Meteor.user(),
 		};
-	},
+	}
 
 	handleViewChange(event, value) {
 		this.setState({
 			view: value,
 		});
-	},
+	}
 
 	handleClose() {
 		this.setState({
 			videoOpen: false,
 		});
-	},
+	}
+
 	showVideo() {
 		this.setState({
 			videoOpen: true,
 		});
-	},
+	}
+
 	handleCloseInfoModal() {
 		this.setState({
 			infoModalOpen: false,
 		});
-	},
+	}
+
 	showInfoModal() {
 		this.setState({
 			infoModalOpen: true,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -161,7 +162,7 @@ IPadVideoView1 = React.createClass({
 					<video id="video1" controls>
 						<source
 							src="/videos/Illumination_1080.mp4"
-      />
+						/>
 					</video>
 				</div>
 				<div className="ipad-video video-2">
@@ -174,5 +175,5 @@ IPadVideoView1 = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}

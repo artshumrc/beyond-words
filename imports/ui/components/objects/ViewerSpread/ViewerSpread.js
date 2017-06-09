@@ -1,16 +1,19 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Slider from 'react-slick';
 
-ViewerSpread = React.createClass({
+class ViewerSpread extends React.Component {
 
 	propTypes: {
-		slides: React.PropTypes.array,
+		slides: PropTypes.array,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getDefaultProps() {
@@ -96,7 +99,7 @@ ViewerSpread = React.createClass({
 		};
 
 		const supportsObjectFit = Modernizr.testProp('object-fit');
-		
+
 		return (
 			<div className="container viewer-container viewer-container--spread-view">
 				{this.state.open ?

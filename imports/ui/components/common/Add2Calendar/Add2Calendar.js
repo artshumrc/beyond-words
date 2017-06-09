@@ -1,9 +1,10 @@
-
+/* eslint-disable */
 /*
  * Based on the add2calendar node module
  * This class has been modified from its original version and some of the
  * documentation may no longer be correct
  */
+
 
 
 const Add2Calendar = function(eventData) {
@@ -157,7 +158,7 @@ const Add2Calendar = function(eventData) {
 				endDate = this.formatTime(new Date(this.eventData.end));
 
 			this.iCalUrl = encodeURI(
-        `data:text/calendar;charset=utf8,${ 
+        `data:text/calendar;charset=utf8,${
 [
 	'BEGIN:VCALENDAR',
 	'VERSION:2.0',

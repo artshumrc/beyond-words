@@ -1,18 +1,18 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Card, CardText } from 'material-ui/Card';
 
-HomeTwitter = React.createClass({
-
+class HomeTwitter extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		let tweets = [];
@@ -26,7 +26,8 @@ HomeTwitter = React.createClass({
 			tweets,
 			ready: handle.ready(),
 		};
-	},
+	}
+
 	render() {
 		// console.log(this.data.ready, this.data.tweets);
 		const linkifyTwitter = text => linkifyHtml(text, {
@@ -73,7 +74,7 @@ HomeTwitter = React.createClass({
 						</div>
 					</div>
 				</section>
-			</div >
+			</div>
 		);
-	},
-});
+	}
+}

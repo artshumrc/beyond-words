@@ -71,7 +71,7 @@ Before you configure routes for User Accounts with Flow Router, you will need to
 Assuming you have a main layout that looks like following and you have `<Nav />` and `<Footer />` as your default nav/footer components:
 
 ```jsx
-MainLayout = React.createClass({
+class MainLayout extends React.Component {
   render() {
     return (
       <div>

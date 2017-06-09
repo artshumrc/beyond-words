@@ -1,21 +1,17 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-HomeEvents = React.createClass({
-
-	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
-
-	getInitialState() {
-		return {
+class HomeEvents extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			registrationModalOpen: false,
 			successModalOpen: false,
 			errorText: '',
@@ -25,11 +21,15 @@ HomeEvents = React.createClass({
 			hasRegistered: false,
 			pastEventsShow: false,
 		};
-	},
+	}
+
+	childContextTypes: {
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		let nov3Sessions = [];
@@ -50,25 +50,25 @@ HomeEvents = React.createClass({
 			nov4Sessions,
 			nov5Sessions,
 		};
-	},
+	}
 
 	openRegistrationModal() {
 		this.setState({
 			registrationModalOpen: true,
 		});
-	},
+	}
 
 	closeRegistrationModal() {
 		this.setState({
 			registrationModalOpen: false,
 		});
-	},
+	}
 
 	closeSuccessModal() {
 		this.setState({
 			successModalOpen: false,
 		});
-	},
+	}
 
 	handleCheckBoxChange(checkboxDay) {
 		if (checkboxDay === 'nov_3') {
@@ -86,7 +86,7 @@ HomeEvents = React.createClass({
 		} else {
 			// console.log('handleChange error');
 		}
-	},
+	}
 
 	submitRegistrationModal() {
 		const self = this;
@@ -153,13 +153,13 @@ HomeEvents = React.createClass({
 				hasRegistered: true,
 			});
 		}
-	},
+	}
 
 	togglePastEvents() {
 		this.setState({
 			pastEventsShow: !this.state.pastEventsShow,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -294,13 +294,13 @@ HomeEvents = React.createClass({
 
 						</a>
 						:
-							<a
-								className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
-       >
-								<span>Thank you for registering</span>
-								<div className="md-ripple-container" />
+						<a
+							className="btn btn-large md-button registration-button md-ink-ripple paper-shadow"
+						>
+							<span>Thank you for registering</span>
+							<div className="md-ripple-container" />
 
-							</a>
+						</a>
 					}
 
 					<Tabs
@@ -348,7 +348,7 @@ HomeEvents = React.createClass({
 							style={styles.tab}
 						>
 							<h4 className="symposium-day">
-								Saturday, 5 November, <a href="https://map.harvard.edu/" target="_blank">Sever Hall 113, Harvard University</a>
+								Saturday, 5 November, <a href="https://map.harvard.edu/" target="_blank" rel="noopener noreferrer">Sever Hall 113, Harvard University</a>
 							</h4>
 							<br />
 
@@ -464,6 +464,5 @@ HomeEvents = React.createClass({
 
 			</div>
 		);
-	},
-
-});
+	}
+}

@@ -7,9 +7,9 @@ import Masonry from 'react-masonry-component/lib';
 // api
 import Works from '/imports/api/collections/works';
 
-const BookshelfList = React.createClass({
+const class BookshelfList extends React.Component {
 	propTypes: {
-		works: React.PropTypes.array,
+		works: PropTypes.array,
 	},
 
 	render() {

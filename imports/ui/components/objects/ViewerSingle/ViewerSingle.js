@@ -1,16 +1,19 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Slider from 'react-slick';
 
-ViewerSingle = React.createClass({
+class ViewerSingle extends React.Component {
 
 	propTypes: {
-		slides: React.PropTypes.array,
+		slides: PropTypes.array,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getDefaultProps() {

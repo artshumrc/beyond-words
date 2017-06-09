@@ -1,13 +1,10 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
 
-SymposiumSession = React.createClass({
-
-	propTypes: {
-		session: React.PropTypes.object.isRequired,
-	},
-
+class SymposiumSession extends React.Component {
 	render() {
-		const session = this.props.session;
+		const { session } = this.props;
 
 		return (
 			<div className="session">
@@ -21,6 +18,9 @@ SymposiumSession = React.createClass({
 				: '' }
 			</div>
 		);
+	}
+}
 
-	},
-});
+SymposiumSession.propTypes = {
+	session: PropTypes.object.isRequired,
+};

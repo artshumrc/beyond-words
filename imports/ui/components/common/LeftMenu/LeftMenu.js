@@ -1,20 +1,17 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-LeftMenu = React.createClass({
+import muiTheme from '/imports/lib/muiTheme';
 
-
-	propTypes: {
-		open: React.PropTypes.bool.isRequired,
-		closeLeftMenu: React.PropTypes.func.isRequired,
-	},
-
+class LeftMenu extends React.Component {
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	render() {
 		const isLoggedIn = Meteor.userId() ? Meteor.userId() : false;
@@ -90,7 +87,7 @@ LeftMenu = React.createClass({
 						primaryText="PRINT CATALOG"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
-     />
+					/>
 					<MenuItem
 						href="/#lenders"
 						primaryText="LENDERS"
@@ -102,6 +99,7 @@ LeftMenu = React.createClass({
 						href="//beyondwords.oncell.com/"
 						primaryText="AUDIOGUIDE"
 						target="_blank"
+						rel="noopener noreferrer"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>
@@ -132,9 +130,14 @@ LeftMenu = React.createClass({
 				</Drawer>
 			</div>
 		);
-	},
-});
+	}
+}
 
 LeftMenu.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
+};
+
+LeftMenu.propTypes = {
+	open: PropTypes.bool.isRequired,
+	closeLeftMenu: PropTypes.func.isRequired,
 };

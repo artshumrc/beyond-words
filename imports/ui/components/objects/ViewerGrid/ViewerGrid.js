@@ -1,16 +1,19 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import isDblTouchTap from '/imports/isDblTouchTap';
-import Masonry from 'react-masonry-component/lib';
 
-ViewerGrid = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Masonry from 'react-masonry-component/lib';
+import muiTheme from '/imports/lib/muiTheme';
+import isDblTouchTap from '/imports/ui/components/common/isDblTouchTap';
+
+class ViewerGrid extends React.Component {
 
 	propTypes: {
-		slides: React.PropTypes.array,
+		slides: PropTypes.array,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getDefaultProps() {

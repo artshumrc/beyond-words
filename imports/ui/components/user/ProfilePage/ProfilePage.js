@@ -25,15 +25,15 @@ import muiTheme from '/imports/lib/muiTheme';
 import Utils from '/imports/lib/utils';
 
 
-const ProfilePage = React.createClass({
+const class ProfilePage extends React.Component {
 	propTypes: {
-		user: React.PropTypes.object,
-		settings: React.PropTypes.object,
-		discussionComments: React.PropTypes.array,
+		user: PropTypes.object,
+		settings: PropTypes.object,
+		discussionComments: PropTypes.array,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getInitialState() {

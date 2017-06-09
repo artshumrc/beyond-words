@@ -1,12 +1,15 @@
+import React from 'react';
+import autoBind from 'react-autobind';
 import 'openseadragon';
 import Slider from 'react-slick';
 
-Viewer = React.createClass({
+class Viewer extends React.Component {
 
-	propTypes: {
-	},
+	constructor(props) {
+		super(props);
 
-	mixins: [ReactMeteorData],
+		autoBind(this);
+	}
 
 	componentDidMount() {
 		this.left_viewer = OpenSeadragon({
@@ -38,31 +41,7 @@ Viewer = React.createClass({
 			const ifFullScreen = self.right_viewer.isFullPage();
 			self.right_viewer.setFullScreen(!ifFullScreen);
 		});
-	},
-
-	getMeteorData() {
-		return {
-			// Sample images to show in viewer
-			slides: [
-				'/images/Januarius_0001.tif',
-				'/images/Januarius_0002.tif',
-				'/images/Januarius_0003.tif',
-				'/images/Januarius_0004.tif',
-				'/images/Januarius_0005.tif',
-				'/images/Januarius_0006.tif',
-				'/images/Januarius_0007.tif',
-				'/images/Januarius_0008.tif',
-				'/images/Januarius_0009.tif',
-				'/images/Januarius_0010.tif',
-				'/images/Januarius_0011.tif',
-				'/images/Januarius_0012.tif',
-				'/images/Januarius_0013.tif',
-				'/images/Januarius_0014.tif',
-				'/images/Januarius_0015.tif',
-				'/images/Januarius_0016.tif',
-			],
-		};
-	},
+	}
 
 	nextSlide(currentSlide) {
 		console.log('after change', currentSlide);
@@ -84,7 +63,7 @@ Viewer = React.createClass({
 			this.right_viewer.open({ type: 'image', url: this.data.slides[currentSlide] });
 			this.left_viewer.open({ type: 'image', url: this.data.slides[currentSlide - 1] });
 		}
-	},
+	}
 
 	render() {
 		const self = this;
@@ -120,6 +99,26 @@ Viewer = React.createClass({
 				margin: '10px',
 			},
 		};
+			// Sample images to show in viewer
+		const slides = [
+			'/images/Januarius_0001.tif',
+			'/images/Januarius_0002.tif',
+			'/images/Januarius_0003.tif',
+			'/images/Januarius_0004.tif',
+			'/images/Januarius_0005.tif',
+			'/images/Januarius_0006.tif',
+			'/images/Januarius_0007.tif',
+			'/images/Januarius_0008.tif',
+			'/images/Januarius_0009.tif',
+			'/images/Januarius_0010.tif',
+			'/images/Januarius_0011.tif',
+			'/images/Januarius_0012.tif',
+			'/images/Januarius_0013.tif',
+			'/images/Januarius_0014.tif',
+			'/images/Januarius_0015.tif',
+			'/images/Januarius_0016.tif',
+		];
+
 		return (
 			<div className="container">
 				<div id="viewer" className="row" style={styles.viewer}>
@@ -131,7 +130,7 @@ Viewer = React.createClass({
 				<div className="row">
 					<div id="slider"className="col-xs-12 center-block" style={styles.slider}>
 						<Slider {...settings}>
-							{this.data.slides.map((slide, i) => (
+							{slides.map((slide, i) => (
 								<div key={i} style={styles.thumbnail}>
 									<img alt="slide" className="center-block" height="80" src={slide} />
 								</div>
@@ -141,5 +140,5 @@ Viewer = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}

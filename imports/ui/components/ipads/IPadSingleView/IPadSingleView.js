@@ -1,14 +1,13 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
 
-IPadSingleView = React.createClass({
-
-	propTypes: {
-		slides: React.PropTypes.array,
-	},
+class IPadSingleView extends React.Component {
 
 	getDefaultProps() {
 		return {
@@ -31,7 +30,7 @@ IPadSingleView = React.createClass({
 				'/images/Januarius_0016.tif',
 			],
 		};
-	},
+	}
 
 	getInitialState() {
 		return {
@@ -39,25 +38,25 @@ IPadSingleView = React.createClass({
 			slide: '',
 			open: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	handleSlideOpen(slide) {
 		this.setState({
 			open: true,
 			slide,
 		});
-	},
+	}
 
 	handleSlideClose() {
 		this.setState({
 			open: false,
 			slickGoTo: this.state.slickGoTo,
 		});
-	},
+	}
 
 	handleSlideChange(currentSlide) {
 		// check if currentSlide is valid
@@ -68,7 +67,7 @@ IPadSingleView = React.createClass({
 		this.setState({
 			slickGoTo: currentSlide,
 		});
-	},
+	}
 
 	scrollToSlide(currentSlide) {
 		// check if currentSlide is valid
@@ -79,7 +78,7 @@ IPadSingleView = React.createClass({
 		this.setState({
 			slickGoTo: currentSlide,
 		});
-	},
+	}
 
 	render() {
 		const settings = {
@@ -116,7 +115,7 @@ IPadSingleView = React.createClass({
 												onClick={this.handleSlideOpen.bind(this, slide)}
 												className="center-block"
 												src={slide}
-           />
+											/>
 										</Paper>
 									</div>
 								</div>
@@ -138,9 +137,13 @@ IPadSingleView = React.createClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
 
 IPadSingleView.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
+};
+
+IPadSingleView.propTypes = {
+	slides: PropTypes.array,
 };

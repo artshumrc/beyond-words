@@ -22,15 +22,15 @@ const checkUsername = (user) => {
 	}
 };
 
-const PublicProfilePage = React.createClass({
+const class PublicProfilePage extends React.Component {
 	propTypes: {
-		userId: React.PropTypes.string,
-		user: React.PropTypes.object,
-		discussionComments: React.PropTypes.array,
+		userId: PropTypes.string,
+		user: PropTypes.object,
+		discussionComments: PropTypes.array,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getInitialState() {

@@ -1,18 +1,16 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Paper from 'material-ui/Paper';
 
 import Slider from 'react-slick';
 
-ThumbnailSlider = React.createClass({
-
-	propTypes: {
-		thumbnailList: React.PropTypes.array.isRequired,
-		handleSlideChange: React.PropTypes.func.isRequired,
-	},
+class ThumbnailSlider extends React.Component {
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
+
 	render() {
 		const self = this;
 		const settings = {
@@ -64,9 +62,14 @@ ThumbnailSlider = React.createClass({
 				</Slider>
 			</Paper>
 		);
-	},
-});
+	}
+}
 
 ThumbnailSlider.childContextTypes = {
-	muiTheme: React.PropTypes.object.isRequired,
+	muiTheme: PropTypes.object.isRequired,
+};
+
+ThumbnailSlider.propTypes = {
+	thumbnailList: PropTypes.array.isRequired,
+	handleSlideChange: PropTypes.func.isRequired,
 };

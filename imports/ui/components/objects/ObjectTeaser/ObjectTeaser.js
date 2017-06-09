@@ -1,5 +1,8 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 // Needed for onTouchTap
@@ -8,15 +11,15 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 injectTapEventPlugin();
 
 // Object Teaser
-ObjectTeaser = React.createClass({
+class ObjectTeaser extends React.Component {
 
 	propTypes: {
-		object: React.PropTypes.object.isRequired,
-		selectObject: React.PropTypes.func,
+		object: PropTypes.object.isRequired,
+		selectObject: PropTypes.func,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	mixins: [ReactMeteorData],

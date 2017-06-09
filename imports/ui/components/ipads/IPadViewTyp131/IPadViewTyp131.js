@@ -1,4 +1,7 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+/* eslint-disable */
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
@@ -9,16 +12,10 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import FontIcon from 'material-ui/FontIcon';
 import { grey500, white } from 'material-ui/styles/colors';
 
-IPadViewTyp131 = React.createClass({
-
-	propTypes: {
-	},
-
+class IPadViewTyp131 extends React.Component {
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getInitialState() {
 		return {
@@ -26,11 +23,11 @@ IPadViewTyp131 = React.createClass({
 			videoOpen: false,
 			infoModalOpen: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	getMeteorData() {
 		const query = {};
@@ -48,34 +45,37 @@ IPadViewTyp131 = React.createClass({
 			ipad: IPads.find(query, { sort: { title: 1 } }).fetch(),
 			currentUser: Meteor.user(),
 		};
-	},
+	}
 
 	handleViewChange(event, value) {
 		this.setState({
 			view: value,
 		});
-	},
+	}
 
 	handleClose() {
 		this.setState({
 			videoOpen: false,
 		});
-	},
+	}
+
 	showVideo() {
 		this.setState({
 			videoOpen: true,
 		});
-	},
+	}
+
 	handleCloseInfoModal() {
 		this.setState({
 			infoModalOpen: false,
 		});
-	},
+	}
+
 	showInfoModal() {
 		this.setState({
 			infoModalOpen: true,
 		});
-	},
+	}
 
 	render() {
 		const styles = {
@@ -161,7 +161,7 @@ IPadViewTyp131 = React.createClass({
 
 
 		return (
-			<div className="page page-ipad">
+		<div className="page page-ipad">
 				{iframe.length ?
 					<iframe src={iframe} width="100%" height="100%" />
 					:
@@ -480,5 +480,5 @@ IPadViewTyp131 = React.createClass({
 				}
 			</div>
 		);
-	},
-});
+	}
+}

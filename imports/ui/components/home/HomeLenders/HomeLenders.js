@@ -1,16 +1,19 @@
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Masonry from 'react-masonry-component/lib';
 
-HomeLenders = React.createClass({
+class HomeLenders extends React.Component {
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
-	},
+		muiTheme: PropTypes.object.isRequired,
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	render() {
 		const masonryOptions = {
@@ -183,6 +186,5 @@ HomeLenders = React.createClass({
 				</section>
 			</div>
 		);
-	},
-})
-;
+	}
+}
