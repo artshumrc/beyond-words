@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class MasterLayout extends React.Component {
-	propTypes: {
-		content: PropTypes.element,
-	},
-
 	render() {
-		console.log(this);
 		return (
 			<div className="archimedes-layout master-layout">
 				<Header />
@@ -17,6 +12,9 @@ class MasterLayout extends React.Component {
 				<Footer />
 			</div>
 		);
-	},
+	}
+}
 
-});
+MasterLayout.propTypes = {
+	content: PropTypes.element,
+};

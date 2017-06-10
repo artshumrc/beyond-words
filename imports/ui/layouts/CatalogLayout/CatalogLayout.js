@@ -414,7 +414,7 @@ class CatalogLayout extends React.Component {
 						/>
 						<BeyondWordsViewer
 							selectedObject={selectedObject}
-      />
+			/>
 					</div>
 
 					: ''

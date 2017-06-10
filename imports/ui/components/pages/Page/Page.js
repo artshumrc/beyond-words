@@ -1,13 +1,10 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-class SinglePage extends React.Component {
-	propTypes: {
-		slug: PropTypes.string,
-	},
-	mixins: [ReactMeteorData],
+
+class Page extends React.Component {
+
 	getMeteorData() {
-        // console.log(this);
+				// console.log(this);
 		const slug = this.props.slug;// FlowRouter.getParam('slug');
 		let page = {};
 		let images = [];
@@ -15,8 +12,8 @@ class SinglePage extends React.Component {
 		const handle = Meteor.subscribe('pages', slug);
 		let loading = true;
 		if (handle.ready()) {
-        // console.log(tweets);
-        // TweetCollection = new Mongo.Collection("tweetCollection");
+				// console.log(tweets);
+				// TweetCollection = new Mongo.Collection("tweetCollection");
 			page = Pages.find({ slug }).fetch()[0];
 			const imageSub = Meteor.subscribe('pageImages', slug);
 			if (imageSub.ready()) {
@@ -34,7 +31,8 @@ class SinglePage extends React.Component {
 			thumbnails,
 			loading,
 		};
-	},
+	}
+
 	backgroundImages() {
 		setTimeout(() => {
 			$('.background-image-holder').each(function appendImg() {
@@ -45,14 +43,15 @@ class SinglePage extends React.Component {
 				$(this).addClass('fadeIn');
 			});
 
-            // Fade in background images
+						// Fade in background images
 			setTimeout(() => {
 				$('.background-image-holder').each(function fadeImg() {
 					$(this).removeClass('blur');
 				});
 			}, 500);
 		}, 100);
-	},
+	}
+
 	render() {
 		const page = this.data.page;
 		const slug = this.props.slug;// FlowRouter.getParam('slug');
@@ -112,5 +111,9 @@ class SinglePage extends React.Component {
 
 			</div>
 		);
-	},
-});
+	}
+}
+
+Page.propTypes = {
+	slug: PropTypes.string,
+};

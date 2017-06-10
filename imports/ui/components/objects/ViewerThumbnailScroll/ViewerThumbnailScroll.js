@@ -6,19 +6,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class ViewerThumbnailScroll extends React.Component {
 
-	propTypes: {
-		thumbnailList: PropTypes.array.isRequired,
-		activeSlide: PropTypes.number.isRequired,
-		scrollToSlide: PropTypes.func.isRequired,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	render() {
 		const self = this;
@@ -47,5 +41,11 @@ class ViewerThumbnailScroll extends React.Component {
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
+
+ViewerThumbnailScroll.propTypes = {
+	thumbnailList: PropTypes.array.isRequired,
+	activeSlide: PropTypes.number.isRequired,
+	scrollToSlide: PropTypes.func.isRequired,
+};

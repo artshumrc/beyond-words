@@ -11,9 +11,9 @@ export default function isDblTouchTap(event) {
 		target: event.currentTarget,
 	};
 	const isFastDblTouchTap = (
-    touchTap.target === latestTouchTap.target &&
-    touchTap.time - latestTouchTap.time < dblTouchTapMaxDelay
-  );
+		touchTap.target === latestTouchTap.target &&
+		touchTap.time - latestTouchTap.time < dblTouchTapMaxDelay
+	);
 	latestTouchTap = touchTap;
 	return isFastDblTouchTap;
 }

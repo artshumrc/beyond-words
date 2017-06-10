@@ -7,32 +7,25 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class SearchTermButton extends React.Component {
 
-	propTypes: {
-		toggleSearchTerm: PropTypes.func.isRequired,
-		label: PropTypes.string.isRequired,
-		searchTermKey: PropTypes.string.isRequired,
-		value: PropTypes.string.isRequired,
-		activeWork: PropTypes.bool,
-		active: PropTypes.bool,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+
+		this.state = {
 			active: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	toggleSearchTerm() {
 		this.props.toggleSearchTerm(this.props.searchTermKey, this.props.value);
-	},
+	}
 
 	render() {
 		let className = 'search-term-button';
@@ -60,6 +53,14 @@ class SearchTermButton extends React.Component {
 				/>
 			</li>
 		);
-	},
+	}
+}
 
-});
+SearchTermButton.propTypes = {
+	toggleSearchTerm: PropTypes.func.isRequired,
+	label: PropTypes.string.isRequired,
+	searchTermKey: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	activeWork: PropTypes.bool,
+	active: PropTypes.bool,
+};

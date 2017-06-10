@@ -8,7 +8,7 @@ class ComingSoonHomeLayout extends React.Component {
 				$('html, body').animate({ scrollTop: $(location.hash).offset().top - 100 }, 300);
 			}, 1000);
 		}
-	},
+	}
 	render() {
 		return (
 			<div className="archimedes-layout home-layout">
@@ -17,6 +17,5 @@ class ComingSoonHomeLayout extends React.Component {
 				<Footer />
 			</div>
 		);
-	},
-
-});
+	}
+}

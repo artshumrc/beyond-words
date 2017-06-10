@@ -8,24 +8,14 @@ import Drawer from 'material-ui/Drawer';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 
 class ObjectsSearchToolsPanel extends React.Component {
-
-	propTypes: {
-		filters: PropTypes.array,
-		toggleSearchTerm: PropTypes.func,
-		handleChangeTextsearch: PropTypes.func,
-		handleChangeDate: PropTypes.func,
-		open: PropTypes.bool,
-		closeRightMenu: PropTypes.func,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
-	mixins: [ReactMeteorData],
+	constructor(props) {
+		super(props);
 
-	getInitialState() {
-		return {
+		this.state = {
 			searchDropdownOpen: '',
 			yearMin: 600,
 			yearMax: 1700,
@@ -34,11 +24,11 @@ class ObjectsSearchToolsPanel extends React.Component {
 			institutions: [],
 			places: [],
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	componentDidMount() {
 		Meteor.call('searchTools', (err, res) => {
@@ -54,7 +44,7 @@ class ObjectsSearchToolsPanel extends React.Component {
 				});
 			}
 		});
-	},
+	}
 
 	getMeteorData() {
 		const scribes = [];
@@ -68,15 +58,15 @@ class ObjectsSearchToolsPanel extends React.Component {
 			institutions,
 			places,
 		};
-	},
+	}
 
 	toggleSearchTerm(key, value) {
 		this.props.toggleSearchTerm(key, value);
-	},
+	}
 
 	handleChangeTextsearch(event) {
 		this.props.handleChangeTextsearch(event.target.value);
-	},
+	}
 
 	render() {
 		const self = this;
@@ -286,5 +276,14 @@ class ObjectsSearchToolsPanel extends React.Component {
 				</Card>
 			</Drawer>
 		);
-	},
-});
+	}
+}
+
+ObjectsSearchToolsPanel.propTypes = {
+	filters: PropTypes.array,
+	toggleSearchTerm: PropTypes.func,
+	handleChangeTextsearch: PropTypes.func,
+	handleChangeDate: PropTypes.func,
+	open: PropTypes.bool,
+	closeRightMenu: PropTypes.func,
+};

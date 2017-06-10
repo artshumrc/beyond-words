@@ -1,38 +1,26 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-// Needed for onTouchTap
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
 
 // Object Teaser
 class ObjectTeaser extends React.Component {
 
-	propTypes: {
-		object: PropTypes.object.isRequired,
-		selectObject: PropTypes.func,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
-
-	mixins: [ReactMeteorData],
+	}
 
 	getInitialState() {
 		return {
 			attachmentCheck: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	componentDidMount() {
 		const self = this;
@@ -42,13 +30,9 @@ class ObjectTeaser extends React.Component {
 				self.setState({
 					attachmentCheck: true,
 				});
-
 			}
-
 		}, 3000);
-
-
-	},
+	}
 
 	getMeteorData() {
 		let attachment = null;
@@ -62,7 +46,7 @@ class ObjectTeaser extends React.Component {
 		return {
 			attachment,
 		};
-	},
+	}
 
 
 	render() {
@@ -115,51 +99,51 @@ class ObjectTeaser extends React.Component {
 										/>
 									</div>
 									:
-										<div>
-											<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
-												<span>Preview image not available</span>
-											</div>
-											<img
-												alt={authorTitle}
-												className="object-detail-thumbnail default"
-												src="/images/default_image.jpg"
-           />
+									<div>
+										<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
+											<span>Preview image not available</span>
 										</div>
+										<img
+											alt={authorTitle}
+											className="object-detail-thumbnail default"
+											src="/images/default_image.jpg"
+										/>
+									</div>
 								}
 							</div>
 						</a>
 						:
-							<a
-								href={objectUrl}
-       >
-								<div className="object-thumbnail-wrap">
-									<div className="object-catalog-n">
-										<span>
-											{object.catalog_n}.
-										</span>
-									</div>
-									{(imageUrl.length) ?
-										<div>
-											<div
-												alt={authorTitle}
-												className="object-detail-thumbnail"
-												style={styles.thumbnailImage}
-           />
-										</div>
-									:
-										<div>
-											<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
-												<span>Preview image not available</span>
-											</div>
-											<img
-												alt={authorTitle}
-												className="object-detail-thumbnail default"
-												src="/images/default_image.jpg"
-           />
-										</div>
-								}
+						<a
+							href={objectUrl}
+						>
+							<div className="object-thumbnail-wrap">
+								<div className="object-catalog-n">
+									<span>
+										{object.catalog_n}.
+									</span>
 								</div>
-							</a>
+								{(imageUrl.length) ?
+									<div>
+										<div
+											alt={authorTitle}
+											className="object-detail-thumbnail"
+											style={styles.thumbnailImage}
+										/>
+									</div>
+								:
+									<div>
+										<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
+											<span>Preview image not available</span>
+										</div>
+										<img
+											alt={authorTitle}
+											className="object-detail-thumbnail default"
+											src="/images/default_image.jpg"
+										/>
+									</div>
+							}
+							</div>
+						</a>
 					}
 					<div className="object-text-wrap">
 						{this.props.selectObject ?
@@ -170,9 +154,9 @@ class ObjectTeaser extends React.Component {
 								<h3>{Utils.trunc(authorTitle, 60)}</h3>
 							</a>
 							:
-								<a href={objectUrl}>
-									<h3>{Utils.trunc(authorTitle, 60)}</h3>
-								</a>
+							<a href={objectUrl}>
+								<h3>{Utils.trunc(authorTitle, 60)}</h3>
+							</a>
 						}
 						<span className="object-teaser-subtitle">{object.date}</span>
 						<p>
@@ -256,6 +240,10 @@ class ObjectTeaser extends React.Component {
 				</div>
 			</div>
 		);
-	},
+	}
+}
 
-});
+ObjectTeaser.propTypes = {
+	object: PropTypes.object.isRequired,
+	selectObject: PropTypes.func,
+};

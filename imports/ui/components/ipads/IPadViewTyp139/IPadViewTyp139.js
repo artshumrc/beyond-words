@@ -183,17 +183,17 @@ class IPadViewTyp139 extends React.Component {
 							<Toolbar
 								className="ipad-toolbar paper-shadow"
 								style={styles.toolBar}
-       >
+			 >
 								<ToolbarGroup
 									className="toolbar-group toolbar-group-info"
-        >
+				>
 									<FontIcon
 										onClick={this.showInfoModal}
 										style={styles.icon}
 										className="mdi mdi-information"
 										color={grey500}
 										hoverColor={white}
-         />
+				 />
 									{/* <FontIcon
 									onClick={this.showVideo}
 									style={styles.icon}
@@ -207,55 +207,55 @@ class IPadViewTyp139 extends React.Component {
 
 								<ToolbarGroup
 									className="toolbar-group toolbar-group-view-mode"
-        >
+				>
 									<RadioButtonGroup
 										style={styles.radioButtonGroup}
 										name="view"
 										defaultSelected="grid"
 										onChange={this.handleViewChange}
-         >
+				 >
 										<RadioButton
 											value="grid"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-view-grid"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 										<RadioButton
 											value="single"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-file-document-box"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-file-document-box"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 										<RadioButton
 											value="spread"
 											checkedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-book-open-variant"
 												color={white}
-           />}
+					 />}
 											uncheckedIcon={<FontIcon
 												style={styles.icon}
 												className="mdi mdi-book-open-variant"
 												color={grey500}
-           />}
+					 />}
 											style={styles.radioButton}
-          />
+					/>
 									</RadioButtonGroup>
 								</ToolbarGroup>
 							</Toolbar>
@@ -278,12 +278,12 @@ class IPadViewTyp139 extends React.Component {
 								open={this.state.videoOpen}
 								onRequestClose={this.handleClose}
 								bodyStyle={styles.noPadding}
-       >
+			 >
 								<IconButton
 									className="close-fullscreen"
 									style={styles.closeButton}
 									onClick={this.handleClose}
-        >
+				>
 									<ContentClear />
 								</IconButton>
 								<div className="viewer-video">
@@ -291,19 +291,19 @@ class IPadViewTyp139 extends React.Component {
 										<source
 											src="/videos/making_manuscripts_binding01.mp4"
 											type="video/mp4"
-          />
+					/>
 									</video>
 								</div>
 
 							</Dialog>
 							<div
 								className={(this.state.infoModalOpen ? 'info-modal lowered' : 'info-modal')}
-       >
+			 >
 								<IconButton
 									className="close-fullscreen"
 									style={styles.closeButton}
 									onClick={this.handleCloseInfoModal}
-        >
+				>
 									<ContentClear />
 								</IconButton>
 								<section className="object-details">
@@ -380,7 +380,7 @@ class IPadViewTyp139 extends React.Component {
 															href={object.externalUrl}
 															target="_blank"
 															rel="noopener noreferrer"
-              >
+							>
 															{object.externalUrl}
 														</a>
 													</span>

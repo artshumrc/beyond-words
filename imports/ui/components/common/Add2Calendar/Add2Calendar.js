@@ -9,48 +9,48 @@
 
 const Add2Calendar = function(eventData) {
 
-  /*= =============================================================== Util
-  */
+	/*= =============================================================== Util
+	*/
 
-  /**
-   * [formatTime description]
-   *
-   * @param  {[type]} date [description]
-   * @return {[type]}      [description]
-   */
+	/**
+	 * [formatTime description]
+	 *
+	 * @param	{[type]} date [description]
+	 * @return {[type]}			[description]
+	 */
 	this.formatTime = function(date) {
 		return date.toISOString().replace(/-|:|\.\d+/g, '');
 	};
 
 	this.hasClass = function(ele, cls) {
-	  return (` ${ele.className} `).indexOf(` ${cls} `) > -1;
+		return (` ${ele.className} `).indexOf(` ${cls} `) > -1;
 	};
 
 	this.onA2cldrClicked = function(ele) {
-	  const activeClassName = 'active';
-	  const parent = ele.parentNode;
+		const activeClassName = 'active';
+		const parent = ele.parentNode;
 
-	  if (this.hasClass(parent, activeClassName)) {
-	    parent.classList.remove(activeClassName);
+		if (this.hasClass(parent, activeClassName)) {
+			parent.classList.remove(activeClassName);
 
-	  } else {
-	    parent.classList.add(activeClassName);
-	  }
+		} else {
+			parent.classList.add(activeClassName);
+		}
 	};
 
-  /**
-   * [isValidEventData description]
-   * UNUSED, UNCOMPLETE
-   * TODO
-   * - validate `eventData`
-   * - require only `start`
-   *
-   * @see http://stackoverflow.com/questions/5812220/how-to-validate-a-date
-   * @see http://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript
-   *
-   * @param  {[type]}  args [description]
-   * @return {Boolean}      [description]
-   */
+	/**
+	 * [isValidEventData description]
+	 * UNUSED, UNCOMPLETE
+	 * TODO
+	 * - validate `eventData`
+	 * - require only `start`
+	 *
+	 * @see http://stackoverflow.com/questions/5812220/how-to-validate-a-date
+	 * @see http://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript
+	 *
+	 * @param	{[type]}	args [description]
+	 * @return {Boolean}			[description]
+	 */
 	this.isValidEventData = function(eventData) {
 		return true;
 	};
@@ -59,38 +59,38 @@ const Add2Calendar = function(eventData) {
 		return Object.prototype.toString.call(obj) === `[object ${type}]`;
 	};
 
-  /**
-   * [isDateObject description]
-   * UNUSED
-   *
-   * @see http://stackoverflow.com/questions/643782/how-to-check-whether-an-object-is-a-date
-   *
-   * @param  {[type]}  obj [description]
-   * @return {Boolean}     [description]
-   */
+	/**
+	 * [isDateObject description]
+	 * UNUSED
+	 *
+	 * @see http://stackoverflow.com/questions/643782/how-to-check-whether-an-object-is-a-date
+	 *
+	 * @param	{[type]}	obj [description]
+	 * @return {Boolean}		 [description]
+	 */
 	this.isDateObject = function(obj) {
 		return this.isObjectType(obj, 'Date');
 	};
 
-  // UNUSED
+	// UNUSED
 	this.isArray = function(obj) {
 		return this.isObjectType(obj, 'Array');
 	};
 
-  // UNUSED
+	// UNUSED
 	this.isFunc = function(obj) {
 		return this.isObjectType(obj, 'Function');
 	};
 
-  /**
-   * [serialize description]
-   * Object to query string (encode)
-   *
-   * @see http://stackoverflow.com/questions/1714786/querystring-encoding-of-a-javascript-object
-   *
-   * @param  {[type]} obj [description]
-   * @return {[type]}     [description]
-   */
+	/**
+	 * [serialize description]
+	 * Object to query string (encode)
+	 *
+	 * @see http://stackoverflow.com/questions/1714786/querystring-encoding-of-a-javascript-object
+	 *
+	 * @param	{[type]} obj [description]
+	 * @return {[type]}		 [description]
+	 */
 	this.serialize = function(obj) {
 		const str = [];
 		for (const p in obj) {
@@ -117,8 +117,8 @@ const Add2Calendar = function(eventData) {
 		return result;
 	};
 
-  /*= =============================================================== Google
-  */
+	/*= =============================================================== Google
+	*/
 
 	this.updateGoogleUrl = function() {
 		if (this.isSingleEvent) {
@@ -149,8 +149,8 @@ const Add2Calendar = function(eventData) {
 		window.open(this.googleUrl);
 	};
 
-  /*= =============================================================== iCal / Outlook
-  */
+	/*= =============================================================== iCal / Outlook
+	*/
 
 	this.updateICalUrl = function() {
 		if (this.isSingleEvent) {
@@ -158,7 +158,7 @@ const Add2Calendar = function(eventData) {
 				endDate = this.formatTime(new Date(this.eventData.end));
 
 			this.iCalUrl = encodeURI(
-        `data:text/calendar;charset=utf8,${
+				`data:text/calendar;charset=utf8,${
 [
 	'BEGIN:VCALENDAR',
 	'VERSION:2.0',
@@ -172,7 +172,7 @@ const Add2Calendar = function(eventData) {
 	'END:VEVENT',
 	'END:VCALENDAR'
 ].join('\n')}`
-      );
+			);
 
 		} else {
 			let i = 0,
@@ -224,23 +224,23 @@ const Add2Calendar = function(eventData) {
 		window.open(this.iCalUrl);
 	};
 
-  // Same as getICalUrl
+	// Same as getICalUrl
 	this.getOutlookUrl = function() {
 		return this.iCalUrl;
 	};
 
-  // Same as getICalLiHtml
+	// Same as getICalLiHtml
 	this.getOutlookLiHtml = function() {
 		return this.getLiHtml('Outlook', this.iCalUrl, 'outlook');
 	};
 
-  // Same as openICal
+	// Same as openICal
 	this.openOutlook = function() {
 		window.open(this.iCalUrl);
 	};
 
-  /*= =============================================================== Outlook Online
-  */
+	/*= =============================================================== Outlook Online
+	*/
 
 	this.updateOutlookOnlineUrl = function() {
 		if (this.isSingleEvent) {
@@ -280,17 +280,17 @@ const Add2Calendar = function(eventData) {
 		window.open(this.outlookOnlineUrl);
 	};
 
-  /*= =============================================================== Yahoo
-  */
+	/*= =============================================================== Yahoo
+	*/
 
 	this.updateYahooUrl = function() {
 		if (this.isSingleEvent) {
 			const startDate = this.formatTime(new Date(this.eventData.start));
 
-      // FIXED: Yahoo! calendar bug
-      //
-      // Yahoo! did calculate timezone for `start`
-      // but they did not calculate timezone for `end`
+			// FIXED: Yahoo! calendar bug
+			//
+			// Yahoo! did calculate timezone for `start`
+			// but they did not calculate timezone for `end`
 			const tmp = new Date(this.eventData.end);
 			const timezoneOffset = tmp.getTimezoneOffset();
 			tmp.setMinutes(tmp.getMinutes() - timezoneOffset);
@@ -302,7 +302,7 @@ const Add2Calendar = function(eventData) {
 				title: this.eventData.title,
 				st: startDate,
 				et: endDate,
-        // 'dur'       : '',
+				// 'dur'			 : '',
 				in_loc: this.eventData.location,
 				desc: this.eventData.description
 			};
@@ -323,17 +323,17 @@ const Add2Calendar = function(eventData) {
 		window.open(this.yahooUrl);
 	};
 
-  /*= =============================================================== Widget
-  */
+	/*= =============================================================== Widget
+	*/
 
 	this.getSingleEventWidgetNode = function() {
 		let html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">Add to Calendar:</span>' +
-      '<ul class="a2cldr-list">';
+			'<ul class="a2cldr-list">';
 
 		html += this.getGoogleLiHtml();
 		html += this.getICalLiHtml();
 		html += this.getOutlookLiHtml();
-    // html += this.getOutlookOnlineLiHtml();
+		// html += this.getOutlookOnlineLiHtml();
 		html += this.getYahooLiHtml();
 
 		const result = document.createElement('div');
@@ -343,11 +343,11 @@ const Add2Calendar = function(eventData) {
 		return result;
 	};
 
-  /*= =============================================================== Init & Others
-  */
+	/*= =============================================================== Init & Others
+	*/
 
-  // http://stackoverflow.com/questions/3390396/how-to-check-for-undefined-in-javascript
-  // http://stackoverflow.com/questions/2647867/how-to-determine-if-variable-is-undefined-or-null
+	// http://stackoverflow.com/questions/3390396/how-to-check-for-undefined-in-javascript
+	// http://stackoverflow.com/questions/2647867/how-to-determine-if-variable-is-undefined-or-null
 	if (typeof eventData == 'undefined') return false;
 	if (!this.isValidEventData(eventData)) return false;
 
@@ -374,8 +374,8 @@ const Add2Calendar = function(eventData) {
 		lang: 'en' // country code
 	};
 
-  // TODO
-  // merge `eventData` with `defaultEventData`
+	// TODO
+	// merge `eventData` with `defaultEventData`
 	this.eventData = eventData;
 	this.isSingleEvent = !this.isArray(eventData);
 
@@ -388,7 +388,7 @@ const Add2Calendar = function(eventData) {
 		this.updateGoogleUrl();
 		this.updateICalUrl();
 		this.updateYahooUrl();
-    // this.updateOutlookOnlineUrl();
+		// this.updateOutlookOnlineUrl();
 	};
 
 	this.init = function() {

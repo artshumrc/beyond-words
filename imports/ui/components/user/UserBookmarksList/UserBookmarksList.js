@@ -1,13 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-import TextNodes from '/imports/api/collections/textNodes';
 
-const class UserBookmarksList extends React.Component {
-	propTypes: {
-		bookmarkedText: PropTypes.array,
-	},
-
+class UserBookmarksList extends React.Component {
 	render() {
 		const { bookmarkedText } = this.props;
 		const styles = {
@@ -38,8 +33,13 @@ const class UserBookmarksList extends React.Component {
 					))}
 			</div>
 		);
-	},
-});
+	}
+}
+
+UserBookmarksList.propTypes = {
+	bookmarkedText: PropTypes.array,
+};
+
 
 const UserBookmarksListContainer = createContainer(() => {
 	let bookmarkedText = [];

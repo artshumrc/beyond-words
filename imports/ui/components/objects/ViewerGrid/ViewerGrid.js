@@ -8,13 +8,9 @@ import isDblTouchTap from '/imports/ui/components/common/isDblTouchTap';
 
 class ViewerGrid extends React.Component {
 
-	propTypes: {
-		slides: PropTypes.array,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
 	getDefaultProps() {
 		return {
@@ -22,30 +18,33 @@ class ViewerGrid extends React.Component {
 				'/images/BannerSQ.jpg',
 			],
 		};
-	},
+	}
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+		this.state = {
 			slide: '',
 			open: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	handleSlideOpen(slide) {
 		this.setState({
 			open: true,
 			slide,
 		});
-	},
+	}
+
 	handleSlideClose() {
 		this.setState({
 			open: false,
 		});
-	},
+	}
+
 	render() {
 		const self = this;
 		const masonryOptions = {
@@ -77,12 +76,16 @@ class ViewerGrid extends React.Component {
 									onClick={this.handleSlideOpen.bind(this, slide)}
 									className="center-block"
 									src={`https://s3.amazonaws.com/beyond-words/thumbnails/${slide}`}
-        />
+								/>
 							</div>
 						</div>
 				))}
 				</Masonry>
 			</div>
 		);
-	},
-});
+	}
+}
+
+ViewerGrid.propTypes = {
+	slides: PropTypes.array,
+};

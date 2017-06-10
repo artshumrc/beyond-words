@@ -71,9 +71,11 @@
 		"react/forbid-prop-types": "off",
 		"react/no-unused-prop-types": "off",
 		"jsx-a11y/no-static-element-interactions": "off",
+		"jsx-a11y/href-no-hash": "off",
 		"import/no-absolute-path": "off",
 		"func-names": "off",
 		"react/no-danger": "off",
+		"react/no-string-refs": "off",
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
 	}
 }

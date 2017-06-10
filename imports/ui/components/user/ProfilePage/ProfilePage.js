@@ -8,35 +8,20 @@ import TextField from 'material-ui/TextField';
 import { debounce } from 'throttle-debounce';
 import Toggle from 'material-ui/Toggle';
 
-// api
-import Comments from '/imports/api/collections/comments';
-import DiscussionComments from '/imports/api/collections/discussionComments';
-import Settings from '/imports/api/collections/settings';
-
-// components
-import AvatarEditor from '/imports/ui/components/avatar/AvatarEditor';
-import BackgroundImageHolder from '/imports/ui/components/shared/BackgroundImageHolder';
-import LoadingPage from '/imports/ui/components/loading/LoadingPage';
-import DiscussionCommentsList from '/imports/ui/components/discussionComments/DiscussionCommentsList';
-import ModalChangePwd from '/imports/ui/layouts/auth/ModalChangePwd';
-
 // lib
 import muiTheme from '/imports/lib/muiTheme';
 import Utils from '/imports/lib/utils';
 
 
-const class ProfilePage extends React.Component {
-	propTypes: {
-		user: PropTypes.object,
-		settings: PropTypes.object,
-		discussionComments: PropTypes.array,
-	},
+class ProfilePage extends React.Component {
 
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
-	getInitialState() {
+	constructor(props) {
+		super(props);
+
 		let isPublicEmail = false;
 		const { user } = this.props;
 
@@ -44,7 +29,7 @@ const class ProfilePage extends React.Component {
 			isPublicEmail = true;
 		}
 
-		return {
+		this.state = {
 			annotationCheckList: [],
 			skip: 0,
 			limit: 100,
@@ -53,26 +38,26 @@ const class ProfilePage extends React.Component {
 			modalChangePwdLowered: false,
 			isPublicEmail,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(muiTheme) };
-	},
+	}
 
 	componentWillMount() {
 		this.handleChangeTextDebounced = debounce(1000, this.handleChangeTextDebounced);
-	},
+	}
 
 	loadMore() {
 		this.setState({
 			skip: this.state.skip + 10,
 		});
-	},
+	}
 
 	handleChangeText(field, event) {
 		const value = event.target.value;
 		this.handleChangeTextDebounced(field, value);
-	},
+	}
 
 	handleChangeTextDebounced(field, value) {
 		const user = this.props.user;
@@ -123,7 +108,7 @@ const class ProfilePage extends React.Component {
 				}
 			});
 		}
-	},
+	}
 
 	handlePublicEmailToggle() {
 		const user = this.props.user;
@@ -140,19 +125,19 @@ const class ProfilePage extends React.Component {
 				console.error(err);
 			}
 		});
-	},
+	}
 
 	showChangePwdModal() {
 		this.setState({
 			modalChangePwdLowered: true,
 		});
-	},
+	}
 
 	closeChangePwdModal() {
 		this.setState({
 			modalChangePwdLowered: false,
 		});
-	},
+	}
 
 	render() {
 		const { user, settings, discussionComments } = this.props;
@@ -347,51 +332,21 @@ const class ProfilePage extends React.Component {
 
 			</div>
 		);
-	},
-});
+	}
+}
 
 const ProfilePageContainer = createContainer(() => {
-	let discussionComments = [];
-	Meteor.subscribe('settings.tenant', Session.get('tenantId'));
-	Meteor.subscribe('user.discussionComments', Meteor.userId(), Session.get('tenantId'));
-
-	discussionComments = DiscussionComments.find({
-		userId: Meteor.userId(),
-	}).fetch();
-
-	discussionComments.forEach((discussionComment, discussionCommentIndex) => {
-		const commentHandle = Meteor.subscribe('comments', {
-			_id: discussionComment.commentId,
-			tenantId: Session.get('tenantId')
-		}, 0, 1);
-
-		if (commentHandle.ready()) {
-			const comments = Comments.find().fetch();
-			if (comments.length) {
-				discussionComments[discussionCommentIndex].comment = comments[0];
-			} else {
-				discussionComments[discussionCommentIndex].comment = {
-					work: '',
-					subwork: '',
-					discussionComments: [],
-				};
-			}
-		} else {
-			discussionComments[discussionCommentIndex].comment = {
-				work: '',
-				subwork: '',
-				discussionComments: [],
-			};
-		}
-
-		discussionComments[discussionCommentIndex].otherCommentsCount =
-			DiscussionComments.find({ commentId: discussionComment.commentId }).count();
-	});
+	const settings = Settings.findOne();
 
 	return {
-		discussionComments,
-		settings: Settings.findOne(),
+		settings,
 	};
 }, ProfilePage);
+
+ProfilePage.propTypes = {
+	user: PropTypes.object,
+	settings: PropTypes.object,
+	discussionComments: PropTypes.array,
+};
 
 export default ProfilePageContainer;

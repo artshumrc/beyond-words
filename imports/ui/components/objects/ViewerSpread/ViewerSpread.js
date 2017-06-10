@@ -120,7 +120,7 @@ class ViewerSpread extends React.Component {
 									className="center-block"
 									style={{backgroundImage: `url("https://s3.amazonaws.com/beyond-words/medium/${slide}")`}}
 									src={(supportsObjectFit) ? `https://s3.amazonaws.com/beyond-words/medium/${slide}` : ''}
-        />
+				/>
 							</div>
 						</div>
 				))}

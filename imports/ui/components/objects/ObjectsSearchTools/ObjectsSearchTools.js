@@ -10,25 +10,13 @@ import Toggle from 'material-ui/Toggle';
 import debounce from 'throttle-debounce/debounce';
 
 class ObjectsSearchTools extends React.Component {
-
-	propTypes: {
-		filters: PropTypes.array,
-		toggleSearchTerm: PropTypes.func,
-		handleChangeTextsearch: PropTypes.func,
-		handleChangeCatalogNSearch: PropTypes.func,
-		handleChangeDate: PropTypes.func,
-		toggleMiradorSearch: PropTypes.func,
-
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
-	mixins: [ReactMeteorData],
-
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+		this.state = {
 			searchDropdownOpen: '',
 			yearMin: 600,
 			yearMax: 1700,
@@ -37,11 +25,11 @@ class ObjectsSearchTools extends React.Component {
 			institutions: [],
 			places: [],
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	componentDidMount() {
 		Meteor.call('searchTools', (err, res) => {
@@ -58,7 +46,7 @@ class ObjectsSearchTools extends React.Component {
 				});
 			}
 		});
-	},
+	}
 
 	getMeteorData() {
 		const scribes = [];
@@ -72,7 +60,7 @@ class ObjectsSearchTools extends React.Component {
 			institutions,
 			places,
 		};
-	},
+	}
 
 	toggleSearchDropdown(dropdown) {
 		if (this.state.searchDropdownOpen === dropdown) {
@@ -84,22 +72,22 @@ class ObjectsSearchTools extends React.Component {
 				searchDropdownOpen: dropdown,
 			});
 		}
-	},
+	}
 
 	toggleSearchTerm(key, value) {
 		this.props.toggleSearchTerm(key, value);
 		this.setState({
 			searchDropdownOpen: '',
 		});
-	},
+	}
 
 	handleChangeTextsearch() {
-		this.props.handleChangeTextsearch(this.refs.textSearch.input.value);
-	},
-	handleChangeCatalogNSearch() {
-		this.props.handleChangeCatalogNSearch(this.refs.catalogNSearch.input.value);
-	},
+		this.props.handleChangeTextsearch(this.refs.textSearch.input.value); // eslint-disable-line
+	}
 
+	handleChangeCatalogNSearch() {
+		this.props.handleChangeCatalogNSearch(this.refs.catalogNSearch.input.value); // eslint-disable-line
+	}
 
 	render() {
 		const self = this;
@@ -337,5 +325,14 @@ class ObjectsSearchTools extends React.Component {
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
+
+ObjectsSearchTools.propTypes = {
+	filters: PropTypes.array,
+	toggleSearchTerm: PropTypes.func,
+	handleChangeTextsearch: PropTypes.func,
+	handleChangeCatalogNSearch: PropTypes.func,
+	handleChangeDate: PropTypes.func,
+	toggleMiradorSearch: PropTypes.func,
+};

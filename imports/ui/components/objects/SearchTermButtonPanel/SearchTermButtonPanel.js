@@ -8,32 +8,25 @@ import { indigo500, grey300, white, black } from 'material-ui/styles/colors';
 
 class SearchTermButtonPanel extends React.Component {
 
-	propTypes: {
-		toggleSearchTerm: PropTypes.func.isRequired,
-		label: PropTypes.string.isRequired,
-		searchTermKey: PropTypes.string.isRequired,
-		value: PropTypes.string.isRequired,
-		activeWork: PropTypes.bool,
-		active: PropTypes.bool,
-	},
-
 	childContextTypes: {
 		muiTheme: PropTypes.object.isRequired,
-	},
+	}
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+		
+		this.state = {
 			active: false,
 		};
-	},
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	toggleSearchTerm() {
 		this.props.toggleSearchTerm(this.props.searchTermKey, this.props.value);
-	},
+	}
 
 	render() {
 		let backgroundColor = grey300;
@@ -77,6 +70,14 @@ class SearchTermButtonPanel extends React.Component {
 				{this.props.label}
 			</Chip>
 		);
-	},
+	}
+}
 
-});
+SearchTermButtonPanel.propTypes = {
+	toggleSearchTerm: PropTypes.func.isRequired,
+	label: PropTypes.string.isRequired,
+	searchTermKey: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	activeWork: PropTypes.bool,
+	active: PropTypes.bool,
+};
