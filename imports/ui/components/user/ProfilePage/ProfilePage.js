@@ -335,6 +335,12 @@ class ProfilePage extends React.Component {
 	}
 }
 
+ProfilePage.propTypes = {
+	user: PropTypes.object,
+	settings: PropTypes.object,
+	discussionComments: PropTypes.array,
+};
+
 const ProfilePageContainer = createContainer(() => {
 	const settings = Settings.findOne();
 
@@ -343,10 +349,5 @@ const ProfilePageContainer = createContainer(() => {
 	};
 }, ProfilePage);
 
-ProfilePage.propTypes = {
-	user: PropTypes.object,
-	settings: PropTypes.object,
-	discussionComments: PropTypes.array,
-};
 
 export default ProfilePageContainer;

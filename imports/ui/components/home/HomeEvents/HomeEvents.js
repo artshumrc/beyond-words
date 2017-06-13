@@ -466,3 +466,5 @@ class HomeEvents extends React.Component {
 		);
 	}
 }
+
+export default HomeEvents;

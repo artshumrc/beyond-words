@@ -466,3 +466,5 @@ class IPadView extends React.Component {
 		);
 	}
 }
+
+export default IPadView;

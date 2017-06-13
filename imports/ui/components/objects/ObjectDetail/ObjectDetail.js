@@ -232,3 +232,5 @@ ObjectDetail.propTypes = {
 	openViewer: PropTypes.func,
 	openMiradorViewer: PropTypes.func,
 };
+
+export default ObjectDetail;

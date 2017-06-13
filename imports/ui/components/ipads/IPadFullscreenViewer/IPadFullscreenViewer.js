@@ -101,3 +101,5 @@ IPadFullscreenViewer.propTypes = {
 	open: PropTypes.bool.isRequired,
 	handleClose: PropTypes.func.isRequired,
 };
+
+export default IPadFullscreenViewer;

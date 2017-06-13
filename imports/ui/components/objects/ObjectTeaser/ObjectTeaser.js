@@ -247,3 +247,5 @@ ObjectTeaser.propTypes = {
 	object: PropTypes.object.isRequired,
 	selectObject: PropTypes.func,
 };
+
+export default ObjectTeaser;

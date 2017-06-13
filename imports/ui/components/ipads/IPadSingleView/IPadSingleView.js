@@ -147,3 +147,5 @@ IPadSingleView.childContextTypes = {
 IPadSingleView.propTypes = {
 	slides: PropTypes.array,
 };
+
+export default IPadSingleView;

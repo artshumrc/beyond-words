@@ -175,3 +175,5 @@ HeaderCatalog.propTypes = {
 	catalogLayout: PropTypes.string,
 	toggleMiradorSearch: PropTypes.func,
 };
+
+export default HeaderCatalog;

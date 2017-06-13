@@ -43,3 +43,5 @@ class MediaItemList extends React.Component {
 MediaItemList.propTypes = {
 	mediaItem: PropTypes.object,
 };
+
+export default MediaItemList;

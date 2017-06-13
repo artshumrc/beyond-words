@@ -287,3 +287,5 @@ ObjectsSearchToolsPanel.propTypes = {
 	open: PropTypes.bool,
 	closeRightMenu: PropTypes.func,
 };
+
+export default ObjectsSearchToolsPanel;

@@ -87,3 +87,5 @@ IPadGridView.childContextTypes = {
 IPadGridView.propTypes = {
 	slides: PropTypes.array,
 };
+
+export default IPadGridView;

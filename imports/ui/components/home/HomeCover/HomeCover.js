@@ -188,3 +188,5 @@ class HomeCover extends React.Component {
 		);
 	}
 }
+
+export default HomeCover;

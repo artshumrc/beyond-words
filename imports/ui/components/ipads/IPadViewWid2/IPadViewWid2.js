@@ -473,3 +473,5 @@ class IPadViewWid2 extends React.Component {
 		);
 	}
 }
+
+export default IPadViewWid2;

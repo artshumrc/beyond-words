@@ -67,3 +67,5 @@ class HomeCatalog extends React.Component {
 		);
 	}
 }
+
+export default HomeCatalog;

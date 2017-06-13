@@ -69,3 +69,5 @@ class HomeOverview extends React.Component {
 		);
 	}
 }
+
+export default HomeOverview;

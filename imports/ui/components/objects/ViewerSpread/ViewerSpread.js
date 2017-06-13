@@ -1,53 +1,49 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Slider from 'react-slick';
 
 class ViewerSpread extends React.Component {
-
-	propTypes: {
-		slides: PropTypes.array,
-	},
-
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	},
-
 	getDefaultProps() {
 		return {
 			slides: [
 				'/images/BannerSQ.jpg',
 			],
 		};
-	},
+	}
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+
+		this.state = {
 			slickGoTo: 0,
 			slide: '',
 			open: false,
 		};
-	},
+
+		autoBind(this);
+	}
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(baseTheme) };
-	},
+	}
 
 	handleSlideOpen(slide) {
 		this.setState({
 			open: true,
 			slide,
 		});
-	},
+	}
 
 	handleSlideClose() {
 		this.setState({
 			open: false,
 		});
-	},
+	}
 
 	handleSlideChange(currentSlide) {
 		// check if currentSlide is valid
@@ -66,7 +62,7 @@ class ViewerSpread extends React.Component {
 				slickGoTo: currentSlide - 1,
 			});
 		}
-	},
+	}
 
 	scrollToSlide(currentSlide) {
 		// check if currentSlide is valid
@@ -85,7 +81,7 @@ class ViewerSpread extends React.Component {
 				slickGoTo: currentSlide - 1,
 			});
 		}
-	},
+	}
 
 
 	render() {
@@ -120,7 +116,8 @@ class ViewerSpread extends React.Component {
 									className="center-block"
 									style={{backgroundImage: `url("https://s3.amazonaws.com/beyond-words/medium/${slide}")`}}
 									src={(supportsObjectFit) ? `https://s3.amazonaws.com/beyond-words/medium/${slide}` : ''}
-				/>
+									alt={slide}
+								/>
 							</div>
 						</div>
 				))}
@@ -134,5 +131,16 @@ class ViewerSpread extends React.Component {
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
+
+
+ViewerSpread.propTypes = {
+	slides: PropTypes.array,
+};
+
+ViewerSpread.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
+export default ViewerSpread;

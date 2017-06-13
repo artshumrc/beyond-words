@@ -142,3 +142,5 @@ class Viewer extends React.Component {
 		);
 	}
 }
+
+export default Viewer;

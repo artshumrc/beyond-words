@@ -103,3 +103,5 @@ EventItem.propTypes = {
 	event: PropTypes.object.isRequired,
 	pastEvent: PropTypes.bool,
 };
+
+export default EventItem;

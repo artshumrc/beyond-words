@@ -188,3 +188,5 @@ class HomeLenders extends React.Component {
 		);
 	}
 }
+
+export default HomeLenders;

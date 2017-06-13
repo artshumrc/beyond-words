@@ -496,3 +496,5 @@ class IPadViewRich7 extends React.Component {
 		);
 	}
 }
+
+export default IPadViewRich7;

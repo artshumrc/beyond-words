@@ -336,3 +336,5 @@ ObjectsSearchTools.propTypes = {
 	handleChangeDate: PropTypes.func,
 	toggleMiradorSearch: PropTypes.func,
 };
+
+export default ObjectsSearchTools;

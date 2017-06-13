@@ -28,3 +28,5 @@ class HomeMedia extends React.Component {
 		);
 	}
 }
+
+export default HomeMedia;

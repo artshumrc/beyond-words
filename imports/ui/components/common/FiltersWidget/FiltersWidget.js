@@ -78,3 +78,6 @@ FiltersWidget.propTypes = {
 	filters: PropTypes.array.isRequired,
 	toggleSearchTerm: PropTypes.func,
 };
+
+
+export default FiltersWidget;

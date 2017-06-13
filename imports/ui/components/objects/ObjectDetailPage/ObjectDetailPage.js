@@ -193,3 +193,5 @@ class ObjectDetailPage extends React.Component {
 ObjectDetailPage.propTypes = {
 	slug: PropTypes.string.isRequired,
 };
+
+export default ObjectDetailPage;

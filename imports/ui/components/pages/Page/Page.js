@@ -117,3 +117,5 @@ class Page extends React.Component {
 Page.propTypes = {
 	slug: PropTypes.string,
 };
+
+export default Page;

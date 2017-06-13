@@ -242,3 +242,5 @@ class Header extends React.Component {
 Header.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
+
+export default Header;

@@ -27,3 +27,6 @@ class DateRangeSlider extends React.Component {
 DateRangeSlider.propTypes = {
 	handleChangeDate: PropTypes.func.isRequired,
 };
+
+
+export default DateRangeSlider;

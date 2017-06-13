@@ -464,3 +464,5 @@ class IPadViewTyp45 extends React.Component {
 		);
 	}
 }
+
+export default IPadViewTyp45;

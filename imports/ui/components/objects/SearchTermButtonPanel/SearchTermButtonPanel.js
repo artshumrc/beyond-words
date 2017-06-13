@@ -14,7 +14,7 @@ class SearchTermButtonPanel extends React.Component {
 
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			active: false,
 		};
@@ -81,3 +81,5 @@ SearchTermButtonPanel.propTypes = {
 	activeWork: PropTypes.bool,
 	active: PropTypes.bool,
 };
+
+export default SearchTermButtonPanel;

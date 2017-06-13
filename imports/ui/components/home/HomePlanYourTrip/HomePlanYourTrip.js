@@ -91,3 +91,5 @@ class HomePlanYourTrip extends React.Component {
 		);
 	}
 }
+
+export default HomePlanYourTrip;

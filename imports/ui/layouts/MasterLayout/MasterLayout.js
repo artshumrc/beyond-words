@@ -18,3 +18,6 @@ class MasterLayout extends React.Component {
 MasterLayout.propTypes = {
 	content: PropTypes.element,
 };
+
+
+export default MasterLayout;

@@ -64,3 +64,5 @@ SearchTermButton.propTypes = {
 	activeWork: PropTypes.bool,
 	active: PropTypes.bool,
 };
+
+export default SearchTermButton;

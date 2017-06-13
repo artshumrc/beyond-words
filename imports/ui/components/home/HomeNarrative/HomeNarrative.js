@@ -202,3 +202,5 @@ class HomeNarrative extends React.Component {
 		);
 	}
 }
+
+export default HomeNarrative;

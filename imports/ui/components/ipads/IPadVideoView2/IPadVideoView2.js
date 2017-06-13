@@ -177,3 +177,6 @@ class IPadVideoView2 extends React.Component {
 		);
 	}
 }
+
+
+export default IPadVideoView2;

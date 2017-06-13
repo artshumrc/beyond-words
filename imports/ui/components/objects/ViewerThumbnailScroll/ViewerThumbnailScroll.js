@@ -49,3 +49,5 @@ ViewerThumbnailScroll.propTypes = {
 	activeSlide: PropTypes.number.isRequired,
 	scrollToSlide: PropTypes.func.isRequired,
 };
+
+export default ViewerThumbnailScroll;

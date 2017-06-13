@@ -24,3 +24,6 @@ class SymposiumSession extends React.Component {
 SymposiumSession.propTypes = {
 	session: PropTypes.object.isRequired,
 };
+
+
+export default SymposiumSession;

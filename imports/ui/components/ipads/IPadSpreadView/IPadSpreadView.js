@@ -151,3 +151,5 @@ IPadSpreadView.childContextTypes = {
 IPadSpreadView.propTypes = {
 	slides: PropTypes.array,
 };
+
+export default IPadSpreadView;

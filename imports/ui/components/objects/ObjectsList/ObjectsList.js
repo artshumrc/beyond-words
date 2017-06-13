@@ -215,7 +215,7 @@ class ObjectsList extends React.Component {
 										<div
 											key={i}
 											className="object-scroll-teaser"
-					>
+										>
 											<ObjectTeaser
 												object={object}
 												selectObject={self.props.selectObject}
@@ -288,3 +288,5 @@ ObjectsList.propTypes = {
 	openViewer: PropTypes.func,
 	openMiradorViewer: PropTypes.func,
 };
+
+export default ObjectsList;

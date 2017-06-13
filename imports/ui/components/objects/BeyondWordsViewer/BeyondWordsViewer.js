@@ -195,3 +195,5 @@ class BeyondWordsViewer extends React.Component {
 BeyondWordsViewer.propTypes = {
 	selectedObject: PropTypes.object,
 };
+
+export default BeyondWordsViewer;

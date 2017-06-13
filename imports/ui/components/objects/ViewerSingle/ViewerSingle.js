@@ -126,3 +126,5 @@ class ViewerSingle extends React.Component {
 ViewerSingle.propTypes = {
 	slides: PropTypes.array,
 };
+
+export default ViewerSingle;

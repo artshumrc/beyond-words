@@ -78,3 +78,5 @@ class HomeTwitter extends React.Component {
 		);
 	}
 }
+
+export default HomeTwitter;

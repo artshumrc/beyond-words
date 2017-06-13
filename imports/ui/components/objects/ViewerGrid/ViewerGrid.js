@@ -89,3 +89,5 @@ class ViewerGrid extends React.Component {
 ViewerGrid.propTypes = {
 	slides: PropTypes.array,
 };
+
+export default ViewerGrid;

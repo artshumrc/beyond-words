@@ -81,3 +81,5 @@ class CatalogFooter extends React.Component {
 		);
 	}
 }
+
+export default CatalogFooter;

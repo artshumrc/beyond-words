@@ -73,3 +73,5 @@ ThumbnailSlider.propTypes = {
 	thumbnailList: PropTypes.array.isRequired,
 	handleSlideChange: PropTypes.func.isRequired,
 };
+
+export default ThumbnailSlider;

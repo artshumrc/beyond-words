@@ -141,3 +141,5 @@ LeftMenu.propTypes = {
 	open: PropTypes.bool.isRequired,
 	closeLeftMenu: PropTypes.func.isRequired,
 };
+
+export default LeftMenu;
