@@ -1,14 +1,13 @@
 import React from 'react';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 
 class CatalogLayout extends React.Component {
 
-	propTypes: {
-		selectedObjectSlug: PropTypes.string,
-	},
+	constructor(props) {
+		super(props);
 
-	getInitialState() {
-		return {
+		this.state = {
 			objectToSelectSlug: this.props.selectedObjectSlug,
 			selectedObject: {},
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
@@ -19,7 +18,8 @@ class CatalogLayout extends React.Component {
 			miradorOpen: false,
 			viewerOpen: false,
 		};
-	},
+		autoBind(this);
+	}
 
 	loadMoreObjects() {
 		if (!(this.props.selectedObjectSlug || 'catalog_n' in this.state.selectedObject)) {
@@ -30,7 +30,7 @@ class CatalogLayout extends React.Component {
 		} else {
 			// console.log("did not load more objects");
 		}
-	},
+	}
 
 	toggleSearchTerm(key, value) {
 		const filters = this.state.filters;
@@ -85,7 +85,7 @@ class CatalogLayout extends React.Component {
 		}
 		location.hash = '';
 
-	},
+	}
 
 	toggleMiradorSearch(key, value) {
 		let filters = this.state.filters;
@@ -124,7 +124,7 @@ class CatalogLayout extends React.Component {
 
 		}
 		location.hash = '';
-	},
+	}
 
 	handleChangeTextsearch(textsearch) {
 		const filters = this.state.filters;
@@ -167,7 +167,7 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		location.hash = '';
-	},
+	}
 
 	handleChangeCatalogNSearch(catalogN) {
 		const filters = this.state.filters;
@@ -210,7 +210,7 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		location.hash = '';
-	},
+	}
 
 	handleChangeDate(e) {
 		const filters = this.state.filters;
@@ -284,7 +284,7 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		location.hash = '';
-	},
+	}
 
 
 	toggleCatalogLayout(layout) {
@@ -296,7 +296,7 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
 		});
 		location.hash = '';
-	},
+	}
 
 	selectObject(selectedObject) {
 		let catalogTitleText = selectedObject.catalog_n.toString();
@@ -311,7 +311,7 @@ class CatalogLayout extends React.Component {
 		if (location.pathname.indexOf(selectedObject.slug) < 0) {
 			// FlowRouter.go("/catalog/" + selectedObject.slug);
 		}
-	},
+	}
 
 	closeSelectedObject() {
 		this.setState({
@@ -321,7 +321,7 @@ class CatalogLayout extends React.Component {
 		});
 		FlowRouter.go('/catalog');
 		location.hash = '';
-	},
+	}
 
 	openViewer() {
 
@@ -329,7 +329,7 @@ class CatalogLayout extends React.Component {
 			viewerOpen: true,
 		});
 
-	},
+	}
 
 	closeViewer() {
 
@@ -337,7 +337,7 @@ class CatalogLayout extends React.Component {
 			viewerOpen: false,
 		});
 
-	},
+	}
 
 	openMiradorViewer() {
 
@@ -345,7 +345,7 @@ class CatalogLayout extends React.Component {
 			miradorOpen: true,
 		});
 
-	},
+	}
 
 	closeMiradorViewer() {
 
@@ -353,7 +353,7 @@ class CatalogLayout extends React.Component {
 			miradorOpen: false,
 		});
 
-	},
+	}
 
 
 	render() {
@@ -414,13 +414,18 @@ class CatalogLayout extends React.Component {
 						/>
 						<BeyondWordsViewer
 							selectedObject={selectedObject}
-			/>
+						/>
 					</div>
 
 					: ''
 				}
 			</div>
 		);
-	},
+	}
+}
 
-});
+CatalogLayout.propTypes = {
+	selectedObjectSlug: PropTypes.string,
+};
+
+export default CatalogLayout;

@@ -1,3 +1,6 @@
+
+import Config from './config';
+
 Meteor.startup(() => {
 	if (Meteor.isClient) {
 		if (Config.defaultLanguage) {

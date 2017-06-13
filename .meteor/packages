@@ -37,10 +37,6 @@ random@1.0.10
 ejson@1.0.13
 email
 yogiben:pretty-email
-aldeed:autoform
-yogiben:autoform-modals
-yogiben:autoform-file
-yogiben:autoform-map
 check
 useraccounts:core
 useraccounts:bootstrap
@@ -48,23 +44,16 @@ useraccounts:flow-routing@1.14.3
 
 # Packages added for project
 http@1.2.11
-react
-react-meteor-data
 ecmascript@0.6.3
 es5-shim@4.6.15
 archimedigital:core
 kadira:flow-router
-kadira:react-layout
 kadira:blaze-layout
-gwendall:blaze-to-react
 standard-minifier-css
 standard-minifier-js
 simple:rest
 dburles:google-maps
 todda00:friendly-slugs
-d3js:d3
-buishi:autoform-ufs
-mpowaga:autoform-summernote
 reactive-var@1.0.11
 reactive-dict@1.1.8
 practicalmeteor:mocha
@@ -80,7 +69,6 @@ zimme:collection-timestampable
 kadira:dochead
 edgee:slingshot
 kadira:login-state
-elevatedevdesign:autoform-slingshot
 kuip:schema-graphql-bridge
 facebook-config-ui
 google-config-ui

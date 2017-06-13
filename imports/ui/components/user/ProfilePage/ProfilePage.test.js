@@ -1,5 +1,4 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 // component:
 import ProfilePage from './ProfilePage';

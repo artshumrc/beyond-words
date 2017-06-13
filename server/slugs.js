@@ -1,3 +1,6 @@
+
+import Objects from '/imports/api/collections/objects';
+
 Meteor.startup(() => {
 	let count;
 	const docs = Objects.find({

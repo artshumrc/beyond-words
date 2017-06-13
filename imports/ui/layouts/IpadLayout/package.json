@@ -1,6 +1,6 @@
 {
-  "name": "IpadLayout",
+  "name": "IPadLayout",
   "version": "0.0.1",
   "private": true,
-  "main": "./IpadLayout.js"
+  "main": "./IPadLayout.js"
 }

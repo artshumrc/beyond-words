@@ -2,7 +2,7 @@ Package.describe({
   name: 'gwendall:blaze-to-react',
   summary: 'Turn any Blaze template into a React component',
   git: 'https://github.com/gwendall/meteor-blaze-to-react.git',
-  version: '1.0.0'
+  version: '1.0.1'
 });
 
 Package.onUse(function(api, where) {

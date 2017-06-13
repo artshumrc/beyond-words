@@ -1,7 +1,7 @@
 Meteor.startup(() => {
 	import Twit from 'twit';
 
-	T = new Twit({
+	const T = new Twit({
 		consumer_key: '1a8UqOjo2n7imRhOy3B7NvTcr',
 		consumer_secret: 'tRCuDoFNx80RdN32c4VicCusqnkdbtkE5eDIzgJLZwUd4ZJEM9',
 		access_token: '151099171-FGLGO1xzQ9m2e4Muk2slPoHY1KlNNKFZjwGPpJ5T',

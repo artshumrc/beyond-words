@@ -1,8 +1,7 @@
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
-import slugify from 'slugify';
-
-import Commenters from '/imports/api/collections/commenters';
+import slug from 'slug';
+import Objects from '/imports/api/collections/objects';
 
 function parseJSONLiteral(ast) {
 	switch (ast.kind) {
@@ -30,9 +29,9 @@ function parseJSONLiteral(ast) {
 // create the resolve functions for the available GraphQL queries
 const resolvers = {
 	Query: {
-		commenters(_, args) {
+		objects(_, args) {
 
-			return Commenters.find().fetch();
+			return Objects.find().fetch();
 		},
 	},
 

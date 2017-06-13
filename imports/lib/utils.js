@@ -1,4 +1,7 @@
-this.Utils = {
+
+import Config from '/imports/lib/config/config';
+
+const Utils = {
 	prettyDate: (date) => {
 		if (date) {
 			if (Config.dateFormat) {
@@ -63,3 +66,4 @@ this.Utils = {
 		return headroom.init();
 	},
 };
+export default Utils;

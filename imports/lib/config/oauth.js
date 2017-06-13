@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import Config from './config';
 
 if (Meteor.isServer) {
 	Meteor.startup(() => {

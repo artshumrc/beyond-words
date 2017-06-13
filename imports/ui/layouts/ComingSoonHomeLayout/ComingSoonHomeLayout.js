@@ -9,6 +9,7 @@ class ComingSoonHomeLayout extends React.Component {
 			}, 1000);
 		}
 	}
+
 	render() {
 		return (
 			<div className="archimedes-layout home-layout">
@@ -19,3 +20,5 @@ class ComingSoonHomeLayout extends React.Component {
 		);
 	}
 }
+
+export default ComingSoonHomeLayout;

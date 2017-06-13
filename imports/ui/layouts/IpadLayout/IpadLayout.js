@@ -16,3 +16,5 @@ class IPadLayout extends React.Component {
 IPadLayout.propTypes = {
 	content: PropTypes.element,
 };
+
+export default IPadLayout;
