@@ -74,3 +74,5 @@ facebook-config-ui
 google-config-ui
 twitter-config-ui
 mrt:twit
+cfs:standard-packages
+cfs:gridfs

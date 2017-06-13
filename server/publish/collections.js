@@ -1,3 +1,11 @@
+import Events from '/imports/api/collections/events';
+import Objects from '/imports/api/collections/objects';
+import SymposiumSessions from '/imports/api/collections/symposiumSession';
+import Attachments from '/imports/api/collections/collection_fs/attachments';
+import Images from '/imports/api/collections/images';
+import Pages from '/imports/api/collections/pages';
+import MediaItems from '/imports/api/collections/mediaItems';
+
 /*
  * Replace these in the future as they will publish our entire collections.
  */
@@ -23,7 +31,6 @@ if (Meteor.isServer) {
 			},
 		});
 	});
-
 
 	Meteor.publish('object', (slug) => {
 		check(slug, String);

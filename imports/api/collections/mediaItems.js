@@ -20,33 +20,12 @@ MediaItems.schema = new SimpleSchema({
 	date: {
 		type: Date,
 		label: 'Date Published',
-		autoform: {
-			afFieldInput: {
-				type: 'date',
-			},
-		},
 	},
-
-	/*
-	excerpt: {
-		type: String,
-		optional: true,
-		autoform: {
-			rows: 5,
-		},
-	},
-	*/
 
 	image: {
 		type: String,
 		optional: true,
 		label: 'Image thumbnail (not for viewer)',
-		autoform: {
-			afFieldInput: {
-				type: 'fileUpload',
-				collection: 'Attachments',
-			},
-		},
 	},
 
 	createdAt: {

@@ -1,5 +1,6 @@
-import { FS } from 'meteor/cfs:standard-packages';
+import FS from 'meteor/cfs:standard-packages';
 
+/*
 const Attachments = new FS.Collection('Attachments', {
 	stores: [
 		new FS.Store.GridFS('attachments', {
@@ -15,5 +16,8 @@ const Attachments = new FS.Collection('Attachments', {
 		}),
 	],
 });
+*/
+
+const Attachments = new Meteor.Collection('attachments');
 
 export default Attachments;
