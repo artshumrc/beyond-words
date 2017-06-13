@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-component/lib';
 import { debounce } from 'throttle-debounce';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import InfiniteScroll from '/imports/ui/components/common/InfiniteScroll';
+import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 
 class ObjectsList extends React.Component {
 	childContextTypes: {
