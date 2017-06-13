@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class BlazeToReact extends React.Component {
+const BlazeToReact = React.createClass({
   mixins: [ReactMeteorData],
   renderBlaze() {
     this.removeBlaze();
