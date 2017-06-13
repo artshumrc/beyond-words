@@ -1,9 +1,11 @@
+import { Meteor } from 'meteor/meteor';
+
 const Config = {
 	name: 'Beyond Words',
 	title: () => 'Beyond Words',
 	subtitle: () => 'Beyond Words',
-	logo: () => `<b> ${this.name} </b>`,
-	footer: () => `${this.name} - Copyright ${new Date().getFullYear()}`,
+	logo: () => '<b>Beyond Words</b>',
+	footer: () => `Beyond Words - Copyright ${new Date().getFullYear()}`,
 	emails: {
 		from: `no-reply@${Meteor.absoluteUrl()}`,
 		contact: `contact${Meteor.absoluteUrl()}`,

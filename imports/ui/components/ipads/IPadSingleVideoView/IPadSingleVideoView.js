@@ -162,7 +162,7 @@ class IPadSingleVideoView extends React.Component {
 					<video id="video1" controls>
 						<source
 							src="/videos/typ277.mov"
-			/>
+						/>
 					</video>
 				</div>
 			</div>

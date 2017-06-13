@@ -2,13 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 // component:
-import ProfilePage from './ProfilePage';
+import Spinner from './Spinner';
 
-describe('ProfilePage', () => {
+describe('Spinner', () => {
 	it('renders correctly', () => {
 
 		const tree = renderer
-			.create(<ProfilePage />)
+			.create(<Spinner />)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

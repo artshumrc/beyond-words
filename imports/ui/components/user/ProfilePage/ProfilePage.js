@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session';
@@ -8,17 +9,13 @@ import TextField from 'material-ui/TextField';
 import { debounce } from 'throttle-debounce';
 import Toggle from 'material-ui/Toggle';
 
-// lib
 import muiTheme from '/imports/lib/muiTheme';
 import Utils from '/imports/lib/utils';
+import Settings from '/imports/api/collections/settings';
+import LoadingPage from '/imports/ui/components/loading/LoadingPage';
 
 
 class ProfilePage extends React.Component {
-
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	constructor(props) {
 		super(props);
 
@@ -340,6 +337,12 @@ ProfilePage.propTypes = {
 	settings: PropTypes.object,
 	discussionComments: PropTypes.array,
 };
+
+
+ProfilePage.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 const ProfilePageContainer = createContainer(() => {
 	const settings = Settings.findOne();

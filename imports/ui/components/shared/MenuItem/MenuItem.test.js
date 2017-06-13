@@ -2,13 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 // component:
-import ProfilePage from './ProfilePage';
+import MenuItem from './MenuItem';
 
-describe('ProfilePage', () => {
+describe('MenuItem', () => {
 	it('renders correctly', () => {
 
 		const tree = renderer
-			.create(<ProfilePage />)
+			.create(<MenuItem />)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

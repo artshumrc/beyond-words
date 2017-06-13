@@ -41,8 +41,6 @@ check
 useraccounts:core
 useraccounts:bootstrap
 useraccounts:flow-routing@1.14.3
-
-# Packages added for project
 http@1.2.11
 ecmascript@0.6.3
 es5-shim@4.6.15
@@ -73,6 +71,9 @@ kuip:schema-graphql-bridge
 facebook-config-ui
 google-config-ui
 twitter-config-ui
+react-meteor-data
+
+# Packages added for project
 mrt:twit
 cfs:standard-packages
 cfs:gridfs

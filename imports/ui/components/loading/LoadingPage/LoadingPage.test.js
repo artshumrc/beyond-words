@@ -2,13 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 // component:
-import ProfilePage from './ProfilePage';
+import LoadingPage from './LoadingPage';
 
-describe('ProfilePage', () => {
+describe('LoadingPage', () => {
 	it('renders correctly', () => {
 
 		const tree = renderer
-			.create(<ProfilePage />)
+			.create(<LoadingPage />)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
