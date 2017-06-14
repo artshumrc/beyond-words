@@ -6,12 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class HomeNarrative extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	toggleNarrative(e) {
@@ -202,5 +198,9 @@ class HomeNarrative extends React.Component {
 		);
 	}
 }
+
+HomeNarrative.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
 
 export default HomeNarrative;

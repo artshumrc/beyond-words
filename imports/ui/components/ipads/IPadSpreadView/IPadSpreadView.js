@@ -32,7 +32,7 @@ class IPadSpreadView extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	handleSlideOpen(slide) {

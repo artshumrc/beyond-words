@@ -14,7 +14,7 @@ class IPadFullscreenViewer extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {

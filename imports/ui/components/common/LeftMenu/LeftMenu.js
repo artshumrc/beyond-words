@@ -10,7 +10,7 @@ import muiTheme from '/imports/lib/muiTheme';
 
 class LeftMenu extends React.Component {
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {

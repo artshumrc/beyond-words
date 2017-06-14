@@ -8,12 +8,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 
 class ObjectsList extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {
@@ -287,6 +283,10 @@ ObjectsList.propTypes = {
 	catalogLayout: PropTypes.string,
 	openViewer: PropTypes.func,
 	openMiradorViewer: PropTypes.func,
+};
+
+ObjectsList.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
 };
 
 export default ObjectsList;

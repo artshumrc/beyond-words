@@ -26,7 +26,7 @@ class IPadViewTyp131 extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	getMeteorData() {

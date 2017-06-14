@@ -8,14 +8,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Slider from 'react-slick';
 
 class ViewerSpread extends React.Component {
-	getDefaultProps() {
-		return {
-			slides: [
-				'/images/BannerSQ.jpg',
-			],
-		};
-	}
-
 	constructor(props) {
 		super(props);
 
@@ -29,7 +21,7 @@ class ViewerSpread extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	handleSlideOpen(slide) {
@@ -142,5 +134,12 @@ ViewerSpread.propTypes = {
 ViewerSpread.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
+
+ViewerSpread.defaultProps = {
+	slides: [
+		'/images/BannerSQ.jpg',
+	],
+};
+
 
 export default ViewerSpread;

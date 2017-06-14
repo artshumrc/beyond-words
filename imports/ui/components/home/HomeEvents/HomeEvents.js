@@ -23,12 +23,8 @@ class HomeEvents extends React.Component {
 		};
 	}
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	getMeteorData() {
@@ -466,5 +462,10 @@ class HomeEvents extends React.Component {
 		);
 	}
 }
+
+HomeEvents.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomeEvents;

@@ -7,19 +7,6 @@ import muiTheme from '/imports/lib/muiTheme';
 import isDblTouchTap from '/imports/ui/components/common/isDblTouchTap';
 
 class ViewerGrid extends React.Component {
-
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
-	getDefaultProps() {
-		return {
-			slides: [
-				'/images/BannerSQ.jpg',
-			],
-		};
-	}
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -29,7 +16,7 @@ class ViewerGrid extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	handleSlideOpen(slide) {
@@ -89,5 +76,15 @@ class ViewerGrid extends React.Component {
 ViewerGrid.propTypes = {
 	slides: PropTypes.array,
 };
+ViewerGrid.defaultProps = {
+	slides: [
+		'/images/BannerSQ.jpg',
+	],
+};
+
+ViewerGrid.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default ViewerGrid;

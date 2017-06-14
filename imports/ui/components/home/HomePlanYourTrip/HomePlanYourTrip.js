@@ -6,12 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class HomePlanYourTrip extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -91,5 +87,10 @@ class HomePlanYourTrip extends React.Component {
 		);
 	}
 }
+
+HomePlanYourTrip.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomePlanYourTrip;

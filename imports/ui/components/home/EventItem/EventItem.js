@@ -9,10 +9,6 @@ import muiTheme from '/imports/lib/muiTheme';
 import Add2Calendar from '/imports/ui/components/common/Add2Calendar';
 
 class EventItem extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	componentDidMount() {
 		const event = this.props.event;
 		let tmp;
@@ -103,5 +99,10 @@ EventItem.propTypes = {
 	event: PropTypes.object.isRequired,
 	pastEvent: PropTypes.bool,
 };
+
+EventItems.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default EventItem;

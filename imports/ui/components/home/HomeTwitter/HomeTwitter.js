@@ -6,12 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Card, CardText } from 'material-ui/Card';
 
 class HomeTwitter extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	getMeteorData() {
@@ -78,5 +74,10 @@ class HomeTwitter extends React.Component {
 		);
 	}
 }
+
+HomeTwitter.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomeTwitter;

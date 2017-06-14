@@ -5,12 +5,8 @@ import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class HomeCatalog extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -67,5 +63,10 @@ class HomeCatalog extends React.Component {
 		);
 	}
 }
+
+HomeCatalog.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomeCatalog;

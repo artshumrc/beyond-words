@@ -7,10 +7,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class SearchTermButton extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	constructor(props) {
 		super(props);
 
@@ -20,7 +16,7 @@ class SearchTermButton extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	toggleSearchTerm() {
@@ -64,5 +60,10 @@ SearchTermButton.propTypes = {
 	activeWork: PropTypes.bool,
 	active: PropTypes.bool,
 };
+
+SearchTermButton.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default SearchTermButton;

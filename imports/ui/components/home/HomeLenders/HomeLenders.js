@@ -7,12 +7,8 @@ import Masonry from 'react-masonry-component/lib';
 
 class HomeLenders extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -188,5 +184,9 @@ class HomeLenders extends React.Component {
 		);
 	}
 }
+HomeLenders.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomeLenders;

@@ -9,12 +9,8 @@ import muiTheme from '/imports/lib/muiTheme';
 
 class FiltersWidget extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -78,6 +74,11 @@ FiltersWidget.propTypes = {
 	filters: PropTypes.array.isRequired,
 	toggleSearchTerm: PropTypes.func,
 };
+
+FiltersWidget.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 
 export default FiltersWidget;

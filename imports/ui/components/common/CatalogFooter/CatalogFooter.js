@@ -9,12 +9,8 @@ import muiTheme from '/imports/lib/muiTheme';
 
 class CatalogFooter extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	scrollToEvents(e) {
@@ -81,5 +77,10 @@ class CatalogFooter extends React.Component {
 		);
 	}
 }
+
+CatalogFooter.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default CatalogFooter;

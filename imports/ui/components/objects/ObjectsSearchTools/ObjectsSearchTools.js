@@ -10,9 +10,6 @@ import Toggle from 'material-ui/Toggle';
 import debounce from 'throttle-debounce/debounce';
 
 class ObjectsSearchTools extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
 
 	constructor(props) {
 		super(props);
@@ -28,7 +25,7 @@ class ObjectsSearchTools extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {
@@ -335,6 +332,10 @@ ObjectsSearchTools.propTypes = {
 	handleChangeCatalogNSearch: PropTypes.func,
 	handleChangeDate: PropTypes.func,
 	toggleMiradorSearch: PropTypes.func,
+};
+
+ObjectsSearchTools.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
 };
 
 export default ObjectsSearchTools;

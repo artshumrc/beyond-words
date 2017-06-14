@@ -1,4 +1,5 @@
 import React from 'react';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from '/imports/lib/muiTheme';
@@ -8,18 +9,18 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // Object Teaser
 class ObjectTeaser extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
+	constructor(props) {
+		super(props);
 
-	getInitialState() {
-		return {
+		this.state = {
 			attachmentCheck: false,
 		};
+
+		autoBind(this);
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {
@@ -246,6 +247,10 @@ class ObjectTeaser extends React.Component {
 ObjectTeaser.propTypes = {
 	object: PropTypes.object.isRequired,
 	selectObject: PropTypes.func,
+};
+
+ObjectTeaser.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
 };
 
 export default ObjectTeaser;

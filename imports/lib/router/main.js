@@ -54,6 +54,7 @@ FlowRouter.route('/objects/:slug', {
 	},
 });
 
+/*
 FlowRouter.route('/ipad', {
 	action() {
 		mount(IPadLayout, {
@@ -61,6 +62,7 @@ FlowRouter.route('/ipad', {
 		});
 	},
 });
+*/
 
 /*
 * Single page view
@@ -95,9 +97,7 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/', {
 	action: (params, queryParams) => {
-		mount(IPadLayout, {
-			content: <IPadViewTyp139 />
-		});
+		mount(HomeLayout);
 	}
 });
 

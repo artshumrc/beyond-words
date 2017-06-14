@@ -9,12 +9,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Footer extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	scrollToEvents(e) {
@@ -148,5 +144,10 @@ class Footer extends React.Component {
 		);
 	}
 }
+
+Footer.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default Footer;

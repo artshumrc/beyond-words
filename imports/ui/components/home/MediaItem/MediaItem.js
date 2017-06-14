@@ -5,10 +5,6 @@ import moment from 'moment-timezone';
 
 class MediaItem extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getMeteorData() {
 		let attachment = null;
 
@@ -85,5 +81,10 @@ class MediaItem extends React.Component {
 MediaItem.propTypes = {
 	mediaItem: PropTypes.object,
 };
+
+MediaItem.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default MediaItem;

@@ -14,10 +14,6 @@ import { grey500, white } from 'material-ui/styles/colors';
 
 class BeyondWordsViewer extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	constructor(props) {
 		super(props);
 
@@ -29,7 +25,7 @@ class BeyondWordsViewer extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	handleViewChange(event, value) {
@@ -195,5 +191,10 @@ class BeyondWordsViewer extends React.Component {
 BeyondWordsViewer.propTypes = {
 	selectedObject: PropTypes.object,
 };
+
+BeyondWordsViewer.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default BeyondWordsViewer;

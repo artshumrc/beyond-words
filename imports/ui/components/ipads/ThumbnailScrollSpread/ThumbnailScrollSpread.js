@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 
 class ThumbnailScrollSpread extends React.Component {
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {

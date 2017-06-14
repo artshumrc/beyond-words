@@ -6,12 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class HomeMedia extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -28,5 +24,10 @@ class HomeMedia extends React.Component {
 		);
 	}
 }
+
+HomeMedia.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HomeMedia;

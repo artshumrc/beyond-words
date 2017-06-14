@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper';
 class ThumbnailScroll extends React.Component {
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {

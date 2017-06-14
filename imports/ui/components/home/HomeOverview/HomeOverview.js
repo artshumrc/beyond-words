@@ -6,12 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class HomeOverview extends React.Component {
 
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
@@ -69,5 +65,9 @@ class HomeOverview extends React.Component {
 		);
 	}
 }
+
+HomeOverview.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
 
 export default HomeOverview;

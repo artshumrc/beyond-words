@@ -1,22 +1,29 @@
 import React from 'react';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
-import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { white } from 'material-ui/styles/colors';
 
+import muiTheme from '/imports/lib/muiTheme';
+import LeftMenu from '/imports/ui/components/common/LeftMenu';
+
+
 class Header extends React.Component {
 
-	getInitialState() {
-		return {
+	constructor(props) {
+		super(props);
+
+		this.state = {
 			leftMenuOpen: false,
 		};
+		autoBind(this);
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	toggleLeftMenu() {

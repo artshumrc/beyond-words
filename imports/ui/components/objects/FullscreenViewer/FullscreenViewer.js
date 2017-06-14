@@ -8,12 +8,8 @@ import IconButton from 'material-ui/IconButton';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 
 class FullscreenViewer extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {
@@ -111,6 +107,10 @@ FullscreenViewer.propTypes = {
 	imageUrl: PropTypes.string.isRequired,
 	open: PropTypes.bool.isRequired,
 	handleClose: PropTypes.func.isRequired,
+};
+
+FullscreenViewer.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
 };
 
 export default FullscreenViewer;

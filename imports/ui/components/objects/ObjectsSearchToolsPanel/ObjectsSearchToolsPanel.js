@@ -8,10 +8,6 @@ import Drawer from 'material-ui/Drawer';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 
 class ObjectsSearchToolsPanel extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	constructor(props) {
 		super(props);
 
@@ -27,7 +23,7 @@ class ObjectsSearchToolsPanel extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	componentDidMount() {
@@ -287,5 +283,10 @@ ObjectsSearchToolsPanel.propTypes = {
 	open: PropTypes.bool,
 	closeRightMenu: PropTypes.func,
 };
+
+ObjectsSearchToolsPanel.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default ObjectsSearchToolsPanel;

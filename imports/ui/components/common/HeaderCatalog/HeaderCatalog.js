@@ -1,5 +1,5 @@
-
 import React from 'react';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 
 import FlatButton from 'material-ui/FlatButton';
@@ -9,19 +9,18 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import IconButton from 'material-ui/IconButton';
 
 class HeaderCatalog extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
+	constructor(props) {
+		super(props);
 
-	getInitialState() {
-		return {
+		this.state = {
 			leftMenuOpen: false,
 			rightMenuOpen: false,
 		};
+		autoBind(this);
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	toggleLeftMenu() {
@@ -175,5 +174,10 @@ HeaderCatalog.propTypes = {
 	catalogLayout: PropTypes.string,
 	toggleMiradorSearch: PropTypes.func,
 };
+
+HeaderCatalog.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default HeaderCatalog;

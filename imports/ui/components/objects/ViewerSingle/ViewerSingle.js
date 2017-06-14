@@ -7,19 +7,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Slider from 'react-slick';
 
 class ViewerSingle extends React.Component {
-
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
-	getDefaultProps() {
-		return {
-			slides: [
-				'/images/Januarius_0001.tif',
-			],
-		};
-	}
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,7 +17,7 @@ class ViewerSingle extends React.Component {
 	}
 
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	handleSlideOpen(slide) {
@@ -126,5 +113,16 @@ class ViewerSingle extends React.Component {
 ViewerSingle.propTypes = {
 	slides: PropTypes.array,
 };
+
+ViewerSingle.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
+ViewerSingle.defaultProps = {
+	slides: [
+		'/images/Januarius_0001.tif',
+	],
+};
+
 
 export default ViewerSingle;

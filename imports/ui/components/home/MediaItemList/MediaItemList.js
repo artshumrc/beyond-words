@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component/lib';
 
 class MediaItemList extends React.Component {
-	childContextTypes: {
-		muiTheme: PropTypes.object.isRequired,
-	}
-
 	getMeteorData() {
 		let mediaItems = [];
 		const handle = Meteor.subscribe('mediaItems');
@@ -43,5 +39,10 @@ class MediaItemList extends React.Component {
 MediaItemList.propTypes = {
 	mediaItem: PropTypes.object,
 };
+
+MediaItemList.childContextTypes = {
+	muiTheme: PropTypes.object.isRequired,
+};
+
 
 export default MediaItemList;

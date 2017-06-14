@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 
 class ThumbnailSlider extends React.Component {
 	getChildContext() {
-		return { muiTheme: getMuiTheme(baseTheme) };
+		return { muiTheme: getMuiTheme(muiTheme) };
 	}
 
 	render() {
