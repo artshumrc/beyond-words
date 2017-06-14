@@ -12,7 +12,7 @@ class HomeTwitter extends React.Component {
 	}
 
 	render() {
-		// console.log(this.data.ready, this.data.tweets);
+		// console.log(this.props.ready, this.props.tweets);
 		const linkifyTwitter = text => linkifyHtml(text, {
 			formatHref(value, type) {
 				if (type === 'hashtag') {
@@ -32,7 +32,7 @@ class HomeTwitter extends React.Component {
 						</a>
 						<h4 className="text-center">Latest Updates from Twitter</h4>
 						<div className="row">
-							{this.data.tweets.map((tweet, index) => (
+							{this.props.tweets.map((tweet, index) => (
 								<div
 									key={index}
 									className="bw-tweet-wrapper wow fadeIn"

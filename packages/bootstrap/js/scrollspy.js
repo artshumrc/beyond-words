@@ -136,10 +136,10 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.scrollspy')
+      var data    = $this.props('bs.scrollspy')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+      if (!data) $this.props('bs.scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }

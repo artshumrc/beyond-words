@@ -3,19 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Objects from '/imports/api/collections/objects';
+
 // Single object detail view
 class ObjectDetailPage extends React.Component {
 
 	render() {
-		const object = this.data.object;
+		const object = this.props.object;
 		// console.log(this);
 		if (object.images && object.images.length) {
 		// get a random image
 			imageId = object.images[Math.floor(Math.random() * object.images.length)];
 		}
 		let image = {};
-		if (this.data.images.length) {
-			image = this.data.images[0];
+		if (this.props.images.length) {
+			image = this.props.images[0];
 		}
 
 		return (
@@ -185,8 +187,8 @@ const objectDetailPageContainer = createContainer((props) => {
 	}
 	const imageSubscription = Meteor.subscribe('objectImages', this.props.slug);
 	if (imageSubscription.ready()) {
-		images = Images.find({}).fetch();
-		thumbnails = Thumbnails.find({}).fetch();
+		// images = Images.find({}).fetch();
+		// thumbnails = Thumbnails.find({}).fetch();
 	}
 	return {
 		object,

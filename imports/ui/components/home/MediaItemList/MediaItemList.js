@@ -4,6 +4,7 @@ import Masonry from 'react-masonry-component/lib';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import MediaItem from '/imports/ui/components/home/MediaItem';
+import MediaItems from '/imports/api/collections/mediaItems';
 
 class MediaItemList extends React.Component {
 
@@ -18,7 +19,7 @@ class MediaItemList extends React.Component {
 				options={masonryOptions}
 				className="media-item-list"
 			>
-				{this.data.mediaItems.map((mediaItem, index) => (
+				{this.props.mediaItems.map((mediaItem, index) => (
 					<MediaItem
 						key={index}
 						mediaItem={mediaItem}

@@ -9,6 +9,11 @@ import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Events from '/imports/api/collections/events';
+import SymposiumSessions from '/imports/api/collections/symposiumSession';
+import EventItem from '/imports/ui/components/home/EventItem';
+import SymposiumSession from '/imports/ui/components/home/SymposiumSession';
+
 class HomeEvents extends React.Component {
 	constructor(props) {
 		super(props);
@@ -189,7 +194,7 @@ class HomeEvents extends React.Component {
 		const futureEvents = [];
 		const now = Date.now();
 
-		this.data.events.forEach((event) => {
+		this.props.events.forEach((event) => {
 			if (event.date.getTime() > now) {
 				futureEvents.push(event);
 			} else {
@@ -295,7 +300,7 @@ class HomeEvents extends React.Component {
 							</h4>
 							<br />
 
-							{this.data.nov3Sessions.map((session, i) => (
+							{this.props.nov3Sessions.map((session, i) => (
 								<SymposiumSession
 									key={i}
 									session={session}
@@ -310,7 +315,7 @@ class HomeEvents extends React.Component {
 						>
 							<h4 className="symposium-day">Friday, 4 November, Isabella Stewart Gardner Museum</h4>
 							<br />
-							{this.data.nov4Sessions.map((session, i) => (
+							{this.props.nov4Sessions.map((session, i) => (
 								<SymposiumSession
 									key={i}
 									session={session}
@@ -328,7 +333,7 @@ class HomeEvents extends React.Component {
 							</h4>
 							<br />
 
-							{this.data.nov5Sessions.map((session, i) => (
+							{this.props.nov5Sessions.map((session, i) => (
 								<SymposiumSession
 									key={i}
 									session={session}

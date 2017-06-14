@@ -64,9 +64,9 @@
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.alert')
+      var data  = $this.props('bs.alert')
 
-      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+      if (!data) $this.props('bs.alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }

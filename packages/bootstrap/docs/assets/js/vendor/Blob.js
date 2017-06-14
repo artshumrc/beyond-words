@@ -34,10 +34,10 @@
 				return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
 			}
 			, FakeBlobBuilder = function BlobBuilder() {
-				this.data = [];
+				this.props = [];
 			}
 			, FakeBlob = function Blob(data, type, encoding) {
-				this.data = data;
+				this.props = data;
 				this.size = data.length;
 				this.type = type;
 				this.encoding = encoding;
@@ -117,7 +117,7 @@
 			}
 		};
 		FBB_proto.append = function(data/*, endings*/) {
-			var bb = this.data;
+			var bb = this.props;
 			// decode data to a binary string
 			if (Uint8Array && (data instanceof ArrayBuffer || data instanceof Uint8Array)) {
 				var
@@ -158,7 +158,7 @@
 			if (!arguments.length) {
 				type = null;
 			}
-			return new FakeBlob(this.data.join(""), type, "raw");
+			return new FakeBlob(this.props.join(""), type, "raw");
 		};
 		FBB_proto.toString = function() {
 			return "[object BlobBuilder]";
@@ -169,7 +169,7 @@
 				type = null;
 			}
 			return new FakeBlob(
-				  this.data.slice(start, args > 1 ? end : this.data.length)
+				  this.props.slice(start, args > 1 ? end : this.props.length)
 				, type
 				, this.encoding
 			);
@@ -179,7 +179,7 @@
 		};
 		FB_proto.close = function() {
 			this.size = 0;
-			delete this.data;
+			delete this.props;
 		};
 		return FakeBlobBuilder;
 	}(view));

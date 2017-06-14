@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Objects from '/imports/api/collections/objects';
+
 // Single object detail view
 class ObjectDetail extends React.Component {
 	openViewer() {
@@ -14,15 +16,15 @@ class ObjectDetail extends React.Component {
 
 		let image = {};
 		let imageUrl = '';
-		if (this.data.attachment) {
-			image = this.data.attachment;
+		if (this.props.attachment) {
+			image = this.props.attachment;
 			imageUrl = image.url();
 		}
 
 		let pdf = {};
 		let pdfUrl = '';
-		if (this.data.pdfAttachment) {
-			pdf = this.data.pdfAttachment;
+		if (this.props.pdfAttachment) {
+			pdf = this.props.pdfAttachment;
 			pdfUrl = pdf.url();
 		}
 

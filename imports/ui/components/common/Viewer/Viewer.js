@@ -18,7 +18,7 @@ class Viewer extends React.Component {
 			// TODO: Change this once dzi files are available
 			tileSources: {
 				type: 'image',
-				url: this.data.slides[0],
+				url: this.props.slides[0],
 			},
 		});
 		this.right_viewer = OpenSeadragon({
@@ -27,7 +27,7 @@ class Viewer extends React.Component {
 			// TODO: Change this once dzi files are available
 			tileSources: {
 				type: 'image',
-				url: this.data.slides[1],
+				url: this.props.slides[1],
 			},
 		});
 		const self = this;
@@ -46,22 +46,22 @@ class Viewer extends React.Component {
 	nextSlide(currentSlide) {
 		console.log('after change', currentSlide);
 		// check if currentSlide is valid
-		if (currentSlide < 0 || currentSlide >= this.data.slides.length) {
+		if (currentSlide < 0 || currentSlide >= this.props.slides.length) {
 			console.log('Invalid slide');
 			return;
 		}
 		if (currentSlide % 2 === 0) {
 		// left slide selected
-			this.left_viewer.open({ type: 'image', url: this.data.slides[currentSlide] });
-			if (currentSlide === this.data.slides.length - 1) {
+			this.left_viewer.open({ type: 'image', url: this.props.slides[currentSlide] });
+			if (currentSlide === this.props.slides.length - 1) {
 				this.right_viewer.open({ type: 'image', url: null });
 			} else {
-				this.right_viewer.open({ type: 'image', url: this.data.slides[currentSlide + 1] });
+				this.right_viewer.open({ type: 'image', url: this.props.slides[currentSlide + 1] });
 			}
 		} else {
 			// right slide selected
-			this.right_viewer.open({ type: 'image', url: this.data.slides[currentSlide] });
-			this.left_viewer.open({ type: 'image', url: this.data.slides[currentSlide - 1] });
+			this.right_viewer.open({ type: 'image', url: this.props.slides[currentSlide] });
+			this.left_viewer.open({ type: 'image', url: this.props.slides[currentSlide - 1] });
 		}
 	}
 

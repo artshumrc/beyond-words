@@ -142,9 +142,9 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.alert')
+      var data  = $this.props('bs.alert')
 
-      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+      if (!data) $this.props('bs.alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -251,10 +251,10 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.button')
+      var data    = $this.props('bs.button')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) $this.props('bs.button', (data = new Button(this, options)))
 
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
@@ -470,11 +470,11 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.carousel')
+      var options = $.extend({}, Carousel.DEFAULTS, $this.props(), typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
+      if (!data) $this.props('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
@@ -504,7 +504,7 @@ if (typeof jQuery === 'undefined') {
     var $this   = $(this)
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
     if (!$target.hasClass('carousel')) return
-    var options = $.extend({}, $target.data(), $this.data())
+    var options = $.extend({}, $target.data(), $this.props())
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
 
@@ -701,11 +701,11 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.collapse')
-      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.props(), typeof option == 'object' && option)
 
       if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
-      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (!data) $this.props('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -735,7 +735,7 @@ if (typeof jQuery === 'undefined') {
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
+    var option  = data ? 'toggle' : $this.props()
 
     Plugin.call($target, option)
   })
@@ -874,9 +874,9 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.dropdown')
+      var data  = $this.props('bs.dropdown')
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (!data) $this.props('bs.dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -1200,10 +1200,10 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option, _relatedTarget) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.modal')
-      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.modal')
+      var options = $.extend({}, Modal.DEFAULTS, $this.props(), typeof option == 'object' && option)
 
-      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+      if (!data) $this.props('bs.modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option](_relatedTarget)
       else if (options.show) data.show(_relatedTarget)
     })
@@ -1231,7 +1231,7 @@ if (typeof jQuery === 'undefined') {
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
-    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.props())
 
     if ($this.is('a')) e.preventDefault()
 
@@ -1736,11 +1736,11 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.tooltip')
+      var data    = $this.props('bs.tooltip')
       var options = typeof option == 'object' && option
 
       if (!data && /destroy|hide/.test(option)) return
-      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      if (!data) $this.props('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1845,11 +1845,11 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.popover')
+      var data    = $this.props('bs.popover')
       var options = typeof option == 'object' && option
 
       if (!data && /destroy|hide/.test(option)) return
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+      if (!data) $this.props('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -2008,10 +2008,10 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.scrollspy')
+      var data    = $this.props('bs.scrollspy')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+      if (!data) $this.props('bs.scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -2071,7 +2071,7 @@ if (typeof jQuery === 'undefined') {
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
-    var selector = $this.data('target')
+    var selector = $this.props('target')
 
     if (!selector) {
       selector = $this.attr('href')
@@ -2163,9 +2163,9 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.tab')
+      var data  = $this.props('bs.tab')
 
-      if (!data) $this.data('bs.tab', (data = new Tab(this)))
+      if (!data) $this.props('bs.tab', (data = new Tab(this)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -2320,10 +2320,10 @@ if (typeof jQuery === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.affix')
+      var data    = $this.props('bs.affix')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
+      if (!data) $this.props('bs.affix', (data = new Affix(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }

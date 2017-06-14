@@ -13,7 +13,7 @@ class HomeMedia extends React.Component {
 	}
 
 	render() {
-		// console.log(this.data.ready, this.data.tweets);
+		// console.log(this.props.ready, this.props.tweets);
 		return (
 			<section id="news" className="bg-gray">
 				<div className="container">

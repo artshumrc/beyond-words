@@ -100,7 +100,7 @@ EventItem.propTypes = {
 	pastEvent: PropTypes.bool,
 };
 
-EventItems.childContextTypes = {
+EventItem.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 

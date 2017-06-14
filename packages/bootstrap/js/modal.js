@@ -290,10 +290,10 @@
   function Plugin(option, _relatedTarget) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.modal')
-      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.modal')
+      var options = $.extend({}, Modal.DEFAULTS, $this.props(), typeof option == 'object' && option)
 
-      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+      if (!data) $this.props('bs.modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option](_relatedTarget)
       else if (options.show) data.show(_relatedTarget)
     })
@@ -321,7 +321,7 @@
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
-    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.props())
 
     if ($this.is('a')) e.preventDefault()
 

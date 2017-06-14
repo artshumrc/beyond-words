@@ -169,11 +169,11 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.collapse')
-      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.props(), typeof option == 'object' && option)
 
       if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
-      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (!data) $this.props('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -203,7 +203,7 @@
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
+    var option  = data ? 'toggle' : $this.props()
 
     Plugin.call($target, option)
   })

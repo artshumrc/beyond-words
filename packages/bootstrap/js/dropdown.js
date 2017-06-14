@@ -130,9 +130,9 @@
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.dropdown')
+      var data  = $this.props('bs.dropdown')
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (!data) $this.props('bs.dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }

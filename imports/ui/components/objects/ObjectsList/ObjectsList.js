@@ -8,6 +8,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import muiTheme from '/imports/lib/muiTheme';
 import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
+import Objects from '/imports/api/collections/objects';
 
 class ObjectsList extends React.Component {
 	getChildContext() {
@@ -59,10 +60,10 @@ class ObjectsList extends React.Component {
 		const self = this;
 
 		if (this.objects.length === 0 || this.props.skip === 0) {
-			this.objects = this.data.objects;
+			this.objects = this.props.objects;
 		} else {
 			// $("html, body").animate({ scrollTop: 0 }, "fast");
-			this.data.objects.forEach((object) => {
+			this.props.objects.forEach((object) => {
 				if (!self.objects.some(existingObject => existingObject._id === object._id)) {
 					self.objects.push(object);
 				}
@@ -174,7 +175,7 @@ class ObjectsList extends React.Component {
 							}
 						</InfiniteScroll>
 
-						{this.data.stillMoreObjects ?
+						{this.props.stillMoreObjects ?
 							<div className="loading-collections loading-visible">
 								<div className="dot-spinner">
 									<div className="bounce1" />
@@ -184,7 +185,7 @@ class ObjectsList extends React.Component {
 							</div>
 							: ''
 						}
-						{this.objects.length === 0 && !this.data.stillMoreObjects ?
+						{this.objects.length === 0 && !this.props.stillMoreObjects ?
 							<div className="no-results no-results--objects">
 								<p>No manuscripts were found for your query.</p>
 							</div>

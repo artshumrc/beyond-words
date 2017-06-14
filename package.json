@@ -16,6 +16,7 @@
     "draft-js-mention-plugin": "^2.0.0-beta1",
     "draft-js-plugins-editor": "^2.0.0-beta1",
     "express": "^4.15.3",
+    "flexslider": "^2.6.3",
     "formsy-react": "^0.19.2",
     "gm": "^1.23.0",
     "graphql": "^0.10.1",

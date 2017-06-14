@@ -26,7 +26,7 @@
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
-    var selector = $this.data('target')
+    var selector = $this.props('target')
 
     if (!selector) {
       selector = $this.attr('href')
@@ -118,9 +118,9 @@
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.tab')
+      var data  = $this.props('bs.tab')
 
-      if (!data) $this.data('bs.tab', (data = new Tab(this)))
+      if (!data) $this.props('bs.tab', (data = new Tab(this)))
       if (typeof option == 'string') data[option]()
     })
   }

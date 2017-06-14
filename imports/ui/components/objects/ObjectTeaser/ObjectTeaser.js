@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import Objects from '/imports/api/collections/objects';
 
 // Object Teaser
 class ObjectTeaser extends React.Component {
@@ -57,8 +58,8 @@ class ObjectTeaser extends React.Component {
 
 		let image = {};
 		let imageUrl = '';
-		if (this.data.attachment) {
-			image = this.data.attachment;
+		if (this.props.attachment) {
+			image = this.props.attachment;
 			imageUrl = image.url();
 			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
 		}
@@ -244,7 +245,7 @@ const objectTeaserContainer = createContainer((props) => {
 
 	const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
 	if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
-		attachment = Attachments.findOne({ _id: this.props.object.image });
+		// attachment = Attachments.findOne({ _id: this.props.object.image });
 		// thumbnails = Thumbnails.find({}).fetch();
 	}
 

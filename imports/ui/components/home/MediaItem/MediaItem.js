@@ -18,8 +18,8 @@ class MediaItem extends React.Component {
 
 		let image = {};
 		let imageUrl = '';
-		if (this.data.attachment) {
-			image = this.data.attachment;
+		if (this.props.attachment) {
+			image = this.props.attachment;
 			imageUrl = image.url();
 			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
 		}

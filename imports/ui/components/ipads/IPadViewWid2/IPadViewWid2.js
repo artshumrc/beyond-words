@@ -148,7 +148,7 @@ class IPadViewWid2 extends React.Component {
 		 * Some demo data for the info panel dropdown--to be replaced for each build
 		 * for the iPads
 		 */
-		const object = this.data.object;
+		const object = this.props.object;
 
 
 		return (

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Pages from '/imports/api/collections/pages';
+
 class Page extends React.Component {
 
 	backgroundImages() {
@@ -24,21 +26,21 @@ class Page extends React.Component {
 	}
 
 	render() {
-		const page = this.data.page;
+		const page = this.props.page;
 		const slug = this.props.slug;// FlowRouter.getParam('slug');
 		const pageClass = `page page-${slug}`;
-		const headerImageSource = this.data.images[0] ? this.data.images[0].url : null;
+		const headerImageSource = this.props.images[0] ? this.props.images[0].url : null;
 		if (headerImageSource) {
 			// console.log(headerImageSource);
 			this.backgroundImages();
 		}
 		// var page = Pages.findOne({slug: slug});
-		// console.log(this.data.loading);
-		if (this.data.loading) {
+		// console.log(this.props.loading);
+		if (this.props.loading) {
 			return (
 				<Loading />
 			);
-		} else if (!this.data.loading && !this.data.page) {
+		} else if (!this.props.loading && !this.props.page) {
 			return (
 				<PageNotFound />
 			);
@@ -103,8 +105,8 @@ const pageContainer = createContainer((props) => {
 		const imageSub = Meteor.subscribe('pageImages', slug);
 		if (imageSub.ready()) {
 			if (page.headerImage && Array.isArray(page.headerImage)) {
-				images = Images.find({ _id: { $in: page.headerImage } }).fetch();
-				thumbnails = Thumbnails.find({ originalId: { $in: page.headerImage } }).fetch();
+				// images = Images.find({ _id: { $in: page.headerImage } }).fetch();
+				// thumbnails = Thumbnails.find({ originalId: { $in: page.headerImage } }).fetch();
 			}
 		}
 		loading = false;
