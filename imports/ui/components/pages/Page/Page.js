@@ -1,37 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class Page extends React.Component {
-
-	getMeteorData() {
-				// console.log(this);
-		const slug = this.props.slug;// FlowRouter.getParam('slug');
-		let page = {};
-		let images = [];
-		let thumbnails = [];
-		const handle = Meteor.subscribe('pages', slug);
-		let loading = true;
-		if (handle.ready()) {
-				// console.log(tweets);
-				// TweetCollection = new Mongo.Collection("tweetCollection");
-			page = Pages.find({ slug }).fetch()[0];
-			const imageSub = Meteor.subscribe('pageImages', slug);
-			if (imageSub.ready()) {
-				if (page.headerImage && Array.isArray(page.headerImage)) {
-					images = Images.find({ _id: { $in: page.headerImage } }).fetch();
-					thumbnails = Thumbnails.find({ originalId: { $in: page.headerImage } }).fetch();
-				}
-			}
-			loading = false;
-		}
-		return {
-			page,
-			ready: handle.ready(),
-			images,
-			thumbnails,
-			loading,
-		};
-	}
 
 	backgroundImages() {
 		setTimeout(() => {
@@ -118,4 +89,34 @@ Page.propTypes = {
 	slug: PropTypes.string,
 };
 
-export default Page;
+const pageContainer = createContainer((props) => {
+	const slug = props.slug;// FlowRouter.getParam('slug');
+	let page = {};
+	let images = [];
+	let thumbnails = [];
+	const handle = Meteor.subscribe('pages', slug);
+	let loading = true;
+	if (handle.ready()) {
+			// console.log(tweets);
+			// TweetCollection = new Mongo.Collection("tweetCollection");
+		page = Pages.find({ slug }).fetch()[0];
+		const imageSub = Meteor.subscribe('pageImages', slug);
+		if (imageSub.ready()) {
+			if (page.headerImage && Array.isArray(page.headerImage)) {
+				images = Images.find({ _id: { $in: page.headerImage } }).fetch();
+				thumbnails = Thumbnails.find({ originalId: { $in: page.headerImage } }).fetch();
+			}
+		}
+		loading = false;
+	}
+	return {
+		page,
+		ready: handle.ready(),
+		images,
+		thumbnails,
+		loading,
+	};
+}, Page);
+
+
+export default pageContainer;

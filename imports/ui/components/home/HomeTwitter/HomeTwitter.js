@@ -4,24 +4,11 @@ import PropTypes from 'prop-types';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Card, CardText } from 'material-ui/Card';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class HomeTwitter extends React.Component {
 	getChildContext() {
 		return { muiTheme: getMuiTheme(muiTheme) };
-	}
-
-	getMeteorData() {
-		let tweets = [];
-		const handle = Meteor.subscribe('tweets');
-		if (handle.ready()) {
-			// console.log(tweets);
-			// TweetCollection = new Mongo.Collection("tweetCollection");
-			tweets = TweetCollection.find({}, { limit: 6, sort: { id: -1 } }).fetch();
-		}
-		return {
-			tweets,
-			ready: handle.ready(),
-		};
 	}
 
 	render() {
@@ -79,5 +66,18 @@ HomeTwitter.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
+const homeTwitterContainer = createContainer((props) => {
+	let tweets = [];
+	const handle = Meteor.subscribe('tweets');
+	if (handle.ready()) {
+		tweets = TweetCollection.find({}, { limit: 6, sort: { id: -1 } }).fetch();
+	}
 
-export default HomeTwitter;
+	return {
+		tweets,
+		ready: handle.ready(),
+	};
+}, HomeTwitter);
+
+
+export default homeTwitterContainer;

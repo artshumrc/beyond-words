@@ -1,29 +1,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 
 // Single object detail view
 class ObjectDetailPage extends React.Component {
-
-	getMeteorData() {
-		let object = {};
-		let images = [];
-		let thumbnails = [];
-		const objectSubscription = Meteor.subscribe('object', this.props.slug);
-		if (objectSubscription.ready()) {
-			object = Objects.find({ slug: this.props.slug }).fetch()[0];
-		}
-		const imageSubscription = Meteor.subscribe('objectImages', this.props.slug);
-		if (imageSubscription.ready()) {
-			images = Images.find({}).fetch();
-			thumbnails = Thumbnails.find({}).fetch();
-		}
-		return {
-			object,
-			images,
-			thumbnails,
-		};
-	}
 
 	render() {
 		const object = this.data.object;
@@ -194,4 +175,25 @@ ObjectDetailPage.propTypes = {
 	slug: PropTypes.string.isRequired,
 };
 
-export default ObjectDetailPage;
+const objectDetailPageContainer = createContainer((props) => {
+	let object = {};
+	let images = [];
+	let thumbnails = [];
+	const objectSubscription = Meteor.subscribe('object', this.props.slug);
+	if (objectSubscription.ready()) {
+		object = Objects.find({ slug: this.props.slug }).fetch()[0];
+	}
+	const imageSubscription = Meteor.subscribe('objectImages', this.props.slug);
+	if (imageSubscription.ready()) {
+		images = Images.find({}).fetch();
+		thumbnails = Thumbnails.find({}).fetch();
+	}
+	return {
+		object,
+		images,
+		thumbnails,
+	};
+}, ObjectDetailPage);
+
+
+export default objectDetailPageContainer;

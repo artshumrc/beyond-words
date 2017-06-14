@@ -1,8 +1,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+import muiTheme from '/imports/lib/muiTheme';
+import MediaItemList from '/imports/ui/components/home/MediaItemList';
 
 class HomeMedia extends React.Component {
 

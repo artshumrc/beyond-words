@@ -3,8 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component/lib';
 import { debounce } from 'throttle-debounce';
-import muiTheme from '/imports/lib/muiTheme';
+import { createContainer } from 'meteor/react-meteor-data';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+import muiTheme from '/imports/lib/muiTheme';
 import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 
 class ObjectsList extends React.Component {
@@ -14,80 +16,6 @@ class ObjectsList extends React.Component {
 
 	componentDidMount() {
 		// this.hide();
-	}
-
-	getMeteorData() {
-		const query = {};
-		let objects = [];
-		let stillMoreObjects = true;
-
-		// Parse the filters to the query
-		this.props.filters.forEach((filter) => {
-			const date = moment(`${filter.values[0]}-01-01`, 'YYYY MM DD');
-			switch (filter.key) {
-			case 'textsearch':
-				query.$text = { $search: filter.values[0] };
-				break;
-
-			case 'catalogNumber':
-				query.catalog_n = parseInt(filter.values[0], 10);
-				break;
-
-			case 'hasViewer':
-				query.$or = [{$where: '(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)'}, {hasImageViewer: true}];
-				break;
-
-			case 'scribes':
-				query.scribe = { $in: filter.values };
-				break;
-
-			case 'illuminators':
-				query.illuminator = { $in: filter.values };
-				break;
-
-			case 'institutions':
-				query.institution = { $in: filter.values };
-				break;
-
-			case 'places':
-				query.place = { $in: filter.values };
-				break;
-
-			case 'dateFrom':
-				query.dateBegun = { $gte: new Date(date.toISOString()) };
-				break;
-
-			case 'dateTo':
-				query.dateEnded = { $lte: new Date(date.toISOString()) };
-				break;
-			default:
-				// do nothing
-			}
-		});
-
-		// console.log('Objects query:', query);
-		const handle = Meteor.subscribe('objects', query, this.props.skip, this.props.limit);
-		if (handle.ready()) {
-			objects = Objects.find({}, {}).fetch();
-			/*
-			objects.forEach((object, i) => {
-				const imageSubscription = Meteor.subscribe('objectImages', object.slug);
-				if (imageSubscription.ready()) {
-					objects[i].images = Images.find({}).fetch();
-					objects[i].thumbnails = Thumbnails.find({}).fetch();
-				}
-			});
-			*/
-
-			if (objects.length < this.props.limit) {
-				stillMoreObjects = false;
-			}
-		}
-
-		return {
-			objects,
-			stillMoreObjects,
-		};
 	}
 
 	handleImagesLoaded() {
@@ -289,4 +217,79 @@ ObjectsList.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
-export default ObjectsList;
+const objectsListContainer = createContainer((props) => {
+	const query = {};
+	let objects = [];
+	let stillMoreObjects = true;
+
+	// Parse the filters to the query
+	props.filters.forEach((filter) => {
+		const date = moment(`${filter.values[0]}-01-01`, 'YYYY MM DD');
+		switch (filter.key) {
+		case 'textsearch':
+			query.$text = { $search: filter.values[0] };
+			break;
+
+		case 'catalogNumber':
+			query.catalog_n = parseInt(filter.values[0], 10);
+			break;
+
+		case 'hasViewer':
+			query.$or = [{$where: '(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)'}, {hasImageViewer: true}];
+			break;
+
+		case 'scribes':
+			query.scribe = { $in: filter.values };
+			break;
+
+		case 'illuminators':
+			query.illuminator = { $in: filter.values };
+			break;
+
+		case 'institutions':
+			query.institution = { $in: filter.values };
+			break;
+
+		case 'places':
+			query.place = { $in: filter.values };
+			break;
+
+		case 'dateFrom':
+			query.dateBegun = { $gte: new Date(date.toISOString()) };
+			break;
+
+		case 'dateTo':
+			query.dateEnded = { $lte: new Date(date.toISOString()) };
+			break;
+		default:
+			// do nothing
+		}
+	});
+
+	// console.log('Objects query:', query);
+	const handle = Meteor.subscribe('objects', query, props.skip, props.limit);
+	if (handle.ready()) {
+		objects = Objects.find({}, {}).fetch();
+		/*
+		objects.forEach((object, i) => {
+			const imageSubscription = Meteor.subscribe('objectImages', object.slug);
+			if (imageSubscription.ready()) {
+				objects[i].images = Images.find({}).fetch();
+				objects[i].thumbnails = Thumbnails.find({}).fetch();
+			}
+		});
+		*/
+
+		if (objects.length < props.limit) {
+			stillMoreObjects = false;
+		}
+	}
+
+	return {
+		objects,
+		stillMoreObjects,
+	};
+}, ObjectsList);
+
+
+export default objectsListContainer;

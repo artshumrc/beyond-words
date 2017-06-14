@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component/lib';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import MediaItem from '/imports/ui/components/home/MediaItem';
 
 class MediaItemList extends React.Component {
-	getMeteorData() {
-		let mediaItems = [];
-		const handle = Meteor.subscribe('mediaItems');
-		if (handle.ready()) {
-			mediaItems = MediaItems.find({}, { sort: { date: -1 } }).fetch();
-		}
-		return {
-			mediaItems,
-		};
-	}
 
 	render() {
 		const masonryOptions = {
@@ -44,5 +37,17 @@ MediaItemList.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
+const mediaItemListContainer = createContainer(() => {
+	let mediaItems = [];
+	const handle = Meteor.subscribe('mediaItems');
+	if (handle.ready()) {
+		mediaItems = MediaItems.find({}, { sort: { date: -1 } }).fetch();
+	}
 
-export default MediaItemList;
+	return {
+		mediaItems,
+	};
+}, MediaItemList);
+
+
+export default mediaItemListContainer;

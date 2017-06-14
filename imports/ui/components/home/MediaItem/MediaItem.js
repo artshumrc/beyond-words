@@ -1,22 +1,11 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import Attachments from '/imports/api/collections/collection_fs/attachments';
 
 class MediaItem extends React.Component {
-
-	getMeteorData() {
-		let attachment = null;
-
-		const imageSubscription = Meteor.subscribe('attachments');
-		if (imageSubscription.ready() && typeof this.props.mediaItem.image !== 'undefined') {
-			attachment = Attachments.findOne({ _id: this.props.mediaItem.image });
-		}
-
-		return {
-			attachment,
-		};
-	}
 
 	render() {
 		const mediaItem = this.props.mediaItem;
@@ -86,5 +75,18 @@ MediaItem.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
+const mediaItemContainer = createContainer((props) => {
+	let attachment = null;
 
-export default MediaItem;
+	const imageSubscription = Meteor.subscribe('attachments');
+	if (imageSubscription.ready() && typeof props.mediaItem.image !== 'undefined') {
+		attachment = Attachments.findOne({ _id: props.mediaItem.image });
+	}
+
+	return {
+		attachment,
+	};
+}, MediaItem);
+
+
+export default mediaItemContainer;

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
@@ -40,20 +41,6 @@ class ObjectsSearchToolsPanel extends React.Component {
 				});
 			}
 		});
-	}
-
-	getMeteorData() {
-		const scribes = [];
-		const illuminators = [];
-		const institutions = [];
-		const places = [];
-
-		return {
-			scribes,
-			illuminators,
-			institutions,
-			places,
-		};
 	}
 
 	toggleSearchTerm(key, value) {
@@ -288,5 +275,19 @@ ObjectsSearchToolsPanel.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
+const objectsSearchToolsPanelContainer = createContainer((props) => {
+	const scribes = [];
+	const illuminators = [];
+	const institutions = [];
+	const places = [];
 
-export default ObjectsSearchToolsPanel;
+	return {
+		scribes,
+		illuminators,
+		institutions,
+		places,
+	};
+}, ObjectsSearchToolsPanel);
+
+
+export default objectsSearchToolsPanelContainer;

@@ -1,5 +1,6 @@
 import React from 'react';
 import autoBind from 'react-autobind';
+import { createContainer } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from '/imports/lib/muiTheme';
@@ -34,21 +35,6 @@ class ObjectTeaser extends React.Component {
 			}
 		}, 3000);
 	}
-
-	getMeteorData() {
-		let attachment = null;
-
-		const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
-		if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
-			attachment = Attachments.findOne({ _id: this.props.object.image });
-			// thumbnails = Thumbnails.find({}).fetch();
-		}
-
-		return {
-			attachment,
-		};
-	}
-
 
 	render() {
 		const object = this.props.object;
@@ -253,4 +239,19 @@ ObjectTeaser.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
-export default ObjectTeaser;
+const objectTeaserContainer = createContainer((props) => {
+	let attachment = null;
+
+	const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
+	if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
+		attachment = Attachments.findOne({ _id: this.props.object.image });
+		// thumbnails = Thumbnails.find({}).fetch();
+	}
+
+	return {
+		attachment,
+	};
+}, ObjectTeaser);
+
+
+export default objectTeaserContainer;

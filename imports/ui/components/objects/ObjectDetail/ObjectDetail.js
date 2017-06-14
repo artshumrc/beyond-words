@@ -1,40 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 
 // Single object detail view
 class ObjectDetail extends React.Component {
-	getMeteorData() {
-		let attachment = null;
-		let pdfAttachment = null;
-		const selectedObject = null;
-
-		const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
-		if (imageSubscription.ready()) {
-			if (typeof this.props.selectedObject.image !== 'undefined') {
-				attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
-			}
-			if (typeof this.props.selectedObject.pdf !== 'undefined') {
-				pdfAttachment = Attachments.findOne({ _id: this.props.selectedObject.pdf });
-			}
-		}
-
-		// console.log("ObjectDetail.props", this.props);
-		if (this.props.objectToSelectSlug && !('catalog_n' in this.props.selectedObject) && !this.objectSelected) {
-			const objectSubscription = Meteor.subscribe('objects', {slug: this.props.objectToSelectSlug});
-			if (objectSubscription.ready()) {
-				object = Objects.findOne({slug: this.props.objectToSelectSlug});
-				// console.log("ObjectDetail.object", object);
-				this.props.selectObject(object);
-				this.objectSelected = true;
-			}
-		}
-
-		return {
-			attachment,
-			pdfAttachment,
-		};
-	}
-
 	openViewer() {
 		console.log('ObjectDetail.openViewer');
 		this.props.openViewer();
@@ -232,5 +201,37 @@ ObjectDetail.propTypes = {
 	openViewer: PropTypes.func,
 	openMiradorViewer: PropTypes.func,
 };
+const objectDetailContainer = createContainer((props) => {
+	let attachment = null;
+	let pdfAttachment = null;
+	const selectedObject = null;
 
-export default ObjectDetail;
+	const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
+	if (imageSubscription.ready()) {
+		if (typeof this.props.selectedObject.image !== 'undefined') {
+			attachment = Attachments.findOne({ _id: this.props.selectedObject.image });
+		}
+		if (typeof this.props.selectedObject.pdf !== 'undefined') {
+			pdfAttachment = Attachments.findOne({ _id: this.props.selectedObject.pdf });
+		}
+	}
+
+	// console.log("ObjectDetail.props", this.props);
+	if (this.props.objectToSelectSlug && !('catalog_n' in this.props.selectedObject) && !this.objectSelected) {
+		const objectSubscription = Meteor.subscribe('objects', {slug: this.props.objectToSelectSlug});
+		if (objectSubscription.ready()) {
+			object = Objects.findOne({slug: this.props.objectToSelectSlug});
+			// console.log("ObjectDetail.object", object);
+			this.props.selectObject(object);
+			this.objectSelected = true;
+		}
+	}
+
+	return {
+		attachment,
+		pdfAttachment,
+	};
+}, ObjectDetail);
+
+
+export default objectDetailContainer;

@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class HomeEvents extends React.Component {
 	constructor(props) {
@@ -25,27 +26,6 @@ class HomeEvents extends React.Component {
 
 	getChildContext() {
 		return { muiTheme: getMuiTheme(muiTheme) };
-	}
-
-	getMeteorData() {
-		let nov3Sessions = [];
-		let nov4Sessions = [];
-		let nov5Sessions = [];
-
-		const sessionSubscription = Meteor.subscribe('symposiumSessions');
-		if (sessionSubscription.ready()) {
-			nov3Sessions = SymposiumSessions.find({ nov3: true }).fetch();
-			nov4Sessions = SymposiumSessions.find({ nov4: true }).fetch();
-			nov5Sessions = SymposiumSessions.find({ nov5: true }).fetch();
-		}
-
-
-		return {
-			events: Events.find({}, { sort: { date: 1 } }).fetch(),
-			nov3Sessions,
-			nov4Sessions,
-			nov5Sessions,
-		};
 	}
 
 	openRegistrationModal() {
@@ -467,5 +447,25 @@ HomeEvents.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
+const homeEventsContainer = createContainer((props) => {
+	let nov3Sessions = [];
+	let nov4Sessions = [];
+	let nov5Sessions = [];
 
-export default HomeEvents;
+	const sessionSubscription = Meteor.subscribe('symposiumSessions');
+	if (sessionSubscription.ready()) {
+		nov3Sessions = SymposiumSessions.find({ nov3: true }).fetch();
+		nov4Sessions = SymposiumSessions.find({ nov4: true }).fetch();
+		nov5Sessions = SymposiumSessions.find({ nov5: true }).fetch();
+	}
+
+
+	return {
+		events: Events.find({}, { sort: { date: 1 } }).fetch(),
+		nov3Sessions,
+		nov4Sessions,
+		nov5Sessions,
+	};
+}, HomeEvents);
+
+export default homeEventsContainer;

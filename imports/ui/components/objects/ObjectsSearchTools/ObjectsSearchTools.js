@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 import muiTheme from '/imports/lib/muiTheme';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -43,20 +44,6 @@ class ObjectsSearchTools extends React.Component {
 				});
 			}
 		});
-	}
-
-	getMeteorData() {
-		const scribes = [];
-		const illuminators = [];
-		const institutions = [];
-		const places = [];
-
-		return {
-			scribes,
-			illuminators,
-			institutions,
-			places,
-		};
 	}
 
 	toggleSearchDropdown(dropdown) {
@@ -338,4 +325,19 @@ ObjectsSearchTools.childContextTypes = {
 	muiTheme: PropTypes.object.isRequired,
 };
 
-export default ObjectsSearchTools;
+
+const objectsSearchToolsContainer = createContainer((props) => {
+	const scribes = [];
+	const illuminators = [];
+	const institutions = [];
+	const places = [];
+
+	return {
+		scribes,
+		illuminators,
+		institutions,
+		places,
+	};
+}, ObjectsSearchTools);
+
+export default objectsSearchToolsContainer;
