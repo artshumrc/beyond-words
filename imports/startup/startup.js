@@ -5,6 +5,8 @@ import 'ion-rangeslider/css/ion.rangeSlider.skinFlat.css';
 import 'mdi/css/materialdesignicons.css';
 import 'draft-js-mention-plugin/lib/plugin.css';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+import 'flexslider/jquery.flexslider.js';
+import 'flexslider/flexslider.css';
 
 
 // lib
