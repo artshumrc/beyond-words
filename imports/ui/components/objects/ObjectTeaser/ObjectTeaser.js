@@ -7,6 +7,7 @@ import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Objects from '/imports/api/collections/objects';
+import Utils from '/imports/lib/utils';
 
 // Object Teaser
 class ObjectTeaser extends React.Component {
@@ -29,7 +30,7 @@ class ObjectTeaser extends React.Component {
 		const self = this;
 
 		setTimeout(function() {
-			if (!self.data.attachment) {
+			if (!self.props.attachment) {
 				self.setState({
 					attachmentCheck: true,
 				});
@@ -243,8 +244,8 @@ ObjectTeaser.childContextTypes = {
 const objectTeaserContainer = createContainer((props) => {
 	let attachment = null;
 
-	const imageSubscription = Meteor.subscribe('attachments', this.props.object.slug);
-	if (imageSubscription.ready() && typeof this.props.object.image !== 'undefined') {
+	const imageSubscription = Meteor.subscribe('attachments', props.object.slug);
+	if (imageSubscription.ready() && typeof props.object.image !== 'undefined') {
 		// attachment = Attachments.findOne({ _id: this.props.object.image });
 		// thumbnails = Thumbnails.find({}).fetch();
 	}

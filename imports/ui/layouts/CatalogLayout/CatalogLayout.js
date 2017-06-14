@@ -2,6 +2,11 @@ import React from 'react';
 import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 
+import HeaderCatalog from '/imports/ui/components/common/HeaderCatalog';
+import ObjectsList from '/imports/ui/components/objects/ObjectsList';
+import CatalogFooter from '/imports/ui/components/common/CatalogFooter';
+import BeyondWordsViewer from '/imports/ui/components/objects/BeyondWordsViewer';
+
 class CatalogLayout extends React.Component {
 
 	constructor(props) {

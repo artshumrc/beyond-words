@@ -1,12 +1,15 @@
 import React from 'react';
 import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
-
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
-import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import IconButton from 'material-ui/IconButton';
+
+import muiTheme from '/imports/lib/muiTheme';
+import LeftMenu from '/imports/ui/components/common/LeftMenu';
+import ObjectsSearchToolsPanel from '/imports/ui/components/objects/ObjectsSearchToolsPanel';
+import ObjectsSearchTools from '/imports/ui/components/objects/ObjectsSearchTools';
 
 class HeaderCatalog extends React.Component {
 	constructor(props) {

@@ -19,7 +19,7 @@ class DateRangeSlider extends React.Component {
 
 	render() {
 		return (
-			<div id="date-range" />
+			<input id="date-range" />
 		);
 	}
 }

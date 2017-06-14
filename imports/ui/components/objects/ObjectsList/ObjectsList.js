@@ -7,8 +7,10 @@ import { createContainer } from 'meteor/react-meteor-data';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import muiTheme from '/imports/lib/muiTheme';
-import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 import Objects from '/imports/api/collections/objects';
+import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
+import FiltersWidget from '/imports/ui/components/common/FiltersWidget';
+import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 
 class ObjectsList extends React.Component {
 	getChildContext() {
@@ -47,7 +49,7 @@ class ObjectsList extends React.Component {
 	}
 
 	renderObjects() {
-		return this.objects.map(object => (
+		return this.props.objects.map(object => (
 			<ObjectTeaser
 				key={object._id}
 				object={object}
@@ -59,18 +61,7 @@ class ObjectsList extends React.Component {
 	render() {
 		const self = this;
 
-		if (this.objects.length === 0 || this.props.skip === 0) {
-			this.objects = this.props.objects;
-		} else {
-			// $("html, body").animate({ scrollTop: 0 }, "fast");
-			this.props.objects.forEach((object) => {
-				if (!self.objects.some(existingObject => existingObject._id === object._id)) {
-					self.objects.push(object);
-				}
-			});
-		}
-
-		this.objects.sort(function(a, b) {
+		this.props.objects.sort(function(a, b) {
 			return a.catalog_n - b.catalog_n;
 		});
 
@@ -81,7 +72,7 @@ class ObjectsList extends React.Component {
 
 		const selectedObject = this.props.selectedObject;
 		if (selectedObject && 'objectDetailSlider' in self.refs) {
-			this.objects.forEach(function(object, i) {
+			this.props.objects.forEach(function(object, i) {
 				if (object.catalog_n === selectedObject.catalog_n) {
 					self.refs.objectDetailSlider.slickGoTo(i);
 
@@ -133,10 +124,10 @@ class ObjectsList extends React.Component {
 							openMiradorViewer={self.props.openMiradorViewer}
 						/>
 
-						{this.objects.length ?
+						{this.props.objects.length ?
 							<div className="objects-detail-scroll">
 								<div className="objects-detail-scroll-inner clear">
-									{this.objects.map((object, i) => (
+									{this.props.objects.map((object, i) => (
 										<div
 											key={i}
 											className="object-scroll-teaser"
@@ -185,7 +176,7 @@ class ObjectsList extends React.Component {
 							</div>
 							: ''
 						}
-						{this.objects.length === 0 && !this.props.stillMoreObjects ?
+						{this.props.objects.length === 0 && !this.props.stillMoreObjects ?
 							<div className="no-results no-results--objects">
 								<p>No manuscripts were found for your query.</p>
 							</div>
@@ -212,6 +203,7 @@ ObjectsList.propTypes = {
 	catalogLayout: PropTypes.string,
 	openViewer: PropTypes.func,
 	openMiradorViewer: PropTypes.func,
+	objects: PropTypes.array,
 };
 
 ObjectsList.childContextTypes = {
