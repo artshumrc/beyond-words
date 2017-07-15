@@ -6,12 +6,21 @@ import HeaderCatalog from '/imports/ui/components/common/HeaderCatalog';
 import ObjectsList from '/imports/ui/components/objects/ObjectsList';
 import CatalogFooter from '/imports/ui/components/common/CatalogFooter';
 import BeyondWordsViewer from '/imports/ui/components/objects/BeyondWordsViewer';
+import Pagination from '/imports/ui/components/objects/Pagination';
 import Utils from '/imports/lib/utils';
 
 class CatalogLayout extends React.Component {
 
 	constructor(props) {
 		super(props);
+		let skip = 0;
+		const limit = 24;
+		const page = FlowRouter.getQueryParam('page');
+
+		if (page) {
+			skip = limit * (parseInt(page, 10) - 1);
+		}
+
 
 		this.state = {
 			objectToSelectSlug: this.props.selectedObjectSlug,
@@ -19,8 +28,8 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 			catalogLayout: 'grid',
 			filters: [],
-			skip: 0,
-			limit: 12,
+			skip,
+			limit,
 			miradorOpen: false,
 			viewerOpen: false,
 		};
@@ -318,6 +327,11 @@ class CatalogLayout extends React.Component {
 					skip={this.state.skip}
 					limit={this.state.limit}
 					catalogLayout={this.state.catalogLayout}
+				/>
+
+				<Pagination
+					activePage={parseInt(FlowRouter.getQueryParam('page'), 10) || 0}
+					limit={this.state.limit}
 				/>
 
 				<CatalogFooter />

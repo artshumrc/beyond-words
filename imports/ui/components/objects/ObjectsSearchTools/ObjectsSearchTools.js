@@ -87,7 +87,7 @@ class ObjectsSearchTools extends React.Component {
 						<Toggle
 							className="search-tool search-type-mirador"
 							label="Has Viewer?"
-							onToggle={this.props.toggleMiradorSearch}
+							onToggle={this.props.toggleMiradorSearch.bind(this)}
 							thumbStyle={{
 								backgroundColor: '#cccccc',
 							}}
@@ -112,7 +112,7 @@ class ObjectsSearchTools extends React.Component {
 								label="Date"
 								labelPosition="before"
 								icon={<FontIcon className="mdi mdi-chevron-down" />}
-								onClick={this.toggleSearchDropdown.bind(null, 'date')}
+								onClick={this.toggleSearchDropdown.bind(this, 'date')}
 							/>
 
 							<ul className="dropdown-menu ">
@@ -135,7 +135,7 @@ class ObjectsSearchTools extends React.Component {
 								label="Scribes"
 								labelPosition="before"
 								icon={<FontIcon className="mdi mdi-chevron-down" />}
-								onClick={this.toggleSearchDropdown.bind(null, 'scribes')}
+								onClick={this.toggleSearchDropdown.bind(this, 'scribes')}
 							/>
 
 							<ul className="dropdown-menu ">
@@ -178,7 +178,7 @@ class ObjectsSearchTools extends React.Component {
 								label="Illuminators"
 								labelPosition="before"
 								icon={<FontIcon className="mdi mdi-chevron-down" />}
-								onClick={this.toggleSearchDropdown.bind(null, 'illuminators')}
+								onClick={this.toggleSearchDropdown.bind(this, 'illuminators')}
 							/>
 
 							<ul className="dropdown-menu ">
@@ -223,7 +223,7 @@ class ObjectsSearchTools extends React.Component {
 								label="Institutions"
 								labelPosition="before"
 								icon={<FontIcon className="mdi mdi-chevron-down" />}
-								onClick={this.toggleSearchDropdown.bind(null, 'institutions')}
+								onClick={this.toggleSearchDropdown.bind(this, 'institutions')}
 							/>
 
 							<ul className="dropdown-menu ">
@@ -268,7 +268,7 @@ class ObjectsSearchTools extends React.Component {
 								label="Places"
 								labelPosition="before"
 								icon={<FontIcon className="mdi mdi-chevron-down" />}
-								onClick={this.toggleSearchDropdown.bind(null, 'places')}
+								onClick={this.toggleSearchDropdown.bind(this, 'places')}
 							/>
 
 							<ul className="dropdown-menu ">

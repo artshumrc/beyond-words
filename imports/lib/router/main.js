@@ -13,6 +13,7 @@ import MiradorViewer from '/imports/ui/components/mirador/MiradorViewer';
 import Page from '/imports/ui/components/pages/Page';
 import Listen from '/imports/ui/components/pages/Listen';
 import Watch from '/imports/ui/components/pages/Watch';
+import ObjectDetailPage from '/imports/ui/components/objects/ObjectDetailPage';
 
 /*
 * For the moment add subscriptions here; in future iterations, make them route
