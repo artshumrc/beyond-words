@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createContainer } from 'meteor/react-meteor-data';
+import AudioObject from './AudioObject';
 
 class Listen extends React.Component {
 
@@ -24,15 +24,13 @@ class Listen extends React.Component {
 	}
 
 	render() {
-		const slug = this.props.slug;// FlowRouter.getParam('slug');
+		const { slug, images } = this.props;
 		const pageClass = `page page-${slug}`;
-		const headerImageSource = this.props.images[0] ? this.props.images[0].url : null;
+		const headerImageSource = images ? images[0].url : null;
 		if (headerImageSource) {
-			// console.log(headerImageSource);
 			this.backgroundImages();
 		}
 		// var page = Pages.findOne({slug: slug});
-		// console.log(this.props.loading);
 		if (this.props.loading) {
 			return (
 				<Loading />
@@ -70,6 +68,14 @@ class Listen extends React.Component {
 				</section>
 
 				<section className="page-content container">
+					<div className="listen-page-content">
+						<AudioObject
+							title="Example Audio Object #1"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/tallis.mp3"
+							height="60px"
+							description="Transcription: example text quid faciat laetas segetes quo sidere terram vertere mycenas, ulmisque adiungere vites conveniat quae curum boum qui cultus habendo sit pecori apibus quanta experientia parcis hinc canere incipiam"
+						/>
+					</div>
 				</section>
 			</div>
 		);
