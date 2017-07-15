@@ -194,8 +194,12 @@ class HomeEvents extends React.Component {
 		const futureEvents = [];
 		const now = Date.now();
 
-		this.props.events.forEach((event) => {
-			if (event.date.getTime() > now) {
+		const { events } = this.props;
+
+		events.reverse();
+
+		events.forEach((event, i) => {
+			if (i < 3) {
 				futureEvents.push(event);
 			} else {
 				pastEvents.push(event);
@@ -206,7 +210,7 @@ class HomeEvents extends React.Component {
 			<div>
 				<section id="events" className={`events-section ${this.state.pastEventsShow ? 'events-section--past-events' : ''}`}>
 					<div className="container">
-						<h2 className="events-title text-center">Events</h2>
+						<h2 className="events-title text-center">Past Events</h2>
 						<h5 className="thin text-center">
 							<em>
 								Support for Beyond Words public programming has been provided by
@@ -228,9 +232,6 @@ class HomeEvents extends React.Component {
 						<br />
 
 						<div className="past-events">
-							<h3 className="thin text-center">
-								Past Events
-							</h3>
 							<ul className="events-list">
 								{pastEvents.map((event, i) => (
 									<EventItem
@@ -244,12 +245,12 @@ class HomeEvents extends React.Component {
 
 						<a
 							className="btn btn-large md-button more-events-button md-ink-ripple paper-shadow"
-							onClick={this.togglePastEvents}
+							onClick={this.togglePastEvents.bind(this)}
 						>
 							{this.state.pastEventsShow ?
-								<span>Hide past events</span>
+								<span>Hide events</span>
 							:
-								<span>Show past events</span>
+								<span>Show more events</span>
 							}
 							<div className="md-ripple-container" />
 

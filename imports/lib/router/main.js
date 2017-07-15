@@ -5,9 +5,13 @@ import Utils from '/imports/lib/utils';
 import CatalogLayout from '/imports/ui/layouts/CatalogLayout';
 import ComingSoonHomeLayout from '/imports/ui/layouts/ComingSoonHomeLayout';
 import HomeLayout from '/imports/ui/layouts/HomeLayout';
+import MainLayout from '/imports/ui/layouts/MainLayout';
 import IPadLayout from '/imports/ui/layouts/IPadLayout';
 import MasterLayout from '/imports/ui/layouts/MasterLayout';
 import IPadViewTyp139 from '/imports/ui/components/ipads/IPadViewTyp139';
+import MiradorViewer from '/imports/ui/components/mirador/MiradorViewer';
+import Page from '/imports/ui/components/pages/Page';
+import Listen from '/imports/ui/components/pages/Listen';
 
 /*
 * For the moment add subscriptions here; in future iterations, make them route
@@ -64,6 +68,29 @@ FlowRouter.route('/ipad', {
 });
 */
 
+FlowRouter.route('/listen', {
+	action() {
+		mount(IPadLayout, {
+			content: <IPadView />,
+		});
+	},
+});
+
+FlowRouter.route('/manifests/test', {
+	name: 'miradorTest',
+	action: (params) => {
+		mount(MainLayout, {
+			content: (
+				<MiradorViewer
+					// manifestUri="https://iiif.lib.harvard.edu/manifests/drs:47617540"
+					manifestUri="https://s3-us-west-2.amazonaws.com/archimedes-data003/iiif/manifests/asdfjkl/manifest.json"
+				/>
+			)
+		});
+	},
+});
+
+
 /*
 * Single page view
 * 404 check is in the actual template
@@ -75,7 +102,7 @@ FlowRouter.route('/:slug', {
 		// console.log(reservedRoutes.indexOf(params.slug));
 		if (reservedRoutes.indexOf(params.slug) === -1) {
 			mount(MasterLayout, {
-				content: <SinglePage slug={params.slug} />,
+				content: <Page slug={params.slug} />,
 			});
 		}
 	},

@@ -124,42 +124,6 @@ class Header extends React.Component {
 								<div className="module left">
 
 									<ul className="nav navbar-nav navbar-right">
-										<li>
-											<FlatButton
-												style={styles.flatButton}
-												label="PLAN YOUR TRIP"
-												href="#plan-your-trip"
-												onClick={this.scrollToPlanYourTrip}
-												onTouchTap={this.scrollToPlanYourTrip}
-											/>
-										</li>
-										<li>
-											<FlatButton
-												style={styles.flatButton}
-												label="EVENTS"
-												href="#events"
-												onClick={this.scrollToEvents}
-												onTouchTap={this.scrollToEvents}
-											/>
-										</li>
-										<li>
-											<FlatButton
-												style={styles.flatButton}
-												label="NEWS"
-												href="#news"
-												onClick={this.scrollToNews}
-												onTouchTap={this.scrollToNews}
-											/>
-										</li>
-										<li>
-											<FlatButton
-												style={styles.flatButton}
-												label="SYMPOSIUM"
-												href="#symposium"
-												onClick={this.scrollToSymposium}
-												onTouchTap={this.scrollToSymposium}
-											/>
-										</li>
 										<li
 											className="catalog-item"
 										>
@@ -183,15 +147,58 @@ class Header extends React.Component {
 												/>
 											</div>
 										</li>
+
+										<li>
+											<FlatButton
+												style={styles.flatButton}
+												label="NEWS"
+												href="#news"
+												onClick={this.scrollToNews}
+												onTouchTap={this.scrollToNews}
+											/>
+										</li>
+
 										<li>
 											<FlatButton
 												style={styles.flatButton}
 												label="AUDIOGUIDE"
-												href="//beyondwords.oncell.com/"
-												target="_blank"
-												rel="noopener noreferrer"
+												href="/listen"
 											/>
 										</li>
+
+										<li
+											className="catalog-item"
+										>
+											<FlatButton
+												style={styles.flatButton}
+												label="ARCHIVE"
+												href="#"
+											/>
+											<div className="dropdown-panel">
+												<FlatButton
+													style={styles.flatButton}
+													label="PLANNING"
+													href="#plan-your-trip"
+													onClick={this.scrollToPlanYourTrip}
+													onTouchTap={this.scrollToPlanYourTrip}
+												/>
+												<FlatButton
+													style={styles.flatButton}
+													label="EVENTS"
+													href="#events"
+													onClick={this.scrollToEvents}
+													onTouchTap={this.scrollToEvents}
+												/>
+												<FlatButton
+													style={styles.flatButton}
+													label="SYMPOSIUM"
+													href="#symposium"
+													onClick={this.scrollToSymposium}
+													onTouchTap={this.scrollToSymposium}
+												/>
+											</div>
+										</li>
+
 									</ul>
 								</div>
 								<div className="module widget-handle left museum-widget-handle">
