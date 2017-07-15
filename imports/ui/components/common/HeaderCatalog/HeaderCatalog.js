@@ -129,15 +129,6 @@ class HeaderCatalog extends React.Component {
 					</div>{/* <!-- .navigation-primary-->*/}
 				</header>
 				<div className="header-lower header-lower-catalog-info clearfix">
-					{'author_title' in this.props.selectedObject ?
-						<IconButton
-							className="go-back-button"
-							onClick={this.props.closeSelectedObject}
-							iconClassName="mdi mdi-chevron-left"
-						/>
-						:
-						''
-					}
 					<div className="catalog-header-inner">
 						<h4 className="catalog-header-title">{this.props.catalogTitleText}</h4>
 					</div>

@@ -10,6 +10,7 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 
 import DateRangeSlider from '/imports/ui/components/objects/DateRangeSlider';
 import SearchTermButton from '/imports/ui/components/objects/SearchTermButton';
+import SearchTermButtonPanel from '/imports/ui/components/objects/SearchTermButtonPanel';
 
 class ObjectsSearchToolsPanel extends React.Component {
 	constructor(props) {

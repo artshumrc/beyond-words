@@ -11,6 +11,7 @@ import Objects from '/imports/api/collections/objects';
 import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 import FiltersWidget from '/imports/ui/components/common/FiltersWidget';
 import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
+import ObjectDetail from '/imports/ui/components/objects/ObjectDetail';
 
 class ObjectsList extends React.Component {
 	getChildContext() {
@@ -70,17 +71,6 @@ class ObjectsList extends React.Component {
 			transitionDuration: 300,
 		};
 
-		const selectedObject = this.props.selectedObject;
-		if (selectedObject && 'objectDetailSlider' in self.refs) {
-			this.props.objects.forEach(function(object, i) {
-				if (object.catalog_n === selectedObject.catalog_n) {
-					self.refs.objectDetailSlider.slickGoTo(i);
-
-				}
-			});
-
-		}
-
 		const settings = {
 			focusOnSelect: true,
 			// dots: true,
@@ -113,96 +103,42 @@ class ObjectsList extends React.Component {
 					toggleSearchTerm={this.props.toggleSearchTerm}
 				/>
 
-				{('catalog_n' in selectedObject || this.props.objectToSelectSlug) ?
-					<div>
-						<ObjectDetail
-							selectedObject={this.props.selectedObject}
-							objectToSelectSlug={this.props.objectToSelectSlug}
-							closeSelectedObject={this.props.closeSelectedObject}
-							selectObject={self.props.selectObject}
-							openViewer={self.props.openViewer}
-							openMiradorViewer={self.props.openMiradorViewer}
-						/>
+				<div>
+						{this.props.catalogLayout === 'grid' ?
+							<Masonry
+								options={masonryOptions}
+								className="objects-container objects-container--grid row"
+								onImagesLoaded={this.handleImagesLoaded}
+							>
 
-						{this.props.objects.length ?
-							<div className="objects-detail-scroll">
-								<div className="objects-detail-scroll-inner clear">
-									{this.props.objects.map((object, i) => (
-										<div
-											key={i}
-											className="object-scroll-teaser"
-										>
-											<ObjectTeaser
-												object={object}
-												selectObject={self.props.selectObject}
-											/>
-										</div>
-									))}
-								</div>
+								{this.renderObjects()}
+							</Masonry>
+							:
+							<div className="objects-container objects-container--list row">
+								{this.renderObjects()}
 							</div>
-						: ''}
-
-					</div>
-				:
-					<div>
-						<InfiniteScroll
-							endPadding={600}
-							loadMore={debounce(100, this.props.loadMoreObjects)}
-						>
-
-							{this.props.catalogLayout === 'grid' ?
-								<Masonry
-									options={masonryOptions}
-									className="objects-container objects-container--grid row"
-									onImagesLoaded={this.handleImagesLoaded}
-								>
-
-									{this.renderObjects()}
-								</Masonry>
-								:
-								<div className="objects-container objects-container--list row">
-									{this.renderObjects()}
-								</div>
-							}
-						</InfiniteScroll>
-
-						{this.props.stillMoreObjects ?
-							<div className="loading-collections loading-visible">
-								<div className="dot-spinner">
-									<div className="bounce1" />
-									<div className="bounce2" />
-									<div className="bounce3" />
-								</div>
-							</div>
-							: ''
 						}
-						{this.props.objects.length === 0 && !this.props.stillMoreObjects ?
-							<div className="no-results no-results--objects">
-								<p>No manuscripts were found for your query.</p>
-							</div>
-							: ''
-						}
-					</div>
-				}
+
+					{this.props.objects.length === 0 && !this.props.stillMoreObjects ?
+						<div className="no-results no-results--objects">
+							<p>No manuscripts were found for your query.</p>
+						</div>
+						: ''
+					}
+				</div>
+
 			</div>
 		);
 	}
 }
 
 ObjectsList.propTypes = {
-	selectedObject: PropTypes.object,
-	objectToSelectSlug: PropTypes.string,
-	selectObject: PropTypes.func,
 	filters: PropTypes.array,
 	addSearchTerm: PropTypes.func,
 	toggleSearchTerm: PropTypes.func,
-	loadMoreObjects: PropTypes.func,
 	skip: PropTypes.number,
 	limit: PropTypes.number,
-	closeSelectedObject: PropTypes.func,
 	catalogLayout: PropTypes.string,
-	openViewer: PropTypes.func,
-	openMiradorViewer: PropTypes.func,
 	objects: PropTypes.array,
 };
 
@@ -272,15 +208,10 @@ const objectsListContainer = createContainer((props) => {
 			}
 		});
 		*/
-
-		if (objects.length < props.limit) {
-			stillMoreObjects = false;
-		}
 	}
 
 	return {
 		objects,
-		stillMoreObjects,
 	};
 }, ObjectsList);
 

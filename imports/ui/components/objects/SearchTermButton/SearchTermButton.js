@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Utils from '/imports/lib/utils';
 
 class SearchTermButton extends React.Component {
 

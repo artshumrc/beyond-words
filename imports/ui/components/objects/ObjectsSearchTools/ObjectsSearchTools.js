@@ -88,6 +88,18 @@ class ObjectsSearchTools extends React.Component {
 							className="search-tool search-type-mirador"
 							label="Has Viewer?"
 							onToggle={this.props.toggleMiradorSearch}
+							thumbStyle={{
+								backgroundColor: '#cccccc',
+							}}
+							thumbSwitchedStyle={{
+								backgroundColor: '#f6f6f6',
+							}}
+							trackStyle={{
+								backgroundColor: '#aaaaaa',
+							}}
+							trackSwitchedStyle={{
+								backgroundColor: '#eeeeee',
+							}}
 						/>
 
 						<div

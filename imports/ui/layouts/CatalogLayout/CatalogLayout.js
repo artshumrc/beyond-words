@@ -6,6 +6,7 @@ import HeaderCatalog from '/imports/ui/components/common/HeaderCatalog';
 import ObjectsList from '/imports/ui/components/objects/ObjectsList';
 import CatalogFooter from '/imports/ui/components/common/CatalogFooter';
 import BeyondWordsViewer from '/imports/ui/components/objects/BeyondWordsViewer';
+import Utils from '/imports/lib/utils';
 
 class CatalogLayout extends React.Component {
 
@@ -15,7 +16,7 @@ class CatalogLayout extends React.Component {
 		this.state = {
 			objectToSelectSlug: this.props.selectedObjectSlug,
 			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 			catalogLayout: 'grid',
 			filters: [],
 			skip: 0,
@@ -24,17 +25,6 @@ class CatalogLayout extends React.Component {
 			viewerOpen: false,
 		};
 		autoBind(this);
-	}
-
-	loadMoreObjects() {
-		if (!(this.props.selectedObjectSlug || 'catalog_n' in this.state.selectedObject)) {
-			this.setState({
-				skip: this.state.skip + this.state.limit,
-			});
-
-		} else {
-			// console.log("did not load more objects");
-		}
 	}
 
 	toggleSearchTerm(key, value) {
@@ -81,7 +71,7 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 
 		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
@@ -121,7 +111,7 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 
 		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
@@ -169,7 +159,7 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
 	}
@@ -212,7 +202,7 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
 	}
@@ -286,11 +276,10 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
 	}
-
 
 	toggleCatalogLayout(layout) {
 		this.setState({
@@ -298,68 +287,10 @@ class CatalogLayout extends React.Component {
 			objectToSelectSlug: null,
 			selectedObject: {},
 			skip: 0,
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
 	}
-
-	selectObject(selectedObject) {
-		let catalogTitleText = selectedObject.catalog_n.toString();
-		if (selectedObject.author_title !== undefined) {
-			catalogTitleText = `${catalogTitleText}. ${Utils.trunc(selectedObject.author_title, 90)}`;
-		}
-		this.setState({
-			selectedObject,
-			catalogTitleText,
-		});
-		$('html, body').animate({ scrollTop: 0 }, 'slow');
-		if (location.pathname.indexOf(selectedObject.slug) < 0) {
-			// FlowRouter.go("/catalog/" + selectedObject.slug);
-		}
-	}
-
-	closeSelectedObject() {
-		this.setState({
-			selectedObject: {},
-			objectToSelectSlug: '',
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections, Catalog, 2016.',
-		});
-		FlowRouter.go('/catalog');
-		location.hash = '';
-	}
-
-	openViewer() {
-
-		this.setState({
-			viewerOpen: true,
-		});
-
-	}
-
-	closeViewer() {
-
-		this.setState({
-			viewerOpen: false,
-		});
-
-	}
-
-	openMiradorViewer() {
-
-		this.setState({
-			miradorOpen: true,
-		});
-
-	}
-
-	closeMiradorViewer() {
-
-		this.setState({
-			miradorOpen: false,
-		});
-
-	}
-
 
 	render() {
 		// console.log('CatalogLayout.filters', this.state.filters);
@@ -378,59 +309,22 @@ class CatalogLayout extends React.Component {
 					catalogTitleText={this.state.catalogTitleText}
 					toggleCatalogLayout={this.toggleCatalogLayout}
 					catalogLayout={this.state.catalogLayout}
-					selectedObject={this.state.selectedObject}
-					closeSelectedObject={this.closeSelectedObject}
 				/>
 
 				<ObjectsList
 					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					toggleMiradorSearch={this.toggleMiradorSearch}
-					loadMoreObjects={this.loadMoreObjects}
 					skip={this.state.skip}
 					limit={this.state.limit}
 					catalogLayout={this.state.catalogLayout}
-					selectedObject={this.state.selectedObject}
-					objectToSelectSlug={this.state.objectToSelectSlug}
-					selectObject={this.selectObject}
-					closeSelectedObject={this.closeSelectedObject}
-					openViewer={this.openViewer}
-					openMiradorViewer={this.openMiradorViewer}
 				/>
 
 				<CatalogFooter />
 
-				{selectedObject.miradorLink ?
-					<div className={this.state.miradorOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer'}>
-						<i
-							className="mdi mdi-close close-viewer"
-							onClick={this.closeMiradorViewer}
-						/>
-						<iframe src={selectedObject.miradorLink} />
-					</div>
-
-					: ''
-				}
-				{selectedObject.hasImageViewer ?
-					<div className={this.state.viewerOpen ? 'object-embedded-viewer object-embedded-viewer--open' : 'object-embedded-viewer'}>
-						<i
-							className="mdi mdi-close close-viewer"
-							onClick={this.closeViewer}
-						/>
-						<BeyondWordsViewer
-							selectedObject={selectedObject}
-						/>
-					</div>
-
-					: ''
-				}
 			</div>
 		);
 	}
 }
-
-CatalogLayout.propTypes = {
-	selectedObjectSlug: PropTypes.string,
-};
 
 export default CatalogLayout;

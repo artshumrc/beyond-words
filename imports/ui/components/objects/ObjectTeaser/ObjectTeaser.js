@@ -139,6 +139,7 @@ class ObjectTeaser extends React.Component {
 								<h3>{Utils.trunc(authorTitle, 60)}</h3>
 							</a>
 						}
+						<hr />
 						<span className="object-teaser-subtitle">{object.date}</span>
 						<p>
 							{Utils.trunc(description, 120)}
