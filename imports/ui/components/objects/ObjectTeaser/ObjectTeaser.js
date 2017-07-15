@@ -28,14 +28,6 @@ class ObjectTeaser extends React.Component {
 
 	componentDidMount() {
 		const self = this;
-
-		setTimeout(function() {
-			if (!self.props.attachment) {
-				self.setState({
-					attachmentCheck: true,
-				});
-			}
-		}, 3000);
 	}
 
 	render() {

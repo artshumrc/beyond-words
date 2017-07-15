@@ -12,6 +12,7 @@ import IPadViewTyp139 from '/imports/ui/components/ipads/IPadViewTyp139';
 import MiradorViewer from '/imports/ui/components/mirador/MiradorViewer';
 import Page from '/imports/ui/components/pages/Page';
 import Listen from '/imports/ui/components/pages/Listen';
+import Watch from '/imports/ui/components/pages/Watch';
 
 /*
 * For the moment add subscriptions here; in future iterations, make them route
@@ -70,8 +71,16 @@ FlowRouter.route('/ipad', {
 
 FlowRouter.route('/listen', {
 	action() {
-		mount(IPadLayout, {
-			content: <IPadView />,
+		mount(MasterLayout, {
+			content: <Listen />,
+		});
+	},
+});
+
+FlowRouter.route('/watch', {
+	action() {
+		mount(MasterLayout, {
+			content: <Watch />,
 		});
 	},
 });

@@ -39,31 +39,51 @@ class Header extends React.Component {
 	}
 
 	scrollToEvents(e) {
-		$('html, body').animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+		if (location.pathname !== '/') {
+			window.location = '/#events';
+		} else {
+			$('html, body').animate({ scrollTop: $('#events').offset().top - 100 }, 300);
+		}
 
 		e.preventDefault();
 	}
 
 	scrollToNews(e) {
-		$('html, body').animate({ scrollTop: $('#news').offset().top - 100 }, 300);
+		if (location.pathname !== '/') {
+			window.location = '/#news';
+		} else {
+			$('html, body').animate({ scrollTop: $('#news').offset().top - 100 }, 300);
+		}
 
 		e.preventDefault();
 	}
 
 	scrollToSymposium(e) {
-		$('html, body').animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
+		if (location.pathname !== '/') {
+			window.location = '/#symposium';
+		} else {
+			$('html, body').animate({ scrollTop: $('#symposium').offset().top - 100 }, 300);
+		}
 
 		e.preventDefault();
 	}
 
 	scrollToCatalog(e) {
-		$('html, body').animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
+		if (location.pathname !== '/') {
+			window.location = '/#catalog';
+		} else {
+			$('html, body').animate({ scrollTop: $('#catalog').offset().top - 100 }, 300);
+		}
 
 		e.preventDefault();
 	}
 
 	scrollToPlanYourTrip(e) {
-		$('html, body').animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
+		if (location.pathname !== '/') {
+			window.location = '/#plan-your-trip';
+		} else {
+			$('html, body').animate({ scrollTop: $('#plan-your-trip').offset().top - 100 }, 300);
+		}
 
 		e.preventDefault();
 	}
@@ -161,8 +181,16 @@ class Header extends React.Component {
 										<li>
 											<FlatButton
 												style={styles.flatButton}
-												label="AUDIOGUIDE"
+												label="LISTEN"
 												href="/listen"
+											/>
+										</li>
+
+										<li>
+											<FlatButton
+												style={styles.flatButton}
+												label="WATCH"
+												href="/watch"
 											/>
 										</li>
 

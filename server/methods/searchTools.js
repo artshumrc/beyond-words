@@ -1,3 +1,4 @@
+import Objects from '/imports/api/collections/objects';
 
 Meteor.methods({
 	searchTools() {

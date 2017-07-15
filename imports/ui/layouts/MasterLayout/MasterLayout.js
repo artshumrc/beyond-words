@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '/imports/ui/components/common/Header';
+import Footer from '/imports/ui/components/common/Footer';
+
 class MasterLayout extends React.Component {
 	render() {
 		return (

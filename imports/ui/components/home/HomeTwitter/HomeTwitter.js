@@ -5,6 +5,9 @@ import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Card, CardText } from 'material-ui/Card';
 import { createContainer } from 'meteor/react-meteor-data';
+import linkifyHtml from 'linkifyjs/html';
+
+import TweetCollection from '/imports/api/collections/tweetCollection';
 
 class HomeTwitter extends React.Component {
 	getChildContext() {
