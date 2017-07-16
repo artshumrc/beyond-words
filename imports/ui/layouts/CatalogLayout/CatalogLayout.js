@@ -13,14 +13,6 @@ class CatalogLayout extends React.Component {
 
 	constructor(props) {
 		super(props);
-		let skip = 0;
-		const limit = 24;
-		const page = FlowRouter.getQueryParam('page');
-
-		if (page) {
-			skip = limit * (parseInt(page, 10) - 1);
-		}
-
 
 		this.state = {
 			objectToSelectSlug: this.props.selectedObjectSlug,
@@ -28,13 +20,13 @@ class CatalogLayout extends React.Component {
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 			catalogLayout: 'grid',
 			filters: [],
-			skip,
-			limit,
 			miradorOpen: false,
 			viewerOpen: false,
 		};
 		autoBind(this);
 	}
+
+
 
 	toggleSearchTerm(key, value) {
 		const filters = this.state.filters;
@@ -79,7 +71,6 @@ class CatalogLayout extends React.Component {
 			filters,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 
@@ -119,7 +110,6 @@ class CatalogLayout extends React.Component {
 			filters,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 
@@ -167,7 +157,6 @@ class CatalogLayout extends React.Component {
 			filters,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
@@ -210,7 +199,6 @@ class CatalogLayout extends React.Component {
 			filters,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
@@ -284,7 +272,6 @@ class CatalogLayout extends React.Component {
 			filters,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
@@ -295,7 +282,6 @@ class CatalogLayout extends React.Component {
 			catalogLayout: layout,
 			objectToSelectSlug: null,
 			selectedObject: {},
-			skip: 0,
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
 		location.hash = '';
@@ -304,6 +290,13 @@ class CatalogLayout extends React.Component {
 	render() {
 		// console.log('CatalogLayout.filters', this.state.filters);
 		const selectedObject = this.state.selectedObject;
+		let skip = 0;
+		const limit = 36;
+		const page = FlowRouter.getQueryParam('page');
+
+		if (page) {
+			skip = limit * (parseInt(page, 10) - 1);
+		}
 
 		return (
 			<div className="archimedes-layout catalog-layout">
@@ -324,14 +317,14 @@ class CatalogLayout extends React.Component {
 					filters={this.state.filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					toggleMiradorSearch={this.toggleMiradorSearch}
-					skip={this.state.skip}
-					limit={this.state.limit}
+					skip={skip}
+					limit={limit}
 					catalogLayout={this.state.catalogLayout}
 				/>
 
 				<Pagination
-					activePage={parseInt(FlowRouter.getQueryParam('page'), 10) || 0}
-					limit={this.state.limit}
+					activePage={parseInt(FlowRouter.getQueryParam('page'), 10) || 1}
+					limit={limit}
 				/>
 
 				<CatalogFooter />

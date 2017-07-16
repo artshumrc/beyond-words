@@ -29,60 +29,47 @@ class Pagination extends React.Component {
 
 	goToPrevPage() {
 		const { activePage } = this.props;
-		let _activePage = 0;
 
-		if (activePage) {
-			_activePage = activePage;
-		}
-
-		if (_activePage === 0) {
+		if (activePage === 1) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: _activePage - 1 });
+		FlowRouter.go('/objects', {}, { page: activePage - 1 });
 	}
 	goToNextPage() {
 		const { activePage, totalObjects } = this.props;
-		let _activePage = 0;
 
-		if (activePage) {
-			_activePage = activePage;
-		}
-
-		if (_activePage === totalObjects) {
+		if (activePage === totalObjects) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: _activePage + 1 });
+		FlowRouter.go('/objects', {}, { page: activePage + 1 });
 	}
 
 	render() {
 		const { activePage, limit } = this.props;
 		const { totalObjects } = this.state;
 
-		let _activePage = 0;
 		const numPages = Math.ceil(totalObjects/limit);
 
-		if (activePage) {
-			_activePage = activePage;
-		}
 
 		return (
 			<div className="pagination">
-				{_activePage > 0 ?
+				{activePage > 1 ?
 					<div
 						className="pagination-button previous-button"
 						onClick={this.goToPrevPage.bind(this)}
 					>
+						<i className="mdi mdi-chevron-left" />
 						<span>
 							Previous
 						</span>
 					</div>
 				: ''}
-				{_.range(numPages).map(page => {
+				{_.range(1, numPages).map(page => {
 					let isActive = false;
 
-					if (_activePage === page) {
+					if (activePage === page ) {
 						isActive = true;
 					}
 
@@ -93,12 +80,12 @@ class Pagination extends React.Component {
 							key={page}
 						>
 							<span>
-								{page + 1}
+								{page}
 							</span>
 						</div>
 					);
 				})}
-				{_activePage < numPages ?
+				{activePage < numPages ?
 					<div
 						className="pagination-button next-button"
 						onClick={this.goToNextPage.bind(this)}
@@ -106,6 +93,7 @@ class Pagination extends React.Component {
 						<span>
 							Next
 						</span>
+						<i className="mdi mdi-chevron-right" />
 					</div>
 				: ''}
 			</div>
