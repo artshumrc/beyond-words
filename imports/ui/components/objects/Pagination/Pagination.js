@@ -51,7 +51,6 @@ class Pagination extends React.Component {
 			return null;
 		}
 
-
 		return (
 			<div className="pagination">
 				{activePage > 1 ?
@@ -84,7 +83,7 @@ class Pagination extends React.Component {
 						</div>
 					);
 				})}
-				{activePage < numPages ?
+				{activePage < numPages - 1?
 					<div
 						className="pagination-button next-button"
 						onClick={this.goToNextPage.bind(this)}
