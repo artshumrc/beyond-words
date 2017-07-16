@@ -55,7 +55,11 @@ FlowRouter.route('/objects/:slug', {
 	name: 'ObjectDetail',
 	action(params) {
 		mount(MasterLayout, {
-			content: <ObjectDetailPage slug={params.slug} />,
+			content: (
+				<CatalogLayout
+					objectSlug={params.slug}
+				/>
+			),
 		});
 	},
 });

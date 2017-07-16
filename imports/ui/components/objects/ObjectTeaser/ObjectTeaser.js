@@ -182,7 +182,6 @@ class ObjectTeaser extends React.Component {
 
 ObjectTeaser.propTypes = {
 	object: PropTypes.object.isRequired,
-	selectObject: PropTypes.func,
 };
 
 ObjectTeaser.childContextTypes = {

@@ -60,6 +60,30 @@ class ObjectsList extends React.Component {
 		));
 	}
 
+	objectsLoadingOrNoResults() {
+		const {objects, ready} = this.props;
+
+		if (!ready) {
+			return (
+				<div className="loading-collections loading-visible">
+					<div className="dot-spinner">
+						<div className="bounce1" />
+						<div className="bounce2" />
+						<div className="bounce3" />
+					</div>
+				</div>
+			);
+		}
+
+		if (!objects.length) {
+			return (
+				<div className="no-results no-results--objects">
+					<p>No manuscripts were found for your query.</p>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		const self = this;
 
@@ -119,15 +143,8 @@ class ObjectsList extends React.Component {
 								{this.renderObjects()}
 							</div>
 						}
-
-					{this.props.objects.length === 0 && !this.props.stillMoreObjects ?
-						<div className="no-results no-results--objects">
-							<p>No manuscripts were found for your query.</p>
-						</div>
-						: ''
-					}
+						{this.objectsLoadingOrNoResults()}
 				</div>
-
 			</div>
 		);
 	}
@@ -141,6 +158,7 @@ ObjectsList.propTypes = {
 	limit: PropTypes.number,
 	catalogLayout: PropTypes.string,
 	objects: PropTypes.array,
+	ready: PropTypes.bool,
 };
 
 ObjectsList.childContextTypes = {
@@ -169,6 +187,7 @@ const objectsListContainer = createContainer((props) => {
 
 	return {
 		objects,
+		ready: handle.ready(),
 	};
 }, ObjectsList);
 

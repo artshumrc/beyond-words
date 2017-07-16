@@ -4,20 +4,45 @@ import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Objects from '/imports/api/collections/objects';
+import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 
 // Single object detail view
 class ObjectDetailPage extends React.Component {
 
-	render() {
-		const object = this.props.object;
-		// console.log(this);
-		if (object.images && object.images.length) {
-		// get a random image
-			imageId = object.images[Math.floor(Math.random() * object.images.length)];
+	objectsLoadingOrNoResults() {
+		const {object, ready} = this.props;
+
+		if (!ready) {
+			return (
+				<div className="loading-collections loading-visible">
+					<div className="dot-spinner">
+						<div className="bounce1" />
+						<div className="bounce2" />
+						<div className="bounce3" />
+					</div>
+				</div>
+			);
 		}
+
+		if (!object) {
+			return (
+				<div className="no-results no-results--objects">
+					<p>The manuscript you requested was not found.</p>
+				</div>
+			);
+		}
+	}
+
+	render() {
+		const { object, objects, images } = this.props;
 		let image = {};
-		if (this.props.images.length) {
-			image = this.props.images[0];
+
+		if (images && images.length) {
+			image = images[0];
+		}
+
+		if (!object) {
+				return this.objectsLoadingOrNoResults();
 		}
 
 		return (
@@ -168,6 +193,19 @@ class ObjectDetailPage extends React.Component {
 						</div>
 					</div>
 				</section>
+				<div className="objects-detail-scroll">
+					<div className="objects-detail-scroll-inner clear">
+						{objects.map((_object, i) => (
+							<div
+								key={i}
+								className="object-scroll-teaser">
+								<ObjectTeaser
+									object={_object}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -179,19 +217,26 @@ ObjectDetailPage.propTypes = {
 
 const objectDetailPageContainer = createContainer((props) => {
 	let object = {};
+	let objects = [];
 	let images = [];
 	let thumbnails = [];
-	const objectSubscription = Meteor.subscribe('object', this.props.slug);
-	if (objectSubscription.ready()) {
-		object = Objects.find({ slug: this.props.slug }).fetch()[0];
+
+	const handle = Meteor.subscribe('objects', {});
+
+	if (handle.ready()) {
+		object = Objects.find({ slug: props.slug }).fetch()[0];
+		objects = Objects.find({}, {}).fetch();
 	}
-	const imageSubscription = Meteor.subscribe('objectImages', this.props.slug);
+
+	const imageSubscription = Meteor.subscribe('objectImages', props.slug);
 	if (imageSubscription.ready()) {
 		// images = Images.find({}).fetch();
 		// thumbnails = Thumbnails.find({}).fetch();
 	}
+
 	return {
 		object,
+		objects,
 		images,
 		thumbnails,
 	};

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import HeaderCatalog from '/imports/ui/components/common/HeaderCatalog';
 import ObjectsList from '/imports/ui/components/objects/ObjectsList';
+import ObjectDetailPage from '/imports/ui/components/objects/ObjectDetailPage';
 import CatalogFooter from '/imports/ui/components/common/CatalogFooter';
 import BeyondWordsViewer from '/imports/ui/components/objects/BeyondWordsViewer';
 import Pagination from '/imports/ui/components/objects/Pagination';
@@ -22,21 +23,24 @@ class CatalogLayout extends React.Component {
 	}
 
 	componentWillMount() {
+		const { objectSlug } = this.props;
 		const filters = FlowRouter.getQueryParam('filters');
 		const page = FlowRouter.getQueryParam('page') || 1;
 		const initialTotal = FlowRouter.getQueryParam('total') || 0;
 		const query = Utils.filtersToQuery(filters);
 
-	  Meteor.call('objectsCount', [query], (error, total) => {
-	    if(error) {
-	      // handle error
-				console.error(error);
-	    } else {
-				if (total !== initialTotal) {
-					FlowRouter.go('/catalog', {}, {page, filters, total});
-				}
-	    }
-		});
+		if (!objectSlug) {
+		  Meteor.call('objectsCount', [query], (error, total) => {
+		    if(error) {
+		      // handle error
+					console.error(error);
+		    } else {
+					if (total !== initialTotal) {
+						FlowRouter.go('/catalog', {}, {page, filters, total});
+					}
+		    }
+			});
+		}
 	}
 
 	updateRouteWithFilters(filters) {
@@ -266,7 +270,7 @@ class CatalogLayout extends React.Component {
 	}
 
 	render() {
-		// console.log('CatalogLayout.filters', this.state.filters);
+		const { objectSlug } = this.props;
 		let skip = 0;
 		const limit = 36;
 		const page = FlowRouter.getQueryParam('page');
@@ -291,14 +295,20 @@ class CatalogLayout extends React.Component {
 					catalogLayout={this.state.catalogLayout}
 				/>
 
-				<ObjectsList
-					filters={filters}
-					toggleSearchTerm={this.toggleSearchTerm}
-					toggleMiradorSearch={this.toggleMiradorSearch}
-					skip={skip}
-					limit={limit}
-					catalogLayout={this.state.catalogLayout}
-				/>
+				{objectSlug ?
+					<ObjectDetailPage
+						slug={objectSlug}
+					/>
+				:
+					<ObjectsList
+						filters={filters}
+						toggleSearchTerm={this.toggleSearchTerm}
+						toggleMiradorSearch={this.toggleMiradorSearch}
+						skip={skip}
+						limit={limit}
+						catalogLayout={this.state.catalogLayout}
+					/>
+				}
 
 				<Pagination
 					activePage={parseInt(FlowRouter.getQueryParam('page'), 10) || 1}

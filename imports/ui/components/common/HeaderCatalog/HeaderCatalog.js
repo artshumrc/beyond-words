@@ -55,6 +55,7 @@ class HeaderCatalog extends React.Component {
 	}
 
 	render() {
+		const { objectSlug } = this.props;
 		const styles = {
 			flatButton: {
 				width: 'auto',
@@ -69,6 +70,17 @@ class HeaderCatalog extends React.Component {
 				height: '55px',
 			},
 		};
+
+		const totalObjects = FlowRouter.getQueryParam('total') || 0;
+
+		let objectsCount = '';
+		if (parseInt(totalObjects, 10) === 1) {
+			objectsCount = `(${totalObjects} Object)`;
+		} else {
+			objectsCount = `(${totalObjects} Objects)`;
+		}
+
+		const currentRoute = FlowRouter.current().route.name;
 
 		return (
 			<div>
@@ -128,28 +140,30 @@ class HeaderCatalog extends React.Component {
 						</div>{/* <!-- .container.close-navbar -->*/}
 					</div>{/* <!-- .navigation-primary-->*/}
 				</header>
-				<div className="header-lower header-lower-catalog-info clearfix">
-					<div className="catalog-header-inner">
-						<h4 className="catalog-header-title">{this.props.catalogTitleText}</h4>
+				{currentRoute !== 'ObjectDetail' ?
+					<div className="header-lower header-lower-catalog-info clearfix">
+							<div className="catalog-header-inner">
+								<h4 className="catalog-header-title">{this.props.catalogTitleText} {objectsCount}</h4>
+							</div>
+						<div className="toggle-view-mode-buttons">
+							<IconButton
+								onClick={this.props.toggleCatalogLayout.bind(null, 'list')}
+								className={this.props.catalogLayout === 'list' ?
+									'toggle-view-mode-button view-mode--active'
+									:
+									'toggle-view-mode-button view-mode--inactive'}
+								iconClassName="mdi mdi-view-list"
+							/>
+							<IconButton
+								onClick={this.props.toggleCatalogLayout.bind(null, 'grid')}
+								className={this.props.catalogLayout === 'grid' ?
+									'toggle-view-mode-button view-mode--active'
+									: 'toggle-view-mode-button view-mode--inactive'}
+								iconClassName="mdi mdi-view-grid"
+							/>
+						</div>
 					</div>
-					<div className="toggle-view-mode-buttons">
-						<IconButton
-							onClick={this.props.toggleCatalogLayout.bind(null, 'list')}
-							className={this.props.catalogLayout === 'list' ?
-								'toggle-view-mode-button view-mode--active'
-								:
-								'toggle-view-mode-button view-mode--inactive'}
-							iconClassName="mdi mdi-view-list"
-						/>
-						<IconButton
-							onClick={this.props.toggleCatalogLayout.bind(null, 'grid')}
-							className={this.props.catalogLayout === 'grid' ?
-								'toggle-view-mode-button view-mode--active'
-								: 'toggle-view-mode-button view-mode--inactive'}
-							iconClassName="mdi mdi-view-grid"
-						/>
-					</div>
-				</div>
+				: ''}
 			</div>
 		);
 	}
