@@ -1,7 +1,7 @@
-// Thumbnails = new Mongo.Collection('thumbnails');
-
+const Thumbnails = new Mongo.Collection('thumbnails');
 const Images = new Mongo.Collection('images');
-export default Images;
+
+export { Images, Thumbnails };
 
 /*
 ThumbnailStore = new UploadFS.store.Local({

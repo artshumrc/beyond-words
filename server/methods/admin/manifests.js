@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { EJSON } from 'meteor/ejson';
-
+import Manifests from '/imports/api/collections/manifests';
 
 const imagePattern = {
-	id: String,
+	_id: String,
 	name: String,
 	type: String,
-	size: Number,
 	path: String,
 	label: Match.Maybe(String),
+	thumbPath: String,
 };
 
 function checkManifest(manifest) {
@@ -32,18 +32,18 @@ Meteor.methods({
 
 
 		if (
-			Meteor.users.findOne({
+			!Meteor.users.findOne({
 				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
 			})) {
-			manifest._id = Manifests.insert(manifest, function (error) {
-				if (error) {
-					return error;
-				}
-			});
-		} else {
 			throw new Meteor.Error('meteor-ddp-admin', 'Attempted creating with invalid token');
 		}
+
+		manifest._id = Manifests.insert(manifest, function (error) {
+			if (error) {
+				return error;
+			}
+		});
 
 		HTTP.post('http://generate-manifests.orphe.us/manifests', {
 			params: {
@@ -51,44 +51,64 @@ Meteor.methods({
 			},
 		});
 
+		return true;
 	},
+
 	'manifests.update': (token, _id, manifest) => {
 		check(token, String);
 		check(_id, String);
 		checkManifest(manifest);
 		if (
-			Meteor.users.findOne({
+			!Meteor.users.findOne({
 				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
 			})) {
-			Manifests.update({
-				_id
-			}, {
-				$set: manifest,
-			}, function (error) {
-				if (error) {
-					return error;
-				}
-			});
-		} else {
 			throw new Meteor.Error('meteor-ddp-admin', 'Attempted updating with invalid token');
 		}
+
+		Manifests.update({
+			_id
+		}, {
+			$set: manifest,
+		}, function (error) {
+			if (error) {
+				return error;
+			}
+		});
+
+		manifest._id = _id;
+
+		HTTP.put('http://generate-manifests.orphe.us/manifests', {
+			params: {
+				manifest: EJSON.stringify(manifest),
+			},
+		});
+
+		return true;
 	},
 	'manifests.remove': (token, manifestId) => {
 		check(token, String);
 		check(manifestId, String);
 		if (
-			Meteor.users.findOne({
+			!Meteor.users.findOne({
 				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
 			})) {
-			Manifests.remove(manifestId, function(error) {
-				if (error) {
-					return error;
-				}
-			});
-		} else {
 			throw new Meteor.Error('meteor-ddp-admin', 'Attempted removing with invalid token');
 		}
+
+		Manifests.remove(manifestId, function(error) {
+			if (error) {
+				return error;
+			}
+		});
+
+		/*
+		HTTP.del('http://generate-manifests.orphe.us/manifests', {
+			params: {
+				manifestId,
+			},
+		});
+		*/
 	}
 });

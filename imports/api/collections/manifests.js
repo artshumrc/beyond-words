@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
-Manifests = new Meteor.Collection('manifests');
+const Manifests = new Meteor.Collection('manifests');
 const imageSchema = new SimpleSchema({
-	id: {
+	_id: {
 		type: String,
 		optional: true,
 	},
@@ -14,11 +14,11 @@ const imageSchema = new SimpleSchema({
 		type: String,
 		optional: true,
 	},
-	size: {
-		type: Number,
+	path: {
+		type: String,
 		optional: true,
 	},
-	path: {
+	thumbPath: {
 		type: String,
 		optional: true,
 	},
@@ -41,7 +41,7 @@ const uploadedObject = new SimpleSchema({
 		optional: true,
 	}
 });
-Schemas.Manifests = new SimpleSchema({
+Manifests.schema = new SimpleSchema({
 	title: {
 		type: String,
 		max: 200,
@@ -86,4 +86,6 @@ Schemas.Manifests = new SimpleSchema({
 	}
 });
 
-Manifests.attachSchema(Schemas.Manifests);
+Manifests.attachSchema(Manifests.schema);
+
+export default Manifests;

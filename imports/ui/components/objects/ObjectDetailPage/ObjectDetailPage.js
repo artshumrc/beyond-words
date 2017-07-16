@@ -1,10 +1,11 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Objects from '/imports/api/collections/objects';
+import { Images, Thumbnails } from '/imports/api/collections/images';
 import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
+import ObjectsDetailRelatedList from '/imports/ui/components/objects/ObjectsDetailRelatedList';
 
 // Single object detail view
 class ObjectDetailPage extends React.Component {
@@ -52,7 +53,7 @@ class ObjectDetailPage extends React.Component {
 						{object.miradorLink ?
 							<div className="object-detail-viewer object-detail--mirador">
 								<p className="mirador-help-text">
-									Mirador viewer has not loaded due to the iif.lib.harvard.edu server settings.
+									Mirador viewer has not loaded due to remote server settings.
 								</p>
 								<iframe
 									className="mirdador-viewer"
@@ -193,19 +194,6 @@ class ObjectDetailPage extends React.Component {
 						</div>
 					</div>
 				</section>
-				<div className="objects-detail-scroll">
-					<div className="objects-detail-scroll-inner clear">
-						{objects.map((_object, i) => (
-							<div
-								key={i}
-								className="object-scroll-teaser">
-								<ObjectTeaser
-									object={_object}
-								/>
-							</div>
-						))}
-					</div>
-				</div>
 			</div>
 		);
 	}
@@ -216,29 +204,26 @@ ObjectDetailPage.propTypes = {
 };
 
 const objectDetailPageContainer = createContainer((props) => {
-	let object = {};
-	let objects = [];
+	let object;
 	let images = [];
 	let thumbnails = [];
 
-	const handle = Meteor.subscribe('objects', {});
-
-	if (handle.ready()) {
-		object = Objects.find({ slug: props.slug }).fetch()[0];
-		objects = Objects.find({}, {}).fetch();
+	const objectSubscription = Meteor.subscribe('objects', {slug: props.slug}, 0, 1);
+	if (objectSubscription.ready()) {
+		object = Objects.findOne({ slug: props.slug });
 	}
 
 	const imageSubscription = Meteor.subscribe('objectImages', props.slug);
 	if (imageSubscription.ready()) {
-		// images = Images.find({}).fetch();
-		// thumbnails = Thumbnails.find({}).fetch();
+		images = Images.find({}).fetch();
+		thumbnails = Thumbnails.find({}).fetch();
 	}
 
 	return {
 		object,
-		objects,
 		images,
 		thumbnails,
+		ready: objectSubscription.ready() && imageSubscription.ready(),
 	};
 }, ObjectDetailPage);
 
