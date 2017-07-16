@@ -99,12 +99,19 @@
 .object-teaser {
   padding: 1%;
 
+	&:hover {
+		hr {
+			background: rgba(255, 255, 255, 0.9);
+		}
+	}
+
 	hr {
 		margin: 15px 0 5px;
 		max-width: 180px;
 		background: rgba(255, 255, 255, 0.4);
 		height: 3px;
 		border: none;
+		.transition(all 300ms ease-in-out);
 	}
 
   .object-teaser-wrap {
@@ -185,7 +192,7 @@
 			left:0;
 			width:100%;
 			text-align:center;
-			padding:90px 10px 0;
+			padding:120px 10px 0;
 			z-index:3;
 			opacity:0;
 			.transition(all 300ms ease-out);
@@ -579,6 +586,7 @@
         max-width:330px;
 				width:30%;
         min-width:200px;
+				color:@light !important;
 
 				&.catalog-n-search {
 					max-width:200px;
@@ -586,7 +594,7 @@
 
 				input {
 	        background: transparent;
-					color:@dark;
+				color:@light !important;
 					font-size:20px;
 					outline:none;
 					border:none;

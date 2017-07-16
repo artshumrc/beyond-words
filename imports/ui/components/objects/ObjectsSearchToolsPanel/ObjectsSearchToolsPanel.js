@@ -1,5 +1,5 @@
-
 import React from 'react';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import muiTheme from '/imports/lib/muiTheme';
@@ -25,6 +25,7 @@ class ObjectsSearchToolsPanel extends React.Component {
 			institutions: [],
 			places: [],
 		};
+		autoBind(this);
 	}
 
 	getChildContext() {

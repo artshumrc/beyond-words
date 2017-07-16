@@ -1,6 +1,6 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import RaisedButton from 'material-ui/RaisedButton';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -14,6 +14,7 @@ class SearchTermButton extends React.Component {
 		this.state = {
 			active: false,
 		};
+		autoBind(this);
 	}
 
 	getChildContext() {

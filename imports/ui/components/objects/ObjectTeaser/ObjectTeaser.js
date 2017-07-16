@@ -60,85 +60,41 @@ class ObjectTeaser extends React.Component {
 		return (
 			<div className="object-teaser col-md-4 col-sm-6">
 				<div className="object-teaser-wrap">
-					{this.props.selectObject ?
-						<a
-							href={`#${object.slug}`}
-							onClick={this.props.selectObject.bind(null, object)}
-						>
-							<div className="object-thumbnail-wrap">
-								<div className="object-catalog-n">
-									<span>
-										{object.catalog_n}.
-									</span>
-								</div>
-								{(imageUrl.length) ?
-									<div>
-										<div
-											alt={authorTitle}
-											className="object-detail-thumbnail"
-											style={styles.thumbnailImage}
-										/>
-									</div>
-									:
-									<div>
-										<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
-											<span>Preview image not available</span>
-										</div>
-										<img
-											alt={authorTitle}
-											className="object-detail-thumbnail default"
-											src="/images/default_image.jpg"
-										/>
-									</div>
-								}
+					<a
+						href={objectUrl}
+					>
+						<div className="object-thumbnail-wrap">
+							<div className="object-catalog-n">
+								<span>
+									{object.catalog_n}.
+								</span>
 							</div>
-						</a>
-						:
-						<a
-							href={objectUrl}
-						>
-							<div className="object-thumbnail-wrap">
-								<div className="object-catalog-n">
-									<span>
-										{object.catalog_n}.
-									</span>
+							{(imageUrl.length) ?
+								<div>
+									<div
+										alt={authorTitle}
+										className="object-detail-thumbnail"
+										style={styles.thumbnailImage}
+									/>
 								</div>
-								{(imageUrl.length) ?
-									<div>
-										<div
-											alt={authorTitle}
-											className="object-detail-thumbnail"
-											style={styles.thumbnailImage}
-										/>
-									</div>
 								:
-									<div>
-										<div className={`default-image-text ${this.state.attachmentCheck ? ' default-image-text-visible' : ''}`}>
-											<span>Preview image not available</span>
-										</div>
-										<img
-											alt={authorTitle}
-											className="object-detail-thumbnail default"
-											src="/images/default_image.jpg"
-										/>
+								<div>
+									<div className="default-image-text default-image-text-visible">
+										<span>Preview image not available</span>
 									</div>
+									<img
+										alt={authorTitle}
+										className="object-detail-thumbnail default"
+										src="/images/default_image.jpg"
+									/>
+								</div>
 							}
-							</div>
-						</a>
-					}
+						</div>
+					</a>
 					<div className="object-text-wrap">
-						{this.props.selectObject ?
-							<a
-								href="#"
-								onClick={this.props.selectObject.bind(null, object)}
-							>
-								<h3>{Utils.trunc(authorTitle, 60)}</h3>
-							</a>
-							:
-							<a href={objectUrl}>
-								<h3>{Utils.trunc(authorTitle, 60)}</h3>
-							</a>
-						}
+						<a href={objectUrl}>
+							<h3>{Utils.trunc(authorTitle, 60)}</h3>
+						</a>
 						<hr />
 						<span className="object-teaser-subtitle">{object.date}</span>
 						<p>
@@ -217,7 +173,6 @@ class ObjectTeaser extends React.Component {
 								''
 							}
 						</div>
-
 					</div>
 				</div>
 			</div>

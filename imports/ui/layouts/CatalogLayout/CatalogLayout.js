@@ -19,7 +19,6 @@ class CatalogLayout extends React.Component {
 			selectedObject: {},
 			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 			catalogLayout: 'grid',
-			filters: [],
 			miradorOpen: false,
 			viewerOpen: false,
 		};
@@ -29,7 +28,7 @@ class CatalogLayout extends React.Component {
 
 
 	toggleSearchTerm(key, value) {
-		const filters = this.state.filters;
+		const filters = FlowRouter.getQueryParam('filters') || [];
 		let keyIsInFilter = false;
 		let valueIsInFilter = false;
 		let filterValueToRemove;
@@ -67,23 +66,11 @@ class CatalogLayout extends React.Component {
 			});
 		}
 
-		this.setState({
-			filters,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
-		});
-
-		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
-			FlowRouter.go('/catalog');
-
-		}
-		location.hash = '';
-
+		FlowRouter.go('/catalog', {}, {page: 1, filters});
 	}
 
 	toggleMiradorSearch(key, value) {
-		let filters = this.state.filters;
+		let filters = FlowRouter.getQueryParam('filters') || [];
 		let isInFilters = false;
 
 		filters.forEach(function(filter) {
@@ -106,22 +93,11 @@ class CatalogLayout extends React.Component {
 			});
 		}
 
-		this.setState({
-			filters,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
-		});
-
-		if (location.pathname !== '/catalog' || location.pathname !== '/catalog/') {
-			FlowRouter.go('/catalog');
-
-		}
-		location.hash = '';
+		FlowRouter.go('/catalog', {}, {page: 1, filters});
 	}
 
 	handleChangeTextsearch(textsearch) {
-		const filters = this.state.filters;
+		const filters = FlowRouter.getQueryParam('filters') || [];
 
 		if (textsearch && textsearch.length) {
 			let textsearchInFilters = false;
@@ -153,17 +129,11 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-		this.setState({
-			filters,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
-		});
-		location.hash = '';
+		FlowRouter.go('/catalog', {}, {page: 1, filters});
 	}
 
 	handleChangeCatalogNSearch(catalogN) {
-		const filters = this.state.filters;
+		const filters = FlowRouter.getQueryParam('filters') || [];
 
 		if (catalogN && catalogN.length) {
 			let textsearchInFilters = false;
@@ -195,17 +165,11 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-		this.setState({
-			filters,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
-		});
-		location.hash = '';
+		FlowRouter.go('/catalog', {}, {page: 1, filters});
 	}
 
 	handleChangeDate(e) {
-		const filters = this.state.filters;
+		const filters = FlowRouter.getQueryParam('filters') || [];
 
 		if (e.from > 600) {
 			let dateFromInFilters = false;
@@ -267,32 +231,21 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-
-		this.setState({
-			filters,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
-		});
-		location.hash = '';
+		FlowRouter.go('/catalog', {}, {page: 1, filters});
 	}
 
 	toggleCatalogLayout(layout) {
 		this.setState({
 			catalogLayout: layout,
-			objectToSelectSlug: null,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
 		});
-		location.hash = '';
 	}
 
 	render() {
 		// console.log('CatalogLayout.filters', this.state.filters);
-		const selectedObject = this.state.selectedObject;
 		let skip = 0;
 		const limit = 36;
 		const page = FlowRouter.getQueryParam('page');
+		const filters = FlowRouter.getQueryParam('filters') || [];
 
 		if (page) {
 			skip = limit * (parseInt(page, 10) - 1);
@@ -302,7 +255,7 @@ class CatalogLayout extends React.Component {
 			<div className="archimedes-layout catalog-layout">
 
 				<HeaderCatalog
-					filters={this.state.filters}
+					filters={filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					toggleMiradorSearch={this.toggleMiradorSearch}
 					handleChangeDate={this.handleChangeDate}
@@ -314,7 +267,7 @@ class CatalogLayout extends React.Component {
 				/>
 
 				<ObjectsList
-					filters={this.state.filters}
+					filters={filters}
 					toggleSearchTerm={this.toggleSearchTerm}
 					toggleMiradorSearch={this.toggleMiradorSearch}
 					skip={skip}
