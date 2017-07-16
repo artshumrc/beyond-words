@@ -65,5 +65,54 @@ const Utils = {
 		const headroom = new Headroom(document.getElementById('header'));
 		return headroom.init();
 	},
+	filtersToQuery(filters=[]) {
+		const query = {};
+
+		// Parse the filters to the query
+		filters.forEach((filter) => {
+			const date = moment(`${filter.values[0]}-01-01`, 'YYYY MM DD');
+			switch (filter.key) {
+			case 'textsearch':
+				query.$text = { $search: filter.values[0] };
+				break;
+
+			case 'catalogNumber':
+				query.catalog_n = parseInt(filter.values[0], 10);
+				break;
+
+			case 'hasViewer':
+				query.$or = [{$where: '(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)'}, {hasImageViewer: true}];
+				break;
+
+			case 'scribes':
+				query.scribe = { $in: filter.values };
+				break;
+
+			case 'illuminators':
+				query.illuminator = { $in: filter.values };
+				break;
+
+			case 'institutions':
+				query.institution = { $in: filter.values };
+				break;
+
+			case 'places':
+				query.place = { $in: filter.values };
+				break;
+
+			case 'dateFrom':
+				query.dateBegun = { $gte: new Date(date.toISOString()) };
+				break;
+
+			case 'dateTo':
+				query.dateEnded = { $lte: new Date(date.toISOString()) };
+				break;
+			default:
+				// do nothing
+			}
+		});
+
+		return query;
+	},
 };
 export default Utils;

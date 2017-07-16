@@ -12,6 +12,7 @@ import InfiniteScroll from '/imports/ui/components/shared/InfiniteScroll';
 import FiltersWidget from '/imports/ui/components/common/FiltersWidget';
 import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 import ObjectDetail from '/imports/ui/components/objects/ObjectDetail';
+import Utils from '/imports/lib/utils';
 
 class ObjectsList extends React.Component {
 	getChildContext() {
@@ -147,53 +148,9 @@ ObjectsList.childContextTypes = {
 };
 
 const objectsListContainer = createContainer((props) => {
-	const query = {};
+	const query = Utils.filtersToQuery(props.filters);
 	let objects = [];
 	let stillMoreObjects = true;
-
-	// Parse the filters to the query
-	props.filters.forEach((filter) => {
-		const date = moment(`${filter.values[0]}-01-01`, 'YYYY MM DD');
-		switch (filter.key) {
-		case 'textsearch':
-			query.$text = { $search: filter.values[0] };
-			break;
-
-		case 'catalogNumber':
-			query.catalog_n = parseInt(filter.values[0], 10);
-			break;
-
-		case 'hasViewer':
-			query.$or = [{$where: '(this.miradorLink && this.miradorLink.length > 0) || (this.externalUrl && this.externalUrl.length > 0)'}, {hasImageViewer: true}];
-			break;
-
-		case 'scribes':
-			query.scribe = { $in: filter.values };
-			break;
-
-		case 'illuminators':
-			query.illuminator = { $in: filter.values };
-			break;
-
-		case 'institutions':
-			query.institution = { $in: filter.values };
-			break;
-
-		case 'places':
-			query.place = { $in: filter.values };
-			break;
-
-		case 'dateFrom':
-			query.dateBegun = { $gte: new Date(date.toISOString()) };
-			break;
-
-		case 'dateTo':
-			query.dateEnded = { $lte: new Date(date.toISOString()) };
-			break;
-		default:
-			// do nothing
-		}
-	});
 
 	// console.log('Objects query:', query);
 	const handle = Meteor.subscribe('objects', query, props.skip, props.limit);

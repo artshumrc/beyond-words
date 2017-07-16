@@ -15,17 +15,42 @@ class CatalogLayout extends React.Component {
 		super(props);
 
 		this.state = {
-			objectToSelectSlug: this.props.selectedObjectSlug,
-			selectedObject: {},
-			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog, 2016.',
+			catalogTitleText: 'Illuminated Manuscripts in Boston Collections Catalog',
 			catalogLayout: 'grid',
-			miradorOpen: false,
-			viewerOpen: false,
 		};
 		autoBind(this);
 	}
 
+	componentWillMount() {
+		const filters = FlowRouter.getQueryParam('filters');
+		const page = FlowRouter.getQueryParam('page') || 1;
+		const initialTotal = FlowRouter.getQueryParam('total') || 0;
+		const query = Utils.filtersToQuery(filters);
 
+	  Meteor.call('objectsCount', [query], (error, total) => {
+	    if(error) {
+	      // handle error
+				console.error(error);
+	    } else {
+				if (total !== initialTotal) {
+					FlowRouter.go('/catalog', {}, {page, filters, total});
+				}
+	    }
+		});
+	}
+
+	updateRouteWithFilters(filters) {
+		const query = Utils.filtersToQuery(filters);
+
+	  Meteor.call('objectsCount', [query], (error, total) => {
+	    if(error) {
+	      // handle error
+				console.error(error);
+	    } else {
+				FlowRouter.go('/catalog', {}, {page: 1, filters, total});
+	    }
+	  });
+	}
 
 	toggleSearchTerm(key, value) {
 		const filters = FlowRouter.getQueryParam('filters') || [];
@@ -66,7 +91,7 @@ class CatalogLayout extends React.Component {
 			});
 		}
 
-		FlowRouter.go('/catalog', {}, {page: 1, filters});
+		this.updateRouteWithFilters(filters);
 	}
 
 	toggleMiradorSearch(key, value) {
@@ -93,7 +118,7 @@ class CatalogLayout extends React.Component {
 			});
 		}
 
-		FlowRouter.go('/catalog', {}, {page: 1, filters});
+		this.updateRouteWithFilters(filters);
 	}
 
 	handleChangeTextsearch(textsearch) {
@@ -129,7 +154,7 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-		FlowRouter.go('/catalog', {}, {page: 1, filters});
+		this.updateRouteWithFilters(filters);
 	}
 
 	handleChangeCatalogNSearch(catalogN) {
@@ -165,7 +190,7 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-		FlowRouter.go('/catalog', {}, {page: 1, filters});
+		this.updateRouteWithFilters(filters);
 	}
 
 	handleChangeDate(e) {
@@ -231,7 +256,7 @@ class CatalogLayout extends React.Component {
 			}
 		}
 
-		FlowRouter.go('/catalog', {}, {page: 1, filters});
+		this.updateRouteWithFilters(filters);
 	}
 
 	toggleCatalogLayout(layout) {
@@ -278,6 +303,7 @@ class CatalogLayout extends React.Component {
 				<Pagination
 					activePage={parseInt(FlowRouter.getQueryParam('page'), 10) || 1}
 					limit={limit}
+					filters={filters}
 				/>
 
 				<CatalogFooter />

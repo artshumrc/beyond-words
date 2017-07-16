@@ -5,7 +5,7 @@ const Config = {
 	title: () => 'Beyond Words',
 	subtitle: () => 'Beyond Words',
 	logo: () => '<b>Beyond Words</b>',
-	footer: () => `Beyond Words - Copyright ${new Date().getFullYear()}`,
+	footer: () => `Beyond Words - Copyright 2016-${new Date().getFullYear()}`,
 	emails: {
 		from: `no-reply@${Meteor.absoluteUrl()}`,
 		contact: `contact${Meteor.absoluteUrl()}`,

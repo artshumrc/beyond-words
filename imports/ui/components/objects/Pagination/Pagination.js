@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Objects from '/imports/api/collections/objects';
 import _ from 'underscore';
+import Utils from '/imports/lib/utils';
 
 class Pagination extends React.Component {
 
@@ -13,44 +14,42 @@ class Pagination extends React.Component {
 		};
 	}
 
-	componentWillMount() {
-	  Meteor.call('objectsCount', (error, totalObjects) => {
-	    if(error) {
-	      // handle error
-	    } else {
-	      this.setState({ totalObjects });
-	    }
-	  });
-	}
-
 	goToPage(page) {
-		FlowRouter.go('/objects', {}, { page });
+		const filters = FlowRouter.getQueryParam('filters');
+
+		FlowRouter.go('/objects', {}, { page, filters });
 	}
 
 	goToPrevPage() {
 		const { activePage } = this.props;
+		const filters = FlowRouter.getQueryParam('filters');
 
 		if (activePage === 1) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: activePage - 1 });
+		FlowRouter.go('/objects', {}, { page: activePage - 1, filters });
 	}
 	goToNextPage() {
 		const { activePage, totalObjects } = this.props;
+		const filters = FlowRouter.getQueryParam('filters');
 
 		if (activePage === totalObjects) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: activePage + 1 });
+		FlowRouter.go('/objects', {}, { page: activePage + 1, filters });
 	}
 
 	render() {
 		const { activePage, limit } = this.props;
-		const { totalObjects } = this.state;
 
+		let totalObjects = FlowRouter.getQueryParam('total') || 0;
 		const numPages = Math.ceil(totalObjects/limit);
+
+		if (numPages <= 1) {
+			return null;
+		}
 
 
 		return (

@@ -69,7 +69,7 @@ class CatalogFooter extends React.Component {
 				<footer className="bg-dark catalog-footer">
 					<div className="catalog-footer-inner">
 						<span className="copyright-information fade-1-4">
-							Copyright of the Beyond Words Exhibition, {year}. Sponsored by the National Endowment for the Humanities.
+							Copyright of the Beyond Words Exhibition, 2016-{year}. Sponsored by the National Endowment for the Humanities.
 						</span>
 					</div>
 				</footer>

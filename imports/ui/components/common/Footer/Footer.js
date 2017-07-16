@@ -134,7 +134,7 @@ class Footer extends React.Component {
 						<div className="row">
 							<div className="col-sm-12 text-center">
 								<span className="copyright-information fade-1-4">
-									Copyright Beyond Words Exhibition, {year}.
+									Copyright Beyond Words Exhibition, 2016-{year}.
 								</span>
 							</div>
 						</div>
