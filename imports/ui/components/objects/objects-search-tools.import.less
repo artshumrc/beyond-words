@@ -601,6 +601,26 @@
 	.go-back-button {
 		display:inline-block;
 		float:left;
+		padding: 10px 15px;
+		cursor: pointer;
+
+		span, i {
+			display: inline-block;
+			vertical-align: top;
+			color: @light;
+		}
+
+		i {
+			&:before {
+				font-size: 18px;
+			}
+		}
+
+		span {
+			padding-top: 2px;
+			font-family: @font-label;
+			text-transform: uppercase;
+		}
 
 	}
 
