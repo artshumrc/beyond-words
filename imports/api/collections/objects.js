@@ -100,6 +100,10 @@ Objects.schema = new SimpleSchema({
 		type: String,
 		optional: true,
 	},
+	manifestId: {
+		type: String,
+		optional: true,
+	},
 	created: {
 		type: Date,
 		optional: true,

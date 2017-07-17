@@ -17,8 +17,6 @@ Meteor.methods({
 			throw new Meteor.Error('object-insert', 'not-authorized');
 		}
 
-		object.status = 'publish';
-
 		let objectId;
 		try {
 			objectId = objects.insert(object);
