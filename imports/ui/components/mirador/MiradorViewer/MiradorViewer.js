@@ -1,24 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
+import Manifests from '/imports/api/collections/manifests';
 
 class MiradorViewer extends React.Component {
-	componentDidMount() {
-		const { manifestUri } = this.props;
-
+	componentDidUpdate() {
 		setTimeout(() => {
+			const { manifest, manifestUri } = this.props;
+			let miradorManifestUri = manifestUri;
+
+			if (manifest) {
+				miradorManifestUri = manifest.remoteUri;
+			}
+
+			console.log(miradorManifestUri);
+
+			if (!miradorManifestUri) {
+				return null;
+			}
+
       Mirador({
         id: "miradorViewer",
         layout: "1x1",
 
         data: [
           {
-						manifestUri,
+						manifestUri: miradorManifestUri,
 						location: "Harvard University"
 					}
         ],
 
         windowObjects: [{
-					loadedManifest: manifestUri,
+					loadedManifest: miradorManifestUri,
 				}],
 
         windowSettings: {
@@ -42,6 +54,13 @@ class MiradorViewer extends React.Component {
 	}
 
 	render() {
+		const { manifest, manifestUri } = this.props;
+
+		if (!manifest && !manifestUri) {
+			// TODO: Return 404
+			return null;
+		}
+
 		return (
 			<div
 				id="miradorViewer"
@@ -59,7 +78,18 @@ class MiradorViewer extends React.Component {
 }
 
 MiradorViewer.propTypes = {
-	manifestUri: PropTypes.string,
+	manifest: React.PropTypes.object,
+	manifestUri: React.PropTypes.string,
 }
 
-export default MiradorViewer;
+export default createContainer((props) => {
+	const handle = Meteor.subscribe('manifests');
+	const manifest = Manifests.findOne({
+		_id: props.id,
+	});
+
+	return {
+		manifest,
+		ready: handle.ready(),
+	};
+}, MiradorViewer);

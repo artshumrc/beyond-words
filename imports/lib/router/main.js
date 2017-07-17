@@ -90,6 +90,19 @@ FlowRouter.route('/watch', {
 	},
 });
 
+FlowRouter.route('/manifests/:id', {
+	name: 'manifest',
+	action: (params) => {
+		mount(MainLayout, {
+			content: (
+				<MiradorViewer
+					id={params.id}
+				/>
+			)
+		});
+	},
+});
+
 FlowRouter.route('/manifests/test', {
 	name: 'miradorTest',
 	action: (params) => {

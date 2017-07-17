@@ -48,6 +48,7 @@ Meteor.methods({
 		HTTP.post('http://generate-manifests.orphe.us/manifests', {
 			params: {
 				manifest: EJSON.stringify(manifest),
+				responseUrl: Meteor.settings.manifestWebHookResponseURL,
 			},
 		});
 
@@ -81,6 +82,7 @@ Meteor.methods({
 		HTTP.put('http://generate-manifests.orphe.us/manifests', {
 			params: {
 				manifest: EJSON.stringify(manifest),
+				responseUrl: Meteor.settings.manifestWebHookResponseURL,
 			},
 		});
 
@@ -107,6 +109,7 @@ Meteor.methods({
 		HTTP.del('http://generate-manifests.orphe.us/manifests', {
 			params: {
 				manifestId,
+				responseUrl: Meteor.settings.manifestWebHookResponseURL,
 			},
 		});
 		*/

@@ -5,6 +5,7 @@ import Attachments from '/imports/api/collections/collection_fs/attachments';
 import Images from '/imports/api/collections/images';
 import Pages from '/imports/api/collections/pages';
 import MediaItems from '/imports/api/collections/mediaItems';
+import Manifests from '/imports/api/collections/manifests';
 
 /*
  * Replace these in the future as they will publish our entire collections.
@@ -44,6 +45,8 @@ if (Meteor.isServer) {
 	Meteor.publish('events', () => Events.find());
 	Meteor.publish('attachments', () => Attachments.find());
 	Meteor.publish('mediaItems', () => MediaItems.find());
+	Meteor.publish('manifests', () => Manifests.find());
+	Meteor.publish('manifests.id.admin', _id => Manifests.find({_id}));
 
 
 	Meteor.publish('images', () => {

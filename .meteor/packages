@@ -29,7 +29,6 @@ meteor-base@1.0.4
 mongo@1.1.15
 blaze-html-templates@1.0.4
 session@1.1.7
-jquery@1.11.10
 tracker@1.1.2
 logging@1.1.17
 reload@1.1.11
