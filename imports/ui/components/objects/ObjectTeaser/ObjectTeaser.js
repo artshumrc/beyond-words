@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from '/imports/lib/muiTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
 import Objects from '/imports/api/collections/objects';
 import Utils from '/imports/lib/utils';
 
@@ -191,11 +190,12 @@ ObjectTeaser.childContextTypes = {
 const objectTeaserContainer = createContainer((props) => {
 	let attachment = null;
 
-	const imageSubscription = Meteor.subscribe('attachments', props.object.slug);
+	/*
+	const imageSubscription = Meteor.subscribe('attachments');
 	if (imageSubscription.ready() && typeof props.object.image !== 'undefined') {
-		// attachment = Attachments.findOne({ _id: this.props.object.image });
-		// thumbnails = Thumbnails.find({}).fetch();
+		attachment = Attachments.findOne({ _id: props.object.image });
 	}
+	*/
 
 	return {
 		attachment,

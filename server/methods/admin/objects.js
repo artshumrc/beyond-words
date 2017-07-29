@@ -27,7 +27,7 @@ Meteor.methods({
 		return objectId;
 	},
 
-	'object.update': (token, objectId, update) => {
+	'objects.update': (token, objectId, update) => {
 		check(token, Match.Maybe(String));
 		check(objectId, String);
 		check(update, Object);
@@ -58,7 +58,7 @@ Meteor.methods({
 		return objectId;
 	},
 
-	'object.delete': (token, objectId) => {
+	'objects.delete': (token, objectId) => {
 		check(token, String);
 		check(objectId, String);
 

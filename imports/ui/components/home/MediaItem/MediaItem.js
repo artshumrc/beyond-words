@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import Attachments from '/imports/api/collections/collection_fs/attachments';
-
 class MediaItem extends React.Component {
 
 	render() {
@@ -78,10 +76,12 @@ MediaItem.childContextTypes = {
 const mediaItemContainer = createContainer((props) => {
 	let attachment = null;
 
+	/*
 	const imageSubscription = Meteor.subscribe('attachments');
 	if (imageSubscription.ready() && typeof props.mediaItem.image !== 'undefined') {
 		attachment = Attachments.findOne({ _id: props.mediaItem.image });
 	}
+	*/
 
 	return {
 		attachment,

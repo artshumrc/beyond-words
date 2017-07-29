@@ -1,15 +1,12 @@
 import Events from '/imports/api/collections/events';
 import Objects from '/imports/api/collections/objects';
 import SymposiumSessions from '/imports/api/collections/symposiumSession';
-import Attachments from '/imports/api/collections/collection_fs/attachments';
 import Images from '/imports/api/collections/images';
 import Pages from '/imports/api/collections/pages';
 import MediaItems from '/imports/api/collections/mediaItems';
 import Manifests from '/imports/api/collections/manifests';
 
-/*
- * Replace these in the future as they will publish our entire collections.
- */
+
 if (Meteor.isServer) {
 	Meteor.publish('objects', (query, skip, limit) => {
 		check(query, Object);
@@ -43,7 +40,6 @@ if (Meteor.isServer) {
 	Meteor.publish('symposiumSessions', () => SymposiumSessions.find({}, { sort: { date: 1 } }));
 
 	Meteor.publish('events', () => Events.find());
-	Meteor.publish('attachments', () => Attachments.find());
 	Meteor.publish('mediaItems', () => MediaItems.find());
 	Meteor.publish('manifests', () => Manifests.find());
 	Meteor.publish('manifests.id.admin', _id => Manifests.find({_id}));

@@ -208,6 +208,7 @@ const objectDetailContainer = createContainer((props) => {
 	let pdfAttachment = null;
 	const selectedObject = null;
 
+	/*
 	const imageSubscription = Meteor.subscribe('attachments', this.props.selectedObject.slug);
 	if (imageSubscription.ready()) {
 		if (typeof this.props.selectedObject.image !== 'undefined') {
@@ -217,6 +218,7 @@ const objectDetailContainer = createContainer((props) => {
 			pdfAttachment = Attachments.findOne({ _id: this.props.selectedObject.pdf });
 		}
 	}
+	*/
 
 	// console.log("ObjectDetail.props", this.props);
 	if (this.props.objectToSelectSlug && !('catalog_n' in this.props.selectedObject) && !this.objectSelected) {
