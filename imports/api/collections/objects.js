@@ -113,6 +113,36 @@ Objects.schema = new SimpleSchema({
 		optional: true,
 	},
 
+	pdfs: {
+		type: Array,
+		optional: true,
+	},
+	'pdfs.$': {
+		type: Object,
+		optional: true,
+		blackbox: true,
+	},
+
+	audioFiles: {
+		type: Array,
+		optional: true,
+	},
+	'audioFiles.$': {
+		type: Object,
+		optional: true,
+		blackbox: true,
+	},
+
+	videos: {
+		type: Array,
+		optional: true,
+	},
+	'videos.$': {
+		type: Object,
+		optional: true,
+		blackbox: true,
+	},
+
 });
 
 Objects.attachSchema(Objects.schema);

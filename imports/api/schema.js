@@ -3,7 +3,8 @@ import Objects from '/imports/api/collections/objects';
 
 const objectSchema = SchemaBridge.schema(
 	Objects.schema,
-	'Object'
+	'Object',
+	{ wrap: false },
 );
 
 
@@ -12,7 +13,9 @@ const typeDefs = [`
 scalar JSON
 scalar Date
 
-${objectSchema}
+type Object {
+	catalog_n: Int,
+}
 
 type Query {
 
