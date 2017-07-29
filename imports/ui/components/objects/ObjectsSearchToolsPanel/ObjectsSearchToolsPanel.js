@@ -103,7 +103,7 @@ class ObjectsSearchToolsPanel extends React.Component {
 						onChange={this.handleChangeTextsearch}
 					/>
 				</div>
-				<Card>
+				{/*<Card>
 					<CardHeader
 						title="Date"
 						style={styles.cardHeader}
@@ -117,7 +117,7 @@ class ObjectsSearchToolsPanel extends React.Component {
 							/>
 						</div>
 					</CardText>
-				</Card>
+				</Card>*/}
 				<Card>
 					<CardHeader
 						title="Scribes"

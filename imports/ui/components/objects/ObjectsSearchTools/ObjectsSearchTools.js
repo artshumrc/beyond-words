@@ -103,7 +103,7 @@ class ObjectsSearchTools extends React.Component {
 							}}
 						/>
 
-						<div
+						{/*}<div
 							className={`dropdown search-dropdown search-dropdown-date${
 								self.state.searchDropdownOpen === 'date' ? ' open' : ''}`}
 						>
@@ -126,7 +126,7 @@ class ObjectsSearchTools extends React.Component {
 								</div>
 							</ul>
 
-						</div>
+						</div>*/}
 						<div
 							className={`dropdown search-dropdown search-dropdown-scribes${
 								self.state.searchDropdownOpen === 'scribes' ? ' open' : ''}`}
