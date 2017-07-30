@@ -86,6 +86,11 @@ if (Meteor.isServer) {
 		return this.ready();
 	});
 
+	Meteor.publish('objectManifest', (manifestId) => {
+		check(manifestId, String);
+		return Manifests.find({_id: manifestId});
+	});
+
 	Meteor.publish('objectImages', function objectImages(objectSlug) {
 		check(objectSlug, String);
 		const object = Objects.findOne({

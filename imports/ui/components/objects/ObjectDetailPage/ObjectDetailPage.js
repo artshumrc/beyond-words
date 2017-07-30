@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import ReactPlayer from 'react-player'
 
 import Objects from '/imports/api/collections/objects';
+import Manifests from '/imports/api/collections/manifests';
 import { Images, Thumbnails } from '/imports/api/collections/images';
 import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 import ObjectsDetailRelatedList from '/imports/ui/components/objects/ObjectsDetailRelatedList';
@@ -37,7 +38,7 @@ class ObjectDetailPage extends React.Component {
 	}
 
 	render() {
-		const { object, objects, images } = this.props;
+		const { object, manifest } = this.props;
 		let image = {};
 
 		if (!object) {
@@ -47,7 +48,6 @@ class ObjectDetailPage extends React.Component {
 		if (object.images && object.images.length) {
 			image = object.images[0];
 		}
-
 
 		return (
 			<div className="object-details-page">
@@ -67,14 +67,14 @@ class ObjectDetailPage extends React.Component {
 									src="/images/default_image.jpg"
 								/>
 							}
-							{object.miradorLink || object.hasImageViewer || object.manifestId?
-								<div
+							{object.miradorLink || object.manifestId ?
+								<a
 									className="thumbnail-embedded-overlay"
-									onClick={this.openViewer}
+									href={manifest ? `/manifests/${manifest._id}` : object.miradorLink}
 								>
 									<i className="mdi mdi-image-filter" />
 									<span>Turn the Pages</span>
-								</div>
+								</a>
 							: ''}
 						</div>
 
@@ -197,11 +197,11 @@ class ObjectDetailPage extends React.Component {
 									<label>Related Audio</label>
 									{object.audioFiles.map(audioFile => (
 										<div
-											className="media"
+											className="object-detail-media"
 											key={audioFile.path}
 										>
 											<span className="media-title">
-												{audioFile.label}
+												{audioFile.name}
 											</span>
 											<div className="media-player">
 												<ReactPlayer
@@ -220,11 +220,11 @@ class ObjectDetailPage extends React.Component {
 									<label>Related Videos</label>
 									{object.videos.map(video => (
 										<div
-											className="media"
+											className="object-detail-media"
 											key={video.path}
 										>
 											<span className="media-title">
-												{video.label}
+												{video.name}
 											</span>
 											<div className="media-player">
 												<ReactPlayer
@@ -252,25 +252,22 @@ ObjectDetailPage.propTypes = {
 
 const objectDetailPageContainer = createContainer((props) => {
 	let object;
-	let images = [];
-	let thumbnails = [];
+	let manifest;
 
 	const objectSubscription = Meteor.subscribe('objects', {slug: props.slug}, 0, 1);
 	if (objectSubscription.ready()) {
 		object = Objects.findOne({ slug: props.slug });
 	}
 
-	const imageSubscription = Meteor.subscribe('objectImages', props.slug);
-	if (imageSubscription.ready()) {
-		images = Images.find({}).fetch();
-		thumbnails = Thumbnails.find({}).fetch();
+	if (object && object.manifestId) {
+		const manifestSubscription = Meteor.subscribe('objectManifest', object.manifestId);
+		manifest = Manifests.findOne({ _id: object.manifestId });
 	}
 
 	return {
 		object,
-		images,
-		thumbnails,
-		ready: objectSubscription.ready() && imageSubscription.ready(),
+		manifest,
+		ready: objectSubscription.ready(),
 	};
 }, ObjectDetailPage);
 
