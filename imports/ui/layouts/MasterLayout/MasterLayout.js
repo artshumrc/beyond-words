@@ -6,13 +6,16 @@ import Footer from '/imports/ui/components/common/Footer';
 
 class MasterLayout extends React.Component {
 	render() {
+		console.log(this.props);
 		return (
 			<div className="archimedes-layout master-layout">
 				<Header />
 				<main>
 					{this.props.content}
 				</main>
-				<Footer />
+				{!this.props.noFooter ?
+					<Footer />
+				: ''}
 			</div>
 		);
 	}

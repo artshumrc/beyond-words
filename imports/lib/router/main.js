@@ -46,20 +46,15 @@ FlowRouter.route('/catalog/:slug', {
 FlowRouter.route('/objects', {
 	name: 'ObjectList',
 	action() {
-		mount(MasterLayout, {
-			content: <CatalogLayout />,
+		mount(CatalogLayout, {
 		});
 	},
 });
 FlowRouter.route('/objects/:slug', {
 	name: 'ObjectDetail',
 	action(params) {
-		mount(MasterLayout, {
-			content: (
-				<CatalogLayout
-					objectSlug={params.slug}
-				/>
-			),
+		mount(CatalogLayout, {
+			objectSlug: params.slug
 		});
 	},
 });
