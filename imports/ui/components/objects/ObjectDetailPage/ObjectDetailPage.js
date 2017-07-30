@@ -67,28 +67,14 @@ class ObjectDetailPage extends React.Component {
 									src="/images/default_image.jpg"
 								/>
 							}
-							{object.miradorLink ?
-								<div
-									className="thumbnail-embedded-overlay"
-									onClick={this.props.openMiradorViewer}
-								>
-									<i className="mdi mdi-image-filter" />
-									<span>View in Mirador</span>
-
-								</div>
-
-								: ''
-							}
-							{object.hasImageViewer ?
+							{object.miradorLink || object.hasImageViewer || object.manifestId?
 								<div
 									className="thumbnail-embedded-overlay"
 									onClick={this.openViewer}
 								>
 									<i className="mdi mdi-image-filter" />
 									<span>Turn the Pages</span>
-
 								</div>
-
 							: ''}
 						</div>
 

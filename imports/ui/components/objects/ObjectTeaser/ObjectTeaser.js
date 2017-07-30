@@ -48,12 +48,12 @@ class ObjectTeaser extends React.Component {
 			},
 		};
 
-		let image = {};
-		let imageUrl = '';
-		if (this.props.attachment) {
-			image = this.props.attachment;
-			imageUrl = image.url();
-			styles.thumbnailImage.backgroundImage = `url("${imageUrl}")`;
+		let image;
+		if (object.images && object.images.length) {
+			if (typeof object.images[0] === 'object') {
+				image = object.images[0];
+				styles.thumbnailImage.backgroundImage = `url("${image.path}")`;
+			}
 		}
 
 		return (
@@ -68,7 +68,7 @@ class ObjectTeaser extends React.Component {
 									{object.catalog_n}.
 								</span>
 							</div>
-							{(imageUrl.length) ?
+							{image ?
 								<div>
 									<div
 										alt={authorTitle}
