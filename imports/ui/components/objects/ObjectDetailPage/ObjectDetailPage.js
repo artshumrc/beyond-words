@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import ReactPlayer from 'react-player'
 
 import Objects from '/imports/api/collections/objects';
 import { Images, Thumbnails } from '/imports/api/collections/images';
 import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 import ObjectsDetailRelatedList from '/imports/ui/components/objects/ObjectsDetailRelatedList';
+import Viewer from '/imports/ui/components/common/Viewer';
 
 // Single object detail view
 class ObjectDetailPage extends React.Component {
@@ -38,46 +40,25 @@ class ObjectDetailPage extends React.Component {
 		const { object, objects, images } = this.props;
 		let image = {};
 
-		if (images && images.length) {
-			image = images[0];
+		if (!object) {
+			return this.objectsLoadingOrNoResults();
 		}
 
-		if (!object) {
-				return this.objectsLoadingOrNoResults();
+		if (object.images && object.images.length) {
+			image = object.images[0];
 		}
+
 
 		return (
 			<div className="object-details-page">
-				{(object.miradorLink || object.hasImageViewer) ?
-					<div>
-						{object.miradorLink ?
-							<div className="object-detail-viewer object-detail--mirador">
-								<p className="mirador-help-text">
-									Mirador viewer has not loaded due to remote server settings.
-								</p>
-								<iframe
-									className="mirdador-viewer"
-									src={object.miradorLink}
-								/>
-							</div>
-							:
-							<div className="object-detail-viewer object-detail--osd-viewer">
-								<Viewer />
-							</div>
-						}
-					</div>
-				:
-					<div />
-				}
-
 				<section className="object-details paper-shadow">
 					<div className="object-details-inner">
 						<div className="object-detail-thumbnail-wrap">
-							{('url' in image && image.url.length) ?
+							{('path' in image && image.path) ?
 								<img
 									alt="object thumbnail"
 									className="object-detail-thumbnail paper-shadow"
-									src={image.url}
+									src={image.path}
 								/>
 								:
 								<img
@@ -86,6 +67,29 @@ class ObjectDetailPage extends React.Component {
 									src="/images/default_image.jpg"
 								/>
 							}
+							{object.miradorLink ?
+								<div
+									className="thumbnail-embedded-overlay"
+									onClick={this.props.openMiradorViewer}
+								>
+									<i className="mdi mdi-image-filter" />
+									<span>View in Mirador</span>
+
+								</div>
+
+								: ''
+							}
+							{object.hasImageViewer ?
+								<div
+									className="thumbnail-embedded-overlay"
+									onClick={this.openViewer}
+								>
+									<i className="mdi mdi-image-filter" />
+									<span>Turn the Pages</span>
+
+								</div>
+
+							: ''}
 						</div>
 
 						<div className="object-detail-text-wrap">
@@ -191,6 +195,63 @@ class ObjectDetailPage extends React.Component {
 								:
 								''
 							}
+							{(object.pdfs && object.pdfs.length) ?
+								<div className="object-detail-meta object-detail-meta--pdf">
+									<label>PDFs</label>
+									{object.pdfs.map(pdf => (
+										<a key={pdf.name} href={pdf.path} target="_blank" rel="noopener noreferrer">
+											{pdf.name}
+											<i className="mdi mdi-download" />
+										</a>
+									))}
+								</div>
+							: ''}
+							{(object.audioFiles && object.audioFiles.length) ?
+								<div className="object-detail-meta object-detail-meta--audio">
+									<label>Related Audio</label>
+									{object.audioFiles.map(audioFile => (
+										<div
+											className="media"
+											key={audioFile.path}
+										>
+											<span className="media-title">
+												{audioFile.label}
+											</span>
+											<div className="media-player">
+												<ReactPlayer
+													url={audioFile.path}
+													width="100%"
+													height={40}
+													controls
+												/>
+											</div>
+										</div>
+									))}
+								</div>
+							: ''}
+							{(object.videos && object.videos.length) ?
+								<div className="object-detail-meta object-detail-meta--videos">
+									<label>Related Videos</label>
+									{object.videos.map(video => (
+										<div
+											className="media"
+											key={video.path}
+										>
+											<span className="media-title">
+												{video.label}
+											</span>
+											<div className="media-player">
+												<ReactPlayer
+													url={video.path}
+													width="100%"
+													height={300}
+													controls
+												/>
+											</div>
+										</div>
+									))}
+								</div>
+							: ''}
 						</div>
 					</div>
 				</section>

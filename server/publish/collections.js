@@ -1,7 +1,6 @@
 import Events from '/imports/api/collections/events';
 import Objects from '/imports/api/collections/objects';
 import SymposiumSessions from '/imports/api/collections/symposiumSession';
-import Images from '/imports/api/collections/images';
 import Pages from '/imports/api/collections/pages';
 import MediaItems from '/imports/api/collections/mediaItems';
 import Manifests from '/imports/api/collections/manifests';
@@ -49,7 +48,7 @@ if (Meteor.isServer) {
 		const fields = {};
 
 		return [
-			Images.find(fields),
+			// Images.find(fields),
 			//Thumbnails.find(fields),
 		];
 	});
@@ -57,9 +56,9 @@ if (Meteor.isServer) {
 	Meteor.publish('selectImages', (imageArray) => {
 		check(imageArray, [String]);
 		return [
-			Images.find({
-				_id: { $in: imageArray },
-			}),
+			// Images.find({
+			// 	_id: { $in: imageArray },
+			// }),
 			/*Thumbnails.find({
 				originalId: { $in: imageArray },
 			}),*/
@@ -75,9 +74,9 @@ if (Meteor.isServer) {
 			const imageArray = page.headerImage;
 			if (imageArray && Array.isArray(imageArray)) {
 				return [
-					Images.find({
-						_id: { $in: imageArray },
-					}),
+					// Images.find({
+					// 	_id: { $in: imageArray },
+					// }),
 					/*Thumbnails.find({
 						originalId: { $in: imageArray },
 					}),*/
@@ -96,9 +95,9 @@ if (Meteor.isServer) {
 			const imageArray = object.images;
 			if (imageArray && Array.isArray(imageArray)) {
 				return [
-					Images.find({
-						_id: { $in: imageArray },
-					}),
+					// Images.find({
+					// 	_id: { $in: imageArray },
+					// }),
 					/*Thumbnails.find({
 						originalId: { $in: imageArray },
 					}),*/

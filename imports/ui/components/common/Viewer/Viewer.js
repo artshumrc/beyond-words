@@ -12,6 +12,12 @@ class Viewer extends React.Component {
 	}
 
 	componentDidMount() {
+		const { slides } = this.props;
+
+		if (!slides || !slides.length) {
+			return null;
+		}
+
 		this.left_viewer = OpenSeadragon({
 			id: 'image-panel-left',
 			prefixUrl: '/openseadragon/images/',

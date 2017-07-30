@@ -21,11 +21,10 @@ class ObjectDetail extends React.Component {
 			imageUrl = image.url();
 		}
 
-		let pdf = {};
-		let pdfUrl = '';
-		if (this.props.pdfAttachment) {
-			pdf = this.props.pdfAttachment;
-			pdfUrl = pdf.url();
+		if (selectedObject.images && selectedObject.images.length) {
+			if (typeof selectedObject.images[0] === 'object') {
+				imageUrl = selectedObject.images[0].path;
+			}
 		}
 
 		return (
@@ -168,14 +167,28 @@ class ObjectDetail extends React.Component {
 										<span>{selectedObject.notes}</span>
 									</div>
 						: ''}
-								{(pdfUrl.length) ?
+								{(selectedObject.pdfs && selectedObject.pdfs.length) ?
 									<div className="object-detail-meta object-detail-meta--pdf">
-										<a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-											<label>PDF Download</label>
-											<i className="mdi mdi-download" />
-										</a>
+										<label>PDFs</label>
+										{selectedObject.pdfs.map(pdf => (
+											<a href={pdf.path} target="_blank" rel="noopener noreferrer">
+												{pdf.name}
+												<i className="mdi mdi-download" />
+											</a>
+										))}
 									</div>
-						: ''}
+								: ''}
+								{(selectedObject.audioFiles && selectedObject.audioFiles.length) ?
+									<div className="object-detail-meta object-detail-meta--pdf">
+										<label>Related Audio</label>
+										{selectedObject.audioFiles.map(audioFile => (
+											<a href={pdf.path} target="_blank" rel="noopener noreferrer">
+												{pdf.name}
+												<i className="mdi mdi-download" />
+											</a>
+										))}
+									</div>
+								: ''}
 							</div>
 
 						</div>
