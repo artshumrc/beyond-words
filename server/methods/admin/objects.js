@@ -4,24 +4,21 @@ Meteor.methods({
 	'objects.insert': (token, object) => {
 		check(token, String);
 		check(object, Object);
-		const roles = ['editor', 'admin', 'objecter'];
-		if ((
-				!Meteor.userId()
-				&& !Roles.userIsInRole(Meteor.user(), roles)
-			)
-			&& !Meteor.users.findOne({
-				roles: roles,
+		const roles = ['editor', 'admin', 'commenter'];
+
+		if (
+			!Meteor.users.findOne({
+				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
-			})
-		) {
-			throw new Meteor.Error('object-insert', 'not-authorized');
+			})) {
+			throw new Meteor.Error('meteor-ddp-admin', 'Attempted editing with invalid token');
 		}
 
 		let objectId;
 		try {
-			objectId = objects.insert(object);
+			objectId = Objects.insert(object);
 		} catch (err) {
-			throw new Meteor.Error('object-insert', err);
+			throw new Meteor.Error('object-insert', err.message);
 		}
 
 		return objectId;
@@ -32,27 +29,18 @@ Meteor.methods({
 		check(objectId, String);
 		check(update, Object);
 
-		const user = Meteor.user() || Meteor.users.findOne({
-			'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken((token || '')),
-		});
-
-		const roles = ['editor', 'admin', 'objecter'];
-		if ((
-				!Meteor.userId()
-				&& !Roles.userIsInRole(Meteor.user(), roles)
-			)
-			&& !Meteor.users.findOne({
-				roles: roles,
+		if (
+			!Meteor.users.findOne({
+				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
-			})
-		) {
-			throw new Meteor.Error('object-update', 'not-authorized');
+			})) {
+			throw new Meteor.Error('meteor-ddp-admin', 'Attempted editing with invalid token');
 		}
 
 		try {
 			Objects.update({ _id: objectId }, { $set: update });
 		} catch (err) {
-			throw new Meteor.Error('object-update', err);
+			throw new Meteor.Error('object-update', err.message);
 		}
 
 		return objectId;
@@ -62,23 +50,18 @@ Meteor.methods({
 		check(token, String);
 		check(objectId, String);
 
-		const roles = ['editor', 'admin', 'objecter'];
-		if ((
-				!Meteor.userId()
-				&& !Roles.userIsInRole(Meteor.user(), roles)
-			)
-			&& !Meteor.users.findOne({
+		if (
+			!Meteor.users.findOne({
 				roles: 'admin',
 				'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token),
-			})
-		) {
-			throw new Meteor.Error('object-delete', 'not-authorized');
+			})) {
+			throw new Meteor.Error('meteor-ddp-admin', 'Attempted editing with invalid token');
 		}
 
 		try {
 			Objects.remove({ _id: objectId });
 		} catch (err) {
-			throw new Meteor.Error('object-delete', err);
+			throw new Meteor.Error('object-delete', err.message);
 		}
 
 		return objectId;

@@ -14,12 +14,12 @@ scalar JSON
 scalar Date
 
 type Object {
-	catalog_n: Int,
+	catalog_n: Int
 }
 
 type Query {
 
-	objects(_id: String, catalog_n: String, author_title: String, shelfmark: String, former_shelfmark: String, description: String, dateBegun: Date, dateEnded: Date, illuminator: String, scribe: String, printer: String, institution: String, collection: String, place: String, hasImageViewer: Boolean, notes: String): [Object]
+	objects(_id: String, catalog_n: String, author_title: String, shelfmark: String, former_shelfmark: String, description: String, illuminator: String, scribe: String, printer: String, institution: String, collection: String, place: String, hasImageViewer: Boolean, notes: String): [Object]
 
 }
 

@@ -113,6 +113,16 @@ Objects.schema = new SimpleSchema({
 		optional: true,
 	},
 
+	images: {
+		type: Array,
+		optional: true,
+	},
+	'images.$': {
+		type: Object,
+		optional: true,
+		blackbox: true,
+	},
+
 	pdfs: {
 		type: Array,
 		optional: true,
