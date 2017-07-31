@@ -46,7 +46,9 @@ class ObjectDetailPage extends React.Component {
 		}
 
 		if (object.images && object.images.length) {
-			image = object.images[0];
+			if (typeof object.images[0] === 'object') {
+				image = object.images[0];
+			}
 		}
 
 		return (
@@ -54,7 +56,7 @@ class ObjectDetailPage extends React.Component {
 				<section className="object-details paper-shadow">
 					<div className="object-details-inner">
 						<div className="object-detail-thumbnail-wrap">
-							{('path' in image && image.path) ?
+							{(image && 'path' in image && image.path) ?
 								<img
 									alt="object thumbnail"
 									className="object-detail-thumbnail paper-shadow"
@@ -241,6 +243,7 @@ class ObjectDetailPage extends React.Component {
 						</div>
 					</div>
 				</section>
+				<ObjectsDetailRelatedList />
 			</div>
 		);
 	}

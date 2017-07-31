@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import Objects from '/imports/api/collections/objects';
+import ObjectTeaser from '/imports/ui/components/objects/ObjectTeaser';
 
 const ObjectsDetailRelatedList = props => (
 	<div className="objects-detail-scroll">
 		<div className="objects-detail-scroll-inner clear">
-			{objects.map((_object, i) => (
+			{props.objects.map((_object, i) => (
 				<div
 					key={i}
 					className="object-scroll-teaser">
@@ -21,7 +23,7 @@ const ObjectsDetailRelatedList = props => (
 const objectsDetailRelatedListContainer = createContainer(() => {
 	let objects = [];
 
-	const imageSubscription = Meteor.subscribe('objects', {}, 0, 36);
+	const handle = Meteor.subscribe('objects', {}, 0, 36);
 	if (handle.ready()) {
 		objects = Objects.find().fetch();
 	}
