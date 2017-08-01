@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { white } from 'material-ui/styles/colors';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
 
 import muiTheme from '/imports/lib/muiTheme';
 import LeftMenu from '/imports/ui/components/common/LeftMenu';
@@ -163,7 +164,14 @@ class Header extends React.Component {
 													label="PRINT"
 													href="#"
 													onClick={this.scrollToCatalog}
-													onTouchTap={this.scrollToSymposium}
+													onTouchTap={this.scrollToCatalog}
+												/>
+												<FlatButton
+													style={styles.flatButton}
+													label="INDEX"
+													href="https://storage.googleapis.com/orpheus-data/publications/Beyond%20Words%20Supplementary%20Index.xlsx"
+													target="_blank"
+													rel="noopener noreferrer"
 												/>
 											</div>
 										</li>

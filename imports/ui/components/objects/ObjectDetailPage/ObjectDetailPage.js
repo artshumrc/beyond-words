@@ -51,8 +51,6 @@ class ObjectDetailPage extends React.Component {
 			}
 		}
 
-		console.log(object.pdfs);
-
 		return (
 			<div className="object-details-page">
 				<section className="object-details paper-shadow">
