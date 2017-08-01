@@ -176,11 +176,11 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var data    = $this.props('bs.carousel')
+      var options = $.extend({}, Carousel.DEFAULTS, $this.props(), typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
+      if (!data) $this.props('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
@@ -210,7 +210,7 @@
     var $this   = $(this)
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
     if (!$target.hasClass('carousel')) return
-    var options = $.extend({}, $target.data(), $this.data())
+    var options = $.extend({}, $target.data(), $this.props())
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
 

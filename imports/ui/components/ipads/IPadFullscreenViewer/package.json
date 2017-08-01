@@ -1,0 +1,6 @@
+{
+  "name": "IPadFullscreenViewer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./IPadFullscreenViewer.js"
+}

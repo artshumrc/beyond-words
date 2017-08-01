@@ -116,9 +116,9 @@
     return this.each(function () {
       var $this = $(this)
       var options = typeof option == 'object' && option
-      var data = $this.data(ScrollLock.NAME)
+      var data = $this.props(ScrollLock.NAME)
       if (!data && 'destroy' === option) return
-      if (!data) $this.data(ScrollLock.NAME, (data = new ScrollLock($this, options)))
+      if (!data) $this.props(ScrollLock.NAME, (data = new ScrollLock($this, options)))
       if (typeof option == 'string') data[option]()
     })
   }

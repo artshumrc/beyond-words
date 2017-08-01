@@ -78,10 +78,10 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.button')
+      var data    = $this.props('bs.button')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) $this.props('bs.button', (data = new Button(this, options)))
 
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)

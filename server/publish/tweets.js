@@ -1,13 +1,13 @@
-Meteor.startup(() => {
-	import Twit from 'twit';
+import Twit from 'twit';
+import TweetCollection from '/imports/api/collections/tweetCollection';
 
-	T = new Twit({
-		consumer_key: '1a8UqOjo2n7imRhOy3B7NvTcr',
-		consumer_secret: 'tRCuDoFNx80RdN32c4VicCusqnkdbtkE5eDIzgJLZwUd4ZJEM9',
-		access_token: '151099171-FGLGO1xzQ9m2e4Muk2slPoHY1KlNNKFZjwGPpJ5T',
-		access_token_secret: 'mcRslW9aUU1k1hBSWwz4SfgXx4ozebmPhsplX7eqgCd3w',
-		timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
-	});
+
+const T = new Twit({
+	consumer_key: '1a8UqOjo2n7imRhOy3B7NvTcr',
+	consumer_secret: 'tRCuDoFNx80RdN32c4VicCusqnkdbtkE5eDIzgJLZwUd4ZJEM9',
+	access_token: '151099171-FGLGO1xzQ9m2e4Muk2slPoHY1KlNNKFZjwGPpJ5T',
+	access_token_secret: 'mcRslW9aUU1k1hBSWwz4SfgXx4ozebmPhsplX7eqgCd3w',
+	timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
 });
 
 // 10 minutes
@@ -24,12 +24,14 @@ Meteor.publish('tweets', function tweets() {
 			exclude_replies: true,
 			include_rts: false,
 		});
+
 		console.log('Tweets from Twitter repsonse:', data.length);
+
 		if (data) {
 			data.forEach((doc) => {
 				if (!TweetCollection.findOne({ id_str: doc.id_str })) {
 					TweetCollection.insert(doc);
-                    // pub.added('tweetCollection', doc.id_str, doc);
+          // pub.added('tweetCollection', doc.id_str, doc);
 				}
 			});
 		}

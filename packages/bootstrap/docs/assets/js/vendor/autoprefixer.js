@@ -45,7 +45,7 @@
 
   Autoprefixer = (function() {
     function Autoprefixer(data, reqs1, options1) {
-      this.data = data;
+      this.props = data;
       this.reqs = reqs1;
       this.options = options1 != null ? options1 : {};
       this.postcss = bind(this.postcss, this);
@@ -641,7 +641,7 @@
     };
 
     function Browsers(data1, requirements, options) {
-      this.data = data1;
+      this.props = data1;
       this.options = options;
       this.selected = this.parse(requirements);
     }
@@ -656,7 +656,7 @@
     Browsers.prototype.browsers = function(criteria) {
       var browser, data, ref, selected, versions;
       selected = [];
-      ref = this.data;
+      ref = this.props;
       for (browser in ref) {
         data = ref[browser];
         versions = criteria(data).map(function(version) {
@@ -670,7 +670,7 @@
     Browsers.prototype.prefix = function(browser) {
       var data, name, prefix, ref, version;
       ref = browser.split(' '), name = ref[0], version = ref[1];
-      data = this.data[name];
+      data = this.props[name];
       if (data.prefix_exceptions) {
         prefix = data.prefix_exceptions[version];
       }
@@ -2932,10 +2932,10 @@
   Prefixes = (function() {
     function Prefixes(data1, browsers, options) {
       var ref;
-      this.data = data1;
+      this.props = data1;
       this.browsers = browsers;
       this.options = options != null ? options : {};
-      ref = this.preprocess(this.select(this.data)), this.add = ref[0], this.remove = ref[1];
+      ref = this.preprocess(this.select(this.props)), this.add = ref[0], this.remove = ref[1];
       this.processor = new Processor(this);
     }
 
@@ -2946,7 +2946,7 @@
       if (!this.cleanerCache) {
         if (this.browsers.selected.length) {
           empty = new Browsers(this.browsers.data, []);
-          this.cleanerCache = new Prefixes(this.data, empty, this.options);
+          this.cleanerCache = new Prefixes(this.props, empty, this.options);
         } else {
           return this;
         }
@@ -3044,10 +3044,10 @@
           add[name] = new AtRule(name, prefixes, this);
         } else if (name === '@resolution') {
           add[name] = new Resolution(name, prefixes, this);
-        } else if (this.data[name].selector) {
+        } else if (this.props[name].selector) {
           add.selectors.push(Selector.load(name, prefixes, this));
         } else {
-          props = this.data[name].transition ? this.transitionProps : this.data[name].props;
+          props = this.props[name].transition ? this.transitionProps : this.props[name].props;
           if (props) {
             value = Value.load(name, prefixes, this);
             for (j = 0, len = props.length; j < len; j++) {
@@ -3060,7 +3060,7 @@
               add[prop].values.push(value);
             }
           }
-          if (!this.data[name].props) {
+          if (!this.props[name].props) {
             values = ((ref1 = add[name]) != null ? ref1.values : void 0) || [];
             add[name] = Declaration.load(name, prefixes, this);
             add[name].values = values;
@@ -3073,7 +3073,7 @@
       ref2 = selected.remove;
       for (name in ref2) {
         prefixes = ref2[name];
-        if (this.data[name].selector) {
+        if (this.props[name].selector) {
           selector = Selector.load(name, prefixes);
           for (k = 0, len1 = prefixes.length; k < len1; k++) {
             prefix = prefixes[k];
@@ -3090,7 +3090,7 @@
         } else if (name === '@resolution') {
           remove[name] = new Resolution(name, prefixes, this);
         } else {
-          props = this.data[name].transition ? this.transitionProps : this.data[name].props;
+          props = this.props[name].transition ? this.transitionProps : this.props[name].props;
           if (props) {
             value = Value.load(name, [], this);
             for (m = 0, len3 = prefixes.length; m < len3; m++) {
@@ -3110,7 +3110,7 @@
               }
             }
           }
-          if (!this.data[name].props) {
+          if (!this.props[name].props) {
             for (o = 0, len5 = prefixes.length; o < len5; o++) {
               prefix = prefixes[o];
               prop = vendor.unprefixed(name);
@@ -15043,7 +15043,7 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var Container = _interopRequire(require("./container"));
 
-// CSS at-rule like “this.keyframes name { }”.
+// CSS at-rule like ï¿½this.keyframes name { }ï¿½.
 //
 // Can contain declarations (like this.font-face or this.page) ot another rules.
 
@@ -15819,7 +15819,7 @@ var vendor = _interopRequire(require("./vendor"));
 
 var Node = _interopRequire(require("./node"));
 
-// CSS declaration like “color: black” in rules
+// CSS declaration like ï¿½color: blackï¿½ in rules
 
 var Declaration = (function (Node) {
     function Declaration(defaults) {
@@ -17791,7 +17791,7 @@ var Container = _interopRequire(require("./container"));
 
 var list = _interopRequire(require("./list"));
 
-// CSS rule like “a { }”
+// CSS rule like ï¿½a { }ï¿½
 
 var Rule = (function (Container) {
     function Rule(defaults) {

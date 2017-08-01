@@ -1,0 +1,6 @@
+{
+  "name": "ThumbnailSlider",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ThumbnailSlider.js"
+}

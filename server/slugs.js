@@ -1,4 +1,6 @@
-Meteor.startup(() => {
+import Objects from '/imports/api/collections/objects';
+
+const fixSlugs = () => {
 	let count;
 	const docs = Objects.find({
 		slug: {
@@ -20,4 +22,8 @@ Meteor.startup(() => {
 		return count;
 	});
 	return console.log(`Updated slugs for ${count} Documents.`);
+
+};
+Meteor.startup(() => {
+	// fixSlugs();
 });
