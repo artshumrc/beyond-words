@@ -51,6 +51,8 @@ class ObjectDetailPage extends React.Component {
 			}
 		}
 
+		console.log(object.pdfs);
+
 		return (
 			<div className="object-details-page">
 				<section className="object-details paper-shadow">
@@ -188,7 +190,7 @@ class ObjectDetailPage extends React.Component {
 									<label>PDFs</label>
 									{object.pdfs.map(pdf => (
 										<a key={pdf.name} href={pdf.path} target="_blank" rel="noopener noreferrer">
-											{pdf.name}
+											{pdf.label || pdf.name}
 											<i className="mdi mdi-download" />
 										</a>
 									))}
@@ -203,7 +205,7 @@ class ObjectDetailPage extends React.Component {
 											key={audioFile.path}
 										>
 											<span className="media-title">
-												{audioFile.name}
+												{audioFile.label || audioFile.name}
 											</span>
 											<div className="media-player">
 												<ReactPlayer
@@ -226,7 +228,7 @@ class ObjectDetailPage extends React.Component {
 											key={video.path}
 										>
 											<span className="media-title">
-												{video.name}
+												{video.label || video.name}
 											</span>
 											<div className="media-player">
 												<ReactPlayer
