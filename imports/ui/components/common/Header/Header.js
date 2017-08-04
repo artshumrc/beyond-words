@@ -169,7 +169,7 @@ class Header extends React.Component {
 												<FlatButton
 													style={styles.flatButton}
 													label="INDEX"
-													href="https://storage.googleapis.com/orpheus-data/publications/Beyond%20Words%20Supplementary%20Index.xlsx"
+													href="/catalogIndex"
 													target="_blank"
 													rel="noopener noreferrer"
 												/>

@@ -74,10 +74,12 @@ class HeaderCatalog extends React.Component {
 		const totalObjects = FlowRouter.getQueryParam('total') || 0;
 
 		let objectsCount = '';
-		if (parseInt(totalObjects, 10) === 1) {
-			objectsCount = `(${totalObjects} Object)`;
-		} else {
-			objectsCount = `(${totalObjects} Objects)`;
+		if (totalObjects) {
+			if (parseInt(totalObjects, 10) === 1) {
+				objectsCount = `(${totalObjects} Object)`;
+			} else {
+				objectsCount = `(${totalObjects} Objects)`;
+			}
 		}
 
 		const currentRoute = FlowRouter.current().route.name;
