@@ -33,7 +33,7 @@ class CatalogLayout extends React.Component {
 	      // handle error
 				console.error(error);
 	    } else {
-				// FlowRouter.go('/catalog', {}, {page: 1, filters, total});
+				FlowRouter.go('/catalog', {}, {page: 1, filters, total});
 	    }
 	  });
 	}
