@@ -12,10 +12,14 @@ import HomeCatalog from '/imports/ui/components/home/HomeCatalog';
 import HomeLenders from '/imports/ui/components/home/HomeLenders';
 
 class HomeContent extends React.Component {
-	scrollToAbout(e) {
-		$('html, body').animate({ scrollTop: $('#about').height() - 100 }, 300);
-
-		e.preventDefault();
+	componentDidMount() {
+		if (window.location.hash.length > 0) {
+			setTimeout(() => {
+				$('html, body').animate({
+					scrollTop: $(window.location.hash).offset().top
+				}, 300);
+			}, 1000);
+		}
 	}
 
 

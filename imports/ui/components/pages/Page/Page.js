@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Pages from '/imports/api/collections/pages';
+import Loading from '/imports/ui/components/common/Loading';
 
 class Page extends React.Component {
 
