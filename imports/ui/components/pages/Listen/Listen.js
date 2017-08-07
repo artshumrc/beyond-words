@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AudioObject from './AudioObject';
 
+import Loading from '/imports/ui/components/common/Loading';
+
 class Listen extends React.Component {
 
 	backgroundImages() {

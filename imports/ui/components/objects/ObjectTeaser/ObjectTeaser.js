@@ -52,7 +52,10 @@ class ObjectTeaser extends React.Component {
 		if (object.images && object.images.length) {
 			if (typeof object.images[0] === 'object') {
 				image = object.images[0];
-				styles.thumbnailImage.backgroundImage = `url("${image.path}")`;
+				const prefix = "https://iiif-orpheus.s3.amazonaws.com/";
+				const imageName = image.path.replace(prefix, '');
+
+				styles.thumbnailImage.backgroundImage = `url("http://iiif.orphe.us/${imageName}/full/400,/0/default.jpg")`;
 			}
 		}
 

@@ -27,7 +27,7 @@ class LeftMenu extends React.Component {
 					{isLoggedIn ?
 						<div>
 							<MenuItem
-								href="/admin"
+								href="http://admin.beyondwords2016.org/"
 								target="_blank" rel="noopener noreferrer"
 								primaryText="Admin"
 								onTouchTap={this.props.closeLeftMenu}
@@ -53,30 +53,6 @@ class LeftMenu extends React.Component {
 					 <Divider />*/}
 
 					<MenuItem
-						href="/#plan-your-trip"
-						primaryText="PLAN YOUR TRIP"
-						onTouchTap={this.props.closeLeftMenu}
-						onClick={this.props.closeLeftMenu}
-					/>
-					<MenuItem
-						href="/#events"
-						primaryText="EVENTS"
-						onTouchTap={this.props.closeLeftMenu}
-						onClick={this.props.closeLeftMenu}
-					/>
-					<MenuItem
-						href="/#news"
-						primaryText="NEWS"
-						onTouchTap={this.props.closeLeftMenu}
-						onClick={this.props.closeLeftMenu}
-					/>
-					<MenuItem
-						href="/#symposium"
-						primaryText="SYMPOSIUM"
-						onTouchTap={this.props.closeLeftMenu}
-						onClick={this.props.closeLeftMenu}
-					/>
-					<MenuItem
 						href="/catalog"
 						primaryText="ONLINE CATALOG"
 						onTouchTap={this.props.closeLeftMenu}
@@ -89,17 +65,52 @@ class LeftMenu extends React.Component {
 						onClick={this.props.closeLeftMenu}
 					/>
 					<MenuItem
-						href="/#lenders"
-						primaryText="LENDERS"
+						href="/catalogIndex"
+						primaryText="CATALOG INDEX"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>
 
 					<MenuItem
-						href="//beyondwords.oncell.com/"
-						primaryText="AUDIOGUIDE"
-						target="_blank"
-						rel="noopener noreferrer"
+						href="#news"
+						primaryText="NEWS"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<MenuItem
+						href="/listen"
+						primaryText="LISTEN"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<MenuItem
+						href="/watch"
+						primaryText="WATCH"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<Divider />
+
+					<MenuItem
+						href="/#plan-your-trip"
+						primaryText="PLANNING"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<MenuItem
+						href="/#events"
+						primaryText="EVENTS"
+						onTouchTap={this.props.closeLeftMenu}
+						onClick={this.props.closeLeftMenu}
+					/>
+
+					<MenuItem
+						href="/#symposium"
+						primaryText="SYMPOSIUM"
 						onTouchTap={this.props.closeLeftMenu}
 						onClick={this.props.closeLeftMenu}
 					/>

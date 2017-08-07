@@ -15,30 +15,34 @@ class Pagination extends React.Component {
 	}
 
 	goToPage(page) {
+		const { activePage } = this.props;
+		const totalObjects = FlowRouter.getQueryParam('total') || 0;
 		const filters = FlowRouter.getQueryParam('filters');
 
-		FlowRouter.go('/objects', {}, { page, filters });
+		FlowRouter.go('/catalog', {}, { page, total: totalObjects, filters });
 	}
 
 	goToPrevPage() {
 		const { activePage } = this.props;
+		const totalObjects = FlowRouter.getQueryParam('total') || 0;
 		const filters = FlowRouter.getQueryParam('filters');
 
 		if (activePage === 1) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: activePage - 1, filters });
+		FlowRouter.go('/catalog', {}, { page: activePage - 1, total: totalObjects, filters });
 	}
 	goToNextPage() {
-		const { activePage, totalObjects } = this.props;
+		const { activePage, } = this.props;
+		const totalObjects = FlowRouter.getQueryParam('total') || 0;
 		const filters = FlowRouter.getQueryParam('filters');
 
 		if (activePage === totalObjects) {
 			return false;
 		}
 
-		FlowRouter.go('/objects', {}, { page: activePage + 1, filters });
+		FlowRouter.go('/catalog', {}, { page: activePage + 1, total: totalObjects, filters });
 	}
 
 	render() {

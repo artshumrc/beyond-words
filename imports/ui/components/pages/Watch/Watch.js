@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VideoObject from './VideoObject';
+import Loading from '/imports/ui/components/common/Loading';
 
 class Watch extends React.Component {
 

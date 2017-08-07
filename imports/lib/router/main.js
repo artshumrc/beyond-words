@@ -3,10 +3,11 @@ import { mount } from 'react-mounter';
 
 import Utils from '/imports/lib/utils';
 import CatalogLayout from '/imports/ui/layouts/CatalogLayout';
+import CatalogIndexLayout from '/imports/ui/layouts/CatalogIndexLayout';
 import ComingSoonHomeLayout from '/imports/ui/layouts/ComingSoonHomeLayout';
 import HomeLayout from '/imports/ui/layouts/HomeLayout';
 import MainLayout from '/imports/ui/layouts/MainLayout';
-import IPadLayout from '/imports/ui/layouts/IPadLayout';
+// import IPadLayout from '/imports/ui/layouts/IPadLayout';
 import MasterLayout from '/imports/ui/layouts/MasterLayout';
 import IPadViewTyp139 from '/imports/ui/components/ipads/IPadViewTyp139';
 import MiradorViewer from '/imports/ui/components/mirador/MiradorViewer';
@@ -31,9 +32,16 @@ FlowRouter.subscriptions = function subscriptions() {
 * Routes for application
 */
 
+FlowRouter.route('/catalogIndex', {
+	action() {
+		mount(CatalogIndexLayout, {});
+	},
+});
+
+
 FlowRouter.route('/catalog', {
 	action() {
-		mount(CatalogLayout, {selectedObjectSlug: location.hash.replace('#', '')});
+		mount(CatalogLayout, {});
 	},
 });
 
