@@ -282,6 +282,13 @@ class CatalogLayout extends React.Component {
 					catalogLayout={this.state.catalogLayout}
 				/>
 
+				<div className="catalogIndexDescription">
+					<p>
+						This supplementary index was created on the basis of the print catalog by Hannah Weaver. It indexes provenance data from print catalog entries, locations, authors and works, generic types, and people involved in manuscript production (scribes and artists).
+					</p>
+					<a href="https://storage.googleapis.com/orpheus-data/publications/Beyond%20Words%20Supplementary%20Index.xlsx">Download</a>
+				</div>
+
 				<div style={{
 					width: '95%',
 					textAlign: 'center',

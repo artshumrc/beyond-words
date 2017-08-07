@@ -170,8 +170,6 @@ class Header extends React.Component {
 													style={styles.flatButton}
 													label="INDEX"
 													href="/catalogIndex"
-													target="_blank"
-													rel="noopener noreferrer"
 												/>
 											</div>
 										</li>
