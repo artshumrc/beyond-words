@@ -74,25 +74,21 @@ class Watch extends React.Component {
 							title="Binding"
 							url="https://storage.googleapis.com/archimedes-data/beyondwords/Binding_1080.mp4"
 							height="420px"
-							description="Example description of the video quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites conveniat quae curum boum qui cultus habendo sit pecori apibus quanta experientia parcis hinc canere incipiam"
 						/>
 						<VideoObject
 							title="Illumination"
 							url="https://storage.googleapis.com/archimedes-data/beyondwords/Illumination_1080.mp4"
 							height="420px"
-							description="Example description of the video quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites conveniat quae curum boum qui cultus habendo sit pecori apibus quanta experientia parcis hinc canere incipiam"
 						/>
 						<VideoObject
 							title="Parchment"
 							url="https://storage.googleapis.com/archimedes-data/beyondwords/Parchment_1080.mp4"
 							height="420px"
-							description="Example description of the video quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites conveniat quae curum boum qui cultus habendo sit pecori apibus quanta experientia parcis hinc canere incipiam"
 						/>
 						<VideoObject
 							title="Script"
 							url="https://storage.googleapis.com/archimedes-data/beyondwords/Script_1080.mp4"
 							height="420px"
-							description="Example description of the video quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites conveniat quae curum boum qui cultus habendo sit pecori apibus quanta experientia parcis hinc canere incipiam"
 						/>
 					</div>
 				</section>
