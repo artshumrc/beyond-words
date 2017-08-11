@@ -3,21 +3,24 @@ import PropTypes from 'prop-types'
 import ReactPlayer from 'react-player'
 
 const AudioObject = props => {
-	const { title, url, height, description } = props;
+	const { title, url, image, image2, caption } = props;
 
 	return (
 		<div className="audio-object">
 			<h2>{title}</h2>
 			<hr />
+			<img src={image} />
+			{image2 && <img src={image2} />}
+			<span className="image-caption">
+				{caption}
+			</span>
 			<ReactPlayer
 				url={url}
 				width="100%"
-				height={height}
+				height="60px"
 				controls
 			/>
-			<p className="description">
-				{description}
-			</p>
+			{props.children}
 		</div>
 	);
 }

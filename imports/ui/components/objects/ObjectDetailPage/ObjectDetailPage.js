@@ -162,27 +162,32 @@ class ObjectDetailPage extends React.Component {
 								:
 								''
 							}
-							{object.externalLink ?
-								<div className="object-detail-meta">
-									<label>External Link</label>
-									<span>
-										<a href={object.externalUrl} target="_blank" rel="noopener noreferrer">
-											{object.externalUrl}
-										</a>
-									</span>
-								</div>
-								:
-								''
-							}
-							{object.illumintator ?
-								<div className="object-detail-meta">
-									<label>Description</label>
-									<span>{object.description}</span>
-								</div>
-
-								:
-								''
-							}
+								{object.illuminator ?
+									<div className="object-detail-meta">
+										<label>Illuminator</label>
+										<span>{object.illuminator}</span>
+									</div>
+						: ''}
+								{object.externalUrl ?
+									<div className="object-detail-meta">
+										<label>External Link</label>
+										<span>
+											<a
+												href={object.externalUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{object.externalUrl}
+											</a>
+										</span>
+									</div>
+						: ''}
+								{object.description ?
+									<div className="object-detail-meta">
+										<label>Description</label>
+										<span>{object.description}</span>
+									</div>
+						: ''}
 							{(object.pdfs && object.pdfs.length) ?
 								<div className="object-detail-meta object-detail-meta--pdf">
 									<label>PDFs</label>
