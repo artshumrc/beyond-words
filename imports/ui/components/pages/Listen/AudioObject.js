@@ -11,9 +11,11 @@ const AudioObject = props => {
 			<hr />
 			<img src={image} />
 			{image2 && <img src={image2} />}
-			<span className="image-caption">
-				{caption}
-			</span>
+			{caption &&
+				<span className="image-caption">
+					{caption}
+				</span>
+			}
 			<ReactPlayer
 				url={url}
 				width="100%"

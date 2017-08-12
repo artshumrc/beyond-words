@@ -156,7 +156,6 @@ class Listen extends React.Component {
 							title="Jeffrey Hamburger on the quality of these drawings"
 							url="https://storage.googleapis.com/archimedes-data/beyondwords/BW63.mp3"
 							image="http://iiif.orphe.us/beyondwords/audio/6.png/full/320,/0/default.jpg"
-							caption=""
 						>
 							<p>
 								These two drawings are so small that they’re easily overlooked, but they’re really of such exquisite quality. They are drawn and painted with an exceptionally fine brush, heightened with a few touches of color. These represent the archangel Gabriel on the left and the Virgin Mary on the right. You can see that he has just descended from the heavens: his hair is flying back in wonderful curls. In the case of the Virgin Mary, she’s shown with long flowing locks that cascade down rather loosely over her shoulders. The Virgin Mary reflects contemporary ideals of courtly beauty. She has a very high forehead, narrow chin and pursed rosy-red lips. We have to imagine them as part of a collection of drawings, all of them showing heads of holy figures, which would have served as a set of models that an artist would be free to deploy in works made in other media, such as panel painting. The survival of these two drawings is nothing less than a small miracle.
