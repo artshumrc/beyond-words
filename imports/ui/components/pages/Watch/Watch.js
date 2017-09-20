@@ -71,8 +71,13 @@ class Watch extends React.Component {
 				<section className="page-content container">
 					<div className="listen-page-content">
 						<VideoObject
-							title="Binding"
-							url="https://storage.googleapis.com/archimedes-data/beyondwords/Binding_1080.mp4"
+							title="Parchment"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/Parchment_1080.mp4"
+							height="420px"
+						/>
+						<VideoObject
+							title="Script"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/Script_1080.mp4"
 							height="420px"
 						/>
 						<VideoObject
@@ -81,13 +86,13 @@ class Watch extends React.Component {
 							height="420px"
 						/>
 						<VideoObject
-							title="Parchment"
-							url="https://storage.googleapis.com/archimedes-data/beyondwords/Parchment_1080.mp4"
+							title="Binding"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/Binding_1080.mp4"
 							height="420px"
 						/>
 						<VideoObject
-							title="Script"
-							url="https://storage.googleapis.com/archimedes-data/beyondwords/Script_1080.mp4"
+							title="Jeffrey Hamburger on a Manuscript of the Commentary on the Pauline Epistles"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/HamburgerEpistles_1080.mp4"
 							height="420px"
 						/>
 					</div>

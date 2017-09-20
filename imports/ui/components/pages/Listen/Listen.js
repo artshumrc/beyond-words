@@ -176,7 +176,7 @@ class Listen extends React.Component {
 						</AudioObject>
 						<AudioObject
 							title="Anne-Marie Eze on manuscripts from the Sistine Chapel (cat. nos. 77 & 78)"
-							url="https://storage.googleapis.com/archimedes-data/beyondwords/BW77.mp3"
+							url="https://storage.googleapis.com/archimedes-data/beyondwords/BW77.78.mp3"
 							image="http://iiif.orphe.us/beyondwords/audio/15.png/full/320,/0/default.jpg"
 							caption="HUL MS Typ 734"
 						>
